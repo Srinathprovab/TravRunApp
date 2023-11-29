@@ -1,0 +1,6 @@
+framework module Pods_Travrun {
+  umbrella header "Pods-Travrun-umbrella.h"
+
+  export *
+  module * { export * }
+}
