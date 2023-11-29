@@ -16,6 +16,9 @@ class EmptyTVCell: TableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        // Initialization code
+        // Initialization code
+        // Initialization code
         holderView.backgroundColor = .WhiteColor
         
     }
