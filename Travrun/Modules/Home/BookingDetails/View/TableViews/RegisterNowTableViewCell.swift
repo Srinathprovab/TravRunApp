@@ -9,8 +9,11 @@ import UIKit
 
 class RegisterNowTableViewCell: TableViewCell {
 
+    @IBOutlet weak var phoneNumberTextfld: UITextField!
+    @IBOutlet weak var countryCodeTextField: UITextField!
     @IBOutlet weak var registerNowButton: UIButton!
     @IBOutlet weak var emailTextFld: UITextField!
+    
     @IBOutlet weak var middleView: UIView!
     @IBOutlet weak var passwordTxtfld: UITextField!
     override func awakeFromNib() {
@@ -19,6 +22,9 @@ class RegisterNowTableViewCell: TableViewCell {
         
         emailTextFld.layer.borderWidth = 0.7
         emailTextFld.setLeftPaddingPoints(10)
+        phoneNumberTextfld.setLeftPaddingPoints(10)
+        passwordTxtfld.setLeftPaddingPoints(10)
+        countryCodeTextField.setLeftPaddingPoints(10)
         emailTextFld.layer.borderColor = HexColor("#B8B8B8").cgColor
         emailTextFld.layer.cornerRadius = 4
         

@@ -15,6 +15,9 @@ protocol RegisterSelectionLoginTableViewCellDelegate {
 
 class RegisterSelectionLoginTableViewCell: TableViewCell {
     
+    @IBOutlet weak var guestRadioImage: UIImageView!
+    @IBOutlet weak var registerRadioImage: UIImageView!
+    @IBOutlet weak var loginRadioImage: UIImageView!
     var delegate: RegisterSelectionLoginTableViewCellDelegate?
 
     override func awakeFromNib() {

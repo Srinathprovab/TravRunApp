@@ -75,6 +75,24 @@ var keyStr = String()
 var directFlightBool = true
 var oldjournyType = ""
 
+// Screen width.
+public var screenWidth: CGFloat {
+    return UIScreen.main.bounds.size.width
+}
+
+// Screen height.
+public var screenHeight: CGFloat {
+    return UIScreen.main.bounds.size.height
+}
+
+//MARK: - FILTER RELATED VARIABLES
+var filterTap = String()
+var filterPrice = String()
+var filterModel = FlightFilterModel()
+var sortBy: SortParameter = .nothing
+var hotelfiltermodel = HotelFilterModel()
+//var mapModelArray: [MapModel] = []
+
 struct UserDefaultsKeys {
     static var toairport = "toairport"
     static var checkin = "check_in"

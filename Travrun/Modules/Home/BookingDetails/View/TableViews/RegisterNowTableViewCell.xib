@@ -29,7 +29,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="380"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WKo-od-yxx">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WKo-od-yxx" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="380"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1uH-2X-3HB">
@@ -218,6 +218,17 @@
                             <constraint firstAttribute="trailing" secondItem="1uH-2X-3HB" secondAttribute="trailing" id="wRU-yV-JKZ"/>
                             <constraint firstAttribute="bottom" secondItem="1uH-2X-3HB" secondAttribute="bottom" id="zcN-ng-vml"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.90196078431372551" green="0.90980392156862744" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <constraints>
@@ -229,9 +240,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="countryCodeTextField" destination="4dM-UJ-nva" id="dGX-co-qQz"/>
                 <outlet property="emailTextFld" destination="47q-cK-EQU" id="W6y-IE-UUD"/>
                 <outlet property="middleView" destination="35B-j7-UFh" id="fxq-ux-Ytd"/>
                 <outlet property="passwordTxtfld" destination="Ze6-Dn-CZS" id="vqM-Lq-xHa"/>
+                <outlet property="phoneNumberTextfld" destination="2sd-9F-Q7B" id="IbX-Tv-0Eh"/>
                 <outlet property="registerNowButton" destination="geG-E7-iln" id="fXb-lX-M92"/>
             </connections>
             <point key="canvasLocation" x="11.450381679389313" y="19.718309859154932"/>

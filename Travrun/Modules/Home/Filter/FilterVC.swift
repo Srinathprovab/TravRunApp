@@ -124,7 +124,7 @@ class FilterVC: BaseTableVC{
     var hotelRefundablerTypeFilteArray = [String]()
     
     static var newInstance: FilterVC? {
-        let storyboard = UIStoryboard(name: Storyboard.Main.name,
+        let storyboard = UIStoryboard(name: Storyboard.Filter.name,
                                       bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? FilterVC
         return vc
@@ -157,7 +157,7 @@ class FilterVC: BaseTableVC{
     
     func setupUI() {
         
-        self.view.backgroundColor = .black.withAlphaComponent(0.3)
+        self.view.backgroundColor = HexColor("#CFECFF")
         setupViews(v: holderView, radius: 10, color: .WhiteColor)
         holderView.layer.borderColor = UIColor.WhiteColor.cgColor
         setupViews(v: filterButtonsView, radius: 0, color: .WhiteColor)
@@ -166,8 +166,8 @@ class FilterVC: BaseTableVC{
         setupViews(v: filtersBtnView, radius: 0, color: .WhiteColor)
         setupViews(v: sortbyUL, radius: 0, color: .AppTabSelectColor)
         setupViews(v: filterUL, radius: 0, color: .WhiteColor)
-        setuplabels(lbl: sortBylbl, text: "Sort By", textcolor: .AppLabelColor, font: .LatoRegular(size: 18), align: .center)
-        setuplabels(lbl: filterslbl, text: "Filters", textcolor: .SubTitleColor, font: .LatoRegular(size: 18), align: .center)
+        setuplabels(lbl: sortBylbl, text: "Sort By", textcolor: .AppLabelColor, font: .latoRegular(size: 18), align: .center)
+        setuplabels(lbl: filterslbl, text: "Filters", textcolor: .SubTitleColor, font: .latoRegular(size: 18), align: .center)
         closeBtn.setTitle("", for: .normal)
         sortbyBtn.setTitle("", for: .normal)
         filtersBtn.setTitle("", for: .normal)
@@ -190,12 +190,12 @@ class FilterVC: BaseTableVC{
             
         case "hotelfilter":
             sortBylbl.text = "Filter"
-            setupHotelsFilterTVCells()
+//            setupHotelsFilterTVCells()
             break
             
         case "hotelsort":
             sortBylbl.text = "Sort"
-            setupHotelsSortByTVCells()
+//            setupHotelsSortByTVCells()
             break
             
             
@@ -203,10 +203,10 @@ class FilterVC: BaseTableVC{
             break
         }
         
-        
+        resetBtn.layer.cornerRadius = 4
         resetBtn.setTitle("Reset", for: .normal)
         resetBtn.titleLabel?.textColor = .AppTabSelectColor
-        resetBtn.titleLabel?.font = UIFont.LatoRegular(size: 16)
+        resetBtn.titleLabel?.font = UIFont.latoRegular(size: 16)
         commonTableView.registerTVCells(["CheckBoxTVCell",
                                          "EmptyTVCell",
                                          "SortbyTVCell",
@@ -235,24 +235,20 @@ class FilterVC: BaseTableVC{
         tablerow.removeAll()
         
         tablerow.append(TableRow(title:"Price",cellType:.SliderTVCell))
-        tablerow.append(TableRow(title:"Stops",data: stopsArray,cellType:.CheckBoxTVCell))
-        tablerow.append(TableRow(title:"Refundable Type",data: faretypeArray,cellType:.CheckBoxTVCell))
-        
+        tablerow.append(TableRow(title:"No. of stops",data: stopsArray,cellType:.CheckBoxTVCell))
+        tablerow.append(TableRow(title:"Refundable",data: faretypeArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Luggage",data: luggageArray,cellType:.CheckBoxTVCell))
+        tablerow.append(TableRow(title:"Duration", key:"duriation",cellType:.SliderTVCell))
+        tablerow.append(TableRow(title:"Transit Time", key:"time",cellType:.SliderTVCell))
 //        tablerow.append(TableRow(title:"Departure Time",cellType:.FilterDepartureTVCell))
 //        tablerow.append(TableRow(title:"Arrival Time",cellType:.FilterDepartureTVCell))
-        
-        
-        tablerow.append(TableRow(title:"Departurn Time",key:"time", data: departurnTimeArray,cellType:.CheckBoxTVCell))
+        tablerow.append(TableRow(title:"Departure Time",key:"time", data: departurnTimeArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Arrival Time",key:"time", data: departurnTimeArray,cellType:.CheckBoxTVCell))
-        
-        
         tablerow.append(TableRow(title:"No Overnight Flight",data: noOverNightFlightArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Airlines",data: AirlinesArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Connecting Flights",data: ConnectingFlightsArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Connecting Airports",data: ConnectingAirportsArray,cellType:.CheckBoxTVCell))
-        
-        tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+        tablerow.append(TableRow(height:20,cellType:.EmptyTVCell))
         tablerow.append(TableRow(title:"Apply",key: "filterbtn",bgColor: .AppBtnColor,cellType:.ButtonTVCell))
         tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
@@ -285,45 +281,45 @@ class FilterVC: BaseTableVC{
     
     
     
-    func setupHotelsFilterTVCells() {
-        
-        commonTableView.isScrollEnabled = true
-        tablerow.removeAll()
-        
-        tablerow.append(TableRow(title:"Price",cellType:.SliderTVCell))
-        tablerow.append(TableRow(title:"Star Ratings ",cellType:.PopularFiltersTVCell))
-        tablerow.append(TableRow(title:"Booking Type",data: paymentTypeArray,cellType:.CheckBoxTVCell))
-        tablerow.append(TableRow(title:"Neighbourhood",data: neighbourwoodArray,cellType:.CheckBoxTVCell))
-        tablerow.append(TableRow(title:"Near By Location's",data: nearBylocationsArray,cellType:.CheckBoxTVCell))
-        tablerow.append(TableRow(title:"Amenities",data: amenitiesArray,cellType:.CheckBoxTVCell))
-        
-        
-        
-        tablerow.append(TableRow(height:100,cellType:.EmptyTVCell))
-        tablerow.append(TableRow(title:"Apply",key: "btn",cellType:.ButtonTVCell))
-        tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
-        
-        commonTVData = tablerow
-        commonTableView.reloadData()
-    }
+//    func setupHotelsFilterTVCells() {
+//        
+//        commonTableView.isScrollEnabled = true
+//        tablerow.removeAll()
+//        
+//        tablerow.append(TableRow(title:"Price",cellType:.SliderTVCell))
+//        tablerow.append(TableRow(title:"Star Ratings ",cellType:.PopularFiltersTVCell))
+//        tablerow.append(TableRow(title:"Booking Type",data: paymentTypeArray,cellType:.CheckBoxTVCell))
+//        tablerow.append(TableRow(title:"Neighbourhood",data: neighbourwoodArray,cellType:.CheckBoxTVCell))
+//        tablerow.append(TableRow(title:"Near By Location's",data: nearBylocationsArray,cellType:.CheckBoxTVCell))
+//        tablerow.append(TableRow(title:"Amenities",data: amenitiesArray,cellType:.CheckBoxTVCell))
+//        
+//        
+//        
+//        tablerow.append(TableRow(height:100,cellType:.EmptyTVCell))
+//        tablerow.append(TableRow(title:"Apply",key: "btn",cellType:.ButtonTVCell))
+//        tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+//        
+//        commonTVData = tablerow
+//        commonTableView.reloadData()
+//    }
     
     
     
-    func setupHotelsSortByTVCells() {
-        commonTableView.isScrollEnabled = false
-        tablerow.removeAll()
-        
-        tablerow.append(TableRow(title:"Price",key: "",cellType:.SortbyTVCell))
-        tablerow.append(TableRow(title:"Star",key: "no",cellType:.SortbyTVCell))
-        
-        tablerow.append(TableRow(height:200,cellType:.EmptyTVCell))
-        tablerow.append(TableRow(title:"Done",key: "btn",cellType:.ButtonTVCell))
-        tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
-        
-        commonTVData = tablerow
-        commonTableView.reloadData()
-    }
-    
+//    func setupHotelsSortByTVCells() {
+//        commonTableView.isScrollEnabled = false
+//        tablerow.removeAll()
+//        
+//        tablerow.append(TableRow(title:"Price",key: "",cellType:.SortbyTVCell))
+//        tablerow.append(TableRow(title:"Star",key: "no",cellType:.SortbyTVCell))
+//        
+//        tablerow.append(TableRow(height:200,cellType:.EmptyTVCell))
+//        tablerow.append(TableRow(title:"Done",key: "btn",cellType:.ButtonTVCell))
+//        tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+//        
+//        commonTVData = tablerow
+//        commonTableView.reloadData()
+//    }
+//    
     
     
     
@@ -348,22 +344,22 @@ class FilterVC: BaseTableVC{
     }
     
     
-    override func didTapOnOneRatingViewBtn(cell: PopularFiltersTVCell) {
-        starRatingFilter = cell.onelbl.text ?? ""
-    }
-    override func didTapOnTwoRatingViewBtn(cell: PopularFiltersTVCell) {
-        starRatingFilter = cell.twolbl.text ?? ""
-    }
-    override func didTapOnThreeatingViewBtn(cell: PopularFiltersTVCell) {
-        starRatingFilter = cell.threelbl.text ?? ""
-    }
-    override func didTapOnFouratingViewBtn(cell: PopularFiltersTVCell) {
-        starRatingFilter = cell.fourlbl.text ?? ""
-    }
-    override func didTapOnFivetingViewBtn(cell: PopularFiltersTVCell) {
-        starRatingFilter = cell.fivelbl.text ?? ""
-    }
-    
+//    override func didTapOnOneRatingViewBtn(cell: PopularFiltersTVCell) {
+//        starRatingFilter = cell.onelbl.text ?? ""
+//    }
+//    override func didTapOnTwoRatingViewBtn(cell: PopularFiltersTVCell) {
+//        starRatingFilter = cell.twolbl.text ?? ""
+//    }
+//    override func didTapOnThreeatingViewBtn(cell: PopularFiltersTVCell) {
+//        starRatingFilter = cell.threelbl.text ?? ""
+//    }
+//    override func didTapOnFouratingViewBtn(cell: PopularFiltersTVCell) {
+//        starRatingFilter = cell.fourlbl.text ?? ""
+//    }
+//    override func didTapOnFivetingViewBtn(cell: PopularFiltersTVCell) {
+//        starRatingFilter = cell.fivelbl.text ?? ""
+//    }
+//    
     override func didTapOnLowtoHighBtn(cell: SortbyTVCell) {
         cell.lowtoHighlbl.textColor = .WhiteColor
         cell.lowtoHighView.backgroundColor = .AppCalenderDateSelectColor
@@ -568,7 +564,6 @@ class FilterVC: BaseTableVC{
     
     
     func resetSortBy(cell:SortbyTVCell) {
-        
         cell.lowtoHighlbl.textColor = .AppLabelColor
         cell.lowtoHighView.backgroundColor = .WhiteColor
         cell.hightoLowhlbl.textColor = .AppLabelColor
@@ -597,7 +592,7 @@ class FilterVC: BaseTableVC{
                     }
                 }
             }else {
-                resetHotelFilter()
+//                resetHotelFilter()
             }
         }
         
@@ -620,7 +615,7 @@ class FilterVC: BaseTableVC{
     func sortbyTap() {
         filterKey = "sortby"
         sortBylbl.textColor = .AppTabSelectColor
-        sortbyUL.backgroundColor = .AppTabSelectColor
+        sortbyUL.backgroundColor = .clear
         filterslbl.textColor = .SubTitleColor
         filterUL.backgroundColor = .WhiteColor
         
@@ -629,7 +624,7 @@ class FilterVC: BaseTableVC{
             if tabSelected == "Flights" {
                 setupSortByTVCells()
             }else {
-                setupHotelsSortByTVCells()
+//                setupHotelsSortByTVCells()
             }
         }
     }
@@ -668,7 +663,6 @@ class FilterVC: BaseTableVC{
                     
                 case "Refundable Type":
                     
-                   
                     flightRefundablerTypeFilteArray.append(cell.titlelbl.text ?? "")
                     
                     break
@@ -926,23 +920,23 @@ class FilterVC: BaseTableVC{
     
     func filtertap() {
         filterKey = "filter"
-        sortBylbl.textColor = .SubTitleColor
+        sortBylbl.textColor = HexColor("#191919")
         sortbyUL.backgroundColor = .WhiteColor
-        filterslbl.textColor = .AppTabSelectColor
-        filterUL.backgroundColor = .AppTabSelectColor
+        filterslbl.textColor = HexColor("#191919")
+        filterUL.backgroundColor = .clear
         
         if let tabSelected = defaults.string(forKey: UserDefaultsKeys.dashboardTapSelected) {
             if tabSelected == "Flights" {
                 setupFilterTVCells()
             }else {
-                setupHotelsFilterTVCells()
+//                setupHotelsFilterTVCells()
             }
         }
     }
     
     
     override func btnAction(cell: ButtonTVCell) {
-        
+        print("filter btn Action")
         if let tabselect = defaults.object(forKey: UserDefaultsKeys.dashboardTapSelected) as? String {
             let pricesFloat = prices.compactMap { Float($0) }
             
@@ -1041,60 +1035,60 @@ class FilterVC: BaseTableVC{
                 
                     
                     
-                    if minpricerangefilter != 0.0 {
-                        hotelfiltermodel.minPriceRange = minpricerangefilter
-                    }else {
-                        hotelfiltermodel.minPriceRange = Double(pricesFloat.min() ?? 0.0)
-                    }
-                    
-                    if maxpricerangefilter != 0.0 {
-                        hotelfiltermodel.maxPriceRange = maxpricerangefilter
-                    }else {
-                        hotelfiltermodel.maxPriceRange = Double(pricesFloat.max() ?? 0.0)
-                    }
-                    
-                    
-                    if !starRatingFilter.isEmpty {
-                        hotelfiltermodel.starRating = starRatingFilter
-                    }else {
-                        hotelfiltermodel.starRating = ""
-                    }
-                    
-                    
-                    if !hotelRefundablerTypeFilteArray.isEmpty {
-                        hotelfiltermodel.refundableTypes = hotelRefundablerTypeFilteArray
-                    }else {
-                        hotelfiltermodel.refundableTypes.removeAll()
-                    }
-                    
-                    if !selectednearBylocationsArray.isEmpty {
-                        hotelfiltermodel.nearByLocA = selectednearBylocationsArray
-                    }else {
-                        hotelfiltermodel.nearByLocA.removeAll()
-                    }
-                    
-                    
-                    if !selectedNeighbourwoodArray.isEmpty {
-                        hotelfiltermodel.niberhoodA = selectedNeighbourwoodArray
-                    }else {
-                        hotelfiltermodel.niberhoodA.removeAll()
-                    }
-                    
-                    if !selectedamenitiesArray.isEmpty {
-                        hotelfiltermodel.aminitiesA = selectedamenitiesArray
-                    }else {
-                        hotelfiltermodel.aminitiesA.removeAll()
-                    }
-                    
-                    
-                    
-                    delegate?.hotelFilterByApplied(minpricerange:  hotelfiltermodel.minPriceRange ?? 0.0,
-                                                   maxpricerange:  hotelfiltermodel.maxPriceRange ?? 0.0,
-                                                   starRating:  hotelfiltermodel.starRating,
-                                                   refundableTypeArray: hotelfiltermodel.refundableTypes,
-                                                   nearByLocA: hotelfiltermodel.nearByLocA,
-                                                   niberhoodA: hotelfiltermodel.niberhoodA,
-                                                   aminitiesA: hotelfiltermodel.aminitiesA)
+//                    if minpricerangefilter != 0.0 {
+//                        hotelfiltermodel.minPriceRange = minpricerangefilter
+//                    }else {
+//                        hotelfiltermodel.minPriceRange = Double(pricesFloat.min() ?? 0.0)
+//                    }
+//                    
+//                    if maxpricerangefilter != 0.0 {
+//                        hotelfiltermodel.maxPriceRange = maxpricerangefilter
+//                    }else {
+//                        hotelfiltermodel.maxPriceRange = Double(pricesFloat.max() ?? 0.0)
+//                    }
+//                    
+//                    
+//                    if !starRatingFilter.isEmpty {
+//                        hotelfiltermodel.starRating = starRatingFilter
+//                    }else {
+//                        hotelfiltermodel.starRating = ""
+//                    }
+//                    
+//                    
+//                    if !hotelRefundablerTypeFilteArray.isEmpty {
+//                        hotelfiltermodel.refundableTypes = hotelRefundablerTypeFilteArray
+//                    }else {
+//                        hotelfiltermodel.refundableTypes.removeAll()
+//                    }
+//                    
+//                    if !selectednearBylocationsArray.isEmpty {
+//                        hotelfiltermodel.nearByLocA = selectednearBylocationsArray
+//                    }else {
+//                        hotelfiltermodel.nearByLocA.removeAll()
+//                    }
+//                    
+//                    
+//                    if !selectedNeighbourwoodArray.isEmpty {
+//                        hotelfiltermodel.niberhoodA = selectedNeighbourwoodArray
+//                    }else {
+//                        hotelfiltermodel.niberhoodA.removeAll()
+//                    }
+//                    
+//                    if !selectedamenitiesArray.isEmpty {
+//                        hotelfiltermodel.aminitiesA = selectedamenitiesArray
+//                    }else {
+//                        hotelfiltermodel.aminitiesA.removeAll()
+//                    }
+//                    
+//                    
+//                    
+//                    delegate?.hotelFilterByApplied(minpricerange:  hotelfiltermodel.minPriceRange ?? 0.0,
+//                                                   maxpricerange:  hotelfiltermodel.maxPriceRange ?? 0.0,
+//                                                   starRating:  hotelfiltermodel.starRating,
+//                                                   refundableTypeArray: hotelfiltermodel.refundableTypes,
+//                                                   nearByLocA: hotelfiltermodel.nearByLocA,
+//                                                   niberhoodA: hotelfiltermodel.niberhoodA,
+//                                                   aminitiesA: hotelfiltermodel.aminitiesA)
                 
             }
             
@@ -1134,15 +1128,16 @@ extension FilterVC {
                 cell.hide()
                 cell.showbool = true
             }
-        }else if let cell = tableView.cellForRow(at: indexPath) as? FilterDepartureTVCell {
-            if cell.showbool == true {
-                cell.expand()
-                cell.showbool = false
-            }else {
-                cell.hide()
-                cell.showbool = true
-            }
         }
+//        } else if let cell = tableView.cellForRow(at: indexPath) as? FilterDepartureTVCell {
+//            if cell.showbool == true {
+//                cell.expand()
+//                cell.showbool = false
+//            }else {
+//                cell.hide()
+//                cell.showbool = true
+//            }
+//        }
         
         UIView.animate(withDuration: 0.3) {
             tableView.performBatchUpdates(nil)
@@ -1254,7 +1249,7 @@ extension FilterVC {
             if tabSelected == "Flights" {
                 loadinitiallFlightFilterValues()
             }else {
-                loadinitiallHotelFilterValues()
+//                loadinitiallHotelFilterValues()
             }
         }
     }
@@ -1311,70 +1306,70 @@ extension FilterVC {
     }
     
     
-    func loadinitiallHotelFilterValues(){
-        
-        if !UserDefaults.standard.bool(forKey: "hoteltfilteronce") {
-            resetHotelFilter()
-            defaults.set(true, forKey: "hoteltfilteronce")
-        }
-        
-        
-        if hotelfiltermodel.minPriceRange != 0.0 {
-            minpricerangefilter = hotelfiltermodel.minPriceRange ?? Double(prices.compactMap { Float($0) }.min()!)
-        }
-        
-        if hotelfiltermodel.maxPriceRange != 0.0 {
-            maxpricerangefilter = hotelfiltermodel.maxPriceRange ?? Double(prices.compactMap { Float($0) }.max()!)
-        }
-        
-     
-        
-        if !hotelfiltermodel.refundableTypes.isEmpty {
-            hotelRefundablerTypeFilteArray = hotelfiltermodel.refundableTypes
-        }
-        
-        if !hotelfiltermodel.aminitiesA.isEmpty {
-            selectedamenitiesArray = hotelfiltermodel.aminitiesA
-        }
-        
-        if !hotelfiltermodel.nearByLocA.isEmpty {
-            selectednearBylocationsArray = hotelfiltermodel.nearByLocA
-        }
-        
-        if !hotelfiltermodel.niberhoodA.isEmpty {
-            selectedNeighbourwoodArray = hotelfiltermodel.niberhoodA
-        }
-    }
+//    func loadinitiallHotelFilterValues(){
+//        
+//        if !UserDefaults.standard.bool(forKey: "hoteltfilteronce") {
+//            resetHotelFilter()
+//            defaults.set(true, forKey: "hoteltfilteronce")
+//        }
+//        
+//        
+//        if hotelfiltermodel.minPriceRange != 0.0 {
+//            minpricerangefilter = hotelfiltermodel.minPriceRange ?? Double(prices.compactMap { Float($0) }.min()!)
+//        }
+//        
+//        if hotelfiltermodel.maxPriceRange != 0.0 {
+//            maxpricerangefilter = hotelfiltermodel.maxPriceRange ?? Double(prices.compactMap { Float($0) }.max()!)
+//        }
+//        
+//     
+//        
+//        if !hotelfiltermodel.refundableTypes.isEmpty {
+//            hotelRefundablerTypeFilteArray = hotelfiltermodel.refundableTypes
+//        }
+//        
+//        if !hotelfiltermodel.aminitiesA.isEmpty {
+//            selectedamenitiesArray = hotelfiltermodel.aminitiesA
+//        }
+//        
+//        if !hotelfiltermodel.nearByLocA.isEmpty {
+//            selectednearBylocationsArray = hotelfiltermodel.nearByLocA
+//        }
+//        
+//        if !hotelfiltermodel.niberhoodA.isEmpty {
+//            selectedNeighbourwoodArray = hotelfiltermodel.niberhoodA
+//        }
+//    }
+//    
     
-    
-    func resetHotelFilter() {
-        // Reset all values in the FilterModel
-        
-        let pricesFloat = prices.compactMap { Float($0) }
-        hotelfiltermodel.minPriceRange = Double((pricesFloat.min() ?? prices.compactMap { Float($0) }.min()) ?? 0.0)
-        hotelfiltermodel.maxPriceRange = Double((pricesFloat.max() ?? prices.compactMap { Float($0) }.max()) ?? 0.0)
-        if let cell = commonTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SliderTVCell {
-            cell.setupUI()
-        }
-        minpricerangefilter = hotelfiltermodel.minPriceRange ?? 0.0
-        maxpricerangefilter = hotelfiltermodel.maxPriceRange ?? 0.0
-        
-        hotelfiltermodel.refundableTypes.removeAll()
-        hotelfiltermodel.aminitiesA.removeAll()
-        hotelfiltermodel.nearByLocA.removeAll()
-        hotelfiltermodel.niberhoodA.removeAll()
-        hotelfiltermodel.starRating = ""
-        
-        starRatingFilter = ""
-        hotelRefundablerTypeFilteArray.removeAll()
-        selectednearBylocationsArray.removeAll()
-        selectedNeighbourwoodArray.removeAll()
-        selectedamenitiesArray.removeAll()
-        
-        // Deselect all cells in your checkOptionsTVCell table view
-        deselectAllCheckOptionsCells()
-        
-        // Reload the table view to reflect the changes
-        commonTableView.reloadData()
-    }
+//    func resetHotelFilter() {
+//        // Reset all values in the FilterModel
+//        
+//        let pricesFloat = prices.compactMap { Float($0) }
+//        hotelfiltermodel.minPriceRange = Double((pricesFloat.min() ?? prices.compactMap { Float($0) }.min()) ?? 0.0)
+//        hotelfiltermodel.maxPriceRange = Double((pricesFloat.max() ?? prices.compactMap { Float($0) }.max()) ?? 0.0)
+//        if let cell = commonTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SliderTVCell {
+//            cell.setupUI()
+//        }
+//        minpricerangefilter = hotelfiltermodel.minPriceRange ?? 0.0
+//        maxpricerangefilter = hotelfiltermodel.maxPriceRange ?? 0.0
+//        
+//        hotelfiltermodel.refundableTypes.removeAll()
+//        hotelfiltermodel.aminitiesA.removeAll()
+//        hotelfiltermodel.nearByLocA.removeAll()
+//        hotelfiltermodel.niberhoodA.removeAll()
+//        hotelfiltermodel.starRating = ""
+//        
+//        starRatingFilter = ""
+//        hotelRefundablerTypeFilteArray.removeAll()
+//        selectednearBylocationsArray.removeAll()
+//        selectedNeighbourwoodArray.removeAll()
+//        selectedamenitiesArray.removeAll()
+//        
+//        // Deselect all cells in your checkOptionsTVCell table view
+//        deselectAllCheckOptionsCells()
+//        
+//        // Reload the table view to reflect the changes
+//        commonTableView.reloadData()
+//    }
 }

@@ -96,6 +96,7 @@ class ButtonTVCell: TableViewCell {
             break
             
         case "filterbtn":
+            self.titlelbl.font = .InterSemiBold(size: 16)
             self.btnView.backgroundColor = .AppBtnColor
             break
             

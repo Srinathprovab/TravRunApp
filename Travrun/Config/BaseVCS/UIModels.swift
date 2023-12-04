@@ -48,7 +48,14 @@ enum TVCellType {
     case ImportentInfoTableViewCell
     case TermsAndConditionTableViewCell
     case SortTableViewCell
-    
+    case CheckBoxTVCell
+    case SortbyTVCell
+    case SliderTVCell
+    case RegisterSelectionLoginTableViewCell
+    case BookingDetailsCardTVCellTableViewCell
+    case GuestRegisterTableViewCell
+    case RegisterNowTableViewCell
+    case LoginDetailsTableViewCell
 }
 
 enum CVCellType {

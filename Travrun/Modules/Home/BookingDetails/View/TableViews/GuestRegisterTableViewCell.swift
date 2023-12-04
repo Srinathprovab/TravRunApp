@@ -17,7 +17,9 @@ class GuestRegisterTableViewCell: TableViewCell {
         super.awakeFromNib()
         // Initialization code
         emailTxtFld.layer.borderWidth = 0.7
+        countryCodeTxtFld.setLeftPaddingPoints(10)
         emailTxtFld.setLeftPaddingPoints(10)
+        phoneNumberTxtFld.setLeftPaddingPoints(10)
         emailTxtFld.layer.borderColor = HexColor("#B8B8B8").cgColor
         emailTxtFld.layer.cornerRadius = 4
         continueButton.layer.cornerRadius = 4

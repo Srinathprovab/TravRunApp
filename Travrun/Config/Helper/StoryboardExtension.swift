@@ -20,6 +20,8 @@ enum Storyboard: String {
     case PaymentGateway
     case FastTrack
     case FlightStoryBoard
+    case Filter
+    case BookingDetails
     
     var name: String {
         return self.rawValue.capitalizingFirstLetter()

@@ -49,87 +49,94 @@ class SliderTVCell: TableViewCell, TTRangeSliderDelegate {
     override func updateUI() {
         titlelbl.text = cellInfo?.title
         self.key = cellInfo?.key ?? ""
-        expand()
+        hide()
         if self.key == "hotel" {
             downImg.isHidden = true
-            expand()
+            hide()
         }
         
     }
     
     func setupUI() {
+        sliderViewHeight.constant = 0
         holderView.backgroundColor = .WhiteColor
         lblHolderView.backgroundColor = .WhiteColor
         sliderHolderView.backgroundColor = .WhiteColor
-        downImg.image = UIImage(named: "downarrow")
+        downImg.image = UIImage(named: "sliderdrop")
         downBtn.setTitle("", for: .normal)
-        setupLabels(lbl: titlelbl, text: "", textcolor: .AppLabelColor, font: .LatoSemibold(size: 16))
-        setuplabels(lbl: minlbl, text: "", textcolor: .AppLabelColor, font: .LatoSemibold(size: 16), align: .center)
-        setuplabels(lbl: maxlbl, text: "", textcolor: .AppLabelColor, font: .LatoSemibold(size: 16), align: .center)
+        setupLabels(lbl: titlelbl, text: "", textcolor: .AppLabelColor, font: .InterMedium(size: 16))
+        setuplabels(lbl: minlbl, text: "", textcolor: .AppLabelColor, font: .InterRegular(size: 16), align: .center)
+        setuplabels(lbl: maxlbl, text: "", textcolor: .AppLabelColor, font: .InterRegular(size: 16), align: .center)
         rangeSlider.isHidden = true
         rangeSlider.backgroundColor = .WhiteColor
-        
-        
         setupInitivalues()
-        
-        
-        
-        // rangeSlider.step = 10
         rangeSlider.handleType = .rectangle
         rangeSlider.lineHeight = 5
-        rangeSlider.tintColor = .AppBtnColor
-        rangeSlider.tintColorBetweenHandles = HexColor("#00A898")
-        rangeSlider.lineBorderColor = HexColor("#00A898")
-        rangeSlider.handleDiameter = 40.0
+        rangeSlider.tintColor = HexColor("#D9D9D9")
+        rangeSlider.tintColorBetweenHandles = HexColor("#3C627A")
+        rangeSlider.lineBorderColor = HexColor("#3C627A")
+        rangeSlider.handleDiameter = 35
         rangeSlider.hideLabels = true
-        rangeSlider.handleColor = HexColor("#00A898")
+        rangeSlider.handleColor = HexColor("#3C627A")
         rangeSlider.maxLabelColour = .black
         rangeSlider.minLabelColour = .black
+        rangeSlider.selectedHandleDiameterMultiplier = .leastNormalMagnitude
         rangeSlider.delegate = self
         downBtn.isHidden = true
-        
-        
     }
     
     func setupInitivalues() {
         if let selectedTap = defaults.object(forKey: UserDefaultsKeys.dashboardTapSelected) as? String {
             if selectedTap == "Flights" {
-                if let minPrice = filterModel.minPriceRange, let maxPrice = filterModel.maxPriceRange {
-                    // Both minPrice and maxPrice have values in filterModel
-                    minValue = Float(minPrice)
-                    maxValue = Float(maxPrice)
+                
+                if cellInfo?.key == "duriation" {
                     
+                } else if cellInfo?.key == "time" {
                     
-                    rangeSlider.minValue = prices.compactMap { Float($0) }.min()!
-                    rangeSlider.maxValue = prices.compactMap { Float($0) }.max()!
+                } else {
+                    if let minPrice = filterModel.minPriceRange, let maxPrice = filterModel.maxPriceRange {
+                        // Both minPrice and maxPrice have values in filterModel
+                        minValue = Float(minPrice)
+                        maxValue = Float(maxPrice)
+                        
+                        
+                        rangeSlider.minValue = prices.compactMap { Float($0) }.min()!
+                        rangeSlider.maxValue = prices.compactMap { Float($0) }.max()!
+                        
+                        // Set the thumbs to the values
+                        rangeSlider.selectedMinimum = minValue
+                        rangeSlider.selectedMaximum = maxValue
+                        
+                        //  Update the slider's appearance
+                        rangeSlider.setNeedsDisplay()
+                    }
                     
-                    // Set the thumbs to the values
-                    rangeSlider.selectedMinimum = minValue
-                    rangeSlider.selectedMaximum = maxValue
-                    
-                    //  Update the slider's appearance
-                    rangeSlider.setNeedsDisplay()
                 }
-                
-                
             } else {
-                if let minPrice = hotelfiltermodel.minPriceRange, let maxPrice = hotelfiltermodel.maxPriceRange {
-                    // Both minPrice and maxPrice have values in filterModel
-                    minValue = Float(minPrice)
-                    maxValue = Float(maxPrice)
-                    
-                    
-                    rangeSlider.minValue = prices.compactMap { Float($0) }.min()!
-                    rangeSlider.maxValue = prices.compactMap { Float($0) }.max()!
-                    
-                    // Set the thumbs to the values
-                    rangeSlider.selectedMinimum = minValue
-                    rangeSlider.selectedMaximum = maxValue
-                    
-                    //  Update the slider's appearance
-                    rangeSlider.setNeedsDisplay()
-                }
                 
+                
+                if cellInfo?.key == "duriation" {
+                    
+                } else if cellInfo?.key == "time" {
+                    
+                } else {
+                    if let minPrice = hotelfiltermodel.minPriceRange, let maxPrice = hotelfiltermodel.maxPriceRange {
+                        // Both minPrice and maxPrice have values in filterModel
+                        minValue = Float(minPrice)
+                        maxValue = Float(maxPrice)
+                        
+                        
+                        rangeSlider.minValue = prices.compactMap { Float($0) }.min()!
+                        rangeSlider.maxValue = prices.compactMap { Float($0) }.max()!
+                        
+                        // Set the thumbs to the values
+                        rangeSlider.selectedMinimum = minValue
+                        rangeSlider.selectedMaximum = maxValue
+                        
+                        //  Update the slider's appearance
+                        rangeSlider.setNeedsDisplay()
+                    }
+                }
             }
         }
         
@@ -138,8 +145,6 @@ class SliderTVCell: TableViewCell, TTRangeSliderDelegate {
         maxValue1 = Double(String(format: "%.2f", Double(maxValue))) ?? 100.0 // Update the default max value here
         minlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "") \(minValue1)"
         maxlbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "") \(maxValue1)"
-        
-        
     }
     
     

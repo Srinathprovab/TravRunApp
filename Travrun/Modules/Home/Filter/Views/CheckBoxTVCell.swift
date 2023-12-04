@@ -7,13 +7,9 @@
 
 import UIKit
 
-
-
-
 protocol CheckBoxTVCellDelegate {
     func didTapOnCheckBoxDropDownBtn(cell:CheckBoxTVCell)
     func didTapOnShowMoreBtn(cell:CheckBoxTVCell)
-    
     func didTapOnCheckBox(cell:checkOptionsTVCell)
     func didTapOnDeselectCheckBox(cell:checkOptionsTVCell)
 }
@@ -93,15 +89,15 @@ class CheckBoxTVCell: TableViewCell {
         btnView.isHidden = true
         //        btnViewHeight.constant = 0
         //        tvHeight.constant = 0
-        downImg.image = UIImage(named: "down")
+        downImg.image = UIImage(named: "sliderdrop")
         holderView.backgroundColor = .WhiteColor
         titlelbl.textColor = .AppLabelColor
-        titlelbl.font = UIFont.LatoMedium(size: 17)
+        titlelbl.font = UIFont.InterMedium(size: 16)
         titlelbl.numberOfLines = 0
         
         btnlbl.text = "+ Show More"
         btnlbl.textColor = .AppTabSelectColor
-        btnlbl.font = UIFont.LatoRegular(size: 18)
+        btnlbl.font = UIFont.latoRegular(size: 18)
         btnlbl.isHidden = true
         
         downBtn.setTitle("", for: .normal)
@@ -165,7 +161,7 @@ extension CheckBoxTVCell: UITableViewDataSource, UITableViewDelegate {
 
         // Check if this indexPath is in the selectedIndices array
         if selectedIndices.contains(indexPath) {
-            cell.checkImg.image = UIImage(named: "chk")?.withRenderingMode(.alwaysOriginal)
+            cell.checkImg.image = UIImage(named: "check")?.withRenderingMode(.alwaysOriginal)
         } else {
             cell.checkImg.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal)
         }
@@ -188,7 +184,7 @@ extension CheckBoxTVCell: UITableViewDataSource, UITableViewDelegate {
         if let cell = tableView.cellForRow(at: indexPath) as? checkOptionsTVCell {
             if !selectedIndices.contains(indexPath) {
                 selectedIndices.append(indexPath)
-                cell.checkImg.image = UIImage(named: "chk")?.withRenderingMode(.alwaysOriginal)
+                cell.checkImg.image = UIImage(named: "check")?.withRenderingMode(.alwaysOriginal)
             }
             delegate?.didTapOnCheckBox(cell: cell)
         }
@@ -218,7 +214,7 @@ extension CheckBoxTVCell {
         switch titlelbl.text {
             
             
-        case "Departurn Time":
+        case "Departure Time":
             if !filterModel.departureTime.isEmpty {
                 // Check if the cell's title matches any value in the luggage array
                 
@@ -226,7 +222,7 @@ extension CheckBoxTVCell {
                 if filterModel.departureTime.contains(cell.titlelbl.text ?? "") {
                     
                     DispatchQueue.main.async {
-                        cell.checkImg.image = UIImage(named: "chk")?.withRenderingMode(.alwaysOriginal)
+                        cell.checkImg.image = UIImage(named: "check")?.withRenderingMode(.alwaysOriginal)
                         self.selectedIndices.append(indexPath)
                         self.checkOptionsTV.selectRow(at: indexPath, animated: true, scrollPosition: .none)
                     }
@@ -254,7 +250,7 @@ extension CheckBoxTVCell {
                 if filterModel.arrivalTime.contains(cell.titlelbl.text ?? "") {
                     
                     DispatchQueue.main.async {
-                        cell.checkImg.image = UIImage(named: "chk")?.withRenderingMode(.alwaysOriginal)
+                        cell.checkImg.image = UIImage(named: "check")?.withRenderingMode(.alwaysOriginal)
                         self.selectedIndices.append(indexPath)
                         self.checkOptionsTV.selectRow(at: indexPath, animated: true, scrollPosition: .none)
                     }
@@ -332,7 +328,7 @@ extension CheckBoxTVCell {
             
             
             
-        case "Refundable Type":
+        case "Refundable":
             if !filterModel.refundableTypes.isEmpty {
                 // Check if the cell's title matches any value in the luggage array
                 
@@ -358,7 +354,7 @@ extension CheckBoxTVCell {
                 }
             }
             
-        case "Stops":
+        case "No. of stops":
             
             if !filterModel.noOfStops.isEmpty {
                 // Check if the cell's title matches any value in the luggage array

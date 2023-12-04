@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal {
+class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, AppliedFilters {
     
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -108,11 +108,16 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal {
     
     
     @IBAction func fliterButtonAction(_ sender: Any) {
-        
-        guard let vc = ProcessingViewController.newInstance.self else {return}
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
-        
+        gotoFilterVC(strkey: "filter")
+    }
+    
+    
+    func gotoFilterVC(strkey:String) {
+        guard let vc = FilterVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.delegate = self
+        vc.filterKey = strkey
+        present(vc, animated: true)
     }
     
     @IBAction func didTapOnPreviousDateBtnAction(_ sender: Any) {
@@ -242,10 +247,16 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal {
         
     }
     
-  override func didTapOnflightDetailsButton(cell:NewFlightSearchResultTVCell) {
-      guard let vc = FlightDetailsViewController.newInstance.self else {return}
-      vc.modalPresentationStyle = .overFullScreen
-      self.present(vc, animated: false)
+    override func didTapOnflightDetailsButton(cell:NewFlightSearchResultTVCell) {
+        guard let vc = FlightDetailsViewController.newInstance.self else {return}
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: false)
+    }
+    
+    override func didTapOnBookNowBtnAction(cell: NewFlightSearchResultTVCell) {
+        guard let vc = BookingDetailsViewController.newInstance.self else {return}
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: false)
     }
 }
 
@@ -431,9 +442,6 @@ extension SearchResultPageViewController {
             
             
         }
-        
-        
-        
         
         commonTVData = tablerow
         commonTableView.reloadData()
@@ -682,8 +690,6 @@ extension SearchResultPageViewController {
         
         if response.status == 1 {
             
-            
-            
             self.holderView.isHidden = false
             loderBool = false
             
@@ -695,23 +701,23 @@ extension SearchResultPageViewController {
             defaults.set(response.data?.traceId, forKey: UserDefaultsKeys.traceId)
             
             
-            //                    setuplabels(lbl: navView.lbl1, text: "\(defaults.string(forKey: UserDefaultsKeys.fromcityname) ?? "")(\(response.data?.search_params?.from_loc ?? "")) - \(defaults.string(forKey: UserDefaultsKeys.tocityname) ?? "")(\(response.data?.search_params?.to_loc ?? ""))", textcolor: .WhiteColor, font: UIFont.latoSemiBold(size: 18), align: .center)
-            //
-            //
-            //                    setuplabels(lbl: datelbl, text: response.data?.search_params?.depature ?? "", textcolor: .AppLabelColor, font: .LatoRegular(size: 12), align: .center)
-            //
-            //
-            //                    setuplabels(lbl: cityCodelbl, text: "\(response.data?.search_params?.from_loc ?? "")-\(response.data?.search_params?.to_loc ?? "")", textcolor: .AppLabelColor, font: .LatoRegular(size: 12), align: .center)
-            //
-            //                    setuplabels(lbl: navView.lbl2, text: "On \(convertDateFormat(inputDate: "\(response.data?.search_params?.depature ?? "")", f1: "dd-MM-yyyy", f2: "dd MMM")) \n \(defaults.string(forKey: UserDefaultsKeys.travellerDetails) ?? "")", textcolor: .WhiteColor, font: .LatoRegular(size: 14), align: .center)
+            setuplabels(lbl: titleLabel, text: "\(defaults.string(forKey: UserDefaultsKeys.fromcityname) ?? "")\(response.data?.search_params?.from_loc ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tocityname) ?? "")\(response.data?.search_params?.to_loc ?? "")", textcolor: .AppLabelColor, font: UIFont.InterSemiBold(size: 16), align: .center)
+            
+            
+//            setuplabels(lbl: subTitleLabel, text: response.data?.search_params?.depature ?? "", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
+            
+            
+//            setuplabels(lbl: cityCodelbl, text: "\(response.data?.search_params?.from_loc ?? "")-\(response.data?.search_params?.to_loc ?? "")", textcolor: .AppLabelColor, font: .LatoRegular(size: 12), align: .center)
+            
+//            setuplabels(lbl: navView.lbl2, text: "On \(convertDateFormat(inputDate: "\(response.data?.search_params?.depature ?? "")", f1: "dd-MM-yyyy", f2: "dd MMM")) \n \(defaults.string(forKey: UserDefaultsKeys.travellerDetails) ?? "")", textcolor: .WhiteColor, font: .LatoRegular(size: 14), align: .center)
             
             if let journeyType = defaults.string(forKey: UserDefaultsKeys.journeyType) {
                 if journeyType == "circle" {
                     returnDatalbl.isHidden = false
                     
-                    //                            setuplabels(lbl: navView.lbl1, text: "\(defaults.string(forKey: UserDefaultsKeys.fromcityname) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tocityname) ?? "")", textcolor: .WhiteColor, font: .LatoSemibold(size: 18), align: .center)
-                    //
-                    //
+                    setuplabels(lbl: titleLabel, text: "\(defaults.string(forKey: UserDefaultsKeys.fromcityname) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tocityname) ?? "")", textcolor: .AppLabelColor, font: .InterSemiBold(size: 16), align: .center)
+                    
+                    
                     //                            setuplabels(lbl: datelbl, text: response.data?.search_params?.depature ?? "", textcolor: .AppLabelColor, font: .LatoRegular(size: 12), align: .center)
                     //
                     //                            setuplabels(lbl: returnDatalbl, text: response.data?.search_params?.freturn ?? "", textcolor: .AppLabelColor, font: .LatoRegular(size: 12), align: .center)
@@ -824,5 +830,497 @@ extension SearchResultPageViewController {
 }
 
 extension SearchResultPageViewController {
-
+    func filtersSortByApplied(sortBy: SortParameter) {
+        
+        filterdFlightList?.removeAll()
+        
+        
+        if sortBy == .PriceLow{
+            
+            
+            if let journytype = defaults.string(forKey: UserDefaultsKeys.journeyType) {
+                
+                if journytype == "multicity" {
+                    
+                    let filtered = MCJflightlist?.sorted { (item1, item2) in
+                        let price1 = item1.first?.price?.api_total_display_fare ?? 0.0
+                        let price2 = item2.first?.price?.api_total_display_fare ?? 0.0
+                        return price1 < price2
+                    }
+                    
+                    
+                    multicityFilterdList(list: filtered ?? [[]])
+                    
+                    
+                    
+                }else {
+                    
+                    let filtered = FlightList?.sorted { (item1, item2) in
+                        let price1 = item1.first?.price?.api_total_display_fare ?? 0.0
+                        let price2 = item2.first?.price?.api_total_display_fare ?? 0.0
+                        return price1 < price2
+                    }
+                    
+                    
+                    onewayFilterdList(list: filtered ?? [[]])
+                    
+                    
+                    
+                }
+            }
+            
+            
+        }else if sortBy == .PriceHigh{
+            
+            if let journytype = defaults.string(forKey: UserDefaultsKeys.journeyType) {
+                
+                if journytype == "multicity" {
+                    
+                    let filtered = MCJflightlist?.sorted { (item1, item2) in
+                        let price1 = item1.first?.price?.api_total_display_fare ?? 0.0
+                        let price2 = item2.first?.price?.api_total_display_fare ?? 0.0
+                        return price1 > price2
+                    }
+                    
+                    
+                    multicityFilterdList(list: filtered ?? [[]])
+                    
+                }else {
+                    
+                    let filtered = FlightList?.sorted { (item1, item2) in
+                        let price1 = item1.first?.price?.api_total_display_fare ?? 0.0
+                        let price2 = item2.first?.price?.api_total_display_fare ?? 0.0
+                        return price1 > price2
+                    }
+                    
+                    
+                    onewayFilterdList(list: filtered ?? [[]])
+                    
+                }
+            }
+            
+            
+            
+        }else if sortBy == .DepartureLow {
+            
+            if let journytype = defaults.string(forKey: UserDefaultsKeys.journeyType) {
+                
+                if journytype == "multicity" {
+                    if let flightList = MCJflightlist {
+                        let sortedArray = flightList.flatMap { $0 }.sorted { a, b in
+                            let time1 = a.flight_details?.summary?.first?.destination?.time ?? ""
+                            let time2 = b.flight_details?.summary?.first?.destination?.time ?? ""
+                            return time1 < time2
+                        }
+                        multicityFilterdList1(list: sortedArray)
+                    }
+                    
+                    
+                    
+                }else {
+                    if let flightList = FlightList {
+                        let sortedArray = flightList.flatMap { $0 }.sorted { a, b in
+                            let time1 = a.flight_details?.summary?.first?.destination?.time ?? ""
+                            let time2 = b.flight_details?.summary?.first?.destination?.time ?? ""
+                            return time1 < time2
+                        }
+                        onewayFilterdList1(list: sortedArray)
+                    }
+                    
+                    
+                    
+                }
+            }
+            
+            
+        }else if sortBy == .DepartureHigh {
+            
+            
+            if let journytype = defaults.string(forKey: UserDefaultsKeys.journeyType) {
+                
+                if journytype == "multicity" {
+                    if let flightList = MCJflightlist {
+                        
+                        let sortedArray = flightList.flatMap { $0 }.sorted { a, b in
+                            let time1 = a.flight_details?.summary?.first?.destination?.time ?? ""
+                            let time2 = b.flight_details?.summary?.first?.destination?.time ?? ""
+                            return time1 > time2
+                        }
+                        multicityFilterdList1(list: sortedArray)
+                        
+                    }
+                    
+                }else {
+                    if let flightList = FlightList {
+                        
+                        let sortedArray = flightList.flatMap { $0 }.sorted { a, b in
+                            let time1 = a.flight_details?.summary?.first?.destination?.time ?? ""
+                            let time2 = b.flight_details?.summary?.first?.destination?.time ?? ""
+                            return time1 > time2
+                        }
+                        onewayFilterdList1(list: sortedArray)
+                        
+                    }
+                    
+                }
+            }
+            
+            
+        }else if sortBy == .ArrivalLow{
+            
+            if let journytype = defaults.string(forKey: UserDefaultsKeys.journeyType) {
+                
+                if journytype == "multicity" {
+                    
+                    if let flightList = MCJflightlist {
+                        
+                        let sortedArray = flightList.flatMap { $0 }.sorted { a, b in
+                            let time1 = a.flight_details?.summary?.first?.origin?.time ?? ""
+                            let time2 = b.flight_details?.summary?.first?.origin?.time ?? ""
+                            return time1 < time2
+                        }
+                        multicityFilterdList1(list: sortedArray)
+                        
+                    }
+                    
+                }else {
+                    
+                    if let flightList = FlightList {
+                        
+                        let sortedArray = flightList.flatMap { $0 }.sorted { a, b in
+                            let time1 = a.flight_details?.summary?.first?.origin?.time ?? ""
+                            let time2 = b.flight_details?.summary?.first?.origin?.time ?? ""
+                            return time1 < time2
+                        }
+                        onewayFilterdList1(list: sortedArray)
+                        
+                    }
+                    
+                }
+            }
+            
+        }else if sortBy == .ArrivalHigh{
+            if let journytype = defaults.string(forKey: UserDefaultsKeys.journeyType) {
+                
+                if journytype == "multicity" {
+                    if let flightList = MCJflightlist {
+                        let sortedArray = flightList.flatMap { $0 }.sorted { a, b in
+                            let time1 = a.flight_details?.summary?.first?.origin?.time ?? ""
+                            let time2 = b.flight_details?.summary?.first?.origin?.time ?? ""
+                            return time1 > time2
+                        }
+                        multicityFilterdList1(list: sortedArray)
+                        
+                    }
+                    
+                }else {
+                    if let flightList = FlightList {
+                        let sortedArray = flightList.flatMap { $0 }.sorted { a, b in
+                            let time1 = a.flight_details?.summary?.first?.origin?.time ?? ""
+                            let time2 = b.flight_details?.summary?.first?.origin?.time ?? ""
+                            return time1 > time2
+                        }
+                        onewayFilterdList1(list: sortedArray)
+                        
+                    }
+                    
+                }
+            }
+            
+            
+            
+        }else if sortBy == .DurationLow{
+            
+            if let journytype = defaults.string(forKey: UserDefaultsKeys.journeyType) {
+                
+                if journytype == "multicity" {
+                    if let flightList = MCJflightlist {
+                        let sortedArray = flightList.flatMap { $0 }.sorted { a, b in
+                            let duration_seconds1 = a.flight_details?.summary?.first?.duration_seconds ?? 0
+                            let duration_seconds2 = b.flight_details?.summary?.first?.duration_seconds ?? 0
+                            return duration_seconds1 < duration_seconds2
+                        }
+                        multicityFilterdList1(list: sortedArray)
+                        
+                    }
+                }else {
+                    if let flightList = FlightList {
+                        let sortedArray = flightList.flatMap { $0 }.sorted { a, b in
+                            let duration_seconds1 = a.flight_details?.summary?.first?.duration_seconds ?? 0
+                            let duration_seconds2 = b.flight_details?.summary?.first?.duration_seconds ?? 0
+                            return duration_seconds1 < duration_seconds2
+                        }
+                        onewayFilterdList1(list: sortedArray)
+                        
+                    }
+                }
+            }
+            
+            
+            
+        }else if sortBy == .DurationHigh{
+            
+            if let journytype = defaults.string(forKey: UserDefaultsKeys.journeyType) {
+                
+                if journytype == "multicity" {
+                    
+                    if let flightList = MCJflightlist {
+                        let sortedArray = flightList.flatMap { $0 }.sorted { a, b in
+                            let duration_seconds1 = a.flight_details?.summary?.first?.duration_seconds ?? 0
+                            let duration_seconds2 = b.flight_details?.summary?.first?.duration_seconds ?? 0
+                            return duration_seconds1 > duration_seconds2
+                        }
+                        multicityFilterdList1(list: sortedArray)
+                    }
+                }else {
+                    
+                    if let flightList = FlightList {
+                        let sortedArray = flightList.flatMap { $0 }.sorted { a, b in
+                            let duration_seconds1 = a.flight_details?.summary?.first?.duration_seconds ?? 0
+                            let duration_seconds2 = b.flight_details?.summary?.first?.duration_seconds ?? 0
+                            return duration_seconds1 > duration_seconds2
+                        }
+                        onewayFilterdList1(list: sortedArray)
+                    }
+                }
+            }
+        }else if sortBy == .airlinessortatoz{
+            
+            if let journytype = defaults.string(forKey: UserDefaultsKeys.journeyType) {
+                
+                if journytype == "multicity" {
+                    
+                    if let flightList = MCJflightlist {
+                        
+                        let sortedArray = flightList.flatMap { $0 }.sorted { a, b in
+                            let operator_name1 = a.flight_details?.summary?.first?.operator_name ?? ""
+                            let operator_name2 = b.flight_details?.summary?.first?.operator_name ?? ""
+                            return operator_name1 < operator_name2 // Sort in ascending order
+                        }
+                        multicityFilterdList1(list: sortedArray)
+                    }
+                }else {
+                    
+                    if let flightList = FlightList {
+                        
+                        let sortedArray = flightList.flatMap { $0 }.sorted { a, b in
+                            let operator_name1 = a.flight_details?.summary?.first?.operator_name ?? ""
+                            let operator_name2 = b.flight_details?.summary?.first?.operator_name ?? ""
+                            return operator_name1 < operator_name2 // Sort in ascending order
+                        }
+                        onewayFilterdList1(list: sortedArray)
+                    }
+                    
+                }
+            }
+            
+        }else if sortBy == .airlinessortztoa{
+            
+            
+            
+            
+            if let journytype = defaults.string(forKey: UserDefaultsKeys.journeyType) {
+                
+                if journytype == "multicity" {
+                    //                    if let flightList = MCJflightlist {
+                    //
+                    //
+                    //                        let sortedArray = flightList.flatMap { $0 }.sorted { a, b in
+                    //                            let operator_name1 = a.flight_details?.summary?.first?.operator_name ?? ""
+                    //                            let operator_name2 = b.flight_details?.summary?.first?.operator_name ?? ""
+                    //                            return operator_name1 > operator_name2 // Sort in descending order
+                    //                        }
+                    //                        multicityFilterdList1(list: sortedArray)
+                    //                    }
+                }else {
+                    
+                    
+                    if let flightList = FlightList {
+                        let sortedArray = flightList.flatMap { $0 }.sorted { a, b in
+                            let operator_name1 = a.flight_details?.summary?.first?.operator_name ?? ""
+                            let operator_name2 = b.flight_details?.summary?.first?.operator_name ?? ""
+                            return operator_name1 > operator_name2 // Sort in descending order
+                        }
+                        onewayFilterdList1(list: sortedArray)
+                    }
+                }
+            }
+            
+            
+            
+        }else if sortBy == .nothing{
+            onewayFilterdList(list: FlightList ?? [[]])
+        }
+        
+        
+        
+    }
+    
+    func filtersByApplied(minpricerange: Double, maxpricerange: Double, noofStopsArray: [String], refundableTypeArray: [String], departureTime: [String], arrivalTime: [String], noOvernightFlight: [String], airlinesFilterArray: [String], luggageFilterArray: [String], connectingFlightsFilterArray: [String], ConnectingAirportsFilterArray: [String]) {
+        
+        print(" ===== minpricerange ====== \n\(minpricerange)")
+        print(" ===== maxpricerange ====== \n\(maxpricerange)")
+        print(" ===== noofStopsArray ====== \n\(noofStopsArray.joined(separator: ","))")
+        print(" ===== refundableTypeArray ====== \n\(refundableTypeArray)")
+        print(" ===== airlinesFilterArray ====== \n\(airlinesFilterArray.joined(separator: ","))")
+        print(" ===== departureTime ====== \n\(departureTime)")
+        print(" ===== arrivalTime ====== \n\(arrivalTime)")
+        print(" ===== noOvernightFlight ====== \n\(noOvernightFlight)")
+        print(" ===== connectingFlightsFilterArray ====== \n\(connectingFlightsFilterArray)")
+        print(" ===== ConnectingAirportsFilterArray ====== \n\(ConnectingAirportsFilterArray)")
+        print(" ===== luggageFilterArray ====== \n\(luggageFilterArray)")
+        
+        if let journytype = defaults.string(forKey: UserDefaultsKeys.journeyType) {
+            
+            if journytype == "multicity" {
+                
+                let sortedArray = MCJflightlist.map { flight in
+                    flight.filter { j in
+                        
+                        guard let summary = j.first?.flight_details?.summary else { return false }
+                        guard let price = j.first?.price?.api_total_display_fare else { return false }
+                        
+                        let priceRangeMatch = ((Double(price) ) >= minpricerange && (Double(price) ) <= maxpricerange)
+                        
+                        let noOfStopsMatch = noofStopsArray.isEmpty || summary.contains(where: { noofStopsArray.contains("\($0.no_of_stops ?? 0)") }) == true
+                        let refundableMatch = refundableTypeArray.isEmpty || refundableTypeArray.contains(j.first?.fareType ?? "")
+                        let airlinesMatch = airlinesFilterArray.isEmpty || summary.contains(where: { airlinesFilterArray.contains($0.operator_name ?? "") }) == true
+                        
+                        let luggageMatch = airlinesFilterArray.isEmpty || summary.contains(where: { luggageFilterArray.contains(convertToDesiredFormat($0.weight_Allowance ?? "")) }) == true
+                        
+                        let connectingFlightsMatch = connectingFlightsFilterArray.isEmpty || summary.contains(where: { connectingFlightsFilterArray.contains($0.operator_name ?? "") }) == true
+                        
+                        
+                        let ConnectingAirportsMatch = connectingFlightsFilterArray.isEmpty || summary.contains(where: { connectingFlightsFilterArray.contains($0.destination?.airport_name ?? "") }) == true
+                        
+                        
+                        return priceRangeMatch && noOfStopsMatch && refundableMatch && airlinesMatch && connectingFlightsMatch && ConnectingAirportsMatch && luggageMatch
+                    }
+                }
+                
+                
+                multicityFilterdList(list: sortedArray ?? [[]])
+                
+            }else {
+                let sortedArray = FlightList.map { flight in
+                    flight.filter { j in
+                        
+                        guard let summary = j.first?.flight_details?.summary else { return false }
+                        guard let price = j.first?.price?.api_total_display_fare else { return false }
+                        guard let details = j.first?.flight_details?.details else { return false }
+                        
+                        let priceRangeMatch = ((Double(price) ) >= minpricerange && (Double(price) ) <= maxpricerange)
+                        let noOfStopsMatch = noofStopsArray.isEmpty || summary.contains(where: { noofStopsArray.contains("\($0.no_of_stops ?? 0)") }) == true
+                        let refundableMatch = refundableTypeArray.isEmpty || refundableTypeArray.contains(j.first?.fareType ?? "")
+                        let airlinesMatch = airlinesFilterArray.isEmpty || summary.contains(where: { airlinesFilterArray.contains($0.operator_name ?? "") }) == true
+                        
+                        
+                        
+                        let connectingFlightsMatch = flight.contains { flight in
+                            if connectingFlightsFilterArray.isEmpty {
+                                return true // Return true for all flights if 'connectingAirportsFA' is empty
+                            }
+                            
+                            
+                            for summaryArray in details {
+                                if summaryArray.contains(where: { flightDetail in
+                                    let operatorname = flightDetail.operator_name ?? ""
+                                    return connectingFlightsFilterArray.contains("\(operatorname)")
+                                }) {
+                                    return true // Return true for this flight if it contains a matching airport
+                                }
+                            }
+                            
+                            
+                            return false // Return false if no matching airport is found in this flight
+                        }
+                        
+                        
+                        
+                        let ConnectingAirportsMatch = flight.contains { flight in
+                            if ConnectingAirportsFilterArray.isEmpty {
+                                return true // Return true for all flights if 'connectingAirportsFA' is empty
+                            }
+                            
+                            
+                            for summaryArray in details {
+                                if summaryArray.contains(where: { flightDetail in
+                                    let airportName = flightDetail.destination?.airport_name ?? ""
+                                    return ConnectingAirportsFilterArray.contains("\(airportName)")
+                                }) {
+                                    return true // Return true for this flight if it contains a matching airport
+                                }
+                            }
+                            
+                            
+                            return false // Return false if no matching airport is found in this flight
+                        }
+                        
+                        
+                        
+                        
+                        
+                        let depMatch = departureTime.isEmpty || summary.first?.origin?.datetime.flatMap { departureDateTime in
+                            return departureTime.contains { departureTimeRange in
+                                let timeIsInRange = isTimeInRange(time: departureDateTime, range: String(departureTimeRange))
+                                return timeIsInRange
+                            }
+                        } ?? false
+                        
+                        
+                        // Filter by arrival time
+                        let arrMatch = arrivalTime.isEmpty || summary.first?.destination?.datetime.flatMap { arrivalDateTime in
+                            return arrivalTime.contains { arrivalTimeRange in
+                                let timeIsInRange = isTimeInRange(time: arrivalDateTime, range: String(arrivalTimeRange)) // Convert Character to String
+                                return timeIsInRange
+                            }
+                        } ?? false
+                        
+                        
+                        
+                        let luggageMatch = luggageFilterArray.isEmpty || summary.contains(where: {
+                            let formattedWeight = convertToDesiredFormat($0.weight_Allowance ?? "")
+                            return luggageFilterArray.contains(formattedWeight)
+                        }) == true
+                        
+                        
+                        
+                        return priceRangeMatch && noOfStopsMatch && refundableMatch && airlinesMatch && connectingFlightsMatch && luggageMatch && depMatch && arrMatch && ConnectingAirportsMatch
+                    }
+                }
+                
+                
+                
+                
+                onewayFilterdList(list: sortedArray ?? [[]])
+            }
+        }
+        
+    }
+    
+    
+    func isTimeInRange(time: String, range: String) -> Bool {
+        guard let departureDate = dateFormatter.date(from: time) else {
+            return false
+        }
+        
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: departureDate)
+        
+        switch range {
+        case "12 am - 6 am":
+            return hour >= 0 && hour < 6
+        case "06 am - 12 pm":
+            return hour >= 6 && hour < 12
+        case "12 pm - 06 pm":
+            return hour >= 12 && hour < 18
+        case "06 pm - 12 am":
+            return hour >= 18 && hour < 24
+        default:
+            return false
+        }
+    }
+    
+    func hotelFilterByApplied(minpricerange: Double, maxpricerange: Double, starRating: String, refundableTypeArray: [String], nearByLocA: [String], niberhoodA: [String], aminitiesA: [String]) {}
+    
 }

@@ -21,6 +21,9 @@ protocol OneWayTableViewCellDelegate {
 class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
     func ShowCityListMulticity(response: [SelectCityModel]) {}
     
+    @IBOutlet weak var infantsPlusLabel: UILabel!
+    @IBOutlet weak var childPlusLabel: UILabel!
+    @IBOutlet weak var adultPlusLabel: UILabel!
     @IBOutlet weak var airlineValuelbl: UILabel!
     @IBOutlet weak var returnJournyLabel: UILabel!
     @IBOutlet weak var outwardsLabel: UILabel!
@@ -119,6 +122,23 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
         fromTextfiled.delegate = self
         toTextField.delegate = self
 //        airlineTF.delegate = self
+        
+        if infantsCount != 0 {
+            infantsPlusLabel.textColor = .white
+            infantsPlusView.backgroundColor = HexColor("#3C627A")
+        } else {
+            infantsPlusLabel.textColor = .AppLabelColor
+            infantsPlusView.backgroundColor = .clear
+        }
+        
+        if childCount != 0 {
+            childPlusLabel.textColor = .white
+            childPlusView.backgroundColor = HexColor("#3C627A")
+        } else {
+            childPlusLabel.textColor = .AppLabelColor
+            childPlusView.backgroundColor = .clear
+        }
+        
         self.adultCountLabel.text = "\(adultsCount)"
         self.fromTitleLabel.textColor = UIColor.AppLabelColor
         self.toTitleLabel.textColor = UIColor.AppLabelColor
@@ -309,7 +329,7 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
     }
     
     @IBAction func infantsIncrementButtonAction(_ sender: Any) {
-        
+      
         if infantsCount < adultsCount {
             infantsCount += 1
             self.counts += 1

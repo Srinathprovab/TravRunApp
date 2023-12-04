@@ -45,8 +45,8 @@ class SortbyTVCell: TableViewCell {
         titlelbl.text = cellInfo?.title
         
         if cellInfo?.key == "airline" {
-            setuplabels(lbl: lowtoHighlbl, text: "A-Z", textcolor: .AppLabelColor, font: .LatoRegular(size: 14), align: .center)
-            setuplabels(lbl: hightoLowhlbl, text: "Z-A", textcolor: .AppLabelColor, font: .LatoRegular(size: 14), align: .center)
+            setuplabels(lbl: lowtoHighlbl, text: "A-Z", textcolor: .AppLabelColor, font: .latoRegular(size: 14), align: .center)
+            setuplabels(lbl: hightoLowhlbl, text: "Z-A", textcolor: .AppLabelColor, font: .latoRegular(size: 14), align: .center)
         }
         
         switch sortBy {
@@ -137,7 +137,7 @@ class SortbyTVCell: TableViewCell {
     func setupUI() {
         holderView.backgroundColor = .WhiteColor
         setupViews(v: buttonsView, radius: 4, color: .WhiteColor)
-        setuplabels(lbl: titlelbl, text: "", textcolor: .AppLabelColor, font: .LatoMedium(size: 17), align: .left)
+        setuplabels(lbl: titlelbl, text: "", textcolor: .AppLabelColor, font: .latoMedium(size: 17), align: .left)
         setupinitallyvalues()
         lowtoHighBtn.setTitle("", for: .normal)
         hightoLowBtn.setTitle("", for: .normal)
@@ -156,8 +156,8 @@ class SortbyTVCell: TableViewCell {
     func setupinitallyvalues(){
         setupViews(v: lowtoHighView, radius: 4, color: .WhiteColor)
         setupViews(v: hightoLowView, radius: 4, color: .WhiteColor)
-        setuplabels(lbl: lowtoHighlbl, text: "Low to High", textcolor: .AppLabelColor, font: .LatoRegular(size: 14), align: .center)
-        setuplabels(lbl: hightoLowhlbl, text: "High to Low", textcolor: .AppLabelColor, font: .LatoRegular(size: 14), align: .center)
+        setuplabels(lbl: lowtoHighlbl, text: "Low to High", textcolor: .AppLabelColor, font: .latoRegular(size: 14), align: .center)
+        setuplabels(lbl: hightoLowhlbl, text: "High to Low", textcolor: .AppLabelColor, font: .latoRegular(size: 14), align: .center)
     }
     
     

@@ -58,8 +58,8 @@ class checkOptionsTVCell: TableViewCell {
         let str3 = " and "
         let str4 = "Privacy Policy"
         
-        let atter1 = [NSAttributedString.Key.foregroundColor:UIColor.AppLabelColor,NSAttributedString.Key.font:UIFont.LatoRegular(size: 14)] as [NSAttributedString.Key : Any]
-        let atter2 = [NSAttributedString.Key.foregroundColor:HexColor("#00A898"),NSAttributedString.Key.font:UIFont.LatoRegular(size: 14)] as [NSAttributedString.Key : Any]
+        let atter1 = [NSAttributedString.Key.foregroundColor:UIColor.AppLabelColor,NSAttributedString.Key.font:UIFont.latoRegular(size: 14)] as [NSAttributedString.Key : Any]
+        let atter2 = [NSAttributedString.Key.foregroundColor:HexColor("#00A898"),NSAttributedString.Key.font:UIFont.latoRegular(size: 14)] as [NSAttributedString.Key : Any]
         
         let atterStr1 = NSMutableAttributedString(string: str1, attributes: atter1)
         let atterStr2 = NSMutableAttributedString(string: str2, attributes: atter2)
@@ -78,8 +78,8 @@ class checkOptionsTVCell: TableViewCell {
     func setupUI() {
         holderView.backgroundColor = .WhiteColor
         checkImg.image = UIImage(named: "uncheck")?.withRenderingMode(.alwaysOriginal)
-        titlelbl.textColor = HexColor("#767676")
-        titlelbl.font = UIFont.LatoRegular(size: 16)
+        titlelbl.textColor = HexColor("#292929")
+        titlelbl.font = UIFont.InterRegular(size: 16)
         titlelbl.numberOfLines = 0
     }
     

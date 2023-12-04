@@ -31,7 +31,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gst-Gm-gUZ">
                                         <rect key="frame" x="0.0" y="0.0" width="157" height="55"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="radioUnselect" translatesAutoresizingMaskIntoConstraints="NO" id="2vf-q6-ZGm">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="radioSelect" translatesAutoresizingMaskIntoConstraints="NO" id="2vf-q6-ZGm">
                                                 <rect key="frame" x="16" y="17.666666666666668" width="20" height="20.000000000000004"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Ctu-7g-qQx"/>
@@ -106,7 +106,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGq-Ud-d5n">
                                         <rect key="frame" x="290" y="0.0" width="110" height="55"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="radioSelect" translatesAutoresizingMaskIntoConstraints="NO" id="Udh-6d-NzZ">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="radioUnselect" translatesAutoresizingMaskIntoConstraints="NO" id="Udh-6d-NzZ">
                                                 <rect key="frame" x="16" y="17.666666666666668" width="20" height="20.000000000000004"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="kQz-hW-lUS"/>
@@ -166,6 +166,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="guestRadioImage" destination="2vf-q6-ZGm" id="Yu1-og-thH"/>
+                <outlet property="loginRadioImage" destination="Udh-6d-NzZ" id="8AN-m4-sXQ"/>
+                <outlet property="registerRadioImage" destination="5HA-fH-BJR" id="8x3-as-1wH"/>
+            </connections>
             <point key="canvasLocation" x="48.854961832061065" y="19.366197183098592"/>
         </tableViewCell>
     </objects>

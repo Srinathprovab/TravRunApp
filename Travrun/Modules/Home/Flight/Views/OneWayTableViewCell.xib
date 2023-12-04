@@ -1151,6 +1151,7 @@ flight</string>
                 <outlet property="adultCountLabel" destination="lwW-m5-LEy" id="nTB-nm-o8c"/>
                 <outlet property="adultCountView" destination="RsQ-Ez-bAN" id="6Ri-Ds-YZM"/>
                 <outlet property="adultMinusView" destination="aGA-gh-toA" id="fdm-2g-59T"/>
+                <outlet property="adultPlusLabel" destination="TGu-nf-Q8z" id="f5q-UD-gE6"/>
                 <outlet property="adultPlusSymbolLabel" destination="TGu-nf-Q8z" id="2Gi-cF-16X"/>
                 <outlet property="adultPlusView" destination="bx4-Aa-FEw" id="XH3-u8-0El"/>
                 <outlet property="adultsView" destination="DDs-fo-UeA" id="TIy-vl-hJi"/>
@@ -1164,6 +1165,7 @@ flight</string>
                 <outlet property="childCountLabel" destination="fZw-Lu-KcV" id="KBJ-x0-nQg"/>
                 <outlet property="childCountView" destination="DEc-cf-WzW" id="TH6-nF-Jaf"/>
                 <outlet property="childMinusView" destination="AVe-sQ-7Hf" id="b0X-e6-06w"/>
+                <outlet property="childPlusLabel" destination="gF1-LV-iYO" id="EYi-AE-a2a"/>
                 <outlet property="childPlusView" destination="wpo-vG-CTh" id="ovo-jh-Z1P"/>
                 <outlet property="childView" destination="m8k-YV-L3I" id="w3q-e0-i8i"/>
                 <outlet property="departureDateLabel" destination="nBc-yj-xhx" id="GDh-Pm-TT2"/>
@@ -1181,6 +1183,7 @@ flight</string>
                 <outlet property="infantsCountLabel" destination="rKm-FC-5HT" id="eW3-TD-cjL"/>
                 <outlet property="infantsCountView" destination="0Ee-Iv-hpa" id="PRa-Pu-iHL"/>
                 <outlet property="infantsMinusView" destination="DyG-Ke-cBg" id="CNV-xl-eoq"/>
+                <outlet property="infantsPlusLabel" destination="N08-ts-0ac" id="Bd8-Am-Ci1"/>
                 <outlet property="infantsPlusView" destination="nZl-bM-vR7" id="2sN-nO-3js"/>
                 <outlet property="infantsView" destination="3cm-iU-loe" id="Rt8-9l-BMr"/>
                 <outlet property="outwardsLabel" destination="7HR-BI-DL5" id="gxK-zd-qUX"/>

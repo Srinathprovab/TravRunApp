@@ -7,8 +7,8 @@
 
 import UIKit
 
-class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate {
-    
+class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate {
+
     @IBOutlet weak var commonScrollView: UITableView!
     @IBOutlet weak var commonTableView: UITableView!
     
@@ -110,6 +110,16 @@ class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDe
     func didTapOnDepartureBtnAction(cell: OneWayTableViewCell) {}
     func didTapOnReturnBtnAction(cell: OneWayTableViewCell) {}
     func editingTextField(tf: UITextField) {}
+    func didTapOnCheckBoxDropDownBtn(cell: CheckBoxTVCell) {}
+    func didTapOnShowMoreBtn(cell: CheckBoxTVCell) {}
+    func didTapOnCheckBox(cell: checkOptionsTVCell) {}
+    func didTapOnDeselectCheckBox(cell: checkOptionsTVCell) {}
+    func didTapOnLowtoHighBtn(cell: SortbyTVCell) {}
+    func didTapOnHightoLowBtn(cell: SortbyTVCell) {}
+    func didTapOnShowSliderBtn(cell: SliderTVCell) {}
+    func didTapOnguestButton(cell: RegisterSelectionLoginTableViewCell) {}
+    func registerButton(cell: RegisterSelectionLoginTableViewCell) {}
+    func loginButton(cell: RegisterSelectionLoginTableViewCell) {}
 }
 
 extension BaseTableVC: UITableViewDelegate {
@@ -274,6 +284,43 @@ extension BaseTableVC: UITableViewDataSource {
                 
             case .SortTableViewCell:
                 let cell: SortTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+            case .CheckBoxTVCell :
+                let cell: CheckBoxTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
+                commonCell = cell
+                
+                
+            case .SortbyTVCell :
+                let cell: SortbyTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
+                commonCell = cell
+                
+            case .SliderTVCell :
+                let cell: SliderTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
+                commonCell = cell
+                
+            case .BookingDetailsCardTVCellTableViewCell :
+                let cell: BookingDetailsCardTVCellTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+            case .RegisterSelectionLoginTableViewCell :
+                let cell: RegisterSelectionLoginTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
+                commonCell = cell
+                
+            case .GuestRegisterTableViewCell :
+                let cell: GuestRegisterTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+            case .RegisterNowTableViewCell :
+                let cell: RegisterNowTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+            case .LoginDetailsTableViewCell :
+                let cell: LoginDetailsTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
                 commonCell = cell
                 
             default:

@@ -60,8 +60,8 @@ extension holidayTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? SpecialDealsCVCell {
        
             let data = topHolidayList[indexPath.row]
-//            cell.offerImage.sd_setImage(with: URL(string: data.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
-            cell.offerImage.image = UIImage(named: "banner5")
+            cell.offerImage.sd_setImage(with: URL(string: data.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+//            cell.offerImage.image = UIImage(named: "banner5")
             cell.bookinglbl.text =  data.country_name
             cell.promoCodelbl.isHidden = true
             commonCell = cell

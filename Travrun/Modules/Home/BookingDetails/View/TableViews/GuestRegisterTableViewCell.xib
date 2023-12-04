@@ -23,29 +23,29 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="GuestRegisterTableViewCell" customModule="Travrun" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="326"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="338"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="326"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="338"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62Z-d2-ehv" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="326"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="338"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Koj-Ay-G2c">
-                                <rect key="frame" x="14" y="14" width="128" height="20"/>
+                                <rect key="frame" x="14" y="14.000000000000002" width="128" height="18.666666666666671"/>
                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email id*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvu-Zg-2AD">
-                                <rect key="frame" x="14.000000000000004" y="48" width="58.333333333333343" height="17"/>
+                                <rect key="frame" x="14.000000000000004" y="46.666666666666664" width="58.333333333333343" height="17"/>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                 <color key="textColor" red="0.16470588235294117" green="0.16470588235294117" blue="0.16470588235294117" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5lF-8K-dCB">
-                                <rect key="frame" x="14" y="73" width="345" height="44"/>
+                                <rect key="frame" x="14" y="71.666666666666671" width="345" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Qt2-E2-ash"/>
                                 </constraints>
@@ -53,26 +53,26 @@
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blueTicket" translatesAutoresizingMaskIntoConstraints="NO" id="94G-kf-Bne">
-                                <rect key="frame" x="14" y="125" width="14" height="14"/>
+                                <rect key="frame" x="14" y="123.66666666666669" width="14" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="ExX-81-iZF"/>
                                     <constraint firstAttribute="width" constant="14" id="O1C-D0-GyT"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="we’ll send a ticket" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5U-dq-EXA">
-                                <rect key="frame" x="36.000000000000007" y="124.66666666666667" width="100.66666666666669" height="14.666666666666671"/>
+                                <rect key="frame" x="36.000000000000007" y="123.66666666666669" width="100.66666666666669" height="14"/>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                 <color key="textColor" red="0.23921568627450979" green="0.23529411764705882" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHP-x9-TXL">
-                                <rect key="frame" x="14" y="154.33333333333334" width="99" height="17"/>
+                                <rect key="frame" x="14" y="152.66666666666666" width="99" height="17"/>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                 <color key="textColor" red="0.1647058824" green="0.1647058824" blue="0.1647058824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBH-rM-9Ca" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
-                                <rect key="frame" x="14" y="179.33333333333334" width="345" height="44"/>
+                                <rect key="frame" x="14" y="177.66666666666666" width="345" height="44"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bF7-2h-cUm">
                                         <rect key="frame" x="0.0" y="0.0" width="88" height="44"/>
@@ -144,20 +144,20 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="we’ll let You know about changes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6p-0m-z3h">
-                                <rect key="frame" x="36" y="231" width="188" height="14.666666666666657"/>
+                                <rect key="frame" x="36" y="229.66666666666666" width="188" height="14"/>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                 <color key="textColor" red="0.23921568630000001" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell" translatesAutoresizingMaskIntoConstraints="NO" id="SWc-lS-mqJ">
-                                <rect key="frame" x="14" y="231.33333333333334" width="14" height="14"/>
+                                <rect key="frame" x="14" y="229.66666666666666" width="14" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="14" id="1ZR-dh-0Ny"/>
                                     <constraint firstAttribute="height" constant="14" id="6RL-mV-ucS"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjH-4k-o5S">
-                                <rect key="frame" x="16" y="268.66666666666669" width="343" height="41"/>
+                                <rect key="frame" x="16" y="266.66666666666669" width="343" height="55"/>
                                 <color key="backgroundColor" name="AppBtnColor"/>
                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -185,13 +185,13 @@
                             <constraint firstItem="jjH-4k-o5S" firstAttribute="leading" secondItem="62Z-d2-ehv" secondAttribute="leading" constant="16" id="Ohr-81-eNV"/>
                             <constraint firstItem="fBH-rM-9Ca" firstAttribute="leading" secondItem="5lF-8K-dCB" secondAttribute="leading" id="P2x-D9-q4l"/>
                             <constraint firstItem="B6p-0m-z3h" firstAttribute="centerY" secondItem="SWc-lS-mqJ" secondAttribute="centerY" id="Pui-YN-6EB"/>
-                            <constraint firstAttribute="height" constant="326" id="QEp-Ej-y19"/>
                             <constraint firstAttribute="bottom" secondItem="jjH-4k-o5S" secondAttribute="bottom" constant="16.329999999999998" id="QOX-q7-6FC"/>
                             <constraint firstItem="fBH-rM-9Ca" firstAttribute="top" secondItem="AHP-x9-TXL" secondAttribute="bottom" constant="8" id="U8b-Sm-9nw"/>
                             <constraint firstItem="f5U-dq-EXA" firstAttribute="leading" secondItem="94G-kf-Bne" secondAttribute="trailing" constant="8" id="Xpm-G7-sX1"/>
                             <constraint firstItem="Uvu-Zg-2AD" firstAttribute="leading" secondItem="Koj-Ay-G2c" secondAttribute="leading" id="Y9c-D3-jeB"/>
                             <constraint firstAttribute="trailing" secondItem="5lF-8K-dCB" secondAttribute="trailing" constant="16" id="bHc-Oa-Aik"/>
                             <constraint firstItem="Koj-Ay-G2c" firstAttribute="top" secondItem="62Z-d2-ehv" secondAttribute="top" constant="14" id="esD-uu-5SI"/>
+                            <constraint firstAttribute="height" constant="338" id="fjx-h3-Xcl"/>
                             <constraint firstItem="AHP-x9-TXL" firstAttribute="leading" secondItem="94G-kf-Bne" secondAttribute="leading" id="fwe-dv-8MC"/>
                             <constraint firstItem="94G-kf-Bne" firstAttribute="top" secondItem="5lF-8K-dCB" secondAttribute="bottom" constant="8" id="gzQ-46-JgG"/>
                             <constraint firstItem="SWc-lS-mqJ" firstAttribute="top" secondItem="fBH-rM-9Ca" secondAttribute="bottom" constant="8" id="hIA-Rj-LhZ"/>
