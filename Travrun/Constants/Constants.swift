@@ -46,7 +46,7 @@ let KAeventId = "eventId"
 let KApage = "page"
 let KAuserId = "userId"
 
-
+var paymobilecountrycode = String()
 var countrylist = [All_country_code_list]()
 var cityList:[SelectCityModel] = []
 var depatureDatesArray = ["Date","Date"]
@@ -74,6 +74,11 @@ var topHolidayList = [HolidaydestinationList]()
 var keyStr = String()
 var directFlightBool = true
 var oldjournyType = ""
+var checkTermsAndCondationStatus = false
+
+//Register
+var registrationModel:RegistrationModel?
+
 
 // Screen width.
 public var screenWidth: CGFloat {
@@ -94,6 +99,7 @@ var hotelfiltermodel = HotelFilterModel()
 //var mapModelArray: [MapModel] = []
 
 struct UserDefaultsKeys {
+    static var userid = "userid"
     static var toairport = "toairport"
     static var checkin = "check_in"
     static var checkout = "check _out"
@@ -147,6 +153,10 @@ struct sessionMgrDefaults {
 }
 
 struct ApiEndpoints {
+    static let register = "mobile_register_on_light_box"
+    static let mobileforgotpassword = "mobile_forgot_password"
+    static let login = "mobile_login"
+    static let mobilelogout = "mobile_ajax_logout"
     static let mobileprofile = "mobile_profile"
     static let getTopFlightHotelDestination = "getTopFlightHotelDestination"
     static let getCountryList = "getCountryList"

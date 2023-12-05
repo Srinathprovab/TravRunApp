@@ -72,14 +72,14 @@ class ButtonTVCell: TableViewCell {
             
         case "filter":
             btnLeftConstraint.constant = 17
-            titlelbl.textColor = .AppTabSelectColor
+//            titlelbl.textColor = .AppTabSelectColor
             titlelbl.textAlignment = .left
             btnView.backgroundColor = .WhiteColor
             
             break
             
         case "addroom":
-            btnView.backgroundColor = .AppTabSelectColor
+//            btnView.backgroundColor = .AppTabSelectColor
             btnLeftConstraint.constant = 18
             titlelbl.textColor = .WhiteColor
          //   titlelbl.font = UIFont.LatoMedium(size: 18)
@@ -89,10 +89,15 @@ class ButtonTVCell: TableViewCell {
             btnLeftConstraint.constant = 32
             btnView.backgroundColor = cellInfo?.bgColor
             break
-            
+    
+        case "btn":
+            self.btnView.backgroundColor = .AppBtnColor
+            titlelbl.font = UIFont.InterSemiBold(size: 18)
+            break
             
         case "Search Hotels":
             self.btnView.backgroundColor = .AppBtnColor
+            self.btnLeftConstraint.constant = 27
             break
             
         case "filterbtn":
@@ -100,6 +105,9 @@ class ButtonTVCell: TableViewCell {
             self.btnView.backgroundColor = .AppBtnColor
             break
             
+        case "Send":
+            self.titlelbl.font = .InterSemiBold(size: 18)
+            break
             
         default:
             break

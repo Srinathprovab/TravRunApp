@@ -72,9 +72,9 @@ extension UIColor {
     }
     
     
-    public static var AppTabSelectColor: UIColor {
+    public static var SubtitleColor: UIColor {
         get {
-            return UIColor(named: "AppTabSelectColor")!
+            return UIColor(named: "subtitleColor")!
         }
     }
     

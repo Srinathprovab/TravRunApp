@@ -150,7 +150,7 @@ class ViewController: UIViewController {
     }
 
     func gotodashBoardScreen() {
-        guard let vc = DashBoardTabBarViewController.newInstance.self else {return}
+        guard let vc = LoginViewController.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }

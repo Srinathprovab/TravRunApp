@@ -139,7 +139,7 @@ class NavBar: UIView {
         visatimag.image = UIImage(named: "visa")
         
         setupViews(v: tabSelectionView, radius: 0, color: .WhiteColor.withAlphaComponent(0.5))
-        setupViews(v: flightHolderView, radius: 6, color: .AppTabSelectColor)
+//        setupViews(v: flightHolderView, radius: 6, color: .AppTabSelectColor)
         setupViews(v: hotelHolderView, radius: 6, color: .WhiteColor)
         setupViews(v: visaHolderView, radius: 6, color: .WhiteColor)
         
@@ -179,7 +179,7 @@ class NavBar: UIView {
     
     @IBAction func searchFlightBtnAction(_ sender: Any) {
         
-        flightHolderView.backgroundColor = .AppTabSelectColor
+//        flightHolderView.backgroundColor = .AppTabSelectColor
         flightimage.image = UIImage(named: "flight")?.withRenderingMode(.alwaysOriginal).withTintColor(.WhiteColor)
         
         hotelHolderView.backgroundColor = .WhiteColor
@@ -198,7 +198,7 @@ class NavBar: UIView {
         flightHolderView.backgroundColor = .WhiteColor
         flightimage.image = UIImage(named: "flight")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppImageDefaultColor)
         
-        hotelHolderView.backgroundColor = .AppTabSelectColor
+//        hotelHolderView.backgroundColor = .AppTabSelectColor
         hotelimage.image = UIImage(named: "hotel")?.withRenderingMode(.alwaysOriginal).withTintColor(.WhiteColor)
         
     
@@ -218,7 +218,7 @@ class NavBar: UIView {
         hotelimage.image = UIImage(named: "hotel")
         
              
-        visaHolderView.backgroundColor = .AppTabSelectColor
+//        visaHolderView.backgroundColor = .AppTabSelectColor
         visatimag.image = UIImage(named: "visa")?.withRenderingMode(.alwaysOriginal).withTintColor(.WhiteColor)
     }
     

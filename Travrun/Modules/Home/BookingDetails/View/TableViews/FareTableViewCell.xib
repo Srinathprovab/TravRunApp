@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Medium.otf">
+            <string>Inter-Medium</string>
+        </array>
+        <array key="Inter-SemiBold.ttf">
+            <string>Inter-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="FareTableViewCell" customModule="Travrun" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="396" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="396" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SAL-jK-aHI">
+                        <rect key="frame" x="0.0" y="0.0" width="396" height="50"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Traveller x1 Adult" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZq-wN-PiT">
+                                <rect key="frame" x="16" y="15" width="131.66666666666666" height="20"/>
+                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
+                                <color key="textColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AED150.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ix-Ra-gCG">
+                                <rect key="frame" x="288.33333333333331" y="15.333333333333334" width="86.666666666666686" height="19.666666666666664"/>
+                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqU-JM-TqY">
+                                <rect key="frame" x="0.0" y="49" width="396" height="1"/>
+                                <color key="backgroundColor" red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="tl3-3M-EhE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2ix-Ra-gCG" secondAttribute="trailing" constant="21" id="7gU-a4-xrt"/>
+                            <constraint firstAttribute="bottom" secondItem="gZq-wN-PiT" secondAttribute="bottom" constant="15" id="9rl-K9-02l"/>
+                            <constraint firstAttribute="height" constant="50" id="BXf-Jq-dx9"/>
+                            <constraint firstItem="gZq-wN-PiT" firstAttribute="leading" secondItem="SAL-jK-aHI" secondAttribute="leading" constant="16" id="D8M-Jv-Lt1"/>
+                            <constraint firstItem="gZq-wN-PiT" firstAttribute="centerY" secondItem="SAL-jK-aHI" secondAttribute="centerY" id="DJ2-yC-cpX"/>
+                            <constraint firstItem="2ix-Ra-gCG" firstAttribute="centerY" secondItem="gZq-wN-PiT" secondAttribute="centerY" id="ElL-Cw-hfj"/>
+                            <constraint firstItem="zqU-JM-TqY" firstAttribute="leading" secondItem="SAL-jK-aHI" secondAttribute="leading" id="Iea-oA-yJh"/>
+                            <constraint firstAttribute="bottom" secondItem="zqU-JM-TqY" secondAttribute="bottom" id="YKE-dX-oSu"/>
+                            <constraint firstItem="zqU-JM-TqY" firstAttribute="top" secondItem="gZq-wN-PiT" secondAttribute="bottom" constant="14" id="bga-sK-EVM"/>
+                            <constraint firstItem="gZq-wN-PiT" firstAttribute="top" secondItem="SAL-jK-aHI" secondAttribute="top" constant="15" id="h1o-qa-lJx"/>
+                            <constraint firstAttribute="trailing" secondItem="zqU-JM-TqY" secondAttribute="trailing" id="ipB-wK-fzc"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="SAL-jK-aHI" secondAttribute="bottom" id="1PX-84-y7L"/>
+                    <constraint firstItem="SAL-jK-aHI" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="UJm-dC-Wx2"/>
+                    <constraint firstAttribute="trailing" secondItem="SAL-jK-aHI" secondAttribute="trailing" id="huK-bZ-lUP"/>
+                    <constraint firstItem="SAL-jK-aHI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="nGf-qJ-dte"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="subTitleLabel" destination="2ix-Ra-gCG" id="prt-C0-mdA"/>
+                <outlet property="titleLabel" destination="gZq-wN-PiT" id="rg0-Yx-4Fy"/>
+            </connections>
+            <point key="canvasLocation" x="13.740458015267174" y="19.718309859154932"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

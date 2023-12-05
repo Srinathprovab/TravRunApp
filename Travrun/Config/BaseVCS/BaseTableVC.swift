@@ -7,8 +7,8 @@
 
 import UIKit
 
-class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate {
-
+class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate, LabelTVCellDelegate, RegisterUserTVCellDelegate, UnderLineTVCellPrtocal, TextfieldTVCellDelegate {
+   
     @IBOutlet weak var commonScrollView: UITableView!
     @IBOutlet weak var commonTableView: UITableView!
     
@@ -92,6 +92,13 @@ class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDe
     
     
     //Delegate Methods
+    
+    func didTapOnForGetPassword(cell: TextfieldTVCell) {}
+    func didTapOnShowPasswordBtn(cell: TextfieldTVCell) {}
+    func donedatePicker(cell: TextfieldTVCell) {}
+    func cancelDatePicker(cell: TextfieldTVCell) {}
+    func textFieldText(cell: TextfieldTVCell, text: String) {}
+    func didTapOnCountryCodeBtn(cell: TextfieldTVCell) {}
     func didTapOnflightDetailsButton(cell: NewFlightSearchResultTVCell) {}
     func didTapOnCloseReturnView(cell: OneWayTableViewCell) {}
     func didTapOnReturnToOnewayBtnAction(cell: OneWayTableViewCell) {}
@@ -120,6 +127,15 @@ class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDe
     func didTapOnguestButton(cell: RegisterSelectionLoginTableViewCell) {}
     func registerButton(cell: RegisterSelectionLoginTableViewCell) {}
     func loginButton(cell: RegisterSelectionLoginTableViewCell) {}
+    func didTapOnCloseBtn(cell: LabelTVCell) {}
+    func didTapOnShowMoreBtn(cell: LabelTVCell) {}
+    func didTapOnCountryCodeBtnAction(cell: RegisterUserTVCell) {}
+    func didTapOnLoginBtn(cell: UnderLineTVCell) {}
+    func didTapOnSignUpBtn(cell: UnderLineTVCell) {}
+    
+    
+   
+    
 }
 
 extension BaseTableVC: UITableViewDelegate {
@@ -188,7 +204,8 @@ extension BaseTableVC: UITableViewDataSource {
                 commonCell = cell
 
             case .TextfieldTVCell:
-                let cell: EmptyTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                let cell: TextfieldTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
                 commonCell = cell
 
             case .ButtonTVCell:
@@ -323,6 +340,36 @@ extension BaseTableVC: UITableViewDataSource {
                 let cell: LoginDetailsTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
                 commonCell = cell
                 
+                
+            case .AdultTableViewCell :
+                let cell: AdultTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+            case .FareSummaryTableViewCell :
+                let cell: FareSummaryTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+            case .AcceptTermsAndConditionTVCell :
+                let cell: AcceptTermsAndConditionTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+            case .LabelTVCell :
+                let cell: LabelTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
+                commonCell = cell
+                
+            case .RegisterUserTVCell :
+                let cell: RegisterUserTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
+                commonCell = cell
+                
+            case .UnderLineTVCell :
+                let cell: UnderLineTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
+                commonCell = cell
+                
+                
+                
             default:
                 print("handle this case in getCurrentCellAt")
             }
@@ -364,6 +411,5 @@ extension UITableView {
         
         return indexPath.section == indexOfLastSection && indexPath.row == indexOfLastRowInLastSection
     }
-    
-    
+
 }

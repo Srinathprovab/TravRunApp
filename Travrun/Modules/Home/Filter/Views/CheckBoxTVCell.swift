@@ -96,7 +96,7 @@ class CheckBoxTVCell: TableViewCell {
         titlelbl.numberOfLines = 0
         
         btnlbl.text = "+ Show More"
-        btnlbl.textColor = .AppTabSelectColor
+//        btnlbl.textColor = .AppTabSelectColor
         btnlbl.font = UIFont.latoRegular(size: 18)
         btnlbl.isHidden = true
         

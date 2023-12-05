@@ -11,7 +11,6 @@ class BookingDetailsViewController: BaseTableVC {
    
     @IBOutlet weak var backButtonView: UIView!
     var tablerow = [TableRow]()
-    var viewmodel: DefaultBookingDetailsViewModel?
     
     static var newInstance: BookingDetailsViewController? {
         let storyboard = UIStoryboard(name: Storyboard.BookingDetails.name,
@@ -23,9 +22,8 @@ class BookingDetailsViewController: BaseTableVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         backButtonView.layer.cornerRadius = backButtonView.layer.frame.width / 2
-        viewmodel = DefaultBookingDetailsViewModel()
         commonTableView.registerTVCells(["BookingDetailsCardTVCellTableViewCell",
-                                         "EmptyTVCell", "RegisterSelectionLoginTableViewCell", "GuestRegisterTableViewCell", "RegisterNowTableViewCell", "LoginDetailsTableViewCell"])
+                                         "EmptyTVCell", "RegisterSelectionLoginTableViewCell", "GuestRegisterTableViewCell", "RegisterNowTableViewCell", "LoginDetailsTableViewCell", "AdultTableViewCell", "FareSummaryTableViewCell", "AcceptTermsAndConditionTVCell"])
         setupFilterTVCells()
     }
     
@@ -39,6 +37,11 @@ class BookingDetailsViewController: BaseTableVC {
         tablerow.append(TableRow(cellType: .RegisterSelectionLoginTableViewCell))
         tablerow.append(TableRow(height: 12, cellType:.EmptyTVCell))
         tablerow.append(TableRow(cellType: .GuestRegisterTableViewCell))
+        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
+        tablerow.append(TableRow(cellType: .AdultTableViewCell))
+        tablerow.append(TableRow(cellType: .FareSummaryTableViewCell))
+        tablerow.append(TableRow(height: 100, bgColor: .white, cellType: .AcceptTermsAndConditionTVCell))
+        
         commonTVData = tablerow
         commonTableView.reloadData()
     }
@@ -51,6 +54,10 @@ class BookingDetailsViewController: BaseTableVC {
         tablerow.append(TableRow(cellType: .RegisterSelectionLoginTableViewCell))
         tablerow.append(TableRow(height: 12, cellType:.EmptyTVCell))
         tablerow.append(TableRow(key: "register",cellType: .RegisterNowTableViewCell))
+        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
+        tablerow.append(TableRow(cellType: .AdultTableViewCell))
+        tablerow.append(TableRow(cellType: .FareSummaryTableViewCell))
+        tablerow.append(TableRow(height: 100, bgColor: .white, cellType: .AcceptTermsAndConditionTVCell))
         commonTVData = tablerow
         commonTableView.reloadData()
     }
@@ -63,6 +70,10 @@ class BookingDetailsViewController: BaseTableVC {
         tablerow.append(TableRow(cellType: .RegisterSelectionLoginTableViewCell))
         tablerow.append(TableRow(height: 12, cellType:.EmptyTVCell))
         tablerow.append(TableRow(cellType: .LoginDetailsTableViewCell))
+        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
+        tablerow.append(TableRow(cellType: .AdultTableViewCell))
+        tablerow.append(TableRow(cellType: .FareSummaryTableViewCell))
+        tablerow.append(TableRow(height: 100, bgColor: .white, cellType: .AcceptTermsAndConditionTVCell))
         commonTVData = tablerow
         commonTableView.reloadData()
     }

@@ -35,7 +35,7 @@ class TabSelectCVCell: UICollectionViewCell {
     
     
     func selected() {
-        holderView.backgroundColor = .AppTabSelectColor
+//        holderView.backgroundColor = .AppTabSelectColor
         img.image = UIImage(named: imageStr)?.withRenderingMode(.alwaysOriginal).withTintColor(.WhiteColor)
     }
     

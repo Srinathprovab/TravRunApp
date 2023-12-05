@@ -6,23 +6,22 @@
 //
 
 import UIKit
+import DropDown
 
 protocol TextfieldTVCellDelegate {
     func didTapOnForGetPassword(cell:TextfieldTVCell)
     func editingTextField(tf:UITextField)
     func didTapOnShowPasswordBtn(cell:TextfieldTVCell)
-    
     func donedatePicker(cell:TextfieldTVCell)
     func cancelDatePicker(cell:TextfieldTVCell)
-    
-    
     func textFieldText(cell: TextfieldTVCell, text: String)
+    func didTapOnCountryCodeBtn(cell:TextfieldTVCell)
+    
 }
 
 
 class TextfieldTVCell: TableViewCell {
     
-   
     
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var titlelbl: UILabel!
@@ -34,10 +33,16 @@ class TextfieldTVCell: TableViewCell {
     @IBOutlet weak var showPassBtn: UIButton!
     @IBOutlet weak var viewheight: NSLayoutConstraint!
     @IBOutlet weak var showPassView: UIView!
+    @IBOutlet weak var countryCodeView: UIView!
+    @IBOutlet weak var countryCodelbl: UILabel!
+    @IBOutlet weak var countryCodeBtn: UIButton!
+    @IBOutlet weak var countryCodeBtnWidth: NSLayoutConstraint!
+    
     
     let datePicker = UIDatePicker()
     var delegate:TextfieldTVCellDelegate?
-    
+    var countryNameArray = [String]()
+    let dropDown = DropDown()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -51,16 +56,22 @@ class TextfieldTVCell: TableViewCell {
     }
     
     override func prepareForReuse() {
-        txtField.text = cellInfo?.subTitle
+        
+        
+        countryCodeView.isHidden = true
+        countryCodeBtnWidth.constant = 0
+        dropDown.hide()
+      //  datePicker.isHidden = true
+        
     }
     
     
     override func updateUI() {
+        txtField.text = cellInfo?.subTitle ?? ""
         btnHeight.constant = 0
         titlelbl.text = cellInfo?.title
         txtField.placeholder = cellInfo?.tempText
         txtField.tag = Int(cellInfo?.text ?? "") ?? 0
-        txtField.text = cellInfo?.subTitle
         
         switch cellInfo?.key {
             
@@ -79,7 +90,7 @@ class TextfieldTVCell: TableViewCell {
             forgetPwdBtn.isHidden = true
             break
         case "signup":
-            //            showPassView.isHidden = true
+            showPassView.isHidden = true
             self.txtField.isSecureTextEntry = false
             forgetPwdBtn.isHidden = true
             break
@@ -101,6 +112,21 @@ class TextfieldTVCell: TableViewCell {
             break
         case "visa":
             self.viewheight.constant = 120
+            break
+            
+            
+        case "mobile":
+            self.viewheight.constant = 120
+            countryCodeView.isHidden = false
+            countryCodeBtnWidth.constant = 100
+            
+            countrylist.forEach { i in
+                countryNameArray.append(i.name ?? "")
+            }
+            
+            dropDown.isHidden = false
+            dropDown.dataSource = countryNameArray
+            setupDropDown()
             break
             
         case "profile":
@@ -128,6 +154,12 @@ class TextfieldTVCell: TableViewCell {
             
             
             
+        case "dateof":
+            datePicker.isHidden = false
+            showDatePicker()
+            break
+            
+            
         default:
             break
         }
@@ -137,6 +169,21 @@ class TextfieldTVCell: TableViewCell {
         if cellInfo?.key1 == "pdob"{
             datePicker.maximumDate = Date()
             showDatePicker()
+        }
+    }
+    
+    
+    
+    func setupDropDown() {
+        
+        dropDown.direction = .any
+        dropDown.backgroundColor = .WhiteColor
+        dropDown.anchorView = self.countryCodeView
+        dropDown.bottomOffset = CGPoint(x: 0, y: countryCodeView.frame.size.height + 10)
+        dropDown.selectionAction = { [weak self] (index: Int, item: String) in
+            self?.countryCodelbl.text = item
+            self?.countryCodelbl.textColor = .AppLabelColor
+            self?.delegate?.didTapOnCountryCodeBtn(cell: self!)
         }
     }
     
@@ -153,18 +200,32 @@ class TextfieldTVCell: TableViewCell {
         showImage.image = UIImage(named: "eyeslash")
         
         titlelbl.textColor = .AppLabelColor
-//        titlelbl.font = UIFont.LatoRegular(size: 14)
+        titlelbl.font = UIFont.InterRegular(size: 14)
         txtField.delegate = self
         txtField.backgroundColor = .clear
         txtField.setLeftPaddingPoints(20)
-//        txtField.font = UIFont.ManropeMedium(size: 18)
+        txtField.font = UIFont.InterMedium(size: 18)
         txtField.addTarget(self, action: #selector(editingText(textField:)), for: .editingChanged)
         txtField.isSecureTextEntry = false
         
         forgetPwdBtn.setTitle("Forgot Password?", for: .normal)
-        forgetPwdBtn.setTitleColor(.AppTabSelectColor, for: .normal)
-//        forgetPwdBtn.titleLabel?.font = UIFont.ManropeRegular(size: 16)
+        forgetPwdBtn.setTitleColor(.white, for: .normal)
+        forgetPwdBtn.titleLabel?.font = UIFont.InterRegular(size: 16)
         forgetPwdBtn.isHidden = true
+        
+        countryCodeBtnWidth.constant = 0
+        countryCodeView.isHidden = true
+        countryCodeView.backgroundColor = .WhiteColor
+        countryCodeView.addCornerRadiusWithShadow(color: .clear, borderColor: .AppBorderColor, cornerRadius: 0)
+        setuplabels(lbl: countryCodelbl, text: "+91", textcolor: .SubTitleColor, font: .InterSemiBold(size: 16), align: .center)
+        countryCodeBtn.setTitle("", for: .normal)
+        countryCodeBtn.addTarget(self, action: #selector(didTapOnCountryCodeBtnAction(_:)), for: .touchUpInside)
+    }
+    
+    
+    
+    @objc func didTapOnCountryCodeBtnAction(_ sender:UIButton) {
+        dropDown.show()
     }
     
     
@@ -228,8 +289,8 @@ extension TextfieldTVCell {
     
     override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-//        let result = (txtField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
-//        delegate?.textFieldText(cell: self, text: result)
+        //        let result = (txtField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
+        //        delegate?.textFieldText(cell: self, text: result)
         
         
         switch textField.tag {
@@ -257,9 +318,6 @@ extension TextfieldTVCell {
         }
         
     }
-    
-    
-    
     
     
 }

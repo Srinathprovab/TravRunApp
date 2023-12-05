@@ -164,7 +164,7 @@ class FilterVC: BaseTableVC{
         filterButtonsView.addBottomBorderWithColor(color: .AppBorderColor, width: 1)
         setupViews(v: sortbyBtnView, radius: 0, color: .WhiteColor)
         setupViews(v: filtersBtnView, radius: 0, color: .WhiteColor)
-        setupViews(v: sortbyUL, radius: 0, color: .AppTabSelectColor)
+//        setupViews(v: sortbyUL, radius: 0, color: .AppTabSelectColor)
         setupViews(v: filterUL, radius: 0, color: .WhiteColor)
         setuplabels(lbl: sortBylbl, text: "Sort By", textcolor: .AppLabelColor, font: .latoRegular(size: 18), align: .center)
         setuplabels(lbl: filterslbl, text: "Filters", textcolor: .SubTitleColor, font: .latoRegular(size: 18), align: .center)
@@ -205,7 +205,7 @@ class FilterVC: BaseTableVC{
         
         resetBtn.layer.cornerRadius = 4
         resetBtn.setTitle("Reset", for: .normal)
-        resetBtn.titleLabel?.textColor = .AppTabSelectColor
+//        resetBtn.titleLabel?.textColor = .AppTabSelectColor
         resetBtn.titleLabel?.font = UIFont.latoRegular(size: 16)
         commonTableView.registerTVCells(["CheckBoxTVCell",
                                          "EmptyTVCell",
@@ -614,7 +614,7 @@ class FilterVC: BaseTableVC{
     
     func sortbyTap() {
         filterKey = "sortby"
-        sortBylbl.textColor = .AppTabSelectColor
+//        sortBylbl.textColor = .AppTabSelectColor
         sortbyUL.backgroundColor = .clear
         filterslbl.textColor = .SubTitleColor
         filterUL.backgroundColor = .WhiteColor

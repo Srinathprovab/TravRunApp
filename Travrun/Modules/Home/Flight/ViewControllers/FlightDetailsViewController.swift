@@ -38,7 +38,7 @@ class FlightDetailsViewController: BaseTableVC {
     }
     
     func registerTv() {
-        self.commonTableView.registerTVCells(["FlightInfoTableViewCell", "FareBreakDownTableViewCell","totalDiscountTVCell", "FareRulesTableViewCell", "EmptyTVCell", "BaggageInfoTableViewCell", "ContactUsLabelTVCell", "HeaderTableViewCell"])
+        self.commonTableView.registerTVCells(["FlightInfoTableViewCell", "FareBreakDownTableViewCell","totalDiscountTVCell", "FareRulesTableViewCell", "EmptyTVCell", "BaggageInfoTableViewCell", "ContactUsLabelTVCell", "HeaderTableViewCell", ""])
     }
     
     func setUpView() {

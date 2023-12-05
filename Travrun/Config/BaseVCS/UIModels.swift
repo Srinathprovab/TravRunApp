@@ -56,6 +56,12 @@ enum TVCellType {
     case GuestRegisterTableViewCell
     case RegisterNowTableViewCell
     case LoginDetailsTableViewCell
+    case AdultTableViewCell
+    case FareSummaryTableViewCell
+    case AcceptTermsAndConditionTVCell
+    case LabelTVCell
+    case RegisterUserTVCell
+    case UnderLineTVCell
 }
 
 enum CVCellType {

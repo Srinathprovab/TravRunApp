@@ -8,8 +8,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Inter-Bold.ttf">
+            <string>Inter-Bold</string>
+        </array>
         <array key="Inter-Medium.otf">
             <string>Inter-Medium</string>
+        </array>
+        <array key="Inter-Regular.ttf">
+            <string>Inter-Regular</string>
         </array>
         <array key="Inter-SemiBold.ttf">
             <string>Inter-SemiBold</string>
@@ -59,32 +65,98 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go back" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DcB-fq-9oC">
-                                        <rect key="frame" x="56" y="69.333333333333329" width="47.333333333333343" height="14.666666666666671"/>
+                                        <rect key="frame" x="56" y="69.666666666666671" width="47.333333333333343" height="14"/>
                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="12"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Booking Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gzu-sv-Xlz">
-                                        <rect key="frame" x="136" y="66.666666666666671" width="121.33333333333331" height="19.666666666666671"/>
+                                        <rect key="frame" x="136.33333333333334" y="67.333333333333329" width="120.66666666666666" height="18.666666666666671"/>
                                         <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lrq-cT-jJc">
-                                        <rect key="frame" x="16" y="111.33333333333331" width="361" height="740.66666666666674"/>
+                                        <rect key="frame" x="16" y="111" width="361" height="659"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqm-cW-xNk">
+                                        <rect key="frame" x="0.0" y="770" width="393" height="82"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c5r-b7-8IR" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
+                                                <rect key="frame" x="16" y="16" width="361" height="50"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGg-qj-9Md">
+                                                        <rect key="frame" x="0.0" y="0.0" width="361" height="50"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="zxP-LL-nwQ"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="18"/>
+                                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MB0-Rq-EXb">
+                                                        <rect key="frame" x="235.33333333333334" y="18" width="24.000000000000028" height="14"/>
+                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue to Payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5d-pW-rZp">
+                                                        <rect key="frame" x="20" y="14" width="182.66666666666666" height="22"/>
+                                                        <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="18"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="54.250" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dE-f5-Z6T">
+                                                        <rect key="frame" x="262.33333333333331" y="12.333333333333373" width="78.666666666666686" height="25.666666666666671"/>
+                                                        <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="22"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.93333333330000001" green="0.098039215690000001" blue="0.20784313730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="qGg-qj-9Md" secondAttribute="trailing" id="5gT-p1-B23"/>
+                                                    <constraint firstItem="qGg-qj-9Md" firstAttribute="top" secondItem="c5r-b7-8IR" secondAttribute="top" id="6bP-yx-F2N"/>
+                                                    <constraint firstItem="9dE-f5-Z6T" firstAttribute="centerY" secondItem="g5d-pW-rZp" secondAttribute="centerY" id="OlE-6L-adZ"/>
+                                                    <constraint firstItem="9dE-f5-Z6T" firstAttribute="leading" secondItem="MB0-Rq-EXb" secondAttribute="trailing" constant="3" id="Qdv-A7-JRv"/>
+                                                    <constraint firstItem="MB0-Rq-EXb" firstAttribute="centerY" secondItem="g5d-pW-rZp" secondAttribute="centerY" id="Y5V-zf-CVb"/>
+                                                    <constraint firstItem="qGg-qj-9Md" firstAttribute="leading" secondItem="c5r-b7-8IR" secondAttribute="leading" id="YMD-UP-Tib"/>
+                                                    <constraint firstAttribute="bottom" secondItem="qGg-qj-9Md" secondAttribute="bottom" id="cU9-nm-r4o"/>
+                                                    <constraint firstAttribute="trailing" secondItem="9dE-f5-Z6T" secondAttribute="trailing" constant="20" id="gV3-VW-ikM"/>
+                                                    <constraint firstItem="g5d-pW-rZp" firstAttribute="leading" secondItem="c5r-b7-8IR" secondAttribute="leading" constant="20" id="gaP-1D-CKj"/>
+                                                    <constraint firstItem="g5d-pW-rZp" firstAttribute="centerY" secondItem="c5r-b7-8IR" secondAttribute="centerY" id="r58-LI-d1k"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="c5r-b7-8IR" firstAttribute="top" secondItem="eqm-cW-xNk" secondAttribute="top" constant="16" id="4rW-pF-303"/>
+                                            <constraint firstAttribute="trailing" secondItem="c5r-b7-8IR" secondAttribute="trailing" constant="16" id="7Kc-6z-Zlc"/>
+                                            <constraint firstItem="c5r-b7-8IR" firstAttribute="leading" secondItem="eqm-cW-xNk" secondAttribute="leading" constant="16" id="YRA-BS-FtU"/>
+                                            <constraint firstAttribute="bottom" secondItem="c5r-b7-8IR" secondAttribute="bottom" constant="16" id="xb9-UC-N87"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="DcB-fq-9oC" firstAttribute="centerY" secondItem="CWV-Gu-s1E" secondAttribute="centerY" id="0PJ-3i-m09"/>
+                                    <constraint firstItem="eqm-cW-xNk" firstAttribute="top" secondItem="lrq-cT-jJc" secondAttribute="bottom" id="5FV-eL-4Zl"/>
+                                    <constraint firstItem="eqm-cW-xNk" firstAttribute="leading" secondItem="ayw-1O-2HY" secondAttribute="leading" id="6Ni-FH-IsU"/>
                                     <constraint firstAttribute="trailing" secondItem="lrq-cT-jJc" secondAttribute="trailing" constant="16" id="8LR-xO-A3R"/>
-                                    <constraint firstAttribute="bottom" secondItem="lrq-cT-jJc" secondAttribute="bottom" id="9J4-B7-iQ8"/>
                                     <constraint firstItem="9DR-Gs-ivx" firstAttribute="top" secondItem="ayw-1O-2HY" secondAttribute="top" constant="59" id="CNI-dH-xFl"/>
                                     <constraint firstItem="lrq-cT-jJc" firstAttribute="top" secondItem="Gzu-sv-Xlz" secondAttribute="bottom" constant="25" id="PuI-4X-vT2"/>
                                     <constraint firstItem="Gzu-sv-Xlz" firstAttribute="centerX" secondItem="ayw-1O-2HY" secondAttribute="centerX" id="Reh-gL-CSr"/>
                                     <constraint firstItem="DcB-fq-9oC" firstAttribute="leading" secondItem="9DR-Gs-ivx" secondAttribute="trailing" constant="5" id="fyr-g3-GdF"/>
                                     <constraint firstItem="Gzu-sv-Xlz" firstAttribute="centerY" secondItem="DcB-fq-9oC" secondAttribute="centerY" id="kfr-85-H52"/>
+                                    <constraint firstAttribute="bottom" secondItem="eqm-cW-xNk" secondAttribute="bottom" id="pQn-fB-ct7"/>
+                                    <constraint firstAttribute="trailing" secondItem="eqm-cW-xNk" secondAttribute="trailing" id="sb6-Rw-eni"/>
                                     <constraint firstItem="lrq-cT-jJc" firstAttribute="leading" secondItem="ayw-1O-2HY" secondAttribute="leading" constant="16" id="tJl-lD-eqP"/>
                                     <constraint firstItem="9DR-Gs-ivx" firstAttribute="leading" secondItem="ayw-1O-2HY" secondAttribute="leading" constant="16" id="wfg-fw-1Pw"/>
                                 </constraints>

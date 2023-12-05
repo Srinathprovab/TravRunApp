@@ -23,8 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: windowScene)
-            let sb = UIStoryboard(name: "BookingDetails", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "BookingDetailsViewController")
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "ViewController")
             window?.rootViewController = vc
             window?.makeKeyAndVisible()
     }
