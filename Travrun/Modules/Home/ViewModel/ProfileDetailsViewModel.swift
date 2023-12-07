@@ -7,6 +7,11 @@
 
 import Foundation
 
+struct GenderModel {
+    var itemName: String
+    var isSelected: Bool
+}
+
 
 protocol ProfileDetailsViewModelDelegate : BaseViewModelProtocol {
     func getProfileDetails(response : ProfileDetailsModel)

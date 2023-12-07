@@ -7,14 +7,21 @@
 
 import UIKit
 
+protocol SideMenuTitleTVCellDelegate {
+    func didTaponCell(cell: SideMenuTitleTVCell)
+}
+
+
 class SideMenuTitleTVCell: TableViewCell {
 
+    @IBOutlet weak var sideMenuButton: UIButton!
     @IBOutlet weak var arrowImage: UIImageView!
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var menuOptionImg: UIImageView!
     @IBOutlet weak var menuTitlelbl: UILabel!
     @IBOutlet weak var imgWidth: NSLayoutConstraint!
     
+    var delegate: SideMenuTitleTVCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -55,6 +62,11 @@ class SideMenuTitleTVCell: TableViewCell {
         holderView.backgroundColor = .WhiteColor
         setuplabels(lbl: menuTitlelbl, text: "", textcolor: .AppLabelColor, font: .latoRegular(size: 16), align: .left)
         imgWidth.constant = 22
+    }
+    
+    
+    @IBAction func sideMenuButtonAction(_ sender: Any) {
+        delegate?.didTaponCell(cell: self)
     }
     
 }

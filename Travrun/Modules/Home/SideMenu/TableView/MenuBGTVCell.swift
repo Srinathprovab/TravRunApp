@@ -41,6 +41,8 @@ class MenuBGTVCell: TableViewCell {
         if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == true {
             loginBtn.isHidden = false
             loginBtn.isUserInteractionEnabled = false
+            loginBtn.setTitle("\(pdetails?.first_name ?? pdetails?.email ?? "") \(pdetails?.last_name ?? "")", for: .normal)
+            profileImage.sd_setImage(with: URL(string: pdetails?.image ?? "" ), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
             editProfileView.isHidden = false
         } else {
             profileImage.image = UIImage(named: "profile")?.withRenderingMode(.alwaysOriginal)

@@ -90,15 +90,51 @@ public var screenHeight: CGFloat {
     return UIScreen.main.bounds.size.height
 }
 
+//MARK: - Profile details
+var pdetails:ProfileDetails?
+
+//MARK: - Travellers Details
+//var adultTravllersArray = [TravellerData]()
+//var childTravllersArray = [TravellerData]()
+//var infantaTravllersArray = [TravellerData]()
+var checkOptionCountArray = [String]()
+var passengertypeArray = [String]()
+var genderArray = [String]()
+var leadPassengerArray = [String]()
+var middleNameArray = [String]()
+var arrayOf_SelectedCellsAdult = [IndexPath]()
+var arrayOf_SelectedCellsChild = [IndexPath]()
+var arrayOf_SelectedCellsInfanta = [IndexPath]()
+var totalNoOfTravellers = String()
+//var passengerA = [Passenger]()
+//var travelerArray: [Traveler] = []
+//var ageCategory: AgeCategory = .adult
+var latArray = [String]()
+var longArray = [String]()
+var passportExpireDateBool = false
+
+
 //MARK: - FILTER RELATED VARIABLES
 var filterTap = String()
 var filterPrice = String()
 var filterModel = FlightFilterModel()
 var sortBy: SortParameter = .nothing
 var hotelfiltermodel = HotelFilterModel()
+
 //var mapModelArray: [MapModel] = []
 
+//MARK: - HOME SCREEN
+
 struct UserDefaultsKeys {
+    static var isSelected = false
+    static var gender = "gender"
+    static var rinfantsCount = "rInfants_Count"
+    static var rchildCount = "rChild_Count"
+    static var radultCount = "rAdult_Count"
+    static var useremail = "useremail"
+    static var usermobile = "usermobile"
+    static var uname = "uname"
+    static var mcountrycode = "mcountrycode"
     static var userid = "userid"
     static var toairport = "toairport"
     static var checkin = "check_in"
@@ -120,6 +156,8 @@ struct UserDefaultsKeys {
     static var APICurrencyType = "APICurrencyType"
     static var APILanguageType = "APILanguageType"
     static var searchid = "search_id"
+    static var selectedResult = "selectedResult"
+    static var bookingsourcekey = "booking_source_key"
     static var traceId = "traceId"
     
     static var fromCity = "fromCity"
@@ -153,6 +191,12 @@ struct sessionMgrDefaults {
 }
 
 struct ApiEndpoints {
+    static let mobileUpdateTraveller = "mobileUpdateTraveller"
+    static let mobileInsertTraveller = "mobileInsertTraveller"
+    static let mobilepreprocessbooking = "mobile_pre_process_booking"
+    static let mobileprocesspassengerdetail = "mobile_process_passenger_detail"
+    static let mobileShowTraveller = "mobileShowTraveller"
+    static let mobileTravellerDetailsByOrigin = "mobileTravellerDetailsByOrigin"
     static let register = "mobile_register_on_light_box"
     static let mobileforgotpassword = "mobile_forgot_password"
     static let login = "mobile_login"
@@ -164,4 +208,5 @@ struct ApiEndpoints {
     static let currencylist = "currency_list"
     static let mobilePreFlightSearch = "mobile_pre_flight_search"
     static let getairportcodelist = "get_airport_code_list"
+    static let mobileDeleteTraveller = "mobileDeleteTraveller"
 }

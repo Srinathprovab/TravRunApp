@@ -8,14 +8,14 @@
 import UIKit
 import Alamofire
 
-struct RegistrationModel {
-    var firstName: String?
-    var lastName: String?
-    var mobileNumber: String?
-    var emailAddress: String?
-    var password: String?
-    var confirmPassword: String?
-}
+//struct RegistrationModel {
+//    var firstName: String?
+//    var lastName: String?
+//    var mobileNumber: String?
+//    var emailAddress: String?
+//    var password: String?
+//    var confirmPassword: String?
+//}
 
 
 class LoginVC: BaseTableVC, RegisterViewModelProtocal {

@@ -141,7 +141,7 @@ class HomeViewController: BaseTableVC, AllCountryCodeListViewModelDelegate, TopF
     
     
     @IBAction func sideMenuButtonAction(_ sender: Any) {
-        
+        NotificationCenter.default.post(name: NSNotification.Name("callprofileapi"), object: nil)
         self.tabBarController?.tabBar.isHidden = true
         self.sideMenuState(expanded: self.isExpanded ? false : true)
     }

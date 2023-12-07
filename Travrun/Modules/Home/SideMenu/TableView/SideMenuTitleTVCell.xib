@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -57,12 +56,26 @@
                             <constraint firstItem="X6h-7H-LhZ" firstAttribute="top" secondItem="dbG-LR-ZCm" secondAttribute="top" constant="10.67" id="mFm-n3-MZX"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yaq-rH-ySp">
+                        <rect key="frame" x="0.0" y="0.0" width="419" height="46"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="46" id="u0N-hZ-urG"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <connections>
+                            <action selector="sideMenuButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="52b-lN-msk"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="dbG-LR-ZCm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="43P-7d-Rn3"/>
                     <constraint firstAttribute="trailing" secondItem="dbG-LR-ZCm" secondAttribute="trailing" id="9Hp-KD-uHX"/>
+                    <constraint firstItem="Yaq-rH-ySp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Eta-ce-Wgu"/>
                     <constraint firstItem="dbG-LR-ZCm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="HqZ-tJ-O88"/>
                     <constraint firstAttribute="bottom" secondItem="dbG-LR-ZCm" secondAttribute="bottom" id="PSb-4a-YSJ"/>
+                    <constraint firstAttribute="bottom" secondItem="Yaq-rH-ySp" secondAttribute="bottom" id="XMl-kU-SNe"/>
+                    <constraint firstItem="Yaq-rH-ySp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="oo3-ua-k8U"/>
+                    <constraint firstAttribute="trailing" secondItem="Yaq-rH-ySp" secondAttribute="trailing" id="xg6-sw-1TJ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -72,6 +85,7 @@
                 <outlet property="imgWidth" destination="IvV-fa-EKS" id="75u-Kz-1M7"/>
                 <outlet property="menuOptionImg" destination="DBK-Un-UL1" id="Cci-Yx-i60"/>
                 <outlet property="menuTitlelbl" destination="FG2-7y-EnT" id="iV4-Vy-jiw"/>
+                <outlet property="sideMenuButton" destination="Yaq-rH-ySp" id="XZi-ro-u1w"/>
             </connections>
             <point key="canvasLocation" x="130.53435114503816" y="21.126760563380284"/>
         </tableViewCell>

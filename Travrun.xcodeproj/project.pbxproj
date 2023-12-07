@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070131722B2181B9000F45B2 /* MyAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070131712B2181B9000F45B2 /* MyAccountVC.swift */; };
+		070131752B218219000F45B2 /* SelectGenderTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070131742B218219000F45B2 /* SelectGenderTVCell.swift */; };
+		070131772B218220000F45B2 /* SelectGenderTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 070131762B218220000F45B2 /* SelectGenderTVCell.xib */; };
 		070458F12B0E0407009EDF28 /* FromCityTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 070458F02B0E0407009EDF28 /* FromCityTVCell.xib */; };
 		070458F32B0E040D009EDF28 /* FromCityTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070458F22B0E040D009EDF28 /* FromCityTVCell.swift */; };
 		0704C2B52B14B3DC004ADE6F /* ImportentInfoSubTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0704C2B32B14B3DC004ADE6F /* ImportentInfoSubTableViewCell.swift */; };
@@ -255,7 +258,6 @@
 		3D9024652AFCF5090020C38A /* DashBoardTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9024642AFCF5090020C38A /* DashBoardTabBarViewController.swift */; };
 		3D90246B2AFCF5800020C38A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D90246A2AFCF5800020C38A /* HomeViewController.swift */; };
 		3D90246D2AFCF59E0020C38A /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D90246C2AFCF59E0020C38A /* MoreViewController.swift */; };
-		3D90246F2AFCF5A80020C38A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D90246E2AFCF5A80020C38A /* ProfileViewController.swift */; };
 		3D9024732AFCFD320020C38A /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9024722AFCFD320020C38A /* TripsViewController.swift */; };
 		3DD95B092AFDEC9000F4092D /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D9024762AFD12FC0020C38A /* Lato-Thin.ttf */; };
 		3DD95B0A2AFDEC9700F4092D /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D9024792AFD13670020C38A /* Lato-Black.ttf */; };
@@ -266,6 +268,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		070131712B2181B9000F45B2 /* MyAccountVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAccountVC.swift; sourceTree = "<group>"; };
+		070131742B218219000F45B2 /* SelectGenderTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectGenderTVCell.swift; sourceTree = "<group>"; };
+		070131762B218220000F45B2 /* SelectGenderTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectGenderTVCell.xib; sourceTree = "<group>"; };
 		070458F02B0E0407009EDF28 /* FromCityTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FromCityTVCell.xib; sourceTree = "<group>"; };
 		070458F22B0E040D009EDF28 /* FromCityTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FromCityTVCell.swift; sourceTree = "<group>"; };
 		0704C2B32B14B3DC004ADE6F /* ImportentInfoSubTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportentInfoSubTableViewCell.swift; sourceTree = "<group>"; };
@@ -515,7 +520,6 @@
 		3D9024642AFCF5090020C38A /* DashBoardTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoardTabBarViewController.swift; sourceTree = "<group>"; };
 		3D90246A2AFCF5800020C38A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		3D90246C2AFCF59E0020C38A /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
-		3D90246E2AFCF5A80020C38A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3D9024722AFCFD320020C38A /* TripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsViewController.swift; sourceTree = "<group>"; };
 		3D9024742AFD12E80020C38A /* latoregular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = latoregular.ttf; sourceTree = "<group>"; };
 		3D9024752AFD12F30020C38A /* latosemibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = latosemibold.ttf; sourceTree = "<group>"; };
@@ -540,6 +544,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		070131732B21820E000F45B2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				070131742B218219000F45B2 /* SelectGenderTVCell.swift */,
+				070131762B218220000F45B2 /* SelectGenderTVCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		07077E902B0F152200D0010C /* AllCountryCodeListModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -621,6 +634,7 @@
 		076984D12B1A037F002422AF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				078DB0502B2092AC003D7896 /* Booking Details */,
 				076984D32B1A03DB002422AF /* BookingDetailsViewModel.swift */,
 			);
 			path = ViewModel;
@@ -681,6 +695,21 @@
 				078BF7E12B0C67A600174A80 /* Summary.swift */,
 			);
 			path = OneWay;
+			sourceTree = "<group>";
+		};
+		078DB0502B2092AC003D7896 /* Booking Details */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Booking Details";
+			sourceTree = "<group>";
+		};
+		078DB0622B209302003D7896 /* TravellerViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = TravellerViewModel;
+			path = ../../../../../../BabsafarApp/BabSafar/App/Config/Scenes/Flights/ViewModel/TravellerViewModel;
 			sourceTree = "<group>";
 		};
 		07C454BB2B07284800D0E53D /* Flight */ = {
@@ -746,6 +775,7 @@
 		07C454C12B07289A00D0E53D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				078DB0622B209302003D7896 /* TravellerViewModel */,
 				07E0E62A2B0DFD51008448EA /* SelectCityViewModel.swift */,
 				078BF7F92B0C861600174A80 /* FlightListModel.swift */,
 				074946FC2B16030300238F8D /* AllCountryCodeListViewModel.swift */,
@@ -788,6 +818,7 @@
 				07C480FA2B1ED825007030C8 /* ViewModel */,
 				07C480F82B1ED7D9007030C8 /* LoginVC.swift */,
 				07C481232B1EE211007030C8 /* Login.storyboard */,
+				07C4812F2B1F2DB2007030C8 /* CreateNewPasswordVC.swift */,
 				07C4812D2B1F2CF5007030C8 /* ResetPasswordVC.swift */,
 				07C481292B1EEACC007030C8 /* LoginViewController.swift */,
 				07C4812B2B1F1D78007030C8 /* RegisterViewController.swift */,
@@ -798,7 +829,6 @@
 		07C480FA2B1ED825007030C8 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				07C4812F2B1F2DB2007030C8 /* CreateNewPasswordVC.swift */,
 				07C480FB2B1ED825007030C8 /* LogoutViewModel.swift */,
 				07C480FD2B1ED825007030C8 /* ResetPasswordViewModel.swift */,
 				07C480FE2B1ED825007030C8 /* RegisterViewModel.swift */,
@@ -1296,7 +1326,8 @@
 		3D9024682AFCF5380020C38A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				3D90246E2AFCF5A80020C38A /* ProfileViewController.swift */,
+				070131732B21820E000F45B2 /* Views */,
+				070131712B2181B9000F45B2 /* MyAccountVC.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1399,6 +1430,7 @@
 				07C4811C2B1EDA40007030C8 /* UnderLineTVCell.xib in Resources */,
 				07CD5CE42B149DA300D49204 /* PassangerDetailsTableViewCell.xib in Resources */,
 				07ED14ED2B18ABBB005A2618 /* SliderTVCell.xib in Resources */,
+				070131772B218220000F45B2 /* SelectGenderTVCell.xib in Resources */,
 				07CC2B192B10BF1300A71A30 /* ContactUsLabelTVCell.xib in Resources */,
 				07CD5CD02B147A9100D49204 /* BookedTravelDetailsTVCell.xib in Resources */,
 				3DD95B0E2AFDECBE00F4092D /* latoregular.ttf in Resources */,
@@ -1665,8 +1697,10 @@
 				07C481142B1ED853007030C8 /* Country_code.swift in Sources */,
 				078BF7F32B0C67A600174A80 /* ADT.swift in Sources */,
 				078BF7BF2B0C679900174A80 /* RoundTripModel.swift in Sources */,
+				070131752B218219000F45B2 /* SelectGenderTVCell.swift in Sources */,
 				07C481012B1ED825007030C8 /* ResetPasswordViewModel.swift in Sources */,
 				07F4842B2B06199600AAB84A /* SelectLanguageViewController.swift in Sources */,
+				070131722B2181B9000F45B2 /* MyAccountVC.swift in Sources */,
 				3D9024652AFCF5090020C38A /* DashBoardTabBarViewController.swift in Sources */,
 				07C733CC2B16FB420034CEFE /* ProfileDetailsViewModel.swift in Sources */,
 				3D5DEF772AFCC039007E3265 /* UIFontHelper.swift in Sources */,
@@ -1680,7 +1714,6 @@
 				07DD95CB2B04C92D0021494E /* SideMenuTitleTVCell.swift in Sources */,
 				07E0E6152B0DC6E9008448EA /* Booking_details.swift in Sources */,
 				07CC2B0D2B10AC8000A71A30 /* FareRulesTableViewCell.swift in Sources */,
-				3D90246F2AFCF5A80020C38A /* ProfileViewController.swift in Sources */,
 				07522E5D2B037EF500FA4236 /* StoryboardExtension.swift in Sources */,
 				078BF7EB2B0C67A600174A80 /* Class.swift in Sources */,
 				07C733D22B170DB10034CEFE /* ProfileDetailsModel.swift in Sources */,

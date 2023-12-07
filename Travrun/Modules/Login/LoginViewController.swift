@@ -45,6 +45,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, RegisterViewMo
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        addObserver()
+    }
+    
     func setiupUI()  {
         holderView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         holderView.layer.cornerRadius = 30
@@ -124,7 +128,7 @@ extension LoginViewController {
             let seconds = 2.0
             DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {[self] in
                 
-                if isVcFrom == "BookingDetailsVC" || isVcFrom == "SideMenuVC"{
+                if isVcFrom == "BookingDetailsViewController" || isVcFrom == "SideMenuViewController"{
                     NotificationCenter.default.post(name: NSNotification.Name("reloadAfterLogin"), object: nil)
                     self.dismiss(animated: true)
                 }else {
@@ -140,4 +144,32 @@ extension LoginViewController {
         vc.selectedIndex = 0
         present(vc, animated: true)
     }
+
+}
+
+
+extension LoginViewController {
+    
+    func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
+    }
+    
+    //MARK: - resultnil
+    @objc func resultnil() {
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = "noresult"
+        self.present(vc, animated: true)
+    }
+    
+    
+    //MARK: - nointernet
+    @objc func nointernet() {
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = "nointernet"
+        self.present(vc, animated: true)
+    }
+    
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AddAdultTableViewCell: UITableViewCell, UITextFieldDelegate {
+class AddAdultTableViewCell: TableViewCell{
 
     @IBOutlet weak var dobTF: UITextField!
     @IBOutlet weak var lnameTF: UITextField!

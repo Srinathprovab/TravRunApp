@@ -7,8 +7,9 @@
 
 import UIKit
 
-class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate, LabelTVCellDelegate, RegisterUserTVCellDelegate, UnderLineTVCellPrtocal, TextfieldTVCellDelegate {
-   
+class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate, LabelTVCellDelegate, RegisterUserTVCellDelegate, UnderLineTVCellPrtocal, TextfieldTVCellDelegate, MenuBGTVCellDelegate, SideMenuTitleTVCellDelegate, SelectGenderTVCellDelegate {
+    
+  
     @IBOutlet weak var commonScrollView: UITableView!
     @IBOutlet weak var commonTableView: UITableView!
     
@@ -93,6 +94,8 @@ class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDe
     
     //Delegate Methods
     
+    func didTapOnLoginBtn(cell: MenuBGTVCell) {}
+    func didTapOnEditProfileBtn(cell: MenuBGTVCell) {}
     func didTapOnForGetPassword(cell: TextfieldTVCell) {}
     func didTapOnShowPasswordBtn(cell: TextfieldTVCell) {}
     func donedatePicker(cell: TextfieldTVCell) {}
@@ -132,10 +135,11 @@ class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDe
     func didTapOnCountryCodeBtnAction(cell: RegisterUserTVCell) {}
     func didTapOnLoginBtn(cell: UnderLineTVCell) {}
     func didTapOnSignUpBtn(cell: UnderLineTVCell) {}
-    
-    
-   
-    
+    func didTaponCell(cell: SideMenuTitleTVCell) {}
+    func didSelectMaleRadioBtn(cell: SelectGenderTVCell) {}
+    func didSelectOnFemaleBtn(cell: SelectGenderTVCell) {}
+    func didSelectOnOthersBtn(cell: SelectGenderTVCell) {}
+    func didTapOnSaveBtn(cell: SelectGenderTVCell) {}
 }
 
 extension BaseTableVC: UITableViewDelegate {
@@ -215,10 +219,12 @@ extension BaseTableVC: UITableViewDataSource {
             
             case .SideMenuTitleTVCell:
                 let cell: SideMenuTitleTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
                 commonCell = cell
 
             case .MenuBGTVCell:
                 let cell: MenuBGTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
                 commonCell = cell
                 
             case .QuickLinkTableViewCell:
@@ -368,7 +374,15 @@ extension BaseTableVC: UITableViewDataSource {
                 cell.delegate = self
                 commonCell = cell
                 
+            case .AddAdultTableViewCell :
+                let cell: AddAdultTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
+//                cell.delegate = self
+                commonCell = cell
                 
+            case .SelectGenderTVCell :
+                let cell: SelectGenderTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
+                commonCell = cell
                 
             default:
                 print("handle this case in getCurrentCellAt")

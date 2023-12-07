@@ -7,6 +7,16 @@
 
 import UIKit
 
+struct RegistrationModel {
+    var firstName: String?
+    var lastName: String?
+    var mobileNumber: String?
+    var emailAddress: String?
+    var password: String?
+    var confirmPassword: String?
+}
+
+
 class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterViewModelProtocal  {
    
     @IBOutlet weak var containerView: UIView!
@@ -46,6 +56,11 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterVie
         setiupUI()
     
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        addObserver()
+    }
+    
     
     func setiupUI()  {
         containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -148,3 +163,31 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterVie
     
     func loginDetails(response: LoginModel) {}
 }
+
+extension RegisterViewController {
+    
+    func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
+    }
+    
+    //MARK: - resultnil
+    @objc func resultnil() {
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = "noresult"
+        self.present(vc, animated: true)
+    }
+    
+    
+    //MARK: - nointernet
+    @objc func nointernet() {
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = "nointernet"
+        self.present(vc, animated: true)
+    }
+    
+    
+}
+
