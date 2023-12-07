@@ -182,6 +182,8 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
         
         if let journeyType = defaults.string(forKey: UserDefaultsKeys.journeyType) {
             if journeyType == "oneway" {
+    
+                infantsCount = Int(defaults.string(forKey: UserDefaultsKeys.infantsCount) ?? "0") ?? 0
                 fromSubtitleLabel.text = defaults.string(forKey: UserDefaultsKeys.fromcityCode) ?? ""
                 toSubtitleLabel.text = defaults.string(forKey: UserDefaultsKeys.toCityCode) ?? ""
                 fromTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.fromCity) ?? ""
