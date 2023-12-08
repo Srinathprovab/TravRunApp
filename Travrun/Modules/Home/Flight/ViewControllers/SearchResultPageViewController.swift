@@ -22,6 +22,12 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
     @IBOutlet weak var backButtonView: UIView!
     @IBOutlet weak var editButtonView: UIView!
     
+    
+    var adult = defaults.string(forKey:UserDefaultsKeys.adultCount)
+    var child = defaults.string(forKey:UserDefaultsKeys.childCount)
+    var infant = defaults.string(forKey:UserDefaultsKeys.infantsCount)
+    var eClass = defaults.string(forKey:UserDefaultsKeys.selectClass)
+    
     var lastContentOffset: CGFloat = 0
     static var newInstance: SearchResultPageViewController? {
         let storyboard = UIStoryboard(name: Storyboard.FlightStoryBoard.name,
@@ -71,6 +77,7 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
     }
     
     func setUpView() {
+        personsCategoryLabel.text = "\(adult ?? "0") Adults | \(child ?? "0") Children | \(infant ?? "") infants | \(eClass ?? "0")"
         backButtonView.layer.cornerRadius = backButtonView.layer.frame.width / 2
         editButtonView.layer.cornerRadius = editButtonView.layer.frame.width / 2
         leftButtonView.layer.cornerRadius = leftButtonView.layer.frame.width / 2

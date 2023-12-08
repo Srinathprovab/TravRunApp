@@ -7,8 +7,8 @@
 
 import UIKit
 
-class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate, LabelTVCellDelegate, RegisterUserTVCellDelegate, UnderLineTVCellPrtocal, TextfieldTVCellDelegate, MenuBGTVCellDelegate, SideMenuTitleTVCellDelegate, SelectGenderTVCellDelegate {
-    
+class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate, LabelTVCellDelegate, RegisterUserTVCellDelegate, UnderLineTVCellPrtocal, TextfieldTVCellDelegate, MenuBGTVCellDelegate, SideMenuTitleTVCellDelegate, SelectGenderTVCellDelegate, RegisterNowTableViewCellDelegate, LoginDetailsTableViewCellDelegate {
+  
   
     @IBOutlet weak var commonScrollView: UITableView!
     @IBOutlet weak var commonTableView: UITableView!
@@ -140,6 +140,8 @@ class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDe
     func didSelectOnFemaleBtn(cell: SelectGenderTVCell) {}
     func didSelectOnOthersBtn(cell: SelectGenderTVCell) {}
     func didTapOnSaveBtn(cell: SelectGenderTVCell) {}
+    func loginNowButtonAction(cell: RegisterNowTableViewCell, email: String, pass: String) {}
+    func RegisterNowButtonAction(cell: LoginDetailsTableViewCell, email: String, pass: String, phone: String) {}
 }
 
 extension BaseTableVC: UITableViewDelegate {
@@ -340,10 +342,12 @@ extension BaseTableVC: UITableViewDataSource {
                 
             case .RegisterNowTableViewCell :
                 let cell: RegisterNowTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
                 commonCell = cell
                 
             case .LoginDetailsTableViewCell :
                 let cell: LoginDetailsTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
                 commonCell = cell
                 
                 
@@ -384,6 +388,11 @@ extension BaseTableVC: UITableViewDataSource {
                 cell.delegate = self
                 commonCell = cell
                 
+            case .AddressTableViewCell :
+                let cell: AddressTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+            
             default:
                 print("handle this case in getCurrentCellAt")
             }

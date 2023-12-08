@@ -17,6 +17,8 @@
 		07077E932B0F152200D0010C /* AllCountryCodeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07077E912B0F152200D0010C /* AllCountryCodeListModel.swift */; };
 		07077E942B0F152200D0010C /* All_country_code_list.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07077E922B0F152200D0010C /* All_country_code_list.swift */; };
 		07077E962B0F595200D0010C /* FlightDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07077E952B0F595200D0010C /* FlightDetailsViewController.swift */; };
+		0731145C2B2314EE00394AC5 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0731145A2B2314ED00394AC5 /* AddressTableViewCell.swift */; };
+		0731145D2B2314EE00394AC5 /* AddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0731145B2B2314ED00394AC5 /* AddressTableViewCell.xib */; };
 		074946FD2B16030300238F8D /* AllCountryCodeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074946FC2B16030300238F8D /* AllCountryCodeListViewModel.swift */; };
 		074946FF2B1611D600238F8D /* ProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074946FE2B1611D600238F8D /* ProcessingViewController.swift */; };
 		07522E592B036DD200FA4236 /* TopCityCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07522E582B036DD200FA4236 /* TopCityCVCell.xib */; };
@@ -278,6 +280,8 @@
 		07077E912B0F152200D0010C /* AllCountryCodeListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCountryCodeListModel.swift; sourceTree = "<group>"; };
 		07077E922B0F152200D0010C /* All_country_code_list.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = All_country_code_list.swift; sourceTree = "<group>"; };
 		07077E952B0F595200D0010C /* FlightDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailsViewController.swift; sourceTree = "<group>"; };
+		0731145A2B2314ED00394AC5 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
+		0731145B2B2314ED00394AC5 /* AddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressTableViewCell.xib; sourceTree = "<group>"; };
 		074946FC2B16030300238F8D /* AllCountryCodeListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCountryCodeListViewModel.swift; sourceTree = "<group>"; };
 		074946FE2B1611D600238F8D /* ProcessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessingViewController.swift; sourceTree = "<group>"; };
 		07522E582B036DD200FA4236 /* TopCityCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopCityCVCell.xib; sourceTree = "<group>"; };
@@ -627,6 +631,8 @@
 				07B79FD12B1DD13B006AC03F /* FareSummaryTableViewCell.xib */,
 				07B79FD42B1DD68B006AC03F /* FareTableViewCell.swift */,
 				07B79FD52B1DD68B006AC03F /* FareTableViewCell.xib */,
+				0731145A2B2314ED00394AC5 /* AddressTableViewCell.swift */,
+				0731145B2B2314ED00394AC5 /* AddressTableViewCell.xib */,
 			);
 			path = TableViews;
 			sourceTree = "<group>";
@@ -1421,6 +1427,7 @@
 			files = (
 				07E0E6192B0DC6E9008448EA /* Calender.storyboard in Resources */,
 				07C454CD2B074B3900D0E53D /* Inter-Medium.otf in Resources */,
+				0731145D2B2314EE00394AC5 /* AddressTableViewCell.xib in Resources */,
 				078BF7F62B0C6A1500174A80 /* AddFlightInfoTVCell.xib in Resources */,
 				3D0B28A72AFE0E70001E1A69 /* SpecialDealsCVCell.xib in Resources */,
 				07ED14DD2B184A88005A2618 /* SortbyTVCell.xib in Resources */,
@@ -1680,6 +1687,7 @@
 				3D5DEF702AFCC039007E3265 /* BaseTableVC.swift in Sources */,
 				07C4812C2B1F1D78007030C8 /* RegisterViewController.swift in Sources */,
 				07CD5CD82B147C1200D49204 /* ICustomer_details.swift in Sources */,
+				0731145C2B2314EE00394AC5 /* AddressTableViewCell.swift in Sources */,
 				3D0B28A92AFE0E77001E1A69 /* SpecialDealsCVCell.swift in Sources */,
 				078BF7F82B0C6A2000174A80 /* AddFlightInfoTVCell.swift in Sources */,
 				07CC2B012B106A7A00A71A30 /* FlightInfoTableViewCell.swift in Sources */,

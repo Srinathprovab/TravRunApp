@@ -757,6 +757,7 @@
                 <outlet property="passengerSelectionTextfield" destination="nMA-J1-0xZ" id="dsc-0h-eWD"/>
                 <outlet property="passportIssueingCountrySelectBtn" destination="GWx-nF-9yT" id="a4s-Vy-hdr"/>
                 <outlet property="passportIssuingCountryTF" destination="m3z-e6-fvb" id="hOz-8D-vZB"/>
+                <outlet property="switchButton" destination="II9-rU-thA" id="Oja-p7-sfU"/>
             </connections>
             <point key="canvasLocation" x="485.49618320610688" y="67.25352112676056"/>
         </tableViewCell>

@@ -64,6 +64,7 @@ enum TVCellType {
     case UnderLineTVCell
     case AddAdultTableViewCell
     case SelectGenderTVCell
+    case AddressTableViewCell
 }
 
 enum CVCellType {

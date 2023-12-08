@@ -9,6 +9,7 @@ import UIKit
 
 class AddAdultTableViewCell: TableViewCell{
 
+    @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var dobTF: UITextField!
     @IBOutlet weak var lnameTF: UITextField!
     @IBOutlet weak var FnameTF: UITextField!

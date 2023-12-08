@@ -8,6 +8,10 @@
 import UIKit
 import Toast_Swift
 
+protocol RegisterNowTableViewCellDelegate {
+    func loginNowButtonAction(cell: RegisterNowTableViewCell, email: String, pass: String)
+}
+
 class RegisterNowTableViewCell: TableViewCell {
 
     @IBOutlet weak var phoneNumberTextfld: UITextField!
@@ -19,13 +23,15 @@ class RegisterNowTableViewCell: TableViewCell {
     @IBOutlet weak var passwordTxtfld: UITextField!
     var email = String()
     var pass = String()
+    
+    var delegate: RegisterNowTableViewCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
         emailTextFld.placeholder = "Email Address"
         passwordTxtfld.placeholder = "Password"
-        
+        registerNowButton.setTitle("Login", for: .normal)
         emailTextFld.layer.borderWidth = 0.7
         emailTextFld.setLeftPaddingPoints(10)
         phoneNumberTextfld.setLeftPaddingPoints(10)
@@ -48,7 +54,7 @@ class RegisterNowTableViewCell: TableViewCell {
     override func updateUI() {
         if cellInfo?.key == "register" {
             middleView.isHidden = true
-            registerNowButton.setTitle("Register Now", for: .normal)
+           
         } else {
             middleView.isHidden = false
             registerNowButton.setTitle("login", for: .normal)
@@ -86,10 +92,10 @@ class RegisterNowTableViewCell: TableViewCell {
     }
     
     @IBAction func continueButtonAction(_ sender: Any) {
-        
+    
         if (emailTextFld.text != nil) && passwordTxtfld.text != ""
         {
-    
+            delegate?.loginNowButtonAction(cell: self, email: email, pass: pass)
         } else {
             showToastMsg(message: "Enter the details")
         }

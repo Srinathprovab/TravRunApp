@@ -84,6 +84,8 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
     var count = 0
     var adultsCount = 1
     var childCount = 0
+    var economy = String()
+    var toEco = String()
     var infantsCount = 0
     var nationalityCode = String()
     var billingCountryName = String()
@@ -138,7 +140,7 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
             childPlusLabel.textColor = .AppLabelColor
             childPlusView.backgroundColor = .clear
         }
-        
+    
         self.adultCountLabel.text = "\(adultsCount)"
         self.fromTitleLabel.textColor = UIColor.AppLabelColor
         self.toTitleLabel.textColor = UIColor.AppLabelColor
@@ -182,15 +184,17 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
         
         if let journeyType = defaults.string(forKey: UserDefaultsKeys.journeyType) {
             if journeyType == "oneway" {
-    
+                economy = defaults.string(forKey: UserDefaultsKeys.selectClass) ?? ""
                 infantsCount = Int(defaults.string(forKey: UserDefaultsKeys.infantsCount) ?? "0") ?? 0
                 fromSubtitleLabel.text = defaults.string(forKey: UserDefaultsKeys.fromcityCode) ?? ""
                 toSubtitleLabel.text = defaults.string(forKey: UserDefaultsKeys.toCityCode) ?? ""
-                fromTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.fromCity) ?? ""
+                fromTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.fromCity) ?? "Origin"
                 toTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.toCity) ?? ""
                 self.departureDateLabel.text = defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "Departure Date"
                 self.returnDateLabel.text = defaults.string(forKey: UserDefaultsKeys.rcalRetDate) ?? "Return Date"
             } else {
+//                defaults.string(forKey:UserDefaultsKeys.selectClass)
+                toEco = defaults.string(forKey:UserDefaultsKeys.rselectClass) ?? ""
                 fromSubtitleLabel.text = defaults.string(forKey: UserDefaultsKeys.fromcityCode) ?? ""
                 toSubtitleLabel.text = defaults.string(forKey: UserDefaultsKeys.toCityCode) ?? ""
                 fromTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.fromCity) ?? ""
@@ -279,11 +283,16 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
     @IBAction func fromEconomyButtonAction(_ sender: Any) {
         fromEconomyDropdown.show()
         setupfromEconomyDropDown()
+        economy = fromDropdownLabel.text ?? ""
+        defaults.set(economy, forKey: UserDefaultsKeys.selectClass)
     }
     
     @IBAction func toEconomyButtonAction(_ sender: Any) {
         toEconomyDropdown.show()
         setupToEconomyDropDown()
+        toEco = toDropDownLabel.text ?? ""
+//        defaults.set(economy, forKey: UserDefaultsKeys.selectClass)
+        defaults.set(toEco, forKey: UserDefaultsKeys.rselectClass)
     }
     
     @IBAction func departureButtonAction(_ sender: Any) {
@@ -300,6 +309,8 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
 //            self.counts -= 1
             adultCountLabel.text = "\(adultsCount)"
         }
+        
+        defaults.set(adultsCount, forKey: UserDefaultsKeys.adultCount)
     }
     
     @IBAction func childDecrementButtonAction(_ sender: Any) {
@@ -308,6 +319,7 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
             childCountLabel.text = "\(self.counts)"
         }
         childCount = self.counts
+        defaults.set(childCount, forKey: UserDefaultsKeys.childCount)
     }
     
     @IBAction func childIncrementButtonAction(_ sender: Any) {
@@ -319,6 +331,8 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
             }
             childCount = self.counts
         }
+        
+        defaults.set(childCount, forKey: UserDefaultsKeys.childCount)
     }
     
     @IBAction func infantsDecrementButtonAction(_ sender: Any) {
@@ -328,6 +342,8 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
             self.counts -= 1
              infantsCountLabel.text = "\(self.counts)"
         }
+        
+        defaults.set(infantsCount, forKey: UserDefaultsKeys.infantsCount)
     }
     
     @IBAction func infantsIncrementButtonAction(_ sender: Any) {
@@ -337,13 +353,14 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
             self.counts += 1
             infantsCountLabel.text = "\(infantsCount)"
         }
+        defaults.set(infantsCount, forKey: UserDefaultsKeys.infantsCount)
     }
     
     @IBAction func toCancelButtonAction(_ sender: Any) {
         toTextField.text = ""
         toTitleLabel.text = ""
         toSubtitleLabel.text = ""
-        toTextField.placeholder = "Destination"
+//        toTextField.placeholder = "Destination"
     }
     @IBAction func outwardsButtonAction(_ sender: Any) {
         ouwardsDropDown.show()
@@ -365,6 +382,8 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
             self.counts += 1
             adultCountLabel.text = "\(adultsCount)"
         }
+        
+        defaults.set(adultsCount, forKey: UserDefaultsKeys.adultCount)
     }
     
     @IBAction func directFlightCheckBoxAction(_ sender: Any) {
@@ -398,7 +417,7 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
         fromTextfiled.text = ""
         fromTitleLabel.text = ""
         fromSubtitleLabel.text = ""
-        fromTextfiled.placeholder = "Origin"
+//        fromTextfiled.placeholder = "Origin"
     }
     
     
@@ -407,13 +426,11 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
     @objc func textFiledEditingChanged(_ textField:UITextField) {
         if textField == fromTextfiled {
             txtbool = true
-            fromTextfiled.placeholder = "Origin"
             self.fromSubtitleLabel.text = ""
             self.fromTitleLabel.text = ""
             CallShowCityListAPI(str: textField.text ?? "")
         }else  if textField == toTextField {
             txtbool = false
-            toTextField.placeholder = "Destination"
             self.toSubtitleLabel.text = ""
             self.toTitleLabel.text = ""
             CallShowCityListAPI(str: textField.text ?? "")
@@ -612,17 +629,26 @@ extension OneWayTableViewCell: UITableViewDelegate, UITableViewDataSource {
             
             if tableView == fromTV {
                 fromSubtitleLabel.text = cityList[indexPath.row].code ?? ""
-                fromTitleLabel.text = cityList[indexPath.row].city ?? ""
+                if  fromTextfiled.text != "" {
+                    fromTitleLabel.textColor = .AppLabelColor
+                    fromTitleLabel.font = .InterMedium(size: 16)
+                    fromTitleLabel.text = cityList[indexPath.row].label ?? ""
+                } else {
+                    fromTitleLabel.textColor = .lightGray
+                    fromTitleLabel.font = .InterMedium(size: 16)
+                    fromTitleLabel.text = "Origin"
+                }
+    
                 fromTitleLabel.textColor = .AppLabelColor
-                fromTextfiled.text = ""
-                fromTextfiled.placeholder = ""
+//                fromTextfiled.text = ""
+//                fromTextfiled.placeholder = ""
                 fromTextfiled.resignFirstResponder()
                 
                 if let selectedJType = defaults.string(forKey: UserDefaultsKeys.journeyType) {
                     if selectedJType == "circle" {
                         defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.fromcityCode)
                         defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.toCityCode)
-                        defaults.set(cityList[indexPath.row].city ?? "", forKey: UserDefaultsKeys.fromCity)
+                        defaults.set(cityList[indexPath.row].label ?? "", forKey: UserDefaultsKeys.fromCity)
                         defaults.set(cityList[indexPath.row].id ?? "", forKey: UserDefaultsKeys.fromlocid)
                         defaults.set("\(cityList[indexPath.row].city ?? "") (\(cityList[indexPath.row].code ?? ""))", forKey: UserDefaultsKeys.fromairport)
                         defaults.set(cityList[indexPath.row].city ?? "", forKey: UserDefaultsKeys.fromcityname)
@@ -630,7 +656,7 @@ extension OneWayTableViewCell: UITableViewDelegate, UITableViewDataSource {
                     } else {
                         defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.fromcityCode)
                         defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.toCityCode)
-                        defaults.set(cityList[indexPath.row].city ?? "", forKey: UserDefaultsKeys.fromCity)
+                        defaults.set(cityList[indexPath.row].label ?? "", forKey: UserDefaultsKeys.fromCity)
                         defaults.set(cityList[indexPath.row].id ?? "", forKey: UserDefaultsKeys.fromlocid)
                         defaults.set("\(cityList[indexPath.row].city ?? "") (\(cityList[indexPath.row].code ?? ""))", forKey: UserDefaultsKeys.fromairport)
                         defaults.set(cityList[indexPath.row].city ?? "", forKey: UserDefaultsKeys.fromcityname)
@@ -640,7 +666,7 @@ extension OneWayTableViewCell: UITableViewDelegate, UITableViewDataSource {
                 fromTVHeight.constant = 0
             } else {
                 toSubtitleLabel.text = cityList[indexPath.row].code ?? ""
-                toTitleLabel.text = cityList[indexPath.row].city ?? ""
+                toTitleLabel.text = cityList[indexPath.row].label ?? ""
                 toTitleLabel.textColor = .AppLabelColor
                 toTextField.text = ""
                 toTextField.placeholder = ""
@@ -650,7 +676,7 @@ extension OneWayTableViewCell: UITableViewDelegate, UITableViewDataSource {
                     if selectedJType == "circle" {
                         defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.fromcityCode)
                         defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.toCityCode)
-                        defaults.set(cityList[indexPath.row].city ?? "", forKey: UserDefaultsKeys.toCity)
+                        defaults.set(cityList[indexPath.row].label ?? "", forKey: UserDefaultsKeys.toCity)
                         defaults.set(cityList[indexPath.row].id ?? "", forKey: UserDefaultsKeys.tolocid)
                         defaults.set("\(cityList[indexPath.row].city ?? "") (\(cityList[indexPath.row].code ?? ""))", forKey: UserDefaultsKeys.toairport)
                         defaults.set(cityList[indexPath.row].city ?? "", forKey: UserDefaultsKeys.tocityname)
@@ -658,7 +684,7 @@ extension OneWayTableViewCell: UITableViewDelegate, UITableViewDataSource {
                     }else {
                         defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.fromcityCode)
                         defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.toCityCode)
-                        defaults.set(cityList[indexPath.row].city ?? "", forKey: UserDefaultsKeys.toCity)
+                        defaults.set(cityList[indexPath.row].label ?? "", forKey: UserDefaultsKeys.toCity)
                         defaults.set(cityList[indexPath.row].id ?? "", forKey: UserDefaultsKeys.tolocid)
                         defaults.set("\(cityList[indexPath.row].city ?? "") (\(cityList[indexPath.row].code ?? ""))", forKey: UserDefaultsKeys.toairport)
                         defaults.set(cityList[indexPath.row].city ?? "", forKey: UserDefaultsKeys.tocityname)

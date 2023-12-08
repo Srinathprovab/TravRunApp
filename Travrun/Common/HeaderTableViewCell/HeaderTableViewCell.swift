@@ -9,11 +9,13 @@ import UIKit
 
 class HeaderTableViewCell: TableViewCell {
 
+    @IBOutlet weak var buttonView: BorderedView!
     @IBOutlet weak var leadingCopnst: NSLayoutConstraint!
     @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        buttonView.isHidden = true
     }
     
     override func updateUI() {
@@ -48,6 +50,11 @@ class HeaderTableViewCell: TableViewCell {
             titleLabel.text = cellInfo?.key
             titleLabel.font = UIFont.InterMedium(size: 20)
             titleLabel.textColor = .AppLabelColor
+        }
+        
+        if cellInfo?.title == "AddAdult" {
+            buttonView.isHidden = false
+            titleLabel.isHidden = true
         }
     }
 
