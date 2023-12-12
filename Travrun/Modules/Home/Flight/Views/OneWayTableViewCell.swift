@@ -8,6 +8,7 @@
 import UIKit
 import DropDown
 
+
 protocol OneWayTableViewCellDelegate {
     func didTapOnReturnToOnewayBtnAction(cell: OneWayTableViewCell)
     func didTapOnDepartureBtnAction(cell: OneWayTableViewCell)
@@ -19,6 +20,7 @@ protocol OneWayTableViewCellDelegate {
 }
 
 class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
+    
     func ShowCityListMulticity(response: [SelectCityModel]) {}
     
     @IBOutlet weak var infantsPlusLabel: UILabel!
@@ -79,7 +81,7 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var holderView: UIView!
     
-
+    var isCheckin = Bool()
     var counts = 0
     var count = 0
     var adultsCount = 1
@@ -123,7 +125,7 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
         cityViewModel = SelectCityViewModel(self)
         fromTextfiled.delegate = self
         toTextField.delegate = self
-//        airlineTF.delegate = self
+        //        airlineTF.delegate = self
         
         if infantsCount != 0 {
             infantsPlusLabel.textColor = .white
@@ -140,7 +142,7 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
             childPlusLabel.textColor = .AppLabelColor
             childPlusView.backgroundColor = .clear
         }
-    
+        
         self.adultCountLabel.text = "\(adultsCount)"
         self.fromTitleLabel.textColor = UIColor.AppLabelColor
         self.toTitleLabel.textColor = UIColor.AppLabelColor
@@ -158,7 +160,7 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
         setupDropDown()
         airlineTF.addTarget(self, action: #selector(searchTextChanged(textField:)), for: .editingChanged)
         airlineTF.addTarget(self, action: #selector(searchTextBegin(textField:)), for: .editingDidBegin)
-
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -177,6 +179,8 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
     }
     
     override func updateUI() {
+        
+        self.isCheckin = ((cellInfo?.isEditable) != nil)
         setupTV()
         fromTVHeight.constant = 0
         toTVHeight.constant = 0
@@ -189,16 +193,16 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
                 fromSubtitleLabel.text = defaults.string(forKey: UserDefaultsKeys.fromcityCode) ?? ""
                 toSubtitleLabel.text = defaults.string(forKey: UserDefaultsKeys.toCityCode) ?? ""
                 fromTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.fromCity) ?? "Origin"
-                toTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.toCity) ?? ""
+                toTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.toCity) ?? "Destination"
                 self.departureDateLabel.text = defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "Departure Date"
                 self.returnDateLabel.text = defaults.string(forKey: UserDefaultsKeys.rcalRetDate) ?? "Return Date"
             } else {
-//                defaults.string(forKey:UserDefaultsKeys.selectClass)
+                //                defaults.string(forKey:UserDefaultsKeys.selectClass)
                 toEco = defaults.string(forKey:UserDefaultsKeys.rselectClass) ?? ""
                 fromSubtitleLabel.text = defaults.string(forKey: UserDefaultsKeys.fromcityCode) ?? ""
                 toSubtitleLabel.text = defaults.string(forKey: UserDefaultsKeys.toCityCode) ?? ""
-                fromTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.fromCity) ?? ""
-                toTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.toCity) ?? ""
+                fromTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.fromCity) ?? "Origin"
+                toTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.toCity) ?? "Destination"
                 self.departureDateLabel.text = defaults.string(forKey: UserDefaultsKeys.rcalDepDate) ?? "Departure Date"
                 self.returnDateLabel.text = defaults.string(forKey: UserDefaultsKeys.rcalRetDate) ?? "Return Date"
                 returnView.alpha = 1
@@ -291,7 +295,7 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
         toEconomyDropdown.show()
         setupToEconomyDropDown()
         toEco = toDropDownLabel.text ?? ""
-//        defaults.set(economy, forKey: UserDefaultsKeys.selectClass)
+        //        defaults.set(economy, forKey: UserDefaultsKeys.selectClass)
         defaults.set(toEco, forKey: UserDefaultsKeys.rselectClass)
     }
     
@@ -306,7 +310,7 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
     @IBAction func adultsDecrementButtonAction(_ sender: Any) {
         if adultsCount > 1 {
             adultsCount -= 1
-//            self.counts -= 1
+            //            self.counts -= 1
             adultCountLabel.text = "\(adultsCount)"
         }
         
@@ -340,14 +344,14 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
         if infantsCount > 0 {
             infantsCount -= 1
             self.counts -= 1
-             infantsCountLabel.text = "\(self.counts)"
+            infantsCountLabel.text = "\(self.counts)"
         }
         
         defaults.set(infantsCount, forKey: UserDefaultsKeys.infantsCount)
     }
     
     @IBAction func infantsIncrementButtonAction(_ sender: Any) {
-      
+        
         if infantsCount < adultsCount {
             infantsCount += 1
             self.counts += 1
@@ -360,7 +364,8 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
         toTextField.text = ""
         toTitleLabel.text = ""
         toSubtitleLabel.text = ""
-//        toTextField.placeholder = "Destination"
+        defaults.set("", forKey: UserDefaultsKeys.toCity)
+        defaults.set("", forKey: UserDefaultsKeys.toCityCode)
     }
     @IBAction func outwardsButtonAction(_ sender: Any) {
         ouwardsDropDown.show()
@@ -388,6 +393,13 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
     
     @IBAction func directFlightCheckBoxAction(_ sender: Any) {
         
+        if isCheckin == false {
+            isCheckin = true
+            chekBoxImage.image = UIImage(named: "check")
+        } else {
+            isCheckin = false
+            chekBoxImage.image = UIImage(named: "checkBox")
+        }
     }
     
     
@@ -417,7 +429,8 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
         fromTextfiled.text = ""
         fromTitleLabel.text = ""
         fromSubtitleLabel.text = ""
-//        fromTextfiled.placeholder = "Origin"
+        defaults.set("", forKey: UserDefaultsKeys.fromCity)
+        defaults.set("", forKey: UserDefaultsKeys.fromcityCode)
     }
     
     
@@ -429,7 +442,7 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
             self.fromSubtitleLabel.text = ""
             self.fromTitleLabel.text = ""
             CallShowCityListAPI(str: textField.text ?? "")
-        }else  if textField == toTextField {
+        }else if textField == toTextField {
             txtbool = false
             self.toSubtitleLabel.text = ""
             self.toTitleLabel.text = ""
@@ -456,8 +469,6 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
         payload["term"] = str
         cityViewModel?.CallShowCityListAPI(dictParam: payload)
     }
-    
-    
     
     func ShowCityList(response: [SelectCityModel]) {
         cityList = response
@@ -636,12 +647,9 @@ extension OneWayTableViewCell: UITableViewDelegate, UITableViewDataSource {
                 } else {
                     fromTitleLabel.textColor = .lightGray
                     fromTitleLabel.font = .InterMedium(size: 16)
-                    fromTitleLabel.text = "Origin"
                 }
-    
+                
                 fromTitleLabel.textColor = .AppLabelColor
-//                fromTextfiled.text = ""
-//                fromTextfiled.placeholder = ""
                 fromTextfiled.resignFirstResponder()
                 
                 if let selectedJType = defaults.string(forKey: UserDefaultsKeys.journeyType) {
@@ -733,7 +741,7 @@ extension OneWayTableViewCell {
         searchText = textField.text ?? ""
         if searchText == "" {
             isSearchBool = false
-          filterContentForSearchText(searchText)
+            filterContentForSearchText(searchText)
         }else {
             isSearchBool = true
             filterContentForSearchText(searchText)

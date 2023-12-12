@@ -1592,7 +1592,7 @@
 		F7085F825E82C2C838B56C936627161F /* FIRInstallationsAuthTokenResultInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FIRInstallationsAuthTokenResultInternal.h; path = FirebaseInstallations/Source/Library/FIRInstallationsAuthTokenResultInternal.h; sourceTree = "<group>"; };
 		F7F2EF1DC98BBE891C661FCB15751EA4 /* FBLPromise+Testing.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "FBLPromise+Testing.m"; path = "Sources/FBLPromises/FBLPromise+Testing.m"; sourceTree = "<group>"; };
 		F83A5F09E2DF201585ECD290573240B1 /* GULKeychainStorage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GULKeychainStorage.h; path = GoogleUtilities/Environment/Public/GoogleUtilities/GULKeychainStorage.h; sourceTree = "<group>"; };
-		F8CAA5FAA62D819C3AB7BB802A07A542 /* MyFatoorah-MyFatoorah */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "MyFatoorah-MyFatoorah"; path = MyFatoorah.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8CAA5FAA62D819C3AB7BB802A07A542 /* MyFatoorah.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyFatoorah.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8EA0788DED824DADD7D3AEDE29FF6C4 /* IQTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQTextView.h; path = IQKeyboardManager/IQTextView/IQTextView.h; sourceTree = "<group>"; };
 		F9083CAA940A93F66F5DC9111D049755 /* SDWebImageCompat.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageCompat.h; path = SDWebImage/Core/SDWebImageCompat.h; sourceTree = "<group>"; };
 		F9981C77EFC57B60920457BA7ED2B451 /* SDAnimatedImageRep.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDAnimatedImageRep.h; path = SDWebImage/Core/SDAnimatedImageRep.h; sourceTree = "<group>"; };
@@ -2063,7 +2063,7 @@
 				DED0AAB1584AC92F7B24D2EDA7BF14D6 /* MARKRangeSlider.framework */,
 				4E80A1B13E8896061B58150D3096574A /* MARKRangeSlider.bundle */,
 				8B8FAB0D627B17EDE1366984278705D9 /* MBProgressHUD.framework */,
-				F8CAA5FAA62D819C3AB7BB802A07A542 /* MyFatoorah-MyFatoorah */,
+				F8CAA5FAA62D819C3AB7BB802A07A542 /* MyFatoorah.bundle */,
 				06FC5C9CF96D60C50FCD47D339C91951 /* nanopb */,
 				DB91E33FCA9735A9016916900A5C1F4A /* Pods_Travrun.framework */,
 				3347A1AB6546F0A3977529B8F199DC41 /* PromisesObjC */,
@@ -3753,7 +3753,7 @@
 			);
 			name = "MyFatoorah-MyFatoorah";
 			productName = MyFatoorah;
-			productReference = F8CAA5FAA62D819C3AB7BB802A07A542 /* MyFatoorah-MyFatoorah */;
+			productReference = F8CAA5FAA62D819C3AB7BB802A07A542 /* MyFatoorah.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 		82B0A41D3031FF27D78E17B0A9A46FB0 /* MBProgressHUD */ = {
@@ -6459,6 +6459,7 @@
 			baseConfigurationReference = 0870EF3244907E6F6A2928FE7C6C3DDB /* MyFatoorah.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MyFatoorah";
+				DEVELOPMENT_TEAM = Q9XRR2Y9GQ;
 				IBSC_MODULE = MyFatoorah;
 				INFOPLIST_FILE = "Target Support Files/MyFatoorah/ResourceBundle-MyFatoorah-MyFatoorah-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -6544,6 +6545,7 @@
 			baseConfigurationReference = 509EF9E07AB1607DB827E4478E99C940 /* MARKRangeSlider.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MARKRangeSlider";
+				DEVELOPMENT_TEAM = Q9XRR2Y9GQ;
 				IBSC_MODULE = MARKRangeSlider;
 				INFOPLIST_FILE = "Target Support Files/MARKRangeSlider/ResourceBundle-MARKRangeSlider-MARKRangeSlider-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -6560,6 +6562,7 @@
 			baseConfigurationReference = 617C878992375544AD3A9A4451DE35C7 /* MyFatoorah.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MyFatoorah";
+				DEVELOPMENT_TEAM = Q9XRR2Y9GQ;
 				IBSC_MODULE = MyFatoorah;
 				INFOPLIST_FILE = "Target Support Files/MyFatoorah/ResourceBundle-MyFatoorah-MyFatoorah-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -6748,6 +6751,7 @@
 			baseConfigurationReference = 56AB5A06D591FFC11AAD0EE31F4D1E73 /* MARKRangeSlider.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/MARKRangeSlider";
+				DEVELOPMENT_TEAM = Q9XRR2Y9GQ;
 				IBSC_MODULE = MARKRangeSlider;
 				INFOPLIST_FILE = "Target Support Files/MARKRangeSlider/ResourceBundle-MARKRangeSlider-MARKRangeSlider-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;

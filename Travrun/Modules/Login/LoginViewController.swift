@@ -50,6 +50,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, RegisterViewMo
     }
     
     func setiupUI()  {
+        self.view.backgroundColor = .black.withAlphaComponent(0.5)
         holderView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         holderView.layer.cornerRadius = 30
         holderView.clipsToBounds = true

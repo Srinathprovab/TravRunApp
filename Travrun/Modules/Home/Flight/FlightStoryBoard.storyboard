@@ -626,6 +626,7 @@
                     </view>
                     <connections>
                         <outlet property="backButtonView" destination="1ju-JS-taK" id="N1u-we-sfl"/>
+                        <outlet property="cityLabel" destination="Hor-jK-Anj" id="64u-Xc-Z2T"/>
                         <outlet property="commonTableView" destination="z4J-tN-BZ6" id="Wid-KA-let"/>
                         <outlet property="datelbl" destination="syJ-Id-eBg" id="sQp-T1-zlo"/>
                         <outlet property="editButtonView" destination="gSS-D0-Znt" id="JF1-Tx-UKw"/>

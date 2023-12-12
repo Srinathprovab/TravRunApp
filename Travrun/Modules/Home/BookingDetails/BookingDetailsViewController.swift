@@ -92,12 +92,8 @@ class BookingDetailsViewController: BaseTableVC, RegisterViewModelProtocal, Prof
         tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
         tablerow.append(TableRow(title: "AddAdult", cellType: .HeaderTableViewCell))
         tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == false {
-            tablerow.append(TableRow(height: 14, cellType: .EmptyTVCell))
-        } else {
-            tablerow.append(TableRow(cellType: .AddressTableViewCell))
-            tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        }
+        tablerow.append(TableRow(cellType: .AddressTableViewCell))
+        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
         tablerow.append(TableRow(cellType: .FareSummaryTableViewCell))
         tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
         tablerow.append(TableRow(height: 100, bgColor: .white, cellType: .AcceptTermsAndConditionTVCell))
@@ -124,12 +120,8 @@ class BookingDetailsViewController: BaseTableVC, RegisterViewModelProtocal, Prof
         tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
         tablerow.append(TableRow(title: "AddAdult", cellType: .HeaderTableViewCell))
         tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == false {
-            tablerow.append(TableRow(height: 14, cellType: .EmptyTVCell))
-        } else {
-            tablerow.append(TableRow(cellType: .AddressTableViewCell))
-            tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        }
+        tablerow.append(TableRow(cellType: .AddressTableViewCell))
+        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
         tablerow.append(TableRow(cellType: .FareSummaryTableViewCell))
         tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
         tablerow.append(TableRow(height: 100, bgColor: .white, cellType: .AcceptTermsAndConditionTVCell))
@@ -156,12 +148,8 @@ class BookingDetailsViewController: BaseTableVC, RegisterViewModelProtocal, Prof
         tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
         tablerow.append(TableRow(title: "AddAdult", cellType: .HeaderTableViewCell))
         tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == false {
-            tablerow.append(TableRow(height: 14, cellType: .EmptyTVCell))
-        } else {
-            tablerow.append(TableRow(cellType: .AddressTableViewCell))
-            tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        }
+        tablerow.append(TableRow(cellType: .AddressTableViewCell))
+        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
         tablerow.append(TableRow(cellType: .FareSummaryTableViewCell))
         tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
         tablerow.append(TableRow(height: 100, bgColor: .white, cellType: .AcceptTermsAndConditionTVCell))
@@ -204,6 +192,11 @@ class BookingDetailsViewController: BaseTableVC, RegisterViewModelProtocal, Prof
     override func RegisterNowButtonAction(cell: LoginDetailsTableViewCell, email: String, pass: String, phone: String) {
         callRegisterAPI(email: email, pass: pass, mobile: phone)
     }
+    
+    override func didTaponSwitchButton(cell: AddAdultTableViewCell) {
+        cell.frequentView.isHidden = false
+    }
+    
 }
 // ligin Api Calls
 extension BookingDetailsViewController {
@@ -292,5 +285,11 @@ extension BookingDetailsViewController {
     }
     
     func updateProfileDetails(response: ProfileDetailsModel) {}
+    
+    
+ // call preprossenign API
+    
+    
+    
 }
 

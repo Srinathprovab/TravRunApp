@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol AddAdultTableViewCellDelegate {
+    func didTaponSwitchButton(cell: AddAdultTableViewCell)
+}
+
 class AddAdultTableViewCell: TableViewCell{
 
+    @IBOutlet weak var frequentView: UIView!
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var dobTF: UITextField!
     @IBOutlet weak var lnameTF: UITextField!
@@ -30,11 +35,16 @@ class AddAdultTableViewCell: TableViewCell{
     @IBOutlet weak var passangerSelectionButton: UIButton!
     @IBOutlet weak var passengerSelectionTextfield: UITextField!
     @IBOutlet weak var countryCodeLbl: UILabel!
+    
+    var delegate: AddAdultTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         contentView.layer.cornerRadius = 8
         contentView.layer.borderWidth = 0.7
         contentView.layer.borderColor = HexColor("#B8B8B8").cgColor
+        frequentView.isHidden = true
+        switchButton.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
         setUI()
         // Initialization code
     }
@@ -76,4 +86,14 @@ class AddAdultTableViewCell: TableViewCell{
         
     }
     
+    @objc func switchValueChanged(_ sender: UISwitch) {
+            if sender.isOn {
+                print("Switch is ON")
+                frequentView.isHidden = false
+            } else {
+                print("Switch is OFF")
+                frequentView.isHidden = true
+            }
+        }
+  
 }

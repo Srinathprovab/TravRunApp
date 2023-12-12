@@ -67,10 +67,16 @@ class GuestRegisterTableViewCell: TableViewCell {
     @objc func textFiledEditingChanged(_ textField:UITextField) {
         self.phone = phoneNumberTxtFld.text!
         self.email = emailTxtFld.text!
-        if emailTxtFld.text != "" && phoneNumberTxtFld.text != "" {
-            continueButton.backgroundColor =  HexColor("#EE1935")
+        if email == "" {
+            showToastMsg(message: "Enter Email Adress")
+        } else if email.isValidEmail() == false {
+            showToastMsg(message: "Enter Valid Email")
+        } else if phone == "" {
+            showToastMsg(message: "Enter Phone Number")
+        } else if phone.isValidMobileNumber() == false {
+            showToastMsg(message: "Enter Valid Phone Number")
         } else {
-            continueButton.backgroundColor = HexColor("#EE1935").withAlphaComponent(0.3)
+            continueButton.backgroundColor = HexColor("#EE1935")
         }
     }
 }

@@ -90,6 +90,25 @@ public var screenHeight: CGFloat {
     return UIScreen.main.bounds.size.height
 }
 
+
+var totalprice = String()
+var Adults_Base_Price = String()
+var Adults_Tax_Price = String()
+var Childs_Base_Price = String()
+var Childs_Tax_Price = String()
+var Infants_Base_Price = String()
+var Infants_Tax_Price = String()
+var TotalPrice_API = String()
+var grandTotal = String()
+var subtotal = String()
+
+var AdultsTotalPrice = String()
+var ChildTotalPrice = String()
+var InfantTotalPrice = String()
+var sub_total_adult : String?
+var sub_total_child : String?
+var sub_total_infant : String?
+
 //MARK: - Profile details
 var pdetails:ProfileDetails?
 
@@ -123,9 +142,22 @@ var hotelfiltermodel = HotelFilterModel()
 
 //var mapModelArray: [MapModel] = []
 
+
+
+//MARK: - Baggage Info details
+var farerulerefkey = String()
+var farerulesrefcontent = String()
+var fdbool = true
+
+
+
 //MARK: - HOME SCREEN
 
 struct UserDefaultsKeys {
+    static var totalTravellerCount = "totalTravellerCount"
+    static var journeyTypeSelectedIndex = "Journey_TypeSelectedIndex"
+    static var DashboardTapSelectedCellIndex = "DashboardTapSelectedCellIndex"
+    static var mobilecountrycode = "mobilecountrycode"
     static var isSelected = false
     static var gender = "gender"
     static var rinfantsCount = "rInfants_Count"
@@ -182,7 +214,8 @@ struct UserDefaultsKeys {
     static var dashboardTapSelected = "DashboardTapSelected"
     static var rtravellerDetails = "rtravellerDetails"
     static var rselectClass = "rselect_class"
-    
+    static var bookingsource = "booking_source"
+    static var selectedFareType = "fare_type"
 }
 
 

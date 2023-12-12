@@ -137,7 +137,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r94-fn-JbB">
                                 <rect key="frame" x="0.0" y="163" width="396" height="700"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fCY-Ii-Ufc">
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fCY-Ii-Ufc">
                                         <rect key="frame" x="14" y="25" width="368" height="40"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avt-dy-ROv" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
@@ -217,25 +217,25 @@
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLv-1n-gT4">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bLv-1n-gT4">
                                         <rect key="frame" x="13.999999999999998" y="0.0" width="29.333333333333329" height="17"/>
                                         <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                         <color key="textColor" name="subtitleColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frist name*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gp1-oU-8w8">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Frist name*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gp1-oU-8w8">
                                         <rect key="frame" x="98" y="0.0" width="76.666666666666686" height="17"/>
                                         <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                         <color key="textColor" name="subtitleColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last name*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxC-mQ-8NO">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Last name*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxC-mQ-8NO">
                                         <rect key="frame" x="14" y="81" width="75.666666666666671" height="17"/>
                                         <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                         <color key="textColor" name="subtitleColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="srX-IE-Pvp" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="srX-IE-Pvp" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
                                         <rect key="frame" x="14" y="187" width="368" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3ut-Tj-B8v">
@@ -313,13 +313,13 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eD-2g-tCD">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eD-2g-tCD">
                                         <rect key="frame" x="14" y="162" width="99" height="17"/>
                                         <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                         <color key="textColor" name="subtitleColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8VD-B3-SjT" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8VD-B3-SjT" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
                                         <rect key="frame" x="14" y="278" width="368" height="50"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u2a-TB-pui">
@@ -348,13 +348,13 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email id*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQZ-9c-2n1">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Email id*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQZ-9c-2n1">
                                         <rect key="frame" x="14.000000000000004" y="253" width="58.333333333333343" height="17"/>
                                         <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                         <color key="textColor" name="subtitleColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0oF-gY-5DP" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0oF-gY-5DP" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
                                         <rect key="frame" x="14" y="369" width="180" height="44"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Q49-hd-J44">
@@ -384,13 +384,13 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2KP-wI-KRi">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Date of Birth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2KP-wI-KRi">
                                         <rect key="frame" x="14" y="344" width="84.333333333333329" height="17"/>
                                         <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                         <color key="textColor" name="subtitleColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passport" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etr-bz-0Dm">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Passport" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etr-bz-0Dm">
                                         <rect key="frame" x="14" y="429" width="68.666666666666671" height="19.666666666666686"/>
                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                         <color key="textColor" name="AppLabelColor"/>
@@ -425,13 +425,13 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passport Number*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMW-Ut-HR0">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Passport Number*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMW-Ut-HR0">
                                         <rect key="frame" x="14" y="468.66666666666663" width="123" height="17"/>
                                         <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                         <color key="textColor" name="subtitleColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8A-4g-n2t" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y8A-4g-n2t" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
                                         <rect key="frame" x="14" y="106" width="368" height="40"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HfH-7C-p7G">
@@ -596,6 +596,7 @@
                                     <constraint firstItem="OSv-Q9-T1p" firstAttribute="top" secondItem="YNg-Bp-a8T" secondAttribute="bottom" constant="8" id="KJt-d0-y21"/>
                                     <constraint firstItem="bMW-Ut-HR0" firstAttribute="top" secondItem="etr-bz-0Dm" secondAttribute="bottom" constant="20" id="Mdt-Ks-TqI"/>
                                     <constraint firstItem="etr-bz-0Dm" firstAttribute="top" secondItem="0oF-gY-5DP" secondAttribute="bottom" constant="16" id="NIP-An-fPl"/>
+                                    <constraint firstAttribute="bottom" secondItem="II9-rU-thA" secondAttribute="bottom" constant="22.329999999999998" id="NZ7-vU-ieZ"/>
                                     <constraint firstItem="bMW-Ut-HR0" firstAttribute="leading" secondItem="r94-fn-JbB" secondAttribute="leading" constant="14" id="QYn-Co-6u2"/>
                                     <constraint firstItem="0eD-2g-tCD" firstAttribute="top" secondItem="y8A-4g-n2t" secondAttribute="bottom" constant="16" id="Rog-ne-Gew"/>
                                     <constraint firstItem="0oF-gY-5DP" firstAttribute="leading" secondItem="r94-fn-JbB" secondAttribute="leading" constant="14" id="SXw-Ss-XJ5"/>
@@ -751,13 +752,14 @@
                 <outlet property="countryCodeBtn" destination="8Ev-I0-UwD" id="7he-pn-caJ"/>
                 <outlet property="countryCodeLbl" destination="8mP-9N-CYw" id="UPH-el-JOE"/>
                 <outlet property="dobTF" destination="Q49-hd-J44" id="jtc-dz-H5T"/>
+                <outlet property="frequentView" destination="NeG-ip-TKi" id="Lbt-eR-wJy"/>
                 <outlet property="lnameTF" destination="HfH-7C-p7G" id="Yfo-wf-Ggs"/>
                 <outlet property="passangerSelectionButton" destination="vNr-dz-rwP" id="3XR-h2-fKw"/>
                 <outlet property="passangerView" destination="YUw-PA-cuZ" id="jaf-6g-f4Q"/>
                 <outlet property="passengerSelectionTextfield" destination="nMA-J1-0xZ" id="dsc-0h-eWD"/>
                 <outlet property="passportIssueingCountrySelectBtn" destination="GWx-nF-9yT" id="a4s-Vy-hdr"/>
                 <outlet property="passportIssuingCountryTF" destination="m3z-e6-fvb" id="hOz-8D-vZB"/>
-                <outlet property="switchButton" destination="II9-rU-thA" id="Oja-p7-sfU"/>
+                <outlet property="switchButton" destination="II9-rU-thA" id="A7J-OC-jBg"/>
             </connections>
             <point key="canvasLocation" x="485.49618320610688" y="67.25352112676056"/>
         </tableViewCell>

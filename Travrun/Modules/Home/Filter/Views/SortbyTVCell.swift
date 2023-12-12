@@ -45,10 +45,15 @@ class SortbyTVCell: TableViewCell {
         titlelbl.text = cellInfo?.title
         
         if cellInfo?.key == "airline" {
-            setuplabels(lbl: lowtoHighlbl, text: "A-Z", textcolor: .AppLabelColor, font: .latoRegular(size: 14), align: .center)
-            setuplabels(lbl: hightoLowhlbl, text: "Z-A", textcolor: .AppLabelColor, font: .latoRegular(size: 14), align: .center)
+            setuplabels(lbl: lowtoHighlbl, text: "A-Z", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
+            setuplabels(lbl: hightoLowhlbl, text: "Z-A", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
+        } else if cellInfo?.key == "departure" {
+            setuplabels(lbl: lowtoHighlbl, text: "Earlist flight", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
+            setuplabels(lbl: hightoLowhlbl, text: "Last  flight", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
+        } else if cellInfo?.key == "low" {
+            setuplabels(lbl: lowtoHighlbl, text: "Low to high", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
+            setuplabels(lbl: hightoLowhlbl, text: "Hight to low", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
         }
-        
         switch sortBy {
             
             //Price
@@ -136,8 +141,8 @@ class SortbyTVCell: TableViewCell {
     
     func setupUI() {
         holderView.backgroundColor = .WhiteColor
-        setupViews(v: buttonsView, radius: 4, color: .WhiteColor)
-        setuplabels(lbl: titlelbl, text: "", textcolor: .AppLabelColor, font: .latoMedium(size: 17), align: .left)
+//        setupViews(v: buttonsView, radius: 4, color: .WhiteColor)
+        setuplabels(lbl: titlelbl, text: "", textcolor: .AppLabelColor, font: .InterMedium(size: 16), align: .left)
         setupinitallyvalues()
         lowtoHighBtn.setTitle("", for: .normal)
         hightoLowBtn.setTitle("", for: .normal)
@@ -163,7 +168,7 @@ class SortbyTVCell: TableViewCell {
     
     func lowtoheigh(){
         self.lowtoHighlbl.textColor = .WhiteColor
-        self.lowtoHighView.backgroundColor = .AppCalenderDateSelectColor
+        self.lowtoHighView.backgroundColor = HexColor("#3C627A")
         self.hightoLowhlbl.textColor = .AppLabelColor
         self.hightoLowView.backgroundColor = .WhiteColor
     }
@@ -173,7 +178,7 @@ class SortbyTVCell: TableViewCell {
         self.lowtoHighlbl.textColor = .AppLabelColor
         self.lowtoHighView.backgroundColor = .WhiteColor
         self.hightoLowhlbl.textColor = .WhiteColor
-        self.hightoLowView.backgroundColor = .AppCalenderDateSelectColor
+        self.hightoLowView.backgroundColor = HexColor("#3C627A")
     }
     
     

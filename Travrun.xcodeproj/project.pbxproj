@@ -44,6 +44,8 @@
 		076984D92B1A1BE0002422AF /* LoginDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 076984D72B1A1BDF002422AF /* LoginDetailsTableViewCell.xib */; };
 		077BE9702B15AE7B00B967E1 /* TermsAndConditionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077BE96E2B15AE7B00B967E1 /* TermsAndConditionTableViewCell.swift */; };
 		077BE9712B15AE7B00B967E1 /* TermsAndConditionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077BE96F2B15AE7B00B967E1 /* TermsAndConditionTableViewCell.xib */; };
+		07847D312B271A02003FA54D /* MBViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07847D302B271A02003FA54D /* MBViewModel.swift */; };
+		07847D332B271ADB003FA54D /* MBPriceDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07847D322B271ADB003FA54D /* MBPriceDetails.swift */; };
 		078BF7B32B0C66A800174A80 /* NewFlightSearchResultTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 078BF7B22B0C66A800174A80 /* NewFlightSearchResultTVCell.xib */; };
 		078BF7B52B0C66B400174A80 /* NewFlightSearchResultTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078BF7B42B0C66B400174A80 /* NewFlightSearchResultTVCell.swift */; };
 		078BF7B72B0C670A00174A80 /* borderview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078BF7B62B0C670A00174A80 /* borderview.swift */; };
@@ -307,6 +309,8 @@
 		076984D72B1A1BDF002422AF /* LoginDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		077BE96E2B15AE7B00B967E1 /* TermsAndConditionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionTableViewCell.swift; sourceTree = "<group>"; };
 		077BE96F2B15AE7B00B967E1 /* TermsAndConditionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermsAndConditionTableViewCell.xib; sourceTree = "<group>"; };
+		07847D302B271A02003FA54D /* MBViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBViewModel.swift; sourceTree = "<group>"; };
+		07847D322B271ADB003FA54D /* MBPriceDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBPriceDetails.swift; sourceTree = "<group>"; };
 		078BF7B22B0C66A800174A80 /* NewFlightSearchResultTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewFlightSearchResultTVCell.xib; sourceTree = "<group>"; };
 		078BF7B42B0C66B400174A80 /* NewFlightSearchResultTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFlightSearchResultTVCell.swift; sourceTree = "<group>"; };
 		078BF7B62B0C670A00174A80 /* borderview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = borderview.swift; sourceTree = "<group>"; };
@@ -649,6 +653,7 @@
 		076984D22B1A038F002422AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				07847D322B271ADB003FA54D /* MBPriceDetails.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -706,6 +711,7 @@
 		078DB0502B2092AC003D7896 /* Booking Details */ = {
 			isa = PBXGroup;
 			children = (
+				07847D302B271A02003FA54D /* MBViewModel.swift */,
 			);
 			path = "Booking Details";
 			sourceTree = "<group>";
@@ -1589,6 +1595,7 @@
 				074946FD2B16030300238F8D /* AllCountryCodeListViewModel.swift in Sources */,
 				07B79FD62B1DD68B006AC03F /* FareTableViewCell.swift in Sources */,
 				3D90245F2AFCEB220020C38A /* Constants.swift in Sources */,
+				07847D332B271ADB003FA54D /* MBPriceDetails.swift in Sources */,
 				07DD95D52B04CE0A0021494E /* QuickLinkTableViewCell.swift in Sources */,
 				07CD5CDD2B1483AD00D49204 /* HeaderSubHeaderTVCellTableViewCell.swift in Sources */,
 				3D5DEF712AFCC039007E3265 /* UIModels.swift in Sources */,
@@ -1617,6 +1624,7 @@
 				07C4810F2B1ED853007030C8 /* Data.swift in Sources */,
 				3D9024732AFCFD320020C38A /* TripsViewController.swift in Sources */,
 				07C4811A2B1ED9A2007030C8 /* LabelTVCell.swift in Sources */,
+				07847D312B271A02003FA54D /* MBViewModel.swift in Sources */,
 				07CC2B162B10B6E500A71A30 /* BaggageInfoCollectionViewCell.swift in Sources */,
 				078BF7E32B0C67A600174A80 /* Details.swift in Sources */,
 				078BF7E42B0C67A600174A80 /* J_flight_list.swift in Sources */,
@@ -1906,7 +1914,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5TLY5PME9K;
+				DEVELOPMENT_TEAM = Q9XRR2Y9GQ;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Travrun/Info.plist;
@@ -1942,7 +1950,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5TLY5PME9K;
+				DEVELOPMENT_TEAM = Q9XRR2Y9GQ;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Travrun/Info.plist;

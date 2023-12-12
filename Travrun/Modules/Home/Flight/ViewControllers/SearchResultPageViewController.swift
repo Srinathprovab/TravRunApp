@@ -9,6 +9,7 @@ import UIKit
 
 class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, AppliedFilters {
     
+    @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var returnDatalbl: UILabel!
@@ -71,6 +72,7 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
     override func viewDidLoad() {
         self.view.backgroundColor = .WhiteColor
         super.viewDidLoad()
+        
         
         viewModel = FlightListViewModel(self)
         setUpView()
@@ -187,11 +189,7 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
     
     
     @IBAction func sortButtonAction(_ sender: Any) {
-        
-        guard let vc = SortViewController.newInstance.self else {return}
-        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: false)
-        
+        gotoFilterVC(strkey: "sort")
     }
     
     //MARK: - didTapOnNextDateBtnTapAction
@@ -254,12 +252,64 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
         
     }
     
-    override func didTapOnflightDetailsButton(cell:NewFlightSearchResultTVCell) {
+    
+    //MARK: - didTapOnMoreSimilarBtnAction NewFlightSearchResultTVCell
+    override func didTapOnMoreSimilarBtnAction(cell: NewFlightSearchResultTVCell) {
+        
+        
+        if let journyType = defaults.string(forKey: UserDefaultsKeys.journeyType) {
+            if journyType == "multicity" {
+                
+                if cell.newsimilarListMulticity.count != 0 {
+                    
+                    guard let vc = similarFlightsVC.newInstance.self else {return}
+                    vc.modalPresentationStyle = .overCurrentContext
+                    callapibool = true
+                    vc.similarflightListMulticity = cell.newsimilarListMulticity
+                    present(vc, animated: true)
+                }else {
+                    showToast(message: "No Flights Found")
+                }
+                
+            }else {
+                
+                
+                if cell.newsimilarList.count != 0 {
+                    
+                    guard let vc = similarFlightsVC.newInstance.self else {return}
+                    vc.modalPresentationStyle = .overCurrentContext
+                    callapibool = true
+                    vc.similarflightList = cell.newsimilarList
+                    present(vc, animated: true)
+                }else {
+                    showToast(message: "No Flights Found")
+                }
+            }
+            
+        }
+    }
+    
+    
+    
+    override func didTapOnFlightDetailsBtnAction(cell: NewFlightSearchResultTVCell) {
+        defaults.set(cell.selectedResult, forKey: UserDefaultsKeys.selectedResult)
+        
+        
+        defaults.set(cell.bsource, forKey: UserDefaultsKeys.bookingsource)
+        defaults.set(cell.bsourcekey, forKey: UserDefaultsKeys.bookingsourcekey)
+        defaults.set(cell.faretypelbl.text, forKey: UserDefaultsKeys.selectedFareType)
+        
         guard let vc = FlightDetailsViewController.newInstance.self else {return}
         vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: false)
     }
     
+    
+    
+//    override func didTapOnflightDetailsButton(cell:NewFlightSearchResultTVCell) {
+//       
+//    }
+//    
     override func didTapOnBookNowBtnAction(cell: NewFlightSearchResultTVCell) {
         guard let vc = BookingDetailsViewController.newInstance.self else {return}
         vc.modalPresentationStyle = .overFullScreen
@@ -708,7 +758,7 @@ extension SearchResultPageViewController {
             defaults.set(response.data?.traceId, forKey: UserDefaultsKeys.traceId)
             
             
-            setuplabels(lbl: titleLabel, text: "\(defaults.string(forKey: UserDefaultsKeys.fromcityname) ?? "")\(response.data?.search_params?.from_loc ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tocityname) ?? "")\(response.data?.search_params?.to_loc ?? "")", textcolor: .AppLabelColor, font: UIFont.InterSemiBold(size: 16), align: .center)
+            setuplabels(lbl: titleLabel, text: "\(defaults.string(forKey: UserDefaultsKeys.fromcityname) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tocityname) ?? "")", textcolor: .AppLabelColor, font: UIFont.InterSemiBold(size: 16), align: .center)
             
             
 //            setuplabels(lbl: subTitleLabel, text: response.data?.search_params?.depature ?? "", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)

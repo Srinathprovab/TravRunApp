@@ -12,7 +12,6 @@ protocol NewFlightSearchResultTVCellDelegate {
     func didTapOnBookNowBtnAction(cell:NewFlightSearchResultTVCell)
     func didTapOnAddReturnFlightBtnAction(cell:NewFlightSearchResultTVCell)
     func didTapOnMoreSimilarBtnAction(cell:NewFlightSearchResultTVCell)
-    
     func didTapOnflightDetailsButton
     (cell:NewFlightSearchResultTVCell)
 }
@@ -196,7 +195,6 @@ extension NewFlightSearchResultTVCell: UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return flightSummery.count
     }
-    
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

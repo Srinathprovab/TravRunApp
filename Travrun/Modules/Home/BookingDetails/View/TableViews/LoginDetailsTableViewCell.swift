@@ -27,7 +27,7 @@ class LoginDetailsTableViewCell: TableViewCell {
     var pass = String()
     
     var delegate: LoginDetailsTableViewCellDelegate?
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -54,10 +54,10 @@ class LoginDetailsTableViewCell: TableViewCell {
         phoneNumberTextfld.addTarget(self, action: #selector(textFiledEditingChanged(_:)), for: .editingChanged)
         passwordTxtfld.addTarget(self, action: #selector(textFiledEditingChanged(_:)), for: .editingChanged)
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -65,10 +65,17 @@ class LoginDetailsTableViewCell: TableViewCell {
         self.phone = phoneNumberTextfld.text!
         self.email = emailTextFld.text!
         self.pass = passwordTxtfld.text!
-        if emailTextFld.text != "" && passwordTxtfld.text != "" && phoneNumberTextfld.text != "" {
-            registerNowButton.backgroundColor = HexColor("#EE1935")
+        
+        if email == "" {
+            showToastMsg(message: "Enter Email Adress")
+        } else if email.isValidEmail() == false {
+            showToastMsg(message: "Enter Valid Email")
+        }  else if phone == "" {
+            showToastMsg(message: "Enter Phone Number")
+        } else if pass == "" {
+            showToastMsg(message: "Enter Password")
         } else {
-            registerNowButton.backgroundColor = HexColor("#EE1935").withAlphaComponent(0.3)
+            registerNowButton.backgroundColor = HexColor("#EE1935")
         }
     }
     

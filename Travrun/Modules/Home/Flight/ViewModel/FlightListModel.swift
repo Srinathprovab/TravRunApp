@@ -1,6 +1,9 @@
 import Foundation
 import Alamofire
 
+protocol HomeViewModelOutput {
+    var isCehckIn: Bool { get set}
+}
 
 protocol FlightListModelProtocal : BaseViewModelProtocol {
     func flightList(response : FlightSearchModel)
@@ -10,8 +13,13 @@ protocol FlightListModelProtocal : BaseViewModelProtocol {
     
 }
 
-class FlightListViewModel {
 
+class FlightListViewModel: HomeViewModelOutput  {
+    
+    
+    var isCehckIn: Bool = false
+    
+    
     var view: FlightListModelProtocal!
     init(_ view: FlightListModelProtocal) {
         self.view = view

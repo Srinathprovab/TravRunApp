@@ -105,7 +105,7 @@ class MyAccountVC: BaseTableVC, ProfileDetailsViewModelDelegate {
     
     
     func gotoLoginVC() {
-        guard let vc = LoginVC.newInstance.self else {return}
+        guard let vc = LoginViewController.newInstance.self else {return}
         vc.modalPresentationStyle = .overCurrentContext
         callapibool = true
         present(vc, animated: true)

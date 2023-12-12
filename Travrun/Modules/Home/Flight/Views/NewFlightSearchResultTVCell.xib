@@ -59,6 +59,7 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <connections>
                                             <action selector="didTapOnMoreSimilarBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MFB-Bp-vhe"/>
+                                            <action selector="didTapOnflightDetailsButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="m1V-Hv-xsl"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -197,8 +198,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
                                         <connections>
-                                            <action selector="didTapOnFlightDetailsBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="O9x-jL-20i"/>
-                                            <action selector="didTapOnflightDetailsButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3g7-39-dEf"/>
+                                            <action selector="didTapOnFlightDetailsBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="YSj-oB-7L6"/>
                                         </connections>
                                     </button>
                                 </subviews>

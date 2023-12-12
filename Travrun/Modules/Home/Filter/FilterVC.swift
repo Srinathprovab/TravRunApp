@@ -99,7 +99,7 @@ class FilterVC: BaseTableVC{
     var maxpricerangefilter = Double()
     var starRatingFilter = String()
     var stopsArray = ["0 Stop","1 Stop","2 Stop"]
-   
+    
     var departurnTimeArray = ["12 am - 6 am","06 am - 12 pm","12 pm - 06 pm","06 pm - 12 am"]
     var tablerow = [TableRow]()
     var filterKey = String()
@@ -164,14 +164,14 @@ class FilterVC: BaseTableVC{
         filterButtonsView.addBottomBorderWithColor(color: .AppBorderColor, width: 1)
         setupViews(v: sortbyBtnView, radius: 0, color: .WhiteColor)
         setupViews(v: filtersBtnView, radius: 0, color: .WhiteColor)
-//        setupViews(v: sortbyUL, radius: 0, color: .AppTabSelectColor)
+        //        setupViews(v: sortbyUL, radius: 0, color: .AppTabSelectColor)
         setupViews(v: filterUL, radius: 0, color: .WhiteColor)
         setuplabels(lbl: sortBylbl, text: "Sort By", textcolor: .AppLabelColor, font: .latoRegular(size: 18), align: .center)
         setuplabels(lbl: filterslbl, text: "Filters", textcolor: .SubTitleColor, font: .latoRegular(size: 18), align: .center)
         closeBtn.setTitle("", for: .normal)
         sortbyBtn.setTitle("", for: .normal)
         filtersBtn.setTitle("", for: .normal)
-        //  filterKey = "sort"
+//          filterKey = "sort"
         
         filtersBtnView.isHidden = true
         filtersBtn.isUserInteractionEnabled = false
@@ -190,12 +190,12 @@ class FilterVC: BaseTableVC{
             
         case "hotelfilter":
             sortBylbl.text = "Filter"
-//            setupHotelsFilterTVCells()
+            //            setupHotelsFilterTVCells()
             break
             
         case "hotelsort":
             sortBylbl.text = "Sort"
-//            setupHotelsSortByTVCells()
+            //            setupHotelsSortByTVCells()
             break
             
             
@@ -205,7 +205,7 @@ class FilterVC: BaseTableVC{
         
         resetBtn.layer.cornerRadius = 4
         resetBtn.setTitle("Reset", for: .normal)
-//        resetBtn.titleLabel?.textColor = .AppTabSelectColor
+        //        resetBtn.titleLabel?.textColor = .AppTabSelectColor
         resetBtn.titleLabel?.font = UIFont.latoRegular(size: 16)
         commonTableView.registerTVCells(["CheckBoxTVCell",
                                          "EmptyTVCell",
@@ -240,8 +240,8 @@ class FilterVC: BaseTableVC{
         tablerow.append(TableRow(title:"Luggage",data: luggageArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Duration", key:"duriation",cellType:.SliderTVCell))
         tablerow.append(TableRow(title:"Transit Time", key:"time",cellType:.SliderTVCell))
-//        tablerow.append(TableRow(title:"Departure Time",cellType:.FilterDepartureTVCell))
-//        tablerow.append(TableRow(title:"Arrival Time",cellType:.FilterDepartureTVCell))
+        //        tablerow.append(TableRow(title:"Departure Time",cellType:.FilterDepartureTVCell))
+        //        tablerow.append(TableRow(title:"Arrival Time",cellType:.FilterDepartureTVCell))
         tablerow.append(TableRow(title:"Departure Time",key:"time", data: departurnTimeArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Arrival Time",key:"time", data: departurnTimeArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"No Overnight Flight",data: noOverNightFlightArray,cellType:.CheckBoxTVCell))
@@ -263,10 +263,10 @@ class FilterVC: BaseTableVC{
         }
         tablerow.removeAll()
         
-        tablerow.append(TableRow(title:"Price",key: "no",cellType:.SortbyTVCell))
-        tablerow.append(TableRow(title:"Departure",key: "no",cellType:.SortbyTVCell))
-        tablerow.append(TableRow(title:"Arrival Time",key: "no",cellType:.SortbyTVCell))
-        tablerow.append(TableRow(title:"Duration",key: "no",cellType:.SortbyTVCell))
+        tablerow.append(TableRow(title:"Price",key: "low",cellType:.SortbyTVCell))
+        tablerow.append(TableRow(title:"Departure",key: "departure",cellType:.SortbyTVCell))
+        tablerow.append(TableRow(title:"Arrival Time",key: "departure",cellType:.SortbyTVCell))
+        tablerow.append(TableRow(title:"Duration",key: "departure",cellType:.SortbyTVCell))
         tablerow.append(TableRow(title:"Airlines",key: "airline",cellType:.SortbyTVCell))
         
         
@@ -281,45 +281,45 @@ class FilterVC: BaseTableVC{
     
     
     
-//    func setupHotelsFilterTVCells() {
-//        
-//        commonTableView.isScrollEnabled = true
-//        tablerow.removeAll()
-//        
-//        tablerow.append(TableRow(title:"Price",cellType:.SliderTVCell))
-//        tablerow.append(TableRow(title:"Star Ratings ",cellType:.PopularFiltersTVCell))
-//        tablerow.append(TableRow(title:"Booking Type",data: paymentTypeArray,cellType:.CheckBoxTVCell))
-//        tablerow.append(TableRow(title:"Neighbourhood",data: neighbourwoodArray,cellType:.CheckBoxTVCell))
-//        tablerow.append(TableRow(title:"Near By Location's",data: nearBylocationsArray,cellType:.CheckBoxTVCell))
-//        tablerow.append(TableRow(title:"Amenities",data: amenitiesArray,cellType:.CheckBoxTVCell))
-//        
-//        
-//        
-//        tablerow.append(TableRow(height:100,cellType:.EmptyTVCell))
-//        tablerow.append(TableRow(title:"Apply",key: "btn",cellType:.ButtonTVCell))
-//        tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
-//        
-//        commonTVData = tablerow
-//        commonTableView.reloadData()
-//    }
+    //    func setupHotelsFilterTVCells() {
+    //
+    //        commonTableView.isScrollEnabled = true
+    //        tablerow.removeAll()
+    //
+    //        tablerow.append(TableRow(title:"Price",cellType:.SliderTVCell))
+    //        tablerow.append(TableRow(title:"Star Ratings ",cellType:.PopularFiltersTVCell))
+    //        tablerow.append(TableRow(title:"Booking Type",data: paymentTypeArray,cellType:.CheckBoxTVCell))
+    //        tablerow.append(TableRow(title:"Neighbourhood",data: neighbourwoodArray,cellType:.CheckBoxTVCell))
+    //        tablerow.append(TableRow(title:"Near By Location's",data: nearBylocationsArray,cellType:.CheckBoxTVCell))
+    //        tablerow.append(TableRow(title:"Amenities",data: amenitiesArray,cellType:.CheckBoxTVCell))
+    //
+    //
+    //
+    //        tablerow.append(TableRow(height:100,cellType:.EmptyTVCell))
+    //        tablerow.append(TableRow(title:"Apply",key: "btn",cellType:.ButtonTVCell))
+    //        tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+    //
+    //        commonTVData = tablerow
+    //        commonTableView.reloadData()
+    //    }
     
     
     
-//    func setupHotelsSortByTVCells() {
-//        commonTableView.isScrollEnabled = false
-//        tablerow.removeAll()
-//        
-//        tablerow.append(TableRow(title:"Price",key: "",cellType:.SortbyTVCell))
-//        tablerow.append(TableRow(title:"Star",key: "no",cellType:.SortbyTVCell))
-//        
-//        tablerow.append(TableRow(height:200,cellType:.EmptyTVCell))
-//        tablerow.append(TableRow(title:"Done",key: "btn",cellType:.ButtonTVCell))
-//        tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
-//        
-//        commonTVData = tablerow
-//        commonTableView.reloadData()
-//    }
-//    
+    //    func setupHotelsSortByTVCells() {
+    //        commonTableView.isScrollEnabled = false
+    //        tablerow.removeAll()
+    //
+    //        tablerow.append(TableRow(title:"Price",key: "",cellType:.SortbyTVCell))
+    //        tablerow.append(TableRow(title:"Star",key: "no",cellType:.SortbyTVCell))
+    //
+    //        tablerow.append(TableRow(height:200,cellType:.EmptyTVCell))
+    //        tablerow.append(TableRow(title:"Done",key: "btn",cellType:.ButtonTVCell))
+    //        tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+    //
+    //        commonTVData = tablerow
+    //        commonTableView.reloadData()
+    //    }
+    //
     
     
     
@@ -344,25 +344,25 @@ class FilterVC: BaseTableVC{
     }
     
     
-//    override func didTapOnOneRatingViewBtn(cell: PopularFiltersTVCell) {
-//        starRatingFilter = cell.onelbl.text ?? ""
-//    }
-//    override func didTapOnTwoRatingViewBtn(cell: PopularFiltersTVCell) {
-//        starRatingFilter = cell.twolbl.text ?? ""
-//    }
-//    override func didTapOnThreeatingViewBtn(cell: PopularFiltersTVCell) {
-//        starRatingFilter = cell.threelbl.text ?? ""
-//    }
-//    override func didTapOnFouratingViewBtn(cell: PopularFiltersTVCell) {
-//        starRatingFilter = cell.fourlbl.text ?? ""
-//    }
-//    override func didTapOnFivetingViewBtn(cell: PopularFiltersTVCell) {
-//        starRatingFilter = cell.fivelbl.text ?? ""
-//    }
-//    
+    //    override func didTapOnOneRatingViewBtn(cell: PopularFiltersTVCell) {
+    //        starRatingFilter = cell.onelbl.text ?? ""
+    //    }
+    //    override func didTapOnTwoRatingViewBtn(cell: PopularFiltersTVCell) {
+    //        starRatingFilter = cell.twolbl.text ?? ""
+    //    }
+    //    override func didTapOnThreeatingViewBtn(cell: PopularFiltersTVCell) {
+    //        starRatingFilter = cell.threelbl.text ?? ""
+    //    }
+    //    override func didTapOnFouratingViewBtn(cell: PopularFiltersTVCell) {
+    //        starRatingFilter = cell.fourlbl.text ?? ""
+    //    }
+    //    override func didTapOnFivetingViewBtn(cell: PopularFiltersTVCell) {
+    //        starRatingFilter = cell.fivelbl.text ?? ""
+    //    }
+    //
     override func didTapOnLowtoHighBtn(cell: SortbyTVCell) {
         cell.lowtoHighlbl.textColor = .WhiteColor
-        cell.lowtoHighView.backgroundColor = .AppCalenderDateSelectColor
+        cell.lowtoHighView.backgroundColor = HexColor("#3C627A")
         cell.hightoLowhlbl.textColor = .AppLabelColor
         cell.hightoLowView.backgroundColor = .WhiteColor
         
@@ -466,7 +466,7 @@ class FilterVC: BaseTableVC{
         cell.lowtoHighlbl.textColor = .AppLabelColor
         cell.lowtoHighView.backgroundColor = .WhiteColor
         cell.hightoLowhlbl.textColor = .WhiteColor
-        cell.hightoLowView.backgroundColor = .AppCalenderDateSelectColor
+        cell.hightoLowView.backgroundColor = HexColor("#3C627A")
         
         if cell.titlelbl.text == "Price" {
             sortBy = .PriceHigh
@@ -523,7 +523,7 @@ class FilterVC: BaseTableVC{
                 resetSortBy(cell: cell1)
             }
             
-        }else if cell.titlelbl.text == "Duration"{
+        }else if cell.titlelbl.text == "Duration" {
             sortBy = .DurationHigh
             
             if let cell1 = commonTableView.cellForRow(at: IndexPath(item: 0, section: 0)) as? SortbyTVCell {
@@ -592,7 +592,7 @@ class FilterVC: BaseTableVC{
                     }
                 }
             }else {
-//                resetHotelFilter()
+                //                resetHotelFilter()
             }
         }
         
@@ -614,7 +614,7 @@ class FilterVC: BaseTableVC{
     
     func sortbyTap() {
         filterKey = "sortby"
-//        sortBylbl.textColor = .AppTabSelectColor
+        //        sortBylbl.textColor = .AppTabSelectColor
         sortbyUL.backgroundColor = .clear
         filterslbl.textColor = .SubTitleColor
         filterUL.backgroundColor = .WhiteColor
@@ -623,8 +623,6 @@ class FilterVC: BaseTableVC{
         if let tabSelected = defaults.string(forKey: UserDefaultsKeys.dashboardTapSelected) {
             if tabSelected == "Flights" {
                 setupSortByTVCells()
-            }else {
-//                setupHotelsSortByTVCells()
             }
         }
     }
@@ -696,39 +694,6 @@ class FilterVC: BaseTableVC{
                 default:
                     break
                 }
-            }else {
-                
-                switch cell.filtertitle {
-                    
-                    
-                case "Booking Type":
-                   
-                    hotelRefundablerTypeFilteArray.append(cell.titlelbl.text ?? "")
-                    
-                    break
-                    
-                    
-                    
-                case "Neighbourhood":
-                    selectedNeighbourwoodArray.append(cell.titlelbl.text ?? "")
-                    break
-                    
-                    
-                case "Near By Location's":
-                    selectednearBylocationsArray.append(cell.titlelbl.text ?? "")
-                    break
-                    
-                    
-                case "Amenities":
-                    selectedamenitiesArray.append(cell.titlelbl.text ?? "")
-                    break
-                    
-                    
-                    
-                    
-                default:
-                    break
-                }
             }
             
             
@@ -763,7 +728,7 @@ class FilterVC: BaseTableVC{
                 case "Stops":
                     
                     if cell.titlelbl.text == "0 Stop" {
-                       
+                        
                         if let index = noOfStopsFilterArray.firstIndex(of: "0") {
                             noOfStopsFilterArray.remove(at: index)
                         }
@@ -836,47 +801,6 @@ class FilterVC: BaseTableVC{
                 default:
                     break
                 }
-            }else {
-                
-                
-                switch cell.filtertitle {
-                    
-                    
-                case "Booking Type":
-                    
-                    if let index = hotelRefundablerTypeFilteArray.firstIndex(of: cell.titlelbl.text ?? "") {
-                        hotelRefundablerTypeFilteArray.remove(at: index)
-                    }
-                    break
-                    
-                    
-                case "Neighbourhood":
-                    
-                    if let index = selectedNeighbourwoodArray.firstIndex(of: cell.titlelbl.text ?? "") {
-                        selectedNeighbourwoodArray.remove(at: index)
-                    }
-                    break
-                    
-                    
-                case "Near By Location's":
-                    
-                    if let index = selectednearBylocationsArray.firstIndex(of: cell.titlelbl.text ?? "") {
-                        selectednearBylocationsArray.remove(at: index)
-                    }
-                    break
-                    
-                    
-                case "Amenities":
-                    
-                    if let index = selectedamenitiesArray.firstIndex(of: cell.titlelbl.text ?? "") {
-                        selectedamenitiesArray.remove(at: index)
-                    }
-                    break
-                    
-                    
-                default:
-                    break
-                }
             }
             
             
@@ -884,19 +808,19 @@ class FilterVC: BaseTableVC{
     }
     
     
-//    override func didTapOnTimeBtn(cell:FilterDepartureTVCell){
-//        switch cell.titlelbl.text {
-//        case "Departure Time":
-//            departureTimeFilter = cell.timeString
-//            break
-//
-//        case "Arrival Time":
-//            arrivalTimeFilter = cell.timeString
-//            break
-//        default:
-//            break
-//        }
-//    }
+    //    override func didTapOnTimeBtn(cell:FilterDepartureTVCell){
+    //        switch cell.titlelbl.text {
+    //        case "Departure Time":
+    //            departureTimeFilter = cell.timeString
+    //            break
+    //
+    //        case "Arrival Time":
+    //            arrivalTimeFilter = cell.timeString
+    //            break
+    //        default:
+    //            break
+    //        }
+    //    }
     
     
     
@@ -928,8 +852,6 @@ class FilterVC: BaseTableVC{
         if let tabSelected = defaults.string(forKey: UserDefaultsKeys.dashboardTapSelected) {
             if tabSelected == "Flights" {
                 setupFilterTVCells()
-            }else {
-//                setupHotelsFilterTVCells()
             }
         }
     }
@@ -942,27 +864,31 @@ class FilterVC: BaseTableVC{
             
             if tabselect == "Flights" {
                 
+                
                 if filterKey == "filter" {
-                        
-                        if minpricerangefilter != 0.0 {
-                            filterModel.minPriceRange = minpricerangefilter
-                        }else {
-                            filterModel.minPriceRange = Double(pricesFloat.min() ?? 0.0)
-                        }
-                        
-                        if maxpricerangefilter != 0.0 {
-                            filterModel.maxPriceRange = maxpricerangefilter
-                        }else {
-                            filterModel.maxPriceRange = Double(pricesFloat.max() ?? 0.0)
-                        }
-                        
-                        
-                        if noOvernightFlightFilterStr.isEmpty == false {
-                            filterModel.noOvernightFlight = noOvernightFlightFilterStr
-                        }else {
-                            filterModel.noOvernightFlight.removeAll()
-                        }
-                        
+                    
+                    
+                    
+                    
+                    if minpricerangefilter != 0.0 {
+                        filterModel.minPriceRange = minpricerangefilter
+                    }else {
+                        filterModel.minPriceRange = Double(pricesFloat.min() ?? 0.0)
+                    }
+                    
+                    if maxpricerangefilter != 0.0 {
+                        filterModel.maxPriceRange = maxpricerangefilter
+                    }else {
+                        filterModel.maxPriceRange = Double(pricesFloat.max() ?? 0.0)
+                    }
+                    
+                    
+                    if noOvernightFlightFilterStr.isEmpty == false {
+                        filterModel.noOvernightFlight = noOvernightFlightFilterStr
+                    }else {
+                        filterModel.noOvernightFlight.removeAll()
+                    }
+                    
                     if departureTimeFilter.isEmpty == false {
                         filterModel.departureTime = departureTimeFilter
                     }else {
@@ -974,127 +900,63 @@ class FilterVC: BaseTableVC{
                     }else {
                         filterModel.arrivalTime.removeAll()
                     }
-                        
-                        
-                        if !noOfStopsFilterArray.isEmpty {
-                            filterModel.noOfStops = noOfStopsFilterArray
-                        }else {
-                            filterModel.noOfStops.removeAll()
-                        }
-                        
-                        if !flightRefundablerTypeFilteArray.isEmpty {
-                            filterModel.refundableTypes = flightRefundablerTypeFilteArray
-                        }else {
-                            filterModel.refundableTypes.removeAll()
-                        }
-                        
-                        if !airlinesFilterArray.isEmpty {
-                            filterModel.airlines = airlinesFilterArray
-                        }else {
-                            filterModel.airlines.removeAll()
-                        }
-                        
-                        if !connectingFlightsFilterArray.isEmpty {
-                            filterModel.connectingFlights = connectingFlightsFilterArray
-                        }else {
-                            filterModel.connectingFlights.removeAll()
-                        }
-                        
-                        
-                        if !ConnectingAirportsFilterArray.isEmpty {
-                            filterModel.connectingAirports = ConnectingAirportsFilterArray
-                        }else {
-                            filterModel.connectingAirports.removeAll()
-                        }
-                        
-                        if !selectedLuggageArray.isEmpty {
-                            filterModel.luggage = selectedLuggageArray
-                        }else {
-                            filterModel.luggage.removeAll()
-                        }
-                        
-                        
-                        
-                        delegate?.filtersByApplied(minpricerange:filterModel.minPriceRange ?? 0.0,
-                                                   maxpricerange: filterModel.maxPriceRange ?? 0.0,
-                                                   noofStopsArray:  filterModel.noOfStops,
-                                                   refundableTypeArray: filterModel.refundableTypes,
-                                                   departureTime:  filterModel.departureTime ,
-                                                   arrivalTime: filterModel.arrivalTime ,
-                                                   noOvernightFlight: filterModel.noOvernightFlight,
-                                                   airlinesFilterArray: filterModel.airlines,
-                                                   luggageFilterArray: filterModel.luggage,
-                                                   connectingFlightsFilterArray: filterModel.connectingFlights,
-                                                   ConnectingAirportsFilterArray: filterModel.connectingAirports)
-                        
                     
-                }else {
+                    
+                    if !noOfStopsFilterArray.isEmpty {
+                        filterModel.noOfStops = noOfStopsFilterArray
+                    }else {
+                        filterModel.noOfStops.removeAll()
+                    }
+                    
+                    
+                    if !flightRefundablerTypeFilteArray.isEmpty {
+                        filterModel.refundableTypes = flightRefundablerTypeFilteArray
+                    }else {
+                        filterModel.refundableTypes.removeAll()
+                    }
+                    
+                    if !airlinesFilterArray.isEmpty {
+                        filterModel.airlines = airlinesFilterArray
+                    }else {
+                        filterModel.airlines.removeAll()
+                    }
+                    
+                    if !connectingFlightsFilterArray.isEmpty {
+                        filterModel.connectingFlights = connectingFlightsFilterArray
+                    }else {
+                        filterModel.connectingFlights.removeAll()
+                    }
+                    
+                    
+                    if !ConnectingAirportsFilterArray.isEmpty {
+                        filterModel.connectingAirports = ConnectingAirportsFilterArray
+                    }else {
+                        filterModel.connectingAirports.removeAll()
+                    }
+                    
+                    if !selectedLuggageArray.isEmpty {
+                        filterModel.luggage = selectedLuggageArray
+                    }else {
+                        filterModel.luggage.removeAll()
+                    }
+                    
+                    
+                    
+                    delegate?.filtersByApplied(minpricerange:filterModel.minPriceRange ?? 0.0,
+                                               maxpricerange: filterModel.maxPriceRange ?? 0.0,
+                                               noofStopsArray:  filterModel.noOfStops,
+                                               refundableTypeArray: filterModel.refundableTypes,
+                                               departureTime:  filterModel.departureTime ,
+                                               arrivalTime: filterModel.arrivalTime ,
+                                               noOvernightFlight: filterModel.noOvernightFlight,
+                                               airlinesFilterArray: filterModel.airlines,
+                                               luggageFilterArray: filterModel.luggage,
+                                               connectingFlightsFilterArray: filterModel.connectingFlights,
+                                               ConnectingAirportsFilterArray: filterModel.connectingAirports)
+                } else {
                     delegate?.filtersSortByApplied(sortBy: sortBy)
                 }
-            }else {
-                
-                    
-                    
-//                    if minpricerangefilter != 0.0 {
-//                        hotelfiltermodel.minPriceRange = minpricerangefilter
-//                    }else {
-//                        hotelfiltermodel.minPriceRange = Double(pricesFloat.min() ?? 0.0)
-//                    }
-//                    
-//                    if maxpricerangefilter != 0.0 {
-//                        hotelfiltermodel.maxPriceRange = maxpricerangefilter
-//                    }else {
-//                        hotelfiltermodel.maxPriceRange = Double(pricesFloat.max() ?? 0.0)
-//                    }
-//                    
-//                    
-//                    if !starRatingFilter.isEmpty {
-//                        hotelfiltermodel.starRating = starRatingFilter
-//                    }else {
-//                        hotelfiltermodel.starRating = ""
-//                    }
-//                    
-//                    
-//                    if !hotelRefundablerTypeFilteArray.isEmpty {
-//                        hotelfiltermodel.refundableTypes = hotelRefundablerTypeFilteArray
-//                    }else {
-//                        hotelfiltermodel.refundableTypes.removeAll()
-//                    }
-//                    
-//                    if !selectednearBylocationsArray.isEmpty {
-//                        hotelfiltermodel.nearByLocA = selectednearBylocationsArray
-//                    }else {
-//                        hotelfiltermodel.nearByLocA.removeAll()
-//                    }
-//                    
-//                    
-//                    if !selectedNeighbourwoodArray.isEmpty {
-//                        hotelfiltermodel.niberhoodA = selectedNeighbourwoodArray
-//                    }else {
-//                        hotelfiltermodel.niberhoodA.removeAll()
-//                    }
-//                    
-//                    if !selectedamenitiesArray.isEmpty {
-//                        hotelfiltermodel.aminitiesA = selectedamenitiesArray
-//                    }else {
-//                        hotelfiltermodel.aminitiesA.removeAll()
-//                    }
-//                    
-//                    
-//                    
-//                    delegate?.hotelFilterByApplied(minpricerange:  hotelfiltermodel.minPriceRange ?? 0.0,
-//                                                   maxpricerange:  hotelfiltermodel.maxPriceRange ?? 0.0,
-//                                                   starRating:  hotelfiltermodel.starRating,
-//                                                   refundableTypeArray: hotelfiltermodel.refundableTypes,
-//                                                   nearByLocA: hotelfiltermodel.nearByLocA,
-//                                                   niberhoodA: hotelfiltermodel.niberhoodA,
-//                                                   aminitiesA: hotelfiltermodel.aminitiesA)
-                
             }
-            
-            
-            
-            
         }
         
         dismiss(animated: true)
@@ -1129,15 +991,15 @@ extension FilterVC {
                 cell.showbool = true
             }
         }
-//        } else if let cell = tableView.cellForRow(at: indexPath) as? FilterDepartureTVCell {
-//            if cell.showbool == true {
-//                cell.expand()
-//                cell.showbool = false
-//            }else {
-//                cell.hide()
-//                cell.showbool = true
-//            }
-//        }
+        //        } else if let cell = tableView.cellForRow(at: indexPath) as? FilterDepartureTVCell {
+        //            if cell.showbool == true {
+        //                cell.expand()
+        //                cell.showbool = false
+        //            }else {
+        //                cell.hide()
+        //                cell.showbool = true
+        //            }
+        //        }
         
         UIView.animate(withDuration: 0.3) {
             tableView.performBatchUpdates(nil)
@@ -1153,7 +1015,7 @@ extension FilterVC {
     func resetFilter() {
         // Reset all values in the FilterModel
         
-       
+        
         
         let pricesFloat = prices.compactMap { Float($0) }
         filterModel.minPriceRange = Double((pricesFloat.min() ?? prices.compactMap { Float($0) }.min()) ?? 0.0)
@@ -1226,13 +1088,6 @@ extension FilterVC {
                 }
                 
                 
-            }else {
-                if let cell1 = commonTableView.cellForRow(at: IndexPath(item: 0, section: 0)) as? SortbyTVCell {
-                    resetSortBy(cell: cell1)
-                }
-                if let cell2 = commonTableView.cellForRow(at: IndexPath(item: 1, section: 0)) as? SortbyTVCell {
-                    resetSortBy(cell: cell2)
-                }
             }
         }
     }
@@ -1248,8 +1103,6 @@ extension FilterVC {
         if let tabSelected = defaults.string(forKey: UserDefaultsKeys.dashboardTapSelected) {
             if tabSelected == "Flights" {
                 loadinitiallFlightFilterValues()
-            }else {
-//                loadinitiallHotelFilterValues()
             }
         }
     }
@@ -1260,7 +1113,7 @@ extension FilterVC {
         
         if !UserDefaults.standard.bool(forKey: "flightfilteronce") {
             resetFilter()
-           defaults.set(true, forKey: "flightfilteronce")
+            defaults.set(true, forKey: "flightfilteronce")
         }
         
         
@@ -1306,70 +1159,70 @@ extension FilterVC {
     }
     
     
-//    func loadinitiallHotelFilterValues(){
-//        
-//        if !UserDefaults.standard.bool(forKey: "hoteltfilteronce") {
-//            resetHotelFilter()
-//            defaults.set(true, forKey: "hoteltfilteronce")
-//        }
-//        
-//        
-//        if hotelfiltermodel.minPriceRange != 0.0 {
-//            minpricerangefilter = hotelfiltermodel.minPriceRange ?? Double(prices.compactMap { Float($0) }.min()!)
-//        }
-//        
-//        if hotelfiltermodel.maxPriceRange != 0.0 {
-//            maxpricerangefilter = hotelfiltermodel.maxPriceRange ?? Double(prices.compactMap { Float($0) }.max()!)
-//        }
-//        
-//     
-//        
-//        if !hotelfiltermodel.refundableTypes.isEmpty {
-//            hotelRefundablerTypeFilteArray = hotelfiltermodel.refundableTypes
-//        }
-//        
-//        if !hotelfiltermodel.aminitiesA.isEmpty {
-//            selectedamenitiesArray = hotelfiltermodel.aminitiesA
-//        }
-//        
-//        if !hotelfiltermodel.nearByLocA.isEmpty {
-//            selectednearBylocationsArray = hotelfiltermodel.nearByLocA
-//        }
-//        
-//        if !hotelfiltermodel.niberhoodA.isEmpty {
-//            selectedNeighbourwoodArray = hotelfiltermodel.niberhoodA
-//        }
-//    }
-//    
+    //    func loadinitiallHotelFilterValues(){
+    //
+    //        if !UserDefaults.standard.bool(forKey: "hoteltfilteronce") {
+    //            resetHotelFilter()
+    //            defaults.set(true, forKey: "hoteltfilteronce")
+    //        }
+    //
+    //
+    //        if hotelfiltermodel.minPriceRange != 0.0 {
+    //            minpricerangefilter = hotelfiltermodel.minPriceRange ?? Double(prices.compactMap { Float($0) }.min()!)
+    //        }
+    //
+    //        if hotelfiltermodel.maxPriceRange != 0.0 {
+    //            maxpricerangefilter = hotelfiltermodel.maxPriceRange ?? Double(prices.compactMap { Float($0) }.max()!)
+    //        }
+    //
+    //
+    //
+    //        if !hotelfiltermodel.refundableTypes.isEmpty {
+    //            hotelRefundablerTypeFilteArray = hotelfiltermodel.refundableTypes
+    //        }
+    //
+    //        if !hotelfiltermodel.aminitiesA.isEmpty {
+    //            selectedamenitiesArray = hotelfiltermodel.aminitiesA
+    //        }
+    //
+    //        if !hotelfiltermodel.nearByLocA.isEmpty {
+    //            selectednearBylocationsArray = hotelfiltermodel.nearByLocA
+    //        }
+    //
+    //        if !hotelfiltermodel.niberhoodA.isEmpty {
+    //            selectedNeighbourwoodArray = hotelfiltermodel.niberhoodA
+    //        }
+    //    }
+    //
     
-//    func resetHotelFilter() {
-//        // Reset all values in the FilterModel
-//        
-//        let pricesFloat = prices.compactMap { Float($0) }
-//        hotelfiltermodel.minPriceRange = Double((pricesFloat.min() ?? prices.compactMap { Float($0) }.min()) ?? 0.0)
-//        hotelfiltermodel.maxPriceRange = Double((pricesFloat.max() ?? prices.compactMap { Float($0) }.max()) ?? 0.0)
-//        if let cell = commonTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SliderTVCell {
-//            cell.setupUI()
-//        }
-//        minpricerangefilter = hotelfiltermodel.minPriceRange ?? 0.0
-//        maxpricerangefilter = hotelfiltermodel.maxPriceRange ?? 0.0
-//        
-//        hotelfiltermodel.refundableTypes.removeAll()
-//        hotelfiltermodel.aminitiesA.removeAll()
-//        hotelfiltermodel.nearByLocA.removeAll()
-//        hotelfiltermodel.niberhoodA.removeAll()
-//        hotelfiltermodel.starRating = ""
-//        
-//        starRatingFilter = ""
-//        hotelRefundablerTypeFilteArray.removeAll()
-//        selectednearBylocationsArray.removeAll()
-//        selectedNeighbourwoodArray.removeAll()
-//        selectedamenitiesArray.removeAll()
-//        
-//        // Deselect all cells in your checkOptionsTVCell table view
-//        deselectAllCheckOptionsCells()
-//        
-//        // Reload the table view to reflect the changes
-//        commonTableView.reloadData()
-//    }
+    //    func resetHotelFilter() {
+    //        // Reset all values in the FilterModel
+    //
+    //        let pricesFloat = prices.compactMap { Float($0) }
+    //        hotelfiltermodel.minPriceRange = Double((pricesFloat.min() ?? prices.compactMap { Float($0) }.min()) ?? 0.0)
+    //        hotelfiltermodel.maxPriceRange = Double((pricesFloat.max() ?? prices.compactMap { Float($0) }.max()) ?? 0.0)
+    //        if let cell = commonTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? SliderTVCell {
+    //            cell.setupUI()
+    //        }
+    //        minpricerangefilter = hotelfiltermodel.minPriceRange ?? 0.0
+    //        maxpricerangefilter = hotelfiltermodel.maxPriceRange ?? 0.0
+    //
+    //        hotelfiltermodel.refundableTypes.removeAll()
+    //        hotelfiltermodel.aminitiesA.removeAll()
+    //        hotelfiltermodel.nearByLocA.removeAll()
+    //        hotelfiltermodel.niberhoodA.removeAll()
+    //        hotelfiltermodel.starRating = ""
+    //
+    //        starRatingFilter = ""
+    //        hotelRefundablerTypeFilteArray.removeAll()
+    //        selectednearBylocationsArray.removeAll()
+    //        selectedNeighbourwoodArray.removeAll()
+    //        selectedamenitiesArray.removeAll()
+    //
+    //        // Deselect all cells in your checkOptionsTVCell table view
+    //        deselectAllCheckOptionsCells()
+    //
+    //        // Reload the table view to reflect the changes
+    //        commonTableView.reloadData()
+    //    }
 }

@@ -72,10 +72,16 @@ class RegisterNowTableViewCell: TableViewCell {
         self.pass = passwordTxtfld.text!
         self.email = emailTextFld.text!
         
-        if emailTextFld.text != "" && passwordTxtfld.text != "" {
-            registerNowButton.backgroundColor = HexColor("#EE1935")
+        self.pass = passwordTxtfld.text!
+        self.email = emailTextFld.text!
+        if email == "" {
+            showToastMsg(message: "Enter Email Adress")
+        } else if email.isValidEmail() == false {
+            showToastMsg(message: "Enter Valid Email")
+        } else if pass == "" {
+            showToastMsg(message: "Enter Password")
         } else {
-            registerNowButton.backgroundColor = HexColor("#EE1935").withAlphaComponent(0.3)
+            registerNowButton.backgroundColor = HexColor("#EE1935")
         }
     }
     

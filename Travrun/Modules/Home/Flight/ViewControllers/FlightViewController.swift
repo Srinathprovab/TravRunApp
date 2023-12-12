@@ -62,7 +62,7 @@ class FlightViewController: BaseTableVC {
     override func viewWillAppear(_ animated: Bool) {
 
         //  frontView.isHidden = true
-       
+        addObserver()
         NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("nointernet"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTV), name: Notification.Name("calreloadTV"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reload(notification:)), name: NSNotification.Name("reload"), object: nil)
@@ -70,6 +70,9 @@ class FlightViewController: BaseTableVC {
         NotificationCenter.default.addObserver(self, selector: #selector(fromSelectCityVC), name: NSNotification.Name("fromSelectCityVC"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(topcity(notification:)), name: Notification.Name("topcity"), object: nil)
+        
+        
+        defaults.set("Flights", forKey: UserDefaultsKeys.dashboardTapSelected)
         
         setupIntialUI()
         
@@ -120,7 +123,7 @@ class FlightViewController: BaseTableVC {
     
     func setUpTableView() {
         tableRow.removeAll()
-        tableRow.append(TableRow(key: "oneWay",cellType: .OneWayTableViewCell))
+        tableRow.append(TableRow(key: "oneWay",isEditable: viewModel?.isCehckIn, cellType: .OneWayTableViewCell))
         tableRow.append(TableRow(cellType: .FlightSearchButtonTableViewCell))
         tableRow.append(TableRow(height: 26, bgColor: HexColor("#FFEBED"), cellType: .EmptyTVCell))
         
@@ -131,7 +134,7 @@ class FlightViewController: BaseTableVC {
     
     func setUpRoundTripTableView() {
         tableRow.removeAll()
-        tableRow.append(TableRow(key: "roundTrip",cellType: .OneWayTableViewCell))
+        tableRow.append(TableRow(key: "roundTrip",isEditable: viewModel?.isCehckIn,cellType: .OneWayTableViewCell))
         tableRow.append(TableRow(cellType: .FlightSearchButtonTableViewCell))
         tableRow.append(TableRow(height: 26, bgColor: HexColor("#FFEBED"), cellType: .EmptyTVCell))
         
@@ -251,9 +254,10 @@ class FlightViewController: BaseTableVC {
                 payload["currency"] = defaults.string(forKey:UserDefaultsKeys.selectedCurrency) ?? "KWD"
                 
                 
-                if directFlightBool == false {
+                if viewModel?.isCehckIn == true {
                     payload["direct_flight"] = "on"
                 }
+                
                 gotoSearchFlightResultVC(payload33: payload)
                 
                 if defaults.string(forKey:UserDefaultsKeys.fromCity) == "Origin" || defaults.string(forKey:UserDefaultsKeys.fromCity) == nil{
@@ -297,7 +301,7 @@ class FlightViewController: BaseTableVC {
                 payload["user_id"] = defaults.string(forKey:UserDefaultsKeys.userid) ?? "0"
                 payload["currency"] = defaults.string(forKey:UserDefaultsKeys.selectedCurrency) ?? "KWD"
                 
-                if directFlightBool == false {
+                if viewModel?.isCehckIn == true {
                     payload["direct_flight"] = "on"
                 }
                 
@@ -432,3 +436,90 @@ extension FlightViewController {
     }
 }
 
+extension FlightViewController {
+    
+    func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("nointernet"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTV), name: Notification.Name("reloadTV"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reload(notification:)), name: Notification.Name("reload"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(topcity(notification:)), name: Notification.Name("topcity"), object: nil)
+        
+      
+        if !UserDefaults.standard.bool(forKey: "ExecuteOnce") {
+            
+            defaults.set("+965", forKey: UserDefaultsKeys.mobilecountrycode)
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+//                self.gotoPrivacyScreen()
+//            }
+            defaults.set("Flights", forKey: UserDefaultsKeys.dashboardTapSelected)
+            defaults.set(0, forKey: UserDefaultsKeys.DashboardTapSelectedCellIndex)
+            defaults.set("circle", forKey: UserDefaultsKeys.journeyType)
+            defaults.set(0, forKey: UserDefaultsKeys.journeyTypeSelectedIndex)
+            defaults.set("KWD", forKey: UserDefaultsKeys.selectedCurrency)
+            defaults.set("EN", forKey: UserDefaultsKeys.APILanguageType)
+//            langLabel.text = "KWD"
+            defaults.set("1", forKey: UserDefaultsKeys.totalTravellerCount)
+            
+            defaults.set("Economy", forKey: UserDefaultsKeys.selectClass)
+            defaults.set("1", forKey: UserDefaultsKeys.adultCount)
+            defaults.set("0", forKey: UserDefaultsKeys.childCount)
+            defaults.set("0", forKey: UserDefaultsKeys.infantsCount)
+            let totaltraverlers = "\(defaults.string(forKey: UserDefaultsKeys.adultCount) ?? "1") Adult | \(defaults.string(forKey: UserDefaultsKeys.childCount) ?? "0") Child | \(defaults.string(forKey: UserDefaultsKeys.infantsCount) ?? "") Infant | \(defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "")"
+            defaults.set(totaltraverlers, forKey: UserDefaultsKeys.travellerDetails)
+            
+            defaults.set("Economy", forKey: UserDefaultsKeys.rselectClass)
+            defaults.set("1", forKey: UserDefaultsKeys.radultCount)
+            defaults.set("0", forKey: UserDefaultsKeys.rchildCount)
+            defaults.set("0", forKey: UserDefaultsKeys.rinfantsCount)
+            let totaltraverlers1 = "\(defaults.string(forKey: UserDefaultsKeys.radultCount) ?? "1") Adult | \(defaults.string(forKey: UserDefaultsKeys.rchildCount) ?? "") Child | \(defaults.string(forKey: UserDefaultsKeys.rinfantsCount) ?? "") Infant |\(defaults.string(forKey: UserDefaultsKeys.rselectClass) ?? "")"
+            defaults.set(totaltraverlers1, forKey: UserDefaultsKeys.rtravellerDetails)
+            
+            
+//            defaults.set("Economy", forKey: UserDefaultsKeys.mselectClass)
+//            defaults.set("1", forKey: UserDefaultsKeys.madultCount)
+//            defaults.set("0", forKey: UserDefaultsKeys.mchildCount)
+//            defaults.set("0", forKey: UserDefaultsKeys.minfantsCount)
+//            let totaltraverlers3 = "\(defaults.string(forKey: UserDefaultsKeys.madultCount) ?? "1") Adult | \(defaults.string(forKey: UserDefaultsKeys.mchildCount) ?? "") Child | \(defaults.string(forKey: UserDefaultsKeys.minfantsCount) ?? "") Infants |\(defaults.string(forKey: UserDefaultsKeys.rselectClass) ?? "")"
+//            defaults.set(totaltraverlers3, forKey: UserDefaultsKeys.mtravellerDetails)
+            
+            
+            
+//            //Hotel default Values
+//            defaults.set("1", forKey: UserDefaultsKeys.roomcount)
+//            defaults.set("2", forKey: UserDefaultsKeys.hoteladultscount)
+//            defaults.set("0", forKey: UserDefaultsKeys.hotelchildcount)
+//            defaults.set("\(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? "") Rooms,\(defaults.string(forKey: UserDefaultsKeys.hoteladultscount) ?? "") Adults,\(defaults.string(forKey: UserDefaultsKeys.hotelchildcount) ?? "") Child", forKey: UserDefaultsKeys.selectPersons)
+            
+            
+//            
+//            //Insurence default Values
+//            defaults.set("1", forKey: UserDefaultsKeys.iadultCount)
+//            defaults.set("0", forKey: UserDefaultsKeys.ichildCount)
+//            defaults.set("0", forKey: UserDefaultsKeys.iinfantsCount)
+//            let totaltraverlers6 = "\(defaults.string(forKey: UserDefaultsKeys.iadultCount) ?? "1") Adult | \(defaults.string(forKey: UserDefaultsKeys.ichildCount) ?? "") Child | \(defaults.string(forKey: UserDefaultsKeys.infantsCount) ?? "") Infants "
+//            defaults.set(totaltraverlers6, forKey: UserDefaultsKeys.itravellerDetails)
+//            
+//            defaults.set("1", forKey: UserDefaultsKeys.iradultCount)
+//            defaults.set("0", forKey: UserDefaultsKeys.irchildCount)
+//            defaults.set("0", forKey: UserDefaultsKeys.irinfantsCount)
+//            let totaltraverlers7 = "\(defaults.string(forKey: UserDefaultsKeys.iradultCount) ?? "1") Adult | \(defaults.string(forKey: UserDefaultsKeys.irchildCount) ?? "") Child | \(defaults.string(forKey: UserDefaultsKeys.irinfantsCount) ?? "") Infants"
+//            defaults.set(totaltraverlers7, forKey: UserDefaultsKeys.irtravellerDetails)
+//            
+//            
+//            
+//            //Fasttrack default Values
+//            defaults.set("1", forKey: UserDefaultsKeys.fradultCount)
+//            defaults.set("0", forKey: UserDefaultsKeys.frchildCount)
+//            let totaltraverlers8 = "\(defaults.string(forKey: UserDefaultsKeys.fradultCount) ?? "1") Adult | \(defaults.string(forKey: UserDefaultsKeys.frchildCount) ?? "") Child"
+//            defaults.set(totaltraverlers8, forKey: UserDefaultsKeys.frtravellerDetails)
+//            
+            
+            UserDefaults.standard.set(true, forKey: "ExecuteOnce")
+            
+        }
+        
+    }
+    
+    
+}
