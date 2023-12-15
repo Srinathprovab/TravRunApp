@@ -8,7 +8,11 @@
 import UIKit
 
 class BaggageInfoCollectionViewCell: UICollectionViewCell {
-
+    @IBOutlet weak var cityLabel: UILabel!
+    
+    @IBOutlet weak var separatorView: UIView!
+    @IBOutlet weak var baggageInfoLabel: UILabel!
+    @IBOutlet weak var numberOfPieceLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

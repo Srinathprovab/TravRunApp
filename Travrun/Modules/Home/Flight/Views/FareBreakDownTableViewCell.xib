@@ -647,6 +647,26 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="adultBaseFare" destination="CBI-WI-e7A" id="c8P-Ak-QPv"/>
+                <outlet property="adultCountLabel" destination="Kaj-JN-A0Y" id="D6o-HN-x56"/>
+                <outlet property="adultTax" destination="uzl-2H-yDd" id="w8t-yE-btW"/>
+                <outlet property="adultTotalLabel" destination="SHl-ba-uSp" id="rQ3-Fu-86R"/>
+                <outlet property="adultView" destination="02G-G1-P9N" id="k1d-25-hKE"/>
+                <outlet property="childBaseFareLabel" destination="oAS-2W-UvN" id="mrB-EY-eaa"/>
+                <outlet property="childCountLabel" destination="7x8-gX-zTa" id="PUB-sa-tQ9"/>
+                <outlet property="childTax" destination="8K9-Xd-pi7" id="GCx-AA-CVz"/>
+                <outlet property="childTotalLabel" destination="mZY-Mi-lfo" id="YwH-Yc-KAU"/>
+                <outlet property="childView" destination="dUW-le-9dx" id="ngh-G0-Cvw"/>
+                <outlet property="infantBaseFareLabel" destination="VIQ-eA-tka" id="deg-DG-oKc"/>
+                <outlet property="infantCountLabel" destination="NOR-Sm-Fk4" id="pbJ-G5-e3q"/>
+                <outlet property="infantTaxLabel" destination="rQD-fR-s8J" id="cZl-xt-Rv0"/>
+                <outlet property="infantTotalLabel" destination="Akh-pc-VaO" id="OCD-Rq-wbJ"/>
+                <outlet property="infantView" destination="QTb-r0-cYX" id="Rbt-uw-OJi"/>
+                <outlet property="subtotalAdultLabel" destination="5Pw-qc-h8O" id="fqJ-Yk-Kcn"/>
+                <outlet property="subtotalChildLabel" destination="5pB-5G-nii" id="Gyz-j1-yt7"/>
+                <outlet property="subtotalnfantLabel" destination="63b-ng-Yxk" id="NIo-bM-8FD"/>
+            </connections>
             <point key="canvasLocation" x="-64.122137404580144" y="19.718309859154932"/>
         </tableViewCell>
     </objects>

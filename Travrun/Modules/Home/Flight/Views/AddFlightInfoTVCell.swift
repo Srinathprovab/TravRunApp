@@ -8,10 +8,14 @@
 import UIKit
 
 class AddFlightInfoTVCell: UITableViewCell {
-
+    
+    @IBOutlet weak var economyLabel: UILabel!
+    @IBOutlet weak var cabinlbl: UILabel!
+    @IBOutlet weak var checkinBaggagelbl: UILabel!
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var airlinelogo: UIImageView!
     @IBOutlet weak var deplogo: UIImageView!
-    @IBOutlet weak var airlinenamelbl: UILabel!
     @IBOutlet weak var airlinelbl: UILabel!
     @IBOutlet weak var durationlbl: UILabel!
     @IBOutlet weak var noofStopslbl: UILabel!
@@ -19,10 +23,9 @@ class AddFlightInfoTVCell: UITableViewCell {
     @IBOutlet weak var fromCitylbl: UILabel!
     @IBOutlet weak var toTimelbl: UILabel!
     @IBOutlet weak var toCitylbl: UILabel!
-    @IBOutlet weak var cabinlbl: UILabel!
-    @IBOutlet weak var checkinBaggagelbl: UILabel!
     @IBOutlet weak var ulView: UIView!
     
+    @IBOutlet weak var separatorLabel: UILabel!
     
     
     override func awakeFromNib() {

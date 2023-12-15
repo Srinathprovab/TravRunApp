@@ -9,6 +9,8 @@ import UIKit
 
 class BaggageInfoTableViewCell: TableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
    
+    var bagInfo = [JourneySummary]()
+    
     @IBOutlet weak var collectionView: UICollectionView!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +33,10 @@ class BaggageInfoTableViewCell: TableViewCell, UICollectionViewDelegate, UIColle
         collectionView.clipsToBounds = true
         collectionView.showsHorizontalScrollIndicator = false
     }
+    
+    override func updateUI() {
+        bagInfo = cellInfo?.moreData as! [JourneySummary]
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -42,13 +48,22 @@ class BaggageInfoTableViewCell: TableViewCell, UICollectionViewDelegate, UIColle
 
 extension BaggageInfoTableViewCell{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return bagInfo.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let data = bagInfo[indexPath.row]
         var commonCell = UICollectionViewCell()
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? BaggageInfoCollectionViewCell {
             commonCell = cell
+            cell.cityLabel.text = "\(data.from_city ?? "") to \(data.to_city ?? "")"
+            cell.numberOfPieceLabel.text = data.cabin_baggage
+            cell.baggageInfoLabel.text = "2 Piece airlines usually permit \(data.weight_Allowance ?? "0") kg per piece"
+            if bagInfo.count == 1 {
+                cell.separatorView.isHidden = true
+            } else if bagInfo.count > 1  {
+                cell.separatorView.isHidden = false
+            }
         }
         return commonCell
     }

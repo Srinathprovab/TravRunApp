@@ -92,7 +92,7 @@ class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDe
     
     
     //Delegate Methods
-    
+    func didTapOnAddReturnFlightAction(cell: NewFlightSearchResultTVCell) {}
     func didTapOnLoginBtn(cell: MenuBGTVCell) {}
     func didTapOnEditProfileBtn(cell: MenuBGTVCell) {}
     func didTapOnForGetPassword(cell: TextfieldTVCell) {}
@@ -391,8 +391,12 @@ extension BaseTableVC: UITableViewDataSource {
             case .AddressTableViewCell :
                 let cell: AddressTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
                 commonCell = cell
-                
+             
+            case .ItineraryAddTVCell :
+                let cell: ItineraryAddTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
             
+                
             default:
                 print("handle this case in getCurrentCellAt")
             }

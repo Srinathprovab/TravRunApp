@@ -14,6 +14,7 @@ protocol NewFlightSearchResultTVCellDelegate {
     func didTapOnMoreSimilarBtnAction(cell:NewFlightSearchResultTVCell)
     func didTapOnflightDetailsButton
     (cell:NewFlightSearchResultTVCell)
+    func didTapOnAddReturnFlightAction(cell:NewFlightSearchResultTVCell)
 }
 
 
@@ -34,7 +35,7 @@ class NewFlightSearchResultTVCell: TableViewCell {
     var displayPrice = String()
     var bsource = String()
     var bsourcekey = String()
-    var delegate:NewFlightSearchResultTVCellDelegate?
+    var delegate: NewFlightSearchResultTVCellDelegate?
     var selectedResult = String()
     var newsimilarList = [[J_flight_list]]()
     var newsimilarListMulticity = [[MCJ_flight_list]]()
@@ -61,7 +62,7 @@ class NewFlightSearchResultTVCell: TableViewCell {
                              str2: String(format: "%.2f", Double(cellInfo?.price ?? "") ?? 0.0),
                              lbl: pricelbl,
                              str1font: UIFont.InterRegular(size: 12),
-                             str2font: UIFont.InterBold(size: 22),
+                             str2font: UIFont.InterBold(size: 20),
                              str1Color: .AppLabelColor,
                              str2Color: HexColor("#EE1935"))
         
@@ -74,9 +75,9 @@ class NewFlightSearchResultTVCell: TableViewCell {
         bsourcekey = cellInfo?.bookingsourcekey ?? ""
         
         if faretypelbl.text == "Refundable" {
-            faretypelbl.textColor = .AppCalenderDateSelectColor
+            faretypelbl.textColor = .white
         }else {
-            faretypelbl.textColor = .AppBtnColor
+            faretypelbl.textColor = HexColor("#F96800")
         }
         
         
@@ -92,11 +93,6 @@ class NewFlightSearchResultTVCell: TableViewCell {
             hideSimilarlbl()
         }
         
-        
-        
-        
-        
-        
         if let similarList1 = cellInfo?.data as? [[J_flight_list]] {
             newsimilarList = similarList1
             let similarListCount = similarList1.count
@@ -105,7 +101,7 @@ class NewFlightSearchResultTVCell: TableViewCell {
             print("Similar List Count: \(similarListCount)")
             
             if similarListCount > 1 {
-                setuplabels(lbl: moreSimlarOptionlbl, text: "More similar options(\(similarListCount))", textcolor: UIColor.WhiteColor, font: UIFont.latoRegular(size: 14), align: .right)
+                setuplabels(lbl: moreSimlarOptionlbl, text: "More similar options(\(similarListCount))", textcolor: UIColor.WhiteColor, font: UIFont.latoRegular(size: 12), align: .right)
                 showSimilarlbl()
             } else {
                 hideSimilarlbl()
@@ -133,7 +129,7 @@ class NewFlightSearchResultTVCell: TableViewCell {
     
     
     func updateHeight() {
-        tvheight.constant = CGFloat(flightSummery.count * 126)
+        tvheight.constant = CGFloat(flightSummery.count * 141)
         flighTV.reloadData()
     }
     
@@ -160,7 +156,7 @@ class NewFlightSearchResultTVCell: TableViewCell {
     
     
     @IBAction func didTapOnAddReturnFlightBtnAction(_ sender: Any) {
-        delegate?.didTapOnAddReturnFlightBtnAction(cell: self)
+        delegate?.didTapOnAddReturnFlightAction(cell: self)
     }
     
     
@@ -204,9 +200,9 @@ extension NewFlightSearchResultTVCell: UITableViewDelegate,UITableViewDataSource
             
             let data = flightSummery[indexPath.row]
             
+            cell.economyLabel.text =  data.cabin_class
             cell.airlinelogo.sd_setImage(with: URL(string: data.operator_image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
             
-            cell.airlinenamelbl.text = data.operator_name ?? ""
             cell.airlinelbl.text = "(\(data.operator_code ?? "")-\(data.flight_number ?? ""))"
             cell.durationlbl.text = data.duration ?? ""
             cell.noofStopslbl.text = "\(data.no_of_stops ?? 0) Stops"
@@ -215,21 +211,24 @@ extension NewFlightSearchResultTVCell: UITableViewDelegate,UITableViewDataSource
             cell.fromCitylbl.text = "\(data.origin?.city ?? "")(\(data.origin?.loc ?? ""))"
             cell.toTimelbl.text = data.destination?.time ?? ""
             cell.toCitylbl.text = "\(data.destination?.city ?? "")(\(data.destination?.loc ?? ""))"
-            
+            //            cell.deplogo.image = UIImage(named: "dep")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppBtnColor)
             
             if data.weight_Allowance == "" || data.weight_Allowance == nil {
                 cell.cabinlbl.text = "0Kg"
+                cell.checkinBaggagelbl.text = "0Kg"
             } else {
+                cell.checkinBaggagelbl.text = convertToDesiredFormat(data.weight_Allowance ?? "")
                 cell.cabinlbl.text = convertToDesiredFormat(data.weight_Allowance ?? "")
             }
             
+            cell.separatorLabel.isHidden = true
             if key == "circle" {
+                cell.separatorLabel.isHidden = false
                 if tableView.isLast(for: indexPath) == true {
-                    cell.ulView.isHidden = true
-//                    cell.deplogo.image = UIImage(named: "arrival")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppBtnColor)
+                    cell.separatorLabel.isHidden = true
+//                    cell.topView.isHidden = true
                 }
             }
-            
             
             ccell = cell
         }
@@ -249,9 +248,10 @@ extension NewFlightSearchResultTVCell {
     
     
     func hideSimilarlbl(){
-        bottomView.backgroundColor = .clear
-        similarimg.isHidden = true
+        //        bottomView.backgroundColor = .clear
+        //        similarimg.isHidden = true
         similarBtn.isHidden = true
+        similarimg.isHidden = true
         moreSimlarOptionlbl.isHidden = true
     }
     

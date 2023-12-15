@@ -28,6 +28,10 @@ class FareSummaryTableViewCell: TableViewCell, UITableViewDelegate, UITableViewD
 
 
 extension FareSummaryTableViewCell {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        4
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         5
     }
@@ -59,3 +63,5 @@ extension FareSummaryTableViewCell {
     }
     
 }
+
+

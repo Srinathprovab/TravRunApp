@@ -149,16 +149,23 @@ class similarFlightsVC: BaseTableVC {
     
     
     //MARK: - didTapOnAddReturnFlightBtnAction NewFlightSearchResultTVCell
-    override func didTapOnAddReturnFlightBtnAction(cell: NewFlightSearchResultTVCell) {
-//        gotoModifySearchFlightVC(key: "addreturn")
+    
+    
+    override func didTapOnAddReturnFlightAction(cell: NewFlightSearchResultTVCell) {
+        gotoModifySearchFlightVC(key: "addreturn")
     }
     
-//    func gotoModifySearchFlightVC(key:String) {
-//        guard let vc = FlightViewController.newInstance.self else {return}
-//        vc.modalPresentationStyle = .overCurrentContext
+    
+    override func didTapOnAddReturnFlightBtnAction(cell: NewFlightSearchResultTVCell) {
+        gotoModifySearchFlightVC(key: "addreturn")
+    }
+    
+    func gotoModifySearchFlightVC(key:String) {
+        guard let vc = FlightViewController.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
 //        vc.key = key
-//        present(vc, animated: true)
-//    }
+        present(vc, animated: true)
+    }
     
     //MARK: - didTapOnCloseBtnAction
     @IBAction func didTapOnCloseBtnAction(_ sender: Any) {

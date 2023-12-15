@@ -14,10 +14,17 @@ class totalDiscountTVCell: TableViewCell {
         // Initialization code
     }
 
+    @IBOutlet weak var TripTotalLabel: UILabel!
+    @IBOutlet weak var fareTotalLabel: UILabel!
+    @IBOutlet weak var tripTotalCurrencyType: UILabel!
+    @IBOutlet weak var fareCurrencyTypeLbl: UILabel!
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        TripTotalLabel.text = grandTotal
+        fareTotalLabel.text = grandTotal
+//        fareCurrencyTypeLbl.text = "\(fareCurrencyType)"
+//        tripTotalCurrencyType.text = "\(fareCurrencyType )"
     }
     
 }

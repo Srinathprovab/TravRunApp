@@ -203,7 +203,7 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
                 toSubtitleLabel.text = defaults.string(forKey: UserDefaultsKeys.toCityCode) ?? ""
                 fromTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.fromCity) ?? "Origin"
                 toTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.toCity) ?? "Destination"
-                self.departureDateLabel.text = defaults.string(forKey: UserDefaultsKeys.rcalDepDate) ?? "Departure Date"
+                self.departureDateLabel.text = defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "Departure Date"
                 self.returnDateLabel.text = defaults.string(forKey: UserDefaultsKeys.rcalRetDate) ?? "Return Date"
                 returnView.alpha = 1
             }

@@ -243,7 +243,7 @@ class FlightViewController: BaseTableVC {
                 payload["from_loc_id"] = defaults.string(forKey:UserDefaultsKeys.fromlocid)
                 payload["to"] = defaults.string(forKey:UserDefaultsKeys.toCity)
                 payload["to_loc_id"] = defaults.string(forKey:UserDefaultsKeys.tolocid)
-                payload["depature"] = "31-01-2024"
+                payload["depature"] = defaults.string(forKey:UserDefaultsKeys.calDepDate)
                 payload["return"] = "1709"
                 payload["out_jrn"] = "All Times"
                 payload["ret_jrn"] = "All Times"
@@ -291,8 +291,8 @@ class FlightViewController: BaseTableVC {
                 payload["from_loc_id"] = defaults.string(forKey:UserDefaultsKeys.fromlocid)
                 payload["to"] = defaults.string(forKey:UserDefaultsKeys.toCity)
                 payload["to_loc_id"] = defaults.string(forKey:UserDefaultsKeys.tolocid)
-                payload["depature"] = "31-01-2024"
-                payload["return"] = "04-05-2024"
+                payload["depature"] = defaults.string(forKey:UserDefaultsKeys.calDepDate)
+                payload["return"] = defaults.string(forKey:UserDefaultsKeys.rcalRetDate)
                 payload["out_jrn"] = "All Times"
                 payload["ret_jrn"] = "All Times"
                 payload["carrier"] = ""

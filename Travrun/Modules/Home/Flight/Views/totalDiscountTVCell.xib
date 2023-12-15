@@ -30,13 +30,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="62"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fare Description (KWD)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNr-Ij-NV9">
-                                <rect key="frame" x="111.66666666666669" y="15" width="133" height="14.666666666666664"/>
+                                <rect key="frame" x="135.66666666666666" y="15" width="132.99999999999997" height="14.666666666666664"/>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                 <color key="textColor" name="AppLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AED" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3B-bL-CDE">
-                                <rect key="frame" x="265.66666666666669" y="14.666666666666664" width="24" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3B-bL-CDE">
+                                <rect key="frame" x="289.66666666666669" y="22.333333333333332" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                 <color key="textColor" name="AppLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -48,13 +48,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="total Trip cost" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ez8-pj-dQf">
-                                <rect key="frame" x="111.66666666666669" y="46.666666666666664" width="78.333333333333314" height="14.666666666666664"/>
+                                <rect key="frame" x="135.66666666666666" y="46.666666666666664" width="78.333333333333343" height="14.666666666666664"/>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                 <color key="textColor" name="AppLabelColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AED" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gec-zD-UFO">
-                                <rect key="frame" x="265.66666666666669" y="46.333333333333336" width="24" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gec-zD-UFO">
+                                <rect key="frame" x="289.66666666666669" y="54" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                 <color key="textColor" name="AppLabelColor"/>
                                 <nil key="highlightedColor"/>
@@ -93,6 +93,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="TripTotalLabel" destination="Yh0-Li-Lgd" id="F7r-cw-QwQ"/>
+                <outlet property="fareCurrencyTypeLbl" destination="E3B-bL-CDE" id="eK2-re-2me"/>
+                <outlet property="fareTotalLabel" destination="FiP-Ve-1fk" id="FM2-Sy-5K0"/>
+                <outlet property="tripTotalCurrencyType" destination="Gec-zD-UFO" id="Tqe-sB-8Eq"/>
+            </connections>
             <point key="canvasLocation" x="32.824427480916029" y="19.718309859154932"/>
         </tableViewCell>
     </objects>

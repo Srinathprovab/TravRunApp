@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+
 var dateSelectKey = ""
 let defaults = UserDefaults.standard
 let KPlatform = "Platform"
@@ -71,6 +72,10 @@ var topHotelDetails = [TopHotelDetails]()
 var topFlightDetails = [TopFlightDetails]()
 var deailcodelist = [Deail_code_list]()
 var topHolidayList = [HolidaydestinationList]()
+var fd = [[FDFlightDetails]]()
+var jd = [JourneySummary]()
+var fareRulehtml = [FareRulehtml]()
+
 var keyStr = String()
 var directFlightBool = true
 var oldjournyType = ""
@@ -90,7 +95,8 @@ public var screenHeight: CGFloat {
     return UIScreen.main.bounds.size.height
 }
 
-
+var fareCurrencyType = String()
+var tripCurrencyType = String()
 var totalprice = String()
 var Adults_Base_Price = String()
 var Adults_Tax_Price = String()
@@ -108,6 +114,8 @@ var InfantTotalPrice = String()
 var sub_total_adult : String?
 var sub_total_child : String?
 var sub_total_infant : String?
+
+
 
 //MARK: - Profile details
 var pdetails:ProfileDetails?
@@ -224,6 +232,8 @@ struct sessionMgrDefaults {
 }
 
 struct ApiEndpoints {
+    static let getFlightDetails = "getFlightDetails"
+    static let getBaggageFlightDetails = "getFlightDetails"
     static let mobileUpdateTraveller = "mobileUpdateTraveller"
     static let mobileInsertTraveller = "mobileInsertTraveller"
     static let mobilepreprocessbooking = "mobile_pre_process_booking"
@@ -242,4 +252,5 @@ struct ApiEndpoints {
     static let mobilePreFlightSearch = "mobile_pre_flight_search"
     static let getairportcodelist = "get_airport_code_list"
     static let mobileDeleteTraveller = "mobileDeleteTraveller"
+    static let getfarerules = "get_fare_rules"
 }

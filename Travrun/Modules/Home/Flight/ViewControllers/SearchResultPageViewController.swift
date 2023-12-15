@@ -54,6 +54,8 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
     var payload2 = [String:Any]()
     var viewModel : FlightListViewModel?
     var totalprice = String()
+    var depDate = String()
+    var retDate = String()
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +81,17 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
     }
     
     func setUpView() {
+        
+        if defaults.string(forKey: UserDefaultsKeys.journeyType) == "oneway" {
+            depDate = defaults.string(forKey:UserDefaultsKeys.calDepDate) ?? ""
+            subTitleLabel.text = "\(depDate)"
+        } else {
+            depDate = defaults.string(forKey:UserDefaultsKeys.calDepDate) ?? ""
+            retDate = defaults.string(forKey:UserDefaultsKeys.calRetDate) ?? ""
+            subTitleLabel.text = "\(depDate)"
+        }
+        
+        self.datelbl.text = defaults.string(forKey:UserDefaultsKeys.calDepDate)
         personsCategoryLabel.text = "\(adult ?? "0") Adults | \(child ?? "0") Children | \(infant ?? "") infants | \(eClass ?? "0")"
         backButtonView.layer.cornerRadius = backButtonView.layer.frame.width / 2
         editButtonView.layer.cornerRadius = editButtonView.layer.frame.width / 2
@@ -111,8 +124,21 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
                                               "MultiCityTripFlightResultTVCell"])
     }
     
+    @IBAction func modifyButtonAction(_ sender: Any) {
+        guard let vc = ModifySearchViewController.newInstance.self else {return}
+        vc.modalPresentationStyle = .popover
+        present(vc, animated: true)
+//        dismiss(animated: true)
+    }
+    
     @IBAction func backButtonAction(_ sender: Any) {
-        dismiss(animated: false)
+        if isfromVc == "ModifySearchViewController" {
+            guard let vc = FlightViewController.newInstance.self else {return}
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
+        } else {
+            dismiss(animated: false)
+        }
     }
     
     
@@ -159,7 +185,7 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
                 // Convert the date string to a Date object
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd-MM-yyyy"
-                let dateString = defaults.string(forKey: UserDefaultsKeys.rcalDepDate) ?? ""
+                let dateString = defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? ""
                 guard let date = dateFormatter.date(from: dateString) else { return }
                 
                 // Get the next day's date
@@ -174,10 +200,9 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
                     
                     
                     print("nextDayString ==== > \(nextDayString)")
-                    defaults.set(nextDayString, forKey: UserDefaultsKeys.rcalDepDate)
-                    payload["depature"] = defaults.string(forKey:UserDefaultsKeys.rcalDepDate)
+                    defaults.set(nextDayString, forKey: UserDefaultsKeys.calDepDate)
+                    payload["depature"] = defaults.string(forKey:UserDefaultsKeys.calDepDate)
                     self.datelbl.text = nextDayString
-                    
                     callAPI()
                 }
             }
@@ -186,6 +211,8 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
         
         
     }
+    
+    
     
     
     @IBAction func sortButtonAction(_ sender: Any) {
@@ -306,10 +333,10 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
     
     
     
-//    override func didTapOnflightDetailsButton(cell:NewFlightSearchResultTVCell) {
-//       
-//    }
-//    
+    //    override func didTapOnflightDetailsButton(cell:NewFlightSearchResultTVCell) {
+    //
+    //    }
+    //
     override func didTapOnBookNowBtnAction(cell: NewFlightSearchResultTVCell) {
         guard let vc = BookingDetailsViewController.newInstance.self else {return}
         vc.modalPresentationStyle = .overFullScreen
@@ -749,7 +776,8 @@ extension SearchResultPageViewController {
             
             self.holderView.isHidden = false
             loderBool = false
-            
+            self.depDate = response.data?.search_params?.depature ?? ""
+            self.subTitleLabel.text = depDate
             oldjournyType = response.data?.search_params?.trip_type ?? ""
             //   chatBtnView.isHidden = false
             holderView.backgroundColor = .AppHolderViewColor
@@ -760,27 +788,31 @@ extension SearchResultPageViewController {
             
             setuplabels(lbl: titleLabel, text: "\(defaults.string(forKey: UserDefaultsKeys.fromcityname) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tocityname) ?? "")", textcolor: .AppLabelColor, font: UIFont.InterSemiBold(size: 16), align: .center)
             
+                        setuplabels(lbl: cityLabel, text: "\(response.data?.search_params?.from_loc ?? "")-\(response.data?.search_params?.to_loc ?? "")", textcolor: .AppLabelColor, font: .InterRegular(size: 12), align: .center)
             
-//            setuplabels(lbl: subTitleLabel, text: response.data?.search_params?.depature ?? "", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
+            //            subTitleLabel.text = convertDateFormat(inputDate: defaults.string(forKey:UserDefaultsKeys.calDepDate) ?? "", f1: "dd-MM-YYYY", f2: "MMM-dd-YYYY")
+            
+            //            setuplabels(lbl: subTitleLabel, text: response.data?.search_params?.depature ?? "", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
             
             
-//            setuplabels(lbl: cityCodelbl, text: "\(response.data?.search_params?.from_loc ?? "")-\(response.data?.search_params?.to_loc ?? "")", textcolor: .AppLabelColor, font: .LatoRegular(size: 12), align: .center)
+            //            setuplabels(lbl: cityCodelbl, text: "\(response.data?.search_params?.from_loc ?? "")-\(response.data?.search_params?.to_loc ?? "")", textcolor: .AppLabelColor, font: .LatoRegular(size: 12), align: .center)
             
-//            setuplabels(lbl: navView.lbl2, text: "On \(convertDateFormat(inputDate: "\(response.data?.search_params?.depature ?? "")", f1: "dd-MM-yyyy", f2: "dd MMM")) \n \(defaults.string(forKey: UserDefaultsKeys.travellerDetails) ?? "")", textcolor: .WhiteColor, font: .LatoRegular(size: 14), align: .center)
+            //            setuplabels(lbl: navView.lbl2, text: "On \(convertDateFormat(inputDate: "\(response.data?.search_params?.depature ?? "")", f1: "dd-MM-yyyy", f2: "dd MMM")) \n \(defaults.string(forKey: UserDefaultsKeys.travellerDetails) ?? "")", textcolor: .WhiteColor, font: .LatoRegular(size: 14), align: .center)
             
             if let journeyType = defaults.string(forKey: UserDefaultsKeys.journeyType) {
                 if journeyType == "circle" {
                     returnDatalbl.isHidden = false
                     
                     setuplabels(lbl: titleLabel, text: "\(defaults.string(forKey: UserDefaultsKeys.fromcityname) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tocityname) ?? "")", textcolor: .AppLabelColor, font: .InterSemiBold(size: 16), align: .center)
-                    
+                    setuplabels(lbl: returnDatalbl, text: response.data?.search_params?.freturn ?? "", textcolor: .AppLabelColor, font: .InterRegular(size: 12), align: .center)
                     
                     //                            setuplabels(lbl: datelbl, text: response.data?.search_params?.depature ?? "", textcolor: .AppLabelColor, font: .LatoRegular(size: 12), align: .center)
                     //
-                    //                            setuplabels(lbl: returnDatalbl, text: response.data?.search_params?.freturn ?? "", textcolor: .AppLabelColor, font: .LatoRegular(size: 12), align: .center)
+                
                     //
                     //
-                    //                            setuplabels(lbl: cityCodelbl, text: "\(response.data?.search_params?.from_loc ?? "")-\(response.data?.search_params?.to_loc ?? "")", textcolor: .AppLabelColor, font: .LatoRegular(size: 12), align: .center)
+                    //
+                    setuplabels(lbl: cityLabel, text: "\(response.data?.search_params?.from_loc ?? "")-\(response.data?.search_params?.to_loc ?? "")", textcolor: .AppLabelColor, font: .InterRegular(size: 12), align: .center)
                     //
                     //                            setuplabels(lbl: navView.lbl2, text: "On \(convertDateFormat(inputDate: "\(response.data?.search_params?.depature ?? "")", f1: "dd-MM-yyyy", f2: "dd MMM")) & Return \(convertDateFormat(inputDate: "\(response.data?.search_params?.freturn ?? "")", f1: "dd-MM-yyyy", f2: "dd MMM")) \n \(defaults.string(forKey: UserDefaultsKeys.travellerDetails) ?? "")", textcolor: .WhiteColor, font: .LatoRegular(size: 14), align: .center)
                     

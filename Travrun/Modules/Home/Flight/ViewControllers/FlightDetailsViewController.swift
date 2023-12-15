@@ -7,9 +7,10 @@
 
 import UIKit
 
-class FlightDetailsViewController: BaseTableVC {
+class FlightDetailsViewController: BaseTableVC, FDViewModelDelegate, FareRulesModelViewModelDelegate{
     @IBOutlet weak var tvTraling: NSLayoutConstraint!
     
+    @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var middleConstraint: NSLayoutConstraint!
     @IBOutlet weak var tvLeading: NSLayoutConstraint!
     @IBOutlet weak var topView: UIView!
@@ -22,6 +23,8 @@ class FlightDetailsViewController: BaseTableVC {
     @IBOutlet weak var breakdownView: BorderedView!
     @IBOutlet weak var iternaryView: BorderedView!
     
+    var fareRulesData = [FareRulesData]()
+    
     static var newInstance: FlightDetailsViewController? {
         let storyboard = UIStoryboard(name: Storyboard.FlightStoryBoard.name,
                                       bundle: nil)
@@ -29,40 +32,38 @@ class FlightDetailsViewController: BaseTableVC {
         return vc
     }
     
+    var isVCFrom = String()
+    var tablerow = [TableRow]()
+    var viewmodel : FlightDetailsViewModel?
+    var viewmodel1 : FDViewModel?
+    var payload = [String:Any]()
+    var fdetails = [FDFlightDetails]()
+    var jSummary = [JourneySummary]()
     var tableRow = [TableRow]()
-    
+    var fareruleViewModel : FareRulesModelViewModel?
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-       registerTv() 
-       setUpView()
+        registerTv()
+        viewmodel1 = FDViewModel(self)
+        fareruleViewModel = FareRulesModelViewModel(self)
+        setUpView()
     }
     
     func registerTv() {
-        self.commonTableView.registerTVCells(["FlightInfoTableViewCell", "FareBreakDownTableViewCell","totalDiscountTVCell", "FareRulesTableViewCell", "EmptyTVCell", "BaggageInfoTableViewCell", "ContactUsLabelTVCell", "HeaderTableViewCell", ""])
+        self.commonTableView.registerTVCells(["FlightInfoTableViewCell", "FareBreakDownTableViewCell","totalDiscountTVCell", "FareRulesTableViewCell", "EmptyTVCell", "BaggageInfoTableViewCell", "ContactUsLabelTVCell", "HeaderTableViewCell", "ItineraryAddTVCell"])
     }
     
     func setUpView() {
         topView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         topView.layer.cornerRadius = 30
         topView.clipsToBounds = true
-        setUpTableView()
+        callGetFlightDetailsAPI()
     }
     
-    
-    func setUpTableView() {
-        tableRow.removeAll()
-        tvLeading.constant = 0
-        middleConstraint.constant = 0
-        tvTraling.constant = 0
-        tableRow.append(TableRow(key: "show", cellType: .FlightInfoTableViewCell))
-        tableRow.append(TableRow(key: "hide", cellType: .FlightInfoTableViewCell))
-        tableRow.append(TableRow(key: "all", cellType: .FlightInfoTableViewCell))
-        self.commonTVData = tableRow
-        self.commonTableView.reloadData()
-    }
-    
+
     func setUpBreakDown() {
-        middleConstraint.constant = 13
+        //        middleConstraint.constant = 13
         tvLeading.constant = 15
         tvTraling.constant = 15
         tableRow.removeAll()
@@ -74,11 +75,11 @@ class FlightDetailsViewController: BaseTableVC {
     
     
     func setUpFareRules() {
-        middleConstraint.constant = 13
+        //        middleConstraint.constant = 13
         tvLeading.constant = 15
         tvTraling.constant = 15
         tableRow.removeAll()
-        tableRow.append(TableRow(key: "Cancellation Fee",cellType: .FareRulesTableViewCell))
+        tableRow.append(TableRow(key: "Cancellation Fee", moreData: fareRulesData,cellType: .FareRulesTableViewCell))
         tableRow.append(TableRow(height: 20,bgColor: UIColor.clear, cellType: .EmptyTVCell))
         tableRow.append(TableRow(key: "Airline Date change",cellType: .FareRulesTableViewCell))
         tableRow.append(TableRow(height: 20,bgColor: UIColor.clear, cellType: .EmptyTVCell))
@@ -91,18 +92,18 @@ class FlightDetailsViewController: BaseTableVC {
     
     
     func setUpBaggageInfo() {
-        middleConstraint.constant = 13
+        //        middleConstraint.constant = 13
         tvLeading.constant = 15
         tvTraling.constant = 15
         tableRow.removeAll()
-        tableRow.append(TableRow(cellType: .BaggageInfoTableViewCell))
+        tableRow.append(TableRow(moreData: jSummary, cellType: .BaggageInfoTableViewCell))
         tableRow.append(TableRow(height: 11, bgColor: .clear, cellType: .EmptyTVCell))
         tableRow.append(TableRow(key: "info",height: 40, bgColor: UIColor.clear, cellType: .ContactUsLabelTVCell))
         self.commonTVData = tableRow
         self.commonTableView.reloadData()
     }
     
-
+    
     @IBAction func breakDownButtonAction(_ sender: Any) {
         breakdownView.layer.borderColor = UIColor.clear.cgColor
         fareRulesView.layer.borderColor = HexColor("#D4D4D4").cgColor
@@ -132,7 +133,7 @@ class FlightDetailsViewController: BaseTableVC {
         breakDownLabel.textColor = HexColor("#000000")
         bagInfoView.backgroundColor = HexColor("#FFFFFF")
         bagInfoLabel.textColor = HexColor("#000000")
-        setUpTableView()
+        setupItineraryOneWayTVCell()
     }
     
     @IBAction func fareRulesButtonAction(_ sender: Any) {
@@ -148,7 +149,7 @@ class FlightDetailsViewController: BaseTableVC {
         breakDownLabel.textColor = HexColor("#000000")
         bagInfoView.backgroundColor = HexColor("#FFFFFF")
         bagInfoLabel.textColor = HexColor("#000000")
-        setUpFareRules()
+        callFareRulesAPI()
     }
     
     @IBAction func bagInfoButtonAction(_ sender: Any) {
@@ -170,4 +171,142 @@ class FlightDetailsViewController: BaseTableVC {
     @IBAction func dismissButtonAction(_ sender: Any) {
         dismiss(animated: true)
     }
+    
+}
+
+
+extension FlightDetailsViewController {
+    
+    func callGetFlightDetailsAPI() {
+        payload["search_id"] = defaults.string(forKey: UserDefaultsKeys.searchid)
+        payload["selectedResultindex"] = defaults.string(forKey: UserDefaultsKeys.selectedResult)
+        payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
+        payload["booking_source"] = defaults.string(forKey: UserDefaultsKeys.bookingsourcekey) ?? "0"
+        
+        viewmodel1?.CALL_GET_FLIGHT_DETAILS_API(dictParam: payload)
+        
+    }
+    
+    func flightDetails(response: FDModel) {
+        holderView.isHidden = false
+        fd = response.flightDetails ?? []
+        
+        jd = response.journeySummary ?? []
+        fareRulehtml = response.fareRulehtml ?? []
+        totalprice = "\(response.priceDetails?.api_currency ?? "") : \(response.priceDetails?.grand_total ?? "")"
+        grandTotal = totalprice
+        farerulerefkey = response.fare_rule_ref_key ?? ""
+        farerulesrefcontent = response.farerulesref_content ?? ""
+        jSummary = response.journeySummary ?? []
+        
+        fareCurrencyType = String(response.priceDetails?.api_currency ?? "")
+        Adults_Base_Price = String(response.priceDetails?.adultsBasePrice ?? "0")
+        Adults_Tax_Price = String(response.priceDetails?.adultsTaxPrice ?? "0")
+        Childs_Base_Price = String(response.priceDetails?.childBasePrice ?? "0")
+        Childs_Tax_Price = String(response.priceDetails?.childTaxPrice ?? "0")
+        Infants_Base_Price = String(response.priceDetails?.infantBasePrice ?? "0")
+        Infants_Tax_Price = String(response.priceDetails?.infantTaxPrice ?? "0")
+        AdultsTotalPrice = String(response.priceDetails?.adultsTotalPrice ?? "0")
+        ChildTotalPrice = String(response.priceDetails?.childTotalPrice ?? "0")
+        InfantTotalPrice = String(response.priceDetails?.infantTotalPrice ?? "0")
+        sub_total_adult = String(response.priceDetails?.sub_total_adult ?? "0")
+        sub_total_child = String(response.priceDetails?.sub_total_child ?? "0")
+        sub_total_infant = String(response.priceDetails?.sub_total_infant ?? "0")
+        
+        DispatchQueue.main.async {[self] in
+            // callFareRulesAPI()
+        }
+        
+        
+        DispatchQueue.main.async {[self] in
+            //            setupTVCells()
+        }
+        
+        //        self.view.backgroundColor = .black.withAlphaComponent(0.5)
+        DispatchQueue.main.async {[self] in
+            setupItineraryOneWayTVCell()
+        }
+    }
+    
+    
+    //MARK: - callFareRulesAPI
+    func callFareRulesAPI() {
+        
+        
+        payload.removeAll()
+        payload["fare_rule_ref_key"] = farerulerefkey
+        payload["farerulesref_content"] = farerulesrefcontent
+        
+        fareruleViewModel?.CALL_GET_FARE_RULES_API(dictParam: payload)
+    }
+    
+    func fareRulesDetails(response: FareRulesModel) {
+        
+        fareRulesData = response.data ?? []
+        
+        DispatchQueue.main.async {[self] in
+            setUpFareRules()
+        }
+    }
+    
+    
+    
+    func setupItineraryOneWayTVCell() {
+        tablerow.removeAll()
+        fd.enumerated().forEach { (index, element) in
+            tablerow.append(TableRow(title:"\(String(describing: index))",moreData:element,cellType:.ItineraryAddTVCell))
+        }
+        tablerow.append(TableRow(height:100,cellType:.EmptyTVCell))
+        commonTVData = tablerow
+        commonTableView.reloadData()
+    }
+    
+    
+}
+
+
+extension FlightDetailsViewController {
+    
+    func addObserver() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTV), name: Notification.Name("reloadTV"), object: nil)
+
+    }
+    
+    
+    @objc func reloadTV() {
+        DispatchQueue.main.async {[self] in
+            commonTableView.reloadData()
+        }
+    }
+    
+    
+    
+    @objc func reload() {
+        DispatchQueue.main.async {[self] in
+            callGetFlightDetailsAPI()
+        }
+    }
+    
+    //MARK: - resultnil
+    @objc func resultnil() {
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = "noresult"
+        self.present(vc, animated: true)
+    }
+    
+    
+    //MARK: - nointernet
+    @objc func nointernet() {
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = "nointernet"
+        self.present(vc, animated: true)
+    }
+    
+    
 }
