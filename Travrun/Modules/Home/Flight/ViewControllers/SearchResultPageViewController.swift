@@ -141,7 +141,7 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
         }
     }
     
-    
+
     @IBAction func fliterButtonAction(_ sender: Any) {
         gotoFilterVC(strkey: "filter")
     }

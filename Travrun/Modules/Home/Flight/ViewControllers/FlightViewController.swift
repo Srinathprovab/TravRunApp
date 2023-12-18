@@ -9,7 +9,7 @@ import UIKit
 
 class FlightViewController: BaseTableVC {
     
-    
+
     @IBOutlet weak var holderVIew: UIView!
     @IBOutlet weak var gobackLabel: UILabel!
     @IBOutlet weak var roundTripLabel: UILabel!
@@ -43,6 +43,7 @@ class FlightViewController: BaseTableVC {
     var calRetDate: String!
     var fromdataArray = [[String:Any]]()
     var isfromVc = String()
+    var comingFrom = String()
     
     static var newInstance: FlightViewController? {
         let storyboard = UIStoryboard(name: Storyboard.FlightStoryBoard.name,
@@ -258,11 +259,11 @@ class FlightViewController: BaseTableVC {
                     payload["direct_flight"] = "on"
                 }
                 
-                gotoSearchFlightResultVC(payload33: payload)
+//                gotoSearchFlightResultVC(payload33: payload)
                 
-                if defaults.string(forKey:UserDefaultsKeys.fromCity) == "Origin" || defaults.string(forKey:UserDefaultsKeys.fromCity) == nil{
+                if defaults.string(forKey:UserDefaultsKeys.fromCity) == "" || defaults.string(forKey:UserDefaultsKeys.fromCity) == nil{
                     showToast(message: "Please Select From City")
-                }else if defaults.string(forKey:UserDefaultsKeys.toCity) == "Destination" || defaults.string(forKey:UserDefaultsKeys.toCity) == nil{
+                }else if defaults.string(forKey:UserDefaultsKeys.toCity) == "" || defaults.string(forKey:UserDefaultsKeys.toCity) == nil{
                     showToast(message: "Please Select To City")
                 }else if defaults.string(forKey:UserDefaultsKeys.toCity) == defaults.string(forKey:UserDefaultsKeys.fromCity) {
                     showToast(message: "Please Select Different Citys")
@@ -305,11 +306,11 @@ class FlightViewController: BaseTableVC {
                     payload["direct_flight"] = "on"
                 }
                 
-                gotoSearchFlightResultVC(payload33: payload)
+//                gotoSearchFlightResultVC(payload33: payload)
                 
-                if defaults.string(forKey:UserDefaultsKeys.fromCity) == "Origin" || defaults.string(forKey:UserDefaultsKeys.fromCity) == nil{
+                if defaults.string(forKey:UserDefaultsKeys.fromCity) == "" || defaults.string(forKey:UserDefaultsKeys.fromCity) == nil{
                     showToast(message: "Please Select From City")
-                }else if defaults.string(forKey:UserDefaultsKeys.toCity) == "Destination" || defaults.string(forKey:UserDefaultsKeys.toCity) == nil{
+                }else if defaults.string(forKey:UserDefaultsKeys.toCity) == "" || defaults.string(forKey:UserDefaultsKeys.toCity) == nil{
                     showToast(message: "Please Select To City")
                 }else if defaults.string(forKey:UserDefaultsKeys.toCity) == defaults.string(forKey:UserDefaultsKeys.fromCity) {
                     showToast(message: "Please Select Different Citys")
@@ -382,7 +383,6 @@ extension FlightViewController {
 
 extension FlightViewController {
     
-    
     //MARK: - topcity Search
     @objc func topcity(notification: Notification) {
         payload.removeAll()
@@ -424,11 +424,9 @@ extension FlightViewController {
                 defaults.set((userinfo["travel_date"] as? String) ?? "" , forKey: UserDefaultsKeys.calDepDate)
                 defaults.set((userinfo["return_date"] as? String) ?? "" , forKey: UserDefaultsKeys.calRetDate)
             }else {
-                defaults.set((userinfo["travel_date"] as? String) ?? "" , forKey: UserDefaultsKeys.rcalDepDate)
+                defaults.set((userinfo["travel_date"] as? String) ?? "" , forKey: UserDefaultsKeys.calDepDate)
                 defaults.set((userinfo["return_date"] as? String) ?? "" , forKey: UserDefaultsKeys.rcalRetDate)
             }
-            
-            
             
             gotoSearchFlightResultVC(payload33: payload)
         }

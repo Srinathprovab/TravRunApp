@@ -19,16 +19,7 @@ class SpecialDealsTVCell: TableViewCell {
     
     var itemCount = Int()
     var autoScrollTimer: Timer?
-    var topHotelsImages = ["banner1", "banner2", "banner1", "banner2"]
-    var popularDestinationsImages = ["banner3", "banner4", "banner3", "banner4"]
-    var topHotels = ["Dubai", "Riyadh", "Dubai", "Riyadh"]
-    var popularDestinations = ["Dubai", "Kuwait", "Dubai", "Kuwait"]
-    
-    var destinations = ["Maldives", "Bali", "Maldives", "Bali"]
-    var holidayDestinationImages = ["banner5", "banner6", "banner7", "banner8"]
     var destinationImages = [String]()
-    var ticketFare = ["Start  from AED 250", "Start  from AED 500", "Start  from AED 750", "Start  from AED 1000"]
-    var subTitles = ["Palazzo Versace Dubai", "Holiday inn", "Palazzo Versace Dubai", "Holiday inn"]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -175,6 +166,37 @@ extension SpecialDealsTVCell:UICollectionViewDelegate,UICollectionViewDataSource
             commonCell = cell
         }
         return commonCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cell = collectionView.cellForItem(at: indexPath) as? TopCityCVCell {
+            var userinfo = [String:Any]()
+            if cellInfo?.key == "flights" {
+                userinfo.removeAll()
+                userinfo["trip_type"] = topFlightDetails[indexPath.row].trip_type ?? ""
+                userinfo["fromFlight"] = topFlightDetails[indexPath.row].fromFlight ?? ""
+                userinfo["from_city"] = topFlightDetails[indexPath.row].from_city ?? ""
+                userinfo["toFlight"] = topFlightDetails[indexPath.row].toFlight ?? ""
+                userinfo["to_city"] = topFlightDetails[indexPath.row].to_city ?? ""
+                userinfo["travel_date"] = topFlightDetails[indexPath.row].travel_date ?? ""
+                userinfo["return_date"] = topFlightDetails[indexPath.row].return_date ?? ""
+                userinfo["airline_class"] = topFlightDetails[indexPath.row].airline_class ?? ""
+                userinfo["from_city_name"] = topFlightDetails[indexPath.row].from_city_name ?? ""
+                userinfo["to_city_name"] = topFlightDetails[indexPath.row].to_city_name ?? ""
+                userinfo["from_city_loc"] = topFlightDetails[indexPath.row].from_city_loc ?? ""
+                userinfo["to_city_loc"] = topFlightDetails[indexPath.row].to_city_loc ?? ""
+                
+                NotificationCenter.default.post(name: NSNotification.Name("topcity"), object: nil,userInfo: userinfo)
+            } else {
+                userinfo.removeAll()
+                userinfo["city"] = topHotelDetails[indexPath.row].country ?? ""
+                userinfo["hotel_code"] = topHotelDetails[indexPath.row].city ?? ""
+                userinfo["check_in"] = topHotelDetails[indexPath.row].check_in ?? ""
+                userinfo["check_out"] = topHotelDetails[indexPath.row].check_out ?? ""
+                NotificationCenter.default.post(name: NSNotification.Name("tophotel"), object: nil,userInfo: userinfo)
+                print("Hotel")
+            }
+        }
     }
     
 }

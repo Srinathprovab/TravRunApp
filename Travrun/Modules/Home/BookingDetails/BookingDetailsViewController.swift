@@ -7,12 +7,13 @@
 
 import UIKit
 
-class BookingDetailsViewController: BaseTableVC, RegisterViewModelProtocal, ProfileDetailsViewModelDelegate {
+class BookingDetailsViewController: BaseTableVC, RegisterViewModelProtocal, ProfileDetailsViewModelDelegate, FDViewModelDelegate {
  
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var backButtonView: UIView!
     var tablerow = [TableRow]()
     var viewmodel1:ProfileDetailsViewModel?
+    var viewmodel2 : FDViewModel?
     static var newInstance: BookingDetailsViewController? {
         let storyboard = UIStoryboard(name: Storyboard.BookingDetails.name,
                                       bundle: nil)
@@ -37,6 +38,7 @@ class BookingDetailsViewController: BaseTableVC, RegisterViewModelProtocal, Prof
     var totalPrice1 = String()
     var isVcFrom = String()
     let seconds = 0.1
+    var isOpen = true
     
     
 //    var moreDeatilsViewModel:AboutusViewModel?
@@ -64,13 +66,16 @@ class BookingDetailsViewController: BaseTableVC, RegisterViewModelProtocal, Prof
     var regViewModel: RegisterViewModel?
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         viewmodel1 = ProfileDetailsViewModel(self)
         regViewModel = RegisterViewModel(self)
+        viewmodel2 = FDViewModel(self)
         backButtonView.layer.cornerRadius = backButtonView.layer.frame.width / 2
         commonTableView.registerTVCells(["BookingDetailsCardTVCellTableViewCell",
                                          "EmptyTVCell", "RegisterSelectionLoginTableViewCell", "GuestRegisterTableViewCell", "RegisterNowTableViewCell", "LoginDetailsTableViewCell", "AddAdultTableViewCell", "FareSummaryTableViewCell", "AcceptTermsAndConditionTVCell", "HeaderTableViewCell", "AddressTableViewCell"])
         setupFilterTVCells()
         callProfileDetailsAPI()
+        callGetFlightDetailsAPI()
     }
     
     func setupFilterTVCells() {
@@ -168,8 +173,7 @@ class BookingDetailsViewController: BaseTableVC, RegisterViewModelProtocal, Prof
         cell.loginRadioImage.image = UIImage(named: "radioUnselect")
         cell.guestRadioImage.image = UIImage(named: "radioSelect")
         setupFilterTVCells()
-        
-        
+
     }
     override func registerButton(cell: RegisterSelectionLoginTableViewCell) {
         cell.registerRadioImage.image = UIImage(named: "radioSelect")
@@ -197,6 +201,7 @@ class BookingDetailsViewController: BaseTableVC, RegisterViewModelProtocal, Prof
         cell.frequentView.isHidden = false
     }
     
+    override func travListButtonAction() {}
 }
 // ligin Api Calls
 extension BookingDetailsViewController {
@@ -292,4 +297,54 @@ extension BookingDetailsViewController {
     
     
 }
-
+extension BookingDetailsViewController {
+    func callGetFlightDetailsAPI() {
+        payload["search_id"] = defaults.string(forKey: UserDefaultsKeys.searchid)
+        payload["selectedResultindex"] = defaults.string(forKey: UserDefaultsKeys.selectedResult)
+        payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
+        payload["booking_source"] = defaults.string(forKey: UserDefaultsKeys.bookingsourcekey) ?? "0"
+        viewmodel2?.CALL_GET_FLIGHT_DETAILS_API(dictParam: payload)
+    }
+    
+    func flightDetails(response: FDModel) {
+        holderView.isHidden = false
+        fd = response.flightDetails ?? []
+        
+        jd = response.journeySummary ?? []
+        fareRulehtml = response.fareRulehtml ?? []
+        totalprice = "\(response.priceDetails?.api_currency ?? "") : \(response.priceDetails?.grand_total ?? "")"
+        grandTotal = totalprice
+        farerulerefkey = response.fare_rule_ref_key ?? ""
+        farerulesrefcontent = response.farerulesref_content ?? ""
+//        jSummary = response.journeySummary ?? []
+        
+        fareCurrencyType = String(response.priceDetails?.api_currency ?? "")
+        Adults_Base_Price = String(response.priceDetails?.adultsBasePrice ?? "0")
+        Adults_Tax_Price = String(response.priceDetails?.adultsTaxPrice ?? "0")
+        Childs_Base_Price = String(response.priceDetails?.childBasePrice ?? "0")
+        Childs_Tax_Price = String(response.priceDetails?.childTaxPrice ?? "0")
+        Infants_Base_Price = String(response.priceDetails?.infantBasePrice ?? "0")
+        Infants_Tax_Price = String(response.priceDetails?.infantTaxPrice ?? "0")
+        AdultsTotalPrice = String(response.priceDetails?.adultsTotalPrice ?? "0")
+        ChildTotalPrice = String(response.priceDetails?.childTotalPrice ?? "0")
+        InfantTotalPrice = String(response.priceDetails?.infantTotalPrice ?? "0")
+        sub_total_adult = String(response.priceDetails?.sub_total_adult ?? "0")
+        sub_total_child = String(response.priceDetails?.sub_total_child ?? "0")
+        sub_total_infant = String(response.priceDetails?.sub_total_infant ?? "0")
+        
+        DispatchQueue.main.async {[self] in
+            // callFareRulesAPI()
+        }
+        
+        
+        DispatchQueue.main.async {[self] in
+            //            setupTVCells()
+        }
+        
+        //        self.view.backgroundColor = .black.withAlphaComponent(0.5)
+//        DispatchQueue.main.async {[self] in
+//            setupItineraryOneWayTVCell()
+//        }
+    }
+    
+}

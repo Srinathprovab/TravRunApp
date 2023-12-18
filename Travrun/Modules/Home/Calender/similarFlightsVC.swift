@@ -161,7 +161,7 @@ class similarFlightsVC: BaseTableVC {
     }
     
     func gotoModifySearchFlightVC(key:String) {
-        guard let vc = FlightViewController.newInstance.self else {return}
+        guard let vc = ModifySearchViewController.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
 //        vc.key = key
         present(vc, animated: true)

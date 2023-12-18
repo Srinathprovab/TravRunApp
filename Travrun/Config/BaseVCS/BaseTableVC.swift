@@ -7,8 +7,8 @@
 
 import UIKit
 
-class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate, LabelTVCellDelegate, RegisterUserTVCellDelegate, UnderLineTVCellPrtocal, TextfieldTVCellDelegate, MenuBGTVCellDelegate, SideMenuTitleTVCellDelegate, SelectGenderTVCellDelegate, RegisterNowTableViewCellDelegate, LoginDetailsTableViewCellDelegate, AddAdultTableViewCellDelegate {
- 
+class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate, LabelTVCellDelegate, RegisterUserTVCellDelegate, UnderLineTVCellPrtocal, TextfieldTVCellDelegate, MenuBGTVCellDelegate, SideMenuTitleTVCellDelegate, SelectGenderTVCellDelegate, RegisterNowTableViewCellDelegate, LoginDetailsTableViewCellDelegate, AddAdultTableViewCellDelegate, FareSummaryTableViewCellDelegate {
+   
     @IBOutlet weak var commonScrollView: UITableView!
     @IBOutlet weak var commonTableView: UITableView!
     
@@ -92,6 +92,7 @@ class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDe
     
     
     //Delegate Methods
+    func travListButtonAction() {}
     func didTapOnAddReturnFlightAction(cell: NewFlightSearchResultTVCell) {}
     func didTapOnLoginBtn(cell: MenuBGTVCell) {}
     func didTapOnEditProfileBtn(cell: MenuBGTVCell) {}
@@ -357,6 +358,7 @@ extension BaseTableVC: UITableViewDataSource {
                 
             case .FareSummaryTableViewCell :
                 let cell: FareSummaryTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
                 commonCell = cell
                 
             case .AcceptTermsAndConditionTVCell :
@@ -396,6 +398,8 @@ extension BaseTableVC: UITableViewDataSource {
                 let cell: ItineraryAddTVCell = commonTV.dequeTVCell(indexPath: indexPath)
                 commonCell = cell
             
+                
+                
                 
             default:
                 print("handle this case in getCurrentCellAt")

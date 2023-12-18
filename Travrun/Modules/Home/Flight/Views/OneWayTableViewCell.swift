@@ -640,15 +640,9 @@ extension OneWayTableViewCell: UITableViewDelegate, UITableViewDataSource {
             
             if tableView == fromTV {
                 fromSubtitleLabel.text = cityList[indexPath.row].code ?? ""
-                if  fromTextfiled.text != "" {
-                    fromTitleLabel.textColor = .AppLabelColor
-                    fromTitleLabel.font = .InterMedium(size: 16)
-                    fromTitleLabel.text = cityList[indexPath.row].label ?? ""
-                } else {
-                    fromTitleLabel.textColor = .lightGray
-                    fromTitleLabel.font = .InterMedium(size: 16)
-                }
-                
+                fromTitleLabel.textColor = .AppLabelColor
+                fromTitleLabel.font = .InterMedium(size: 16)
+                fromTitleLabel.text = cityList[indexPath.row].label ?? ""
                 fromTitleLabel.textColor = .AppLabelColor
                 fromTextfiled.resignFirstResponder()
                 

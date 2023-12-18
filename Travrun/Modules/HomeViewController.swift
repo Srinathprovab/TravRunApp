@@ -49,6 +49,7 @@ class HomeViewController: BaseTableVC, AllCountryCodeListViewModelDelegate, TopF
     var viewmodel: TopFlightDetailsViewModel?
     var viewModel1 : FlightListViewModel?
     var profileViewmodel: ProfileDetailsViewModel?
+    var payload = [String:Any]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +63,7 @@ class HomeViewController: BaseTableVC, AllCountryCodeListViewModelDelegate, TopF
     
     
     override func viewWillAppear(_ animated: Bool) {
-      
+        addObserver()
         if callapibool == true {
             DispatchQueue.main.async {
                 self.callApi()
@@ -362,6 +363,125 @@ extension HomeViewController: UIGestureRecognizerDelegate {
         default:
             break
         }
+    }
+}
+
+extension HomeViewController {
+    
+    func addObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("nointernet"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTV), name: Notification.Name("reloadTV"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reload(notification:)), name: Notification.Name("reload"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(topcity(notification:)), name: Notification.Name("topcity"), object: nil)
+        
+      
+        if !UserDefaults.standard.bool(forKey: "ExecuteOnce") {
+            
+            defaults.set("+965", forKey: UserDefaultsKeys.mobilecountrycode)
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+//                self.gotoPrivacyScreen()
+//            }
+            defaults.set("Flights", forKey: UserDefaultsKeys.dashboardTapSelected)
+            defaults.set(0, forKey: UserDefaultsKeys.DashboardTapSelectedCellIndex)
+            defaults.set("circle", forKey: UserDefaultsKeys.journeyType)
+            defaults.set(0, forKey: UserDefaultsKeys.journeyTypeSelectedIndex)
+            defaults.set("KWD", forKey: UserDefaultsKeys.selectedCurrency)
+            defaults.set("EN", forKey: UserDefaultsKeys.APILanguageType)
+            priceLabel.text = "KWD"
+            defaults.set("1", forKey: UserDefaultsKeys.totalTravellerCount)
+            
+            defaults.set("Economy", forKey: UserDefaultsKeys.selectClass)
+            defaults.set("1", forKey: UserDefaultsKeys.adultCount)
+            defaults.set("0", forKey: UserDefaultsKeys.childCount)
+            defaults.set("0", forKey: UserDefaultsKeys.infantsCount)
+            let totaltraverlers = "\(defaults.string(forKey: UserDefaultsKeys.adultCount) ?? "1") Adult | \(defaults.string(forKey: UserDefaultsKeys.childCount) ?? "0") Child | \(defaults.string(forKey: UserDefaultsKeys.infantsCount) ?? "") Infant | \(defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "")"
+            defaults.set(totaltraverlers, forKey: UserDefaultsKeys.travellerDetails)
+            
+            defaults.set("Economy", forKey: UserDefaultsKeys.rselectClass)
+            defaults.set("1", forKey: UserDefaultsKeys.radultCount)
+            defaults.set("0", forKey: UserDefaultsKeys.rchildCount)
+            defaults.set("0", forKey: UserDefaultsKeys.rinfantsCount)
+            let totaltraverlers1 = "\(defaults.string(forKey: UserDefaultsKeys.radultCount) ?? "1") Adult | \(defaults.string(forKey: UserDefaultsKeys.rchildCount) ?? "") Child | \(defaults.string(forKey: UserDefaultsKeys.rinfantsCount) ?? "") Infant |\(defaults.string(forKey: UserDefaultsKeys.rselectClass) ?? "")"
+            defaults.set(totaltraverlers1, forKey: UserDefaultsKeys.rtravellerDetails)
+            UserDefaults.standard.set(true, forKey: "ExecuteOnce")
+            
+        }
+        
+    }
+    
+    
+    //MARK: - topcity Search
+    @objc func topcity(notification: Notification) {
+        payload.removeAll()
+        self.tabBarController?.tabBar.isHidden = true
+        loderBool = true
+        defaults.set("Flights", forKey: UserDefaultsKeys.dashboardTapSelected)
+        if let userinfo = notification.userInfo {
+            
+            payload["trip_type"] = (userinfo["trip_type"] as? String) ?? ""
+            payload["adult"] = "1"
+            payload["child"] = "0"
+            payload["infant"] = "0"
+            payload["v_class"] = (userinfo["airline_class"] as? String) ?? ""
+            payload["sector_type"] = "international"
+            payload["from"] = (userinfo["fromFlight"] as? String) ?? ""
+            payload["from_loc_id"] = (userinfo["from_city"] as? String) ?? ""
+            payload["to"] = (userinfo["toFlight"] as? String) ?? ""
+            payload["to_loc_id"] = (userinfo["to_city"] as? String) ?? ""
+            payload["depature"] = userinfo["travel_date"] as? String ?? ""
+            payload["return"] = userinfo["return_date"] as? String ?? ""
+            payload["out_jrn"] = "All Times"
+            payload["ret_jrn"] = "All Times"
+            payload["carrier"] = ""
+            payload["psscarrier"] = "ALL"
+            payload["search_flight"] = "Search"
+            payload["user_id"] = defaults.string(forKey:UserDefaultsKeys.userid) ?? "0"
+            payload["currency"] = defaults.string(forKey:UserDefaultsKeys.selectedCurrency) ?? "KWD"
+            
+            defaults.set((userinfo["trip_type"] as? String) ?? "", forKey: UserDefaultsKeys.journeyType)
+            defaults.set((userinfo["from_city_name"] as? String) ?? "" , forKey: UserDefaultsKeys.fromcityname)
+            defaults.set((userinfo["to_city_name"] as? String) ?? "" , forKey: UserDefaultsKeys.tocityname)
+            defaults.set((userinfo["from_city_loc"] as? String) ?? "" , forKey: UserDefaultsKeys.fromairport)
+            defaults.set((userinfo["to_city_name"] as? String) ?? "" , forKey: UserDefaultsKeys.toairport)
+            defaults.set((userinfo["fromFlight"] as? String) ?? "" , forKey: UserDefaultsKeys.fromCity)
+            defaults.set((userinfo["toFlight"] as? String) ?? "" , forKey: UserDefaultsKeys.toCity)
+            if (userinfo["trip_type"] as? String) == "oneway" {
+                defaults.set((userinfo["travel_date"] as? String) ?? "" , forKey: UserDefaultsKeys.calDepDate)
+                defaults.set((userinfo["return_date"] as? String) ?? "" , forKey: UserDefaultsKeys.calRetDate)
+            }else {
+                defaults.set((userinfo["travel_date"] as? String) ?? "" , forKey: UserDefaultsKeys.calDepDate)
+                defaults.set((userinfo["return_date"] as? String) ?? "" , forKey: UserDefaultsKeys.rcalRetDate)
+            }
+            
+            
+            gotoSearchFlightResultVC()
+        }
+        
+    }
+    
+    func gotoSearchFlightResultVC() {
+        loderBool = true
+        callapibool = true
+        self.tabBarController?.tabBar.isHidden = false
+        guard let vc = SearchResultPageViewController.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.payload = self.payload
+        self.present(vc, animated: false)
+    }
+    
+    
+    //MARK: - nointernet
+    @objc func nointernet() {
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true)
+    }
+    
+    
+    @objc func reloadTV() {
+        //callApi()
+        commonTableView.reloadData()
     }
 }
 
