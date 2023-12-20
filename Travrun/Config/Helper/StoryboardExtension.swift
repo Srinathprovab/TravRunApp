@@ -15,7 +15,7 @@ enum Storyboard: String {
     case Login
     case Visa
     case Insurance
-    case Hotels
+    case SearchHotel
     case Calender
     case PaymentGateway
     case FastTrack

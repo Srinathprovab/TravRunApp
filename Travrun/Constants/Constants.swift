@@ -48,6 +48,8 @@ let KApage = "page"
 let KAuserId = "userId"
 
 var paymobilecountrycode = String()
+var mbSummery = [Summary]()
+var frequent_flyersArray = [Frequent_flyers]()
 var countrylist = [All_country_code_list]()
 var cityList:[SelectCityModel] = []
 var depatureDatesArray = ["Date","Date"]
@@ -114,8 +116,7 @@ var InfantTotalPrice = String()
 var sub_total_adult : String?
 var sub_total_child : String?
 var sub_total_infant : String?
-
-
+var totalRooms = 0
 
 //MARK: - Profile details
 var pdetails:ProfileDetails?
@@ -156,6 +157,33 @@ var hotelfiltermodel = HotelFilterModel()
 var farerulerefkey = String()
 var farerulesrefcontent = String()
 var fdbool = true
+
+
+//MARK: - Hotel
+//var hotelSearchId = String()
+//var roomsDetails = [[Rooms]]()
+//var images = [Images]()
+//var formatAmeArray = [Format_ame]()
+//var formatDesc = [Format_desc]()
+var hotel_filtersumry : Filter_sumry?
+
+var hsearchid = String()
+var hbookingsource = String()
+var htoken = String()
+var htokenkey = String()
+var selectedrRateKeyArray = [String]()
+
+var adtArray = [String]()
+var chArray = [String]()
+//var callapibool = Bool()
+var hotelDetailsTapBool = true
+
+var neighbourwoodArray = [String]()
+var amenitiesArray = [String]()
+var nearBylocationsArray = [String]()
+
+var selectedCellIndices: [IndexPath] = [] // Keep track of selected cell indices
+var selectedCellStates: [IndexPath: Bool] = [:]
 
 
 
@@ -224,6 +252,18 @@ struct UserDefaultsKeys {
     static var rselectClass = "rselect_class"
     static var bookingsource = "booking_source"
     static var selectedFareType = "fare_type"
+    
+    // Hotel
+    
+    static var locationcity = "location_city"
+    static var locationcityid = "location_cityid"
+    static var locationcityname = "locationcityname"
+    static var roomcount = "room_count"
+    static var hoteladultscount = "hotel_adults_count"
+    static var hotelchildcount = "hotel_child_count"
+    static var itinerarySelectedIndex = "ItinerarySelectedIndex"
+    static var selectPersons = "selectPersons"
+    
 }
 
 
@@ -232,6 +272,11 @@ struct sessionMgrDefaults {
 }
 
 struct ApiEndpoints {
+    static let general_mobileHotelSearch = "general/mobileHotelSearch"
+    static let ajaxHotelSearch_pagination = "ajaxHotelSearch_pagination"
+    static let mobileprehotelsearch = "mobile_pre_hotel_search"
+    static let general_getActiveBookingSource = "general/getActiveBookingSource"
+    static let gethotelcitylist = "get_hotel_city_list"
     static let getFlightDetails = "getFlightDetails"
     static let getBaggageFlightDetails = "getFlightDetails"
     static let mobileUpdateTraveller = "mobileUpdateTraveller"

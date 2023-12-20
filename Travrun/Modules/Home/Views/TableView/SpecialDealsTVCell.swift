@@ -169,7 +169,7 @@ extension SpecialDealsTVCell:UICollectionViewDelegate,UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? TopCityCVCell {
+        if let cell = collectionView.cellForItem(at: indexPath) as? SpecialDealsCVCell {
             var userinfo = [String:Any]()
             if cellInfo?.key == "flights" {
                 userinfo.removeAll()

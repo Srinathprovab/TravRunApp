@@ -9,6 +9,10 @@ import UIKit
 
 class HomeViewController: BaseTableVC, AllCountryCodeListViewModelDelegate, TopFlightDetailsViewModelDelegate {
     
+    @IBOutlet weak var payIcon: UIImageView!
+    @IBOutlet weak var visaIcon: UIImageView!
+    @IBOutlet weak var hotelImage: UIImageView!
+    @IBOutlet weak var flightImage: UIImageView!
     @IBOutlet weak var fightButton: UIButton!
     @IBOutlet weak var fightView: UIView!
     @IBOutlet weak var hotelButton: UIButton!
@@ -89,9 +93,6 @@ class HomeViewController: BaseTableVC, AllCountryCodeListViewModelDelegate, TopF
         countrylist = response.all_country_code_list ?? []
     }
 
-//    override func viewWillAppear(_ animated: Bool) {
-//        tabBarController?.tabBar.isHidden = false
-//    }
     //MARK: REGISTER TABEL VIEW CELLS
     
     func setUpView() {
@@ -152,6 +153,15 @@ class HomeViewController: BaseTableVC, AllCountryCodeListViewModelDelegate, TopF
         vc.modalPresentationStyle = .fullScreen
         keyStr = "search"
         vc.isfromVc = "dashboardvc"
+        callapibool = true
+        self.present(vc, animated: true)
+    }
+    
+    
+    @IBAction func hotelButtonAction(_ sender: Any) {
+        guard let vc = SearchHotelsVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.isFromvc = "HomeViewController"
         callapibool = true
         self.present(vc, animated: true)
     }

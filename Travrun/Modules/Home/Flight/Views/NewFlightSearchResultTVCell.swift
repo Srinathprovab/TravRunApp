@@ -30,6 +30,7 @@ class NewFlightSearchResultTVCell: TableViewCell {
     @IBOutlet weak var moreSimlarOptionlbl: UILabel!
     @IBOutlet weak var similarBtn: UIButton!
     @IBOutlet weak var similarimg: UIImageView!
+    @IBOutlet weak var bookNowButtonView: BorderedView!
     
     var key = ""
     var displayPrice = String()
@@ -88,9 +89,11 @@ class NewFlightSearchResultTVCell: TableViewCell {
             }
         }
         
-        
         if cellInfo?.key == "similar" {
             hideSimilarlbl()
+        } else if cellInfo?.key == "booking" {
+            moreSimlarOptionlbl.isHidden = true
+            bookNowButtonView.isHidden = true
         }
         
         if let similarList1 = cellInfo?.data as? [[J_flight_list]] {

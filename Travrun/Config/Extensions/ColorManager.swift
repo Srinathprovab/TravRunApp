@@ -21,7 +21,7 @@ extension UIColor {
     public static var AppBorderColor: UIColor {
         get {
            // return UIColor(named: "AppBorderColor")!
-            return UIColor.black.withAlphaComponent(0.2)
+            return HexColor("#E6E8E7")
         }
     }
     
@@ -64,14 +64,23 @@ extension UIColor {
         }
     }
     
+    public static var onenineColour: UIColor {
+        get {
+            return HexColor("#191919")
+        }
+    }
     
     public static var AppTabbarItemSelectColor: UIColor {
         get {
             return UIColor(named: "AppTabbarItemSelectColor")!
         }
     }
-    
-    
+    public static var hashFiveColor: UIColor {
+        get {
+            return HexColor("#555555")
+        }
+    }
+   
     public static var SubtitleColor: UIColor {
         get {
             return UIColor(named: "subtitleColor")!

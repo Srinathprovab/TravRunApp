@@ -25,6 +25,7 @@ class TopCityCVCell: UICollectionViewCell {
         holderView.clipsToBounds = true
         cityImage.contentMode = .scaleToFill
         labelHolderView.backgroundColor = .WhiteColor
+        holderView.backgroundColor = .WhiteColor
         setuplabels(lbl: cityNamelbl, text: "", textcolor: .AppLabelColor, font: UIFont.latoRegular(size: 16), align: .center)
     }
     

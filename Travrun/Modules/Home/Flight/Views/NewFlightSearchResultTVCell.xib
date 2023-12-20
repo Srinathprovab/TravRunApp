@@ -48,7 +48,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More option at same price 8" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="luW-sS-vBR">
-                                        <rect key="frame" x="292.66666666666669" y="10.333333333333343" width="159.33333333333331" height="14.666666666666664"/>
+                                        <rect key="frame" x="292.66666666666669" y="10.666666666666657" width="159.33333333333331" height="14"/>
                                         <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -276,6 +276,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="addReturnView" destination="Lxy-P7-bfK" id="BsW-Dh-mMZ"/>
+                <outlet property="bookNowButtonView" destination="loA-mp-aN8" id="caI-Pk-lYN"/>
                 <outlet property="bottomView" destination="cUF-YC-KFg" id="zYy-A3-lOa"/>
                 <outlet property="faretypelbl" destination="oz1-b7-7Nx" id="UBk-Gk-uLg"/>
                 <outlet property="flighTV" destination="Avf-n1-lwn" id="G4E-Se-KDp"/>

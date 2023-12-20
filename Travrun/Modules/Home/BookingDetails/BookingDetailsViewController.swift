@@ -7,8 +7,9 @@
 
 import UIKit
 
-class BookingDetailsViewController: BaseTableVC, RegisterViewModelProtocal, ProfileDetailsViewModelDelegate, FDViewModelDelegate {
- 
+class BookingDetailsViewController: BaseTableVC, RegisterViewModelProtocal, ProfileDetailsViewModelDelegate, FDViewModelDelegate, MBViewModelDelegate, AllCountryCodeListViewModelDelegate {
+  
+  
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var backButtonView: UIView!
     var tablerow = [TableRow]()
@@ -39,16 +40,6 @@ class BookingDetailsViewController: BaseTableVC, RegisterViewModelProtocal, Prof
     var isVcFrom = String()
     let seconds = 0.1
     var isOpen = true
-    
-    
-//    var moreDeatilsViewModel:AboutusViewModel?
-//    var mbviewmodel:MBViewModel?
-//    var viewmodel1:MobileSecureBookingViewModel?
-//    var viewmodel:AllCountryCodeListViewModel?
-//    var travellerViewModel:TravellerViewModel?
-//    var profileDetilsVM:ProfileDetailsViewModel?
-//    var deleteTreavelerVM : TravellerDeleteViewModel?
-//    
     var billingCountryName = String()
     
     var adultsCount = Int()
@@ -63,106 +54,95 @@ class BookingDetailsViewController: BaseTableVC, RegisterViewModelProtocal, Prof
     var searchTextArray = [String]()
     var totalAmountforBooking = String()
     var grand_total_Price = String()
+    
     var regViewModel: RegisterViewModel?
+    var mbviewmodel: MBViewModel?
+    var viewmodel:AllCountryCodeListViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mbviewmodel = MBViewModel(self)
         viewmodel1 = ProfileDetailsViewModel(self)
         regViewModel = RegisterViewModel(self)
         viewmodel2 = FDViewModel(self)
+        viewmodel = AllCountryCodeListViewModel(self)
         backButtonView.layer.cornerRadius = backButtonView.layer.frame.width / 2
         commonTableView.registerTVCells(["BookingDetailsCardTVCellTableViewCell",
                                          "EmptyTVCell", "RegisterSelectionLoginTableViewCell", "GuestRegisterTableViewCell", "RegisterNowTableViewCell", "LoginDetailsTableViewCell", "AddAdultTableViewCell", "FareSummaryTableViewCell", "AcceptTermsAndConditionTVCell", "HeaderTableViewCell", "AddressTableViewCell"])
-        setupFilterTVCells()
+        setupTVCells()
         callProfileDetailsAPI()
         callGetFlightDetailsAPI()
+        callMobilePreProcessingBookingAPI()
     }
     
-    func setupFilterTVCells() {
-        commonTableView.isScrollEnabled = true
-        tablerow.removeAll()
-        
-        tablerow.append(TableRow(cellType: .BookingDetailsCardTVCellTableViewCell))
-        if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == false {
-            tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-            tablerow.append(TableRow(cellType: .RegisterSelectionLoginTableViewCell))
-            tablerow.append(TableRow(height: 12, cellType:.EmptyTVCell))
-            tablerow.append(TableRow(cellType: .GuestRegisterTableViewCell))
-            tablerow.append(TableRow(height: 12, cellType:.EmptyTVCell))
-        } else {
-            tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
+    override func viewWillAppear(_ animated: Bool) {
+     
+//        addObserver()
+        searchTextArray.removeAll()
+        if let journeyType = defaults.string(forKey: UserDefaultsKeys.journeyType) {
+            if journeyType == "oneway" {
+                adultsCount = Int(defaults.string(forKey: UserDefaultsKeys.adultCount) ?? "1") ?? 0
+                childCount = Int(defaults.string(forKey: UserDefaultsKeys.childCount) ?? "0") ?? 0
+                infantsCount = Int(defaults.string(forKey: UserDefaultsKeys.infantsCount) ?? "0") ?? 0
+                
+            } else if journeyType == "circle"{
+                adultsCount = Int(defaults.string(forKey: UserDefaultsKeys.radultCount) ?? "1") ?? 0
+                childCount = Int(defaults.string(forKey: UserDefaultsKeys.rchildCount) ?? "0") ?? 0
+                infantsCount = Int(defaults.string(forKey: UserDefaultsKeys.rinfantsCount) ?? "0") ?? 0
+            } else {
+//                adultsCount = Int(defaults.string(forKey: UserDefaultsKeys.madultCount) ?? "1") ?? 0
+//                childCount = Int(defaults.string(forKey: UserDefaultsKeys.mchildCount) ?? "0") ?? 0
+//                infantsCount = Int(defaults.string(forKey: UserDefaultsKeys.minfantsCount) ?? "0") ?? 0
+            }
         }
-        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        tablerow.append(TableRow(cellType: .AddAdultTableViewCell))
-        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        tablerow.append(TableRow(title: "AddAdult", cellType: .HeaderTableViewCell))
-        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        tablerow.append(TableRow(cellType: .AddressTableViewCell))
-        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        tablerow.append(TableRow(cellType: .FareSummaryTableViewCell))
-        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        tablerow.append(TableRow(height: 100, bgColor: .white, cellType: .AcceptTermsAndConditionTVCell))
-        
-        commonTVData = tablerow
-        commonTableView.reloadData()
     }
     
-    func setupLoginTvCells() {
-        commonTableView.isScrollEnabled = true
-        tablerow.removeAll()
-        tablerow.append(TableRow(cellType: .BookingDetailsCardTVCellTableViewCell))
-        if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == false {
+    func setupTVCells() {
+            commonTableView.isScrollEnabled = true
+            tablerow.removeAll()
+            
+            tablerow.append(TableRow(cellType: .BookingDetailsCardTVCellTableViewCell))
+            if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == false {
+                tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
+                tablerow.append(TableRow(cellType: .RegisterSelectionLoginTableViewCell))
+                tablerow.append(TableRow(height: 12, cellType:.EmptyTVCell))
+                if mbviewmodel?.section == .guestLogin {
+                    tablerow.append(TableRow(cellType: .GuestRegisterTableViewCell))
+                    tablerow.append(TableRow(height: 12, cellType:.EmptyTVCell))
+                } else if mbviewmodel?.section == .register {
+                    tablerow.append(TableRow(cellType: .LoginDetailsTableViewCell))
+                    tablerow.append(TableRow(height: 12, cellType:.EmptyTVCell))
+                } else if mbviewmodel?.section == .login {
+                    tablerow.append(TableRow(key: "register",cellType: .RegisterNowTableViewCell))
+                    tablerow.append(TableRow(height: 12, cellType:.EmptyTVCell))
+                }
+            } else {
+                tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
+            }
             tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-            tablerow.append(TableRow(cellType: .RegisterSelectionLoginTableViewCell))
-            tablerow.append(TableRow(height: 12, cellType:.EmptyTVCell))
-            tablerow.append(TableRow(key: "register",cellType: .RegisterNowTableViewCell))
-            tablerow.append(TableRow(height: 12, cellType:.EmptyTVCell))
-        } else {
+            
+            for i in 1...2 {
+                positionsCount += 1
+                passengertypeArray.append("Adult")
+                let travellerCell = TableRow(title: "Adult \(i)", key: "adult",characterLimit: positionsCount, isEditable: mbviewmodel?.isDropOpen, cellType: .AddAdultTableViewCell)
+                searchTextArray.append("Adult \(i)")
+                tablerow.append(travellerCell)
+            }
+    //        tablerow.append(TableRow(cellType: .AddAdultTableViewCell))
             tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        }
-        tablerow.append(TableRow(height: 0, cellType:.EmptyTVCell))
-        tablerow.append(TableRow(cellType: .AddAdultTableViewCell))
-        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        tablerow.append(TableRow(title: "AddAdult", cellType: .HeaderTableViewCell))
-        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        tablerow.append(TableRow(cellType: .AddressTableViewCell))
-        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        tablerow.append(TableRow(cellType: .FareSummaryTableViewCell))
-        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        tablerow.append(TableRow(height: 100, bgColor: .white, cellType: .AcceptTermsAndConditionTVCell))
-       
-        commonTVData = tablerow
-        commonTableView.reloadData()
+            tablerow.append(TableRow(title: "AddAdult", cellType: .HeaderTableViewCell))
+            tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
+            tablerow.append(TableRow(cellType: .AddressTableViewCell))
+            tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
+            tablerow.append(TableRow(cellType: .FareSummaryTableViewCell))
+            tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
+            tablerow.append(TableRow(height: 100, bgColor: .white, cellType: .AcceptTermsAndConditionTVCell))
+            
+            commonTVData = tablerow
+            commonTableView.reloadData()
     }
-    
-    func setupRegisterNowTvCells() {
-        commonTableView.isScrollEnabled = true
-        tablerow.removeAll()
-        tablerow.append(TableRow(cellType: .BookingDetailsCardTVCellTableViewCell))
-        if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == false {
-            tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-            tablerow.append(TableRow(cellType: .RegisterSelectionLoginTableViewCell))
-            tablerow.append(TableRow(height: 12, cellType:.EmptyTVCell))
-            tablerow.append(TableRow(cellType: .LoginDetailsTableViewCell))
-            tablerow.append(TableRow(height: 12, cellType:.EmptyTVCell))
-        } else {
-            tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        }
-        tablerow.append(TableRow(height: 0, cellType:.EmptyTVCell))
-        tablerow.append(TableRow(cellType: .AddAdultTableViewCell))
-        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        tablerow.append(TableRow(title: "AddAdult", cellType: .HeaderTableViewCell))
-        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        tablerow.append(TableRow(cellType: .AddressTableViewCell))
-        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        tablerow.append(TableRow(cellType: .FareSummaryTableViewCell))
-        tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
-        tablerow.append(TableRow(height: 100, bgColor: .white, cellType: .AcceptTermsAndConditionTVCell))
-      
-        commonTVData = tablerow
-        commonTableView.reloadData()
-    }
-    
+
     @IBAction func backButtonAction(_ sender: Any) {
         dismiss(animated: true)
     }
@@ -172,20 +152,23 @@ class BookingDetailsViewController: BaseTableVC, RegisterViewModelProtocal, Prof
         cell.registerRadioImage.image = UIImage(named: "radioUnselect")
         cell.loginRadioImage.image = UIImage(named: "radioUnselect")
         cell.guestRadioImage.image = UIImage(named: "radioSelect")
-        setupFilterTVCells()
-
+        mbviewmodel?.section = .guestLogin
+        setupTVCells()
+        
     }
     override func registerButton(cell: RegisterSelectionLoginTableViewCell) {
         cell.registerRadioImage.image = UIImage(named: "radioSelect")
         cell.loginRadioImage.image = UIImage(named: "radioUnselect")
         cell.guestRadioImage.image = UIImage(named: "radioUnselect")
-        setupRegisterNowTvCells()
+        mbviewmodel?.section = .register
+        setupTVCells()
     }
     override func loginButton(cell: RegisterSelectionLoginTableViewCell) {
         cell.registerRadioImage.image = UIImage(named: "radioUnselect")
         cell.loginRadioImage.image = UIImage(named: "radioSelect")
         cell.guestRadioImage.image = UIImage(named: "radioUnselect")
-        setupLoginTvCells()
+        mbviewmodel?.section = .login
+        setupTVCells()
     }
     
     override func loginNowButtonAction(cell: RegisterNowTableViewCell, email: String, pass: String) {
@@ -202,7 +185,21 @@ class BookingDetailsViewController: BaseTableVC, RegisterViewModelProtocal, Prof
     }
     
     override func travListButtonAction() {}
+    
+    override func didTaponPassangerButton(cell: AddAdultTableViewCell) {
+        if cell.expandViewBool == true {
+            cell.expandView()
+            cell.expandViewBool = false
+        } else {
+            cell.collapsView()
+            cell.expandViewBool = true
+        }
+        commonTableView.beginUpdates()
+        commonTableView.endUpdates()
+    }
 }
+
+
 // ligin Api Calls
 extension BookingDetailsViewController {
     func callLoginAPI(email: String, pass: String) {
@@ -236,37 +233,37 @@ extension BookingDetailsViewController {
                     NotificationCenter.default.post(name: NSNotification.Name("reloadAfterLogin"), object: nil)
                     self.dismiss(animated: true)
                 }else {
-//                    commonTableView.reloadData()
-                    setupRegisterNowTvCells()
+                    //                    commonTableView.reloadData()
+                    setupTVCells()
                 }
             }
         }
     }
     
-        
-        func loginDetails(response: LoginModel) {
-            print(response)
-            if response.status == false {
-                showToast(message: response.data ?? "")
-            }else {
-                
-                defaults.set(true, forKey: UserDefaultsKeys.loggedInStatus)
-                defaults.set(response.user_id, forKey: UserDefaultsKeys.userid)
+    
+    func loginDetails(response: LoginModel) {
+        print(response)
+        if response.status == false {
+            showToast(message: response.data ?? "")
+        }else {
             
-                showToast(message: response.data ?? "")
-                let seconds = 2.0
-                DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {[self] in
-                    
-                    if isVcFrom == "BookingDetailsViewController" || isVcFrom == "SideMenuViewController"{
-                        NotificationCenter.default.post(name: NSNotification.Name("reloadAfterLogin"), object: nil)
-                        self.dismiss(animated: true)
-                    }else {
-//                        tablerow.removeAll()
-                        setupLoginTvCells()
-                    }
+            defaults.set(true, forKey: UserDefaultsKeys.loggedInStatus)
+            defaults.set(response.user_id, forKey: UserDefaultsKeys.userid)
+            
+            showToast(message: response.data ?? "")
+            let seconds = 2.0
+            DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {[self] in
+                
+                if isVcFrom == "BookingDetailsViewController" || isVcFrom == "SideMenuViewController"{
+                    NotificationCenter.default.post(name: NSNotification.Name("reloadAfterLogin"), object: nil)
+                    self.dismiss(animated: true)
+                }else {
+                    //                        tablerow.removeAll()
+                    setupTVCells()
                 }
             }
         }
+    }
 }
 
 extension BookingDetailsViewController {
@@ -275,27 +272,16 @@ extension BookingDetailsViewController {
         payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
         viewmodel1?.CallGetProileDetails_API(dictParam: payload)
     }
-
-
+    
+    
     func getProfileDetails(response: ProfileDetailsModel) {
         print(" =====   getProfileDetails ====== \(response)")
         pdetails = response.data
-        
         defaults.set(response.data?.email, forKey: UserDefaultsKeys.useremail)
         defaults.set(response.data?.phone, forKey: UserDefaultsKeys.usermobile)
-        
-//        DispatchQueue.main.async {[self] in
-//            setupMenuTVCells()
-//        }
     }
     
     func updateProfileDetails(response: ProfileDetailsModel) {}
-    
-    
- // call preprossenign API
-    
-    
-    
 }
 extension BookingDetailsViewController {
     func callGetFlightDetailsAPI() {
@@ -316,8 +302,6 @@ extension BookingDetailsViewController {
         grandTotal = totalprice
         farerulerefkey = response.fare_rule_ref_key ?? ""
         farerulesrefcontent = response.farerulesref_content ?? ""
-//        jSummary = response.journeySummary ?? []
-        
         fareCurrencyType = String(response.priceDetails?.api_currency ?? "")
         Adults_Base_Price = String(response.priceDetails?.adultsBasePrice ?? "0")
         Adults_Tax_Price = String(response.priceDetails?.adultsTaxPrice ?? "0")
@@ -331,20 +315,190 @@ extension BookingDetailsViewController {
         sub_total_adult = String(response.priceDetails?.sub_total_adult ?? "0")
         sub_total_child = String(response.priceDetails?.sub_total_child ?? "0")
         sub_total_infant = String(response.priceDetails?.sub_total_infant ?? "0")
+    }
+    
+}
+
+extension BookingDetailsViewController {
+    
+    
+    //MARK: -call Mobile Pre Processing Booking API
+    func callMobilePreProcessingBookingAPI() {
         
-        DispatchQueue.main.async {[self] in
-            // callFareRulesAPI()
+        payload.removeAll()
+        payload["search_id"] = defaults.string(forKey: UserDefaultsKeys.searchid)
+        payload["selectedResult"] = defaults.string(forKey: UserDefaultsKeys.selectedResult)
+        payload["booking_source"] = defaults.string(forKey: UserDefaultsKeys.bookingsourcekey)
+        payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? 0
+        // payload["traceId"] = defaults.string(forKey: UserDefaultsKeys.traceId) ?? 0
+        mbviewmodel?.CALLPREPROCESSINGBOOKINGAPI(dictParam: payload)
+    }
+    
+    
+    func mobilepreprocessbookingDetails(response: MBModel) {
+        holderView.isHidden = false
+        accesskey = response.pre_booking_params?.access_key ?? ""
+        accesskeytp = response.access_key_tp ?? ""
+        bookingsource = response.booking_source ?? ""
+        tmpFlightPreBookingId = response.pre_booking_params?.transaction_id ?? ""
+        activepaymentoptions = response.active_payment_options?[0] ?? ""
+        totalPrice = Double(String(format: "%.2f", response.total_price ?? "")) ?? 0.0
+        appreference = response.pre_booking_params?.transaction_id ?? ""
+        frequent_flyersArray = response.frequent_flyers ?? []
+        
+        DispatchQueue.main.async {
+            mbSummery = response.flight_data?[0].flightDetails?.summery ?? []
+        }
+    
+        mbRefundable = defaults.string(forKey: UserDefaultsKeys.selectedFareType) ?? "Non Refundable"
+        let i = response.pre_booking_params?.priceDetails
+        Adults_Base_Price = String(i?.adultsBasePrice ?? "0.0")
+        Adults_Tax_Price = String(i?.adultsTaxPrice ?? "0.0")
+        Childs_Base_Price = String(i?.childBasePrice ?? "0.0")
+        Childs_Tax_Price = String(i?.childTaxPrice ?? "0.0")
+        Infants_Base_Price = String(i?.infantBasePrice ?? "0.0")
+        Infants_Tax_Price = String(i?.infantTaxPrice ?? "0.0")
+        AdultsTotalPrice = i?.adultsTotalPrice ?? "0"
+        ChildTotalPrice = i?.childTotalPrice ?? "0"
+        InfantTotalPrice = i?.infantTotalPrice ?? "0"
+        sub_total_adult = i?.sub_total_adult ?? "0"
+        sub_total_child = i?.sub_total_child ?? "0"
+        sub_total_infant = i?.sub_total_infant ?? "0"
+        
+        grand_total_Price = i?.grand_total ?? ""
+        totalAmountforBooking = i?.grand_total ?? ""
+        
+//        setAttributedTextnew(str1: "\(i?.api_currency ?? "")",
+//                             str2: "\(i?.grand_total ?? "")",
+//                             lbl: bookNowlbl,
+//                             str1font: .InterBold(size: 12),
+//                             str2font: .InterBold(size: 18),
+//                             str1Color: .WhiteColor,
+//                             str2Color: .WhiteColor)
+//        
+        
+        TimerManager.shared.stopTimer()
+        TimerManager.shared.startTimer(time: 900)
+        
+        
+        DispatchQueue.main.async {
+//            self.setupTV()
         }
         
         
-        DispatchQueue.main.async {[self] in
-            //            setupTVCells()
+        DispatchQueue.main.asyncAfter(deadline: .now() + self.seconds) {
+            self.callGetCointryListAPI()
         }
-        
-        //        self.view.backgroundColor = .black.withAlphaComponent(0.5)
-//        DispatchQueue.main.async {[self] in
-//            setupItineraryOneWayTVCell()
+    }
+    
+    func mobilePreBookingModelDetails(response: MobilePreBookingModel) {
+//        BASE_URL = ""
+//        payload["search_id"] = response.data?.search_id
+//        payload["app_reference"] = response.data?.app_reference
+//        payload["promocode_val"] = response.data?.promocode_val
+//        payload["selectedCurrency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency)
+//        
+//        
+//        
+//        if response.status == false {
+//            showToast(message: response.message ?? "")
+//        }else {
+//            mbviewmodel?.Call_mobile_pre_payment_confirmation_API(dictParam: payload, url: "https://provabdevelopment.com/babsafar/mobile_webservices/mobile/index.php/flight/mobile_pre_payment_confirmation")
 //        }
     }
     
+//    func mobileprepaymentconfirmationDetails(response: MobilePrePaymentModel) {
+//        
+//        
+////        if response.status == false {
+////            showToast(message: response.message ?? "")
+////        }else {
+////            BASE_URL = ""
+////            mbviewmodel?.Call_mobile_send_to_payment_API(dictParam: [:], url: response.url ?? "")
+////        }
+//        
+//    }
+//    
+}
+
+extension BookingDetailsViewController {
+    //MARK: - Call Get Cointry List API
+    
+    func getCountryList(response: AllCountryCodeListModel) {
+        countrylist = response.all_country_code_list ?? []
+    }
+    
+    func callGetCointryListAPI() {
+        viewmodel?.CALLGETCOUNTRYLIST_API(dictParam: [:])
+    }
+}
+
+
+extension BookingDetailsViewController {
+    
+    func addObserver() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("offline"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(resultnil), name: NSNotification.Name("resultnil"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reload), name: Notification.Name("reload"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadAfterLogin), name: NSNotification.Name("reloadAfterLogin"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTV), name: Notification.Name("reloadTV"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(passportexpiry), name: NSNotification.Name("passportexpiry"), object: nil)
+        
+    }
+    
+    
+    @objc func passportexpiry(notify:NSNotification) {
+        passportExpireDateBool = false
+        showToast(message: (notify.object as? String) ?? "")
+    }
+    
+    
+    @objc func reloadTV() {
+        DispatchQueue.main.async {[self] in
+            commonTableView.reloadData()
+        }
+    }
+    
+    
+    
+    @objc func reload() {
+        DispatchQueue.main.async {[self] in
+//            callAllAPIS()
+        }
+    }
+    
+    //MARK: - resultnil
+    @objc func resultnil() {
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = "noresult"
+        self.present(vc, animated: true)
+    }
+    
+    
+    //MARK: - nointernet
+    @objc func nointernet() {
+        guard let vc = NoInternetConnectionVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = "nointernet"
+        self.present(vc, animated: true)
+    }
+    
+    //MARK: - reloadAfterLogin
+    @objc func reloadAfterLogin() {
+        callProfileDetailsAPI()
+    }
+    
+    
+    //MARK: - updateTimer
+    func updateTimer() {
+        let totalTime = TimerManager.shared.totalTime
+        let minutes =  totalTime / 60
+        let seconds = totalTime % 60
+        let formattedTime = String(format: "%02d:%02d", minutes, seconds)
+        
+//        setuplabels(lbl: sessonlbl, text: "Your Session Expires In : \(formattedTime)", textcolor: .AppLabelColor, font: .LatoRegular(size: 16), align: .left)
+    }
 }

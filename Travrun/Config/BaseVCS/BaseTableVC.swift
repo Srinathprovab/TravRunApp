@@ -7,8 +7,8 @@
 
 import UIKit
 
-class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate, LabelTVCellDelegate, RegisterUserTVCellDelegate, UnderLineTVCellPrtocal, TextfieldTVCellDelegate, MenuBGTVCellDelegate, SideMenuTitleTVCellDelegate, SelectGenderTVCellDelegate, RegisterNowTableViewCellDelegate, LoginDetailsTableViewCellDelegate, AddAdultTableViewCellDelegate, FareSummaryTableViewCellDelegate {
-   
+class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate, LabelTVCellDelegate, RegisterUserTVCellDelegate, UnderLineTVCellPrtocal, TextfieldTVCellDelegate, MenuBGTVCellDelegate, SideMenuTitleTVCellDelegate, SelectGenderTVCellDelegate, RegisterNowTableViewCellDelegate, LoginDetailsTableViewCellDelegate, AddAdultTableViewCellDelegate, FareSummaryTableViewCellDelegate, SearchHotelTVCellDelegate {
+    
     @IBOutlet weak var commonScrollView: UITableView!
     @IBOutlet weak var commonTableView: UITableView!
     
@@ -40,6 +40,7 @@ class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDe
     
     func makeDefaultConfigurationForTable(tableView: UITableView) {
         
+        tableView.bounces = false
         tableView.estimatedRowHeight = 80
         tableView.rowHeight = UITableView.automaticDimension
         
@@ -143,6 +144,14 @@ class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDe
     func loginNowButtonAction(cell: RegisterNowTableViewCell, email: String, pass: String) {}
     func RegisterNowButtonAction(cell: LoginDetailsTableViewCell, email: String, pass: String, phone: String) {}
     func didTaponSwitchButton(cell: AddAdultTableViewCell) {}
+    func didTaponPassangerButton(cell: AddAdultTableViewCell) {}
+    func didTapOnCheckinBtn(cell: SearchHotelTVCell) {}
+    func didTapOnCheckoutBtn(cell: SearchHotelTVCell) {}
+    func didTapOnAddRoomsAndGuestBtn(cell: SearchHotelTVCell) {}
+    func didTapOnSearchHotelBtn(cell: SearchHotelTVCell) {}
+    func didTapOnSearchHotelCityBtn(cell: SearchHotelTVCell) {}
+    func didTapOnSelectCountryCodeList(cell: SearchHotelTVCell) {}
+    
 }
 
 extension BaseTableVC: UITableViewDelegate {
@@ -397,10 +406,17 @@ extension BaseTableVC: UITableViewDataSource {
             case .ItineraryAddTVCell :
                 let cell: ItineraryAddTVCell = commonTV.dequeTVCell(indexPath: indexPath)
                 commonCell = cell
+                
+            case .SearchHotelTVCell :
+                let cell: SearchHotelTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
+                commonCell = cell
+                
+            case .SelectRatingTVCell :
+                let cell: SelectRatingTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
             
-                
-                
-                
             default:
                 print("handle this case in getCurrentCellAt")
             }

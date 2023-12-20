@@ -9,10 +9,15 @@ import UIKit
 
 protocol AddAdultTableViewCellDelegate {
     func didTaponSwitchButton(cell: AddAdultTableViewCell)
+    func didTaponPassangerButton(cell: AddAdultTableViewCell)
 }
 
 class AddAdultTableViewCell: TableViewCell{
 
+    @IBOutlet weak var passangerLabel: UILabel!
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var adultCountLabel: UILabel!
+    @IBOutlet weak var holderViuew: UIView!
     @IBOutlet weak var frequentView: UIView!
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var dobTF: UITextField!
@@ -34,20 +39,52 @@ class AddAdultTableViewCell: TableViewCell{
     @IBOutlet weak var passangerView: UIView!
     @IBOutlet weak var passangerSelectionButton: UIButton!
     @IBOutlet weak var passengerSelectionTextfield: UITextField!
+    @IBOutlet weak var detailsView: UIView!
     @IBOutlet weak var countryCodeLbl: UILabel!
-    
+    var expandViewBool = true
     var delegate: AddAdultTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        contentView.layer.cornerRadius = 8
-        contentView.layer.borderWidth = 0.7
-        contentView.layer.borderColor = HexColor("#B8B8B8").cgColor
+        holderViuew.layer.cornerRadius = 8
+        holderViuew.layer.borderWidth = 0.7
+        holderViuew.layer.borderColor = HexColor("#B8B8B8").cgColor
         frequentView.isHidden = true
         switchButton.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
+        frequentView.isHidden = true
+        detailsView.isHidden = true
+        passangerView.isHidden = true
+        passangerLabel.isHidden = true
         setUI()
         // Initialization code
     }
+    
+    override func prepareForReuse() {
+        collapsView()
+    }
+    
+    
+    override func updateUI() {
+        adultCountLabel.text = cellInfo?.title
+        if cellInfo?.title == "Adult 1" {
+            expandView()
+            expandViewBool = false
+            passangerLabel.isHidden = false
+        }
+    }
+    
+    func expandView() {
+        frequentView.isHidden = false
+        detailsView.isHidden = false
+        passangerView.isHidden = false
+    }
+    
+    func collapsView() {
+        frequentView.isHidden = true
+        detailsView.isHidden = true
+        passangerView.isHidden = true
+    }
+    
     
    func setUI() {
        setupTextField(txtField: TitleTF, tag1: 11, label: "Title*", placeholder: "MR")
@@ -96,4 +133,7 @@ class AddAdultTableViewCell: TableViewCell{
             }
         }
   
+    @IBAction func passengerButtonAction(_ sender: Any) {
+        delegate?.didTaponPassangerButton(cell: self)
+    }
 }
