@@ -7,7 +7,9 @@
 
 import Foundation
 
-
+protocol HotelSearchModelOutput {
+    var isCehckIn: Bool { get set}
+}
 
 protocol HotelSearchViewModelDelegate : BaseViewModelProtocol {
     func activebookingSourceResult(response : ActiveBookingSourceModel)
@@ -16,15 +18,12 @@ protocol HotelSearchViewModelDelegate : BaseViewModelProtocol {
     func hoteSearchPagenationResult(response : HotelSearchModel)
 }
 
-class HotelSearchViewModel {
-    
+class HotelSearchViewModel: HotelSearchModelOutput {
+    var isCehckIn: Bool = false
     var view: HotelSearchViewModelDelegate!
     init(_ view: HotelSearchViewModelDelegate) {
         self.view = view
     }
-    
-    
-    
     
     func CALL_GET_ACTIVE_BOOKING_SOURCE_API(dictParam: [String: Any]){
         let parms = NSDictionary(dictionary:dictParam)

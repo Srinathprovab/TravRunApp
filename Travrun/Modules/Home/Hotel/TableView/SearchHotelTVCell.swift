@@ -23,6 +23,10 @@ protocol SearchHotelTVCellDelegate {
 
 class SearchHotelTVCell: TableViewCell, HotelCitySearchViewModelDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet weak var stayTimeLabel: UILabel!
+    @IBOutlet weak var stayTimeView: BorderedView!
+    @IBOutlet weak var stayTimeButton: UIButton!
+    @IBOutlet weak var checkImage: UIImageView!
     @IBOutlet weak var starView: UIView!
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var bg: UIView!
@@ -67,6 +71,7 @@ class SearchHotelTVCell: TableViewCell, HotelCitySearchViewModelDelegate, UIColl
     
     var dropDown = DropDown()
     var ndropDown = DropDown()
+    var timeDropdown = DropDown()
     var cityViewModel: HotelCitySearchViewModel?
     var payload = [String:Any]()
     var cityNameArray = [String]()
@@ -76,7 +81,10 @@ class SearchHotelTVCell: TableViewCell, HotelCitySearchViewModelDelegate, UIColl
     var cname = [String]()
     var countryCode = String()
     var cnameArray = [String]()
-    
+    var isCheckin = Bool()
+    var selectedItems: [String] = []
+    var time = ["Per Night", "Total stay"]
+//    var starCount = String()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -94,15 +102,30 @@ class SearchHotelTVCell: TableViewCell, HotelCitySearchViewModelDelegate, UIColl
     }
     
     override func updateUI() {
-        
+        isCheckin = ((cellInfo?.isEditable) != nil)
         hotelSearchTVHeight.constant = 0
         filterdcountrylist = countrylist
         loadCountryNamesAndCode()
         
         setuplabels(lbl: checkinlbl, text: defaults.string(forKey: UserDefaultsKeys.checkin) ?? "+Add Date", textcolor: .lightGray, font: .InterMedium(size: 14), align: .left)
-
         setuplabels(lbl: checkoutlbl, text: defaults.string(forKey: UserDefaultsKeys.checkout) ?? "+Add Date", textcolor: .lightGray, font: .InterMedium(size: 14), align: .left)
 
+        if checkinlbl.text == "+Add Date" {
+            checkinlbl.textColor = .lightGray
+            checkinlbl.font = .InterMedium(size: 14)
+        } else {
+            checkinlbl.textColor = .AppLabelColor
+            checkinlbl.font = .InterMedium(size: 16)
+        }
+        
+        
+        if checkoutlbl.text == "+Add Date" {
+            checkoutlbl.textColor = .lightGray
+            checkoutlbl.font = .InterMedium(size: 14)
+        }  else {
+            checkoutlbl.textColor = .AppLabelColor
+            checkoutlbl.font = .InterMedium(size: 16)
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(hotelrooms), name: Notification.Name("hotelrooms"), object: nil)
     }
@@ -112,10 +135,11 @@ class SearchHotelTVCell: TableViewCell, HotelCitySearchViewModelDelegate, UIColl
     }
     
     func setUpCV() {
-        contentView.layer.cornerRadius = 8
-        contentView.layer.borderColor = HexColor("#E6E8E7").cgColor
-        contentView.layer.borderWidth = 1
+//        contentView.layer.cornerRadius = 8
+//        contentView.layer.borderColor = HexColor("#E6E8E7").cgColor
+//        contentView.layer.borderWidth = 1
         collectionView.delegate = self
+        collectionView.bounces = false
         collectionView.dataSource = self
         let nib = UINib(nibName: "RatingCollectionViewCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "cell")
@@ -369,6 +393,21 @@ class SearchHotelTVCell: TableViewCell, HotelCitySearchViewModelDelegate, UIColl
         }
     }
     
+    func setStayTimeDropDown() {
+        timeDropdown.backgroundColor = HexColor("#F0F0F0")
+        timeDropdown.dataSource = time
+        timeDropdown.direction = .bottom
+        timeDropdown.cellHeight = 50
+        timeDropdown.backgroundColor = .WhiteColor
+        timeDropdown.anchorView = self.stayTimeView
+        timeDropdown.bottomOffset = CGPoint(x: 0, y: stayTimeView.frame.size.height + 10)
+        timeDropdown.selectionAction = { [weak self] (index: Int, item: String) in
+            
+            print(item)
+            self?.stayTimeLabel.text = self?.time[index] ?? ""
+        }
+    }
+    
     
     
     @IBAction func didTapOnClearTFBtnAction(_ sender: Any) {
@@ -382,6 +421,21 @@ class SearchHotelTVCell: TableViewCell, HotelCitySearchViewModelDelegate, UIColl
         cityTF.becomeFirstResponder()
     }
     
+    @IBAction func CheckBoxAction(_ sender: Any) {
+        
+        if isCheckin == false {
+            isCheckin = true
+            checkImage.image = UIImage(named: "check")
+        } else {
+            isCheckin = false
+            checkImage.image = UIImage(named: "checkBox")
+        }
+    }
+    
+    @IBAction func stayTimeButtonTapeed(_ sender: Any) {
+        timeDropdown.show()
+        setStayTimeDropDown()
+    }
     
 }
 
@@ -439,8 +493,27 @@ extension SearchHotelTVCell {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as? TopCityCVCell
-        cell?.cityImage.image = UIImage(named: "star")?.withRenderingMode(.alwaysOriginal).withTintColor(.WhiteColor)
+        let cell = collectionView.cellForItem(at: indexPath) as? RatingCollectionViewCell
+        cell?.starImage.image = UIImage(named: "star")
         cell?.holderView.backgroundColor = HexColor("#3C627A")
+        cell?.countLabel.textColor = UIColor.white
+        let starCount = cell?.countLabel.text
+        selectedItems.append(starCount ?? "0")
+        print("value is \(starCount ?? "1")")
+        print("Selected items: \(selectedItems)")
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as? RatingCollectionViewCell
+        cell?.holderView.backgroundColor = .white
+        cell?.starImage.image = UIImage(named: "star")?.withRenderingMode(.alwaysOriginal).withTintColor(.black)
+        cell?.countLabel.textColor = .AppLabelColor
+        let unselectedItem = cell?.countLabel.text ?? "0"
+        if let index = selectedItems.firstIndex(of: unselectedItem) {
+            print("index is: \(index)")
+            selectedItems.remove(at: index)
+        }
+        print("UnSelected items: \(selectedItems)")
     }
 }

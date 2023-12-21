@@ -69,7 +69,7 @@ class ResetPasswordVC: BaseTableVC, ForgetPasswordViewModelDelegate {
     func setuptv() {
         tablerow.removeAll()
         tablerow.append(TableRow(title:"Enter the email associated with your account and we’ll send an email with instructions to reset your password.",key: "cpwd",cellType:.LabelTVCell))
-        tablerow.append(TableRow(title:"Email Address",key: "email", text: "1", tempText: "Email",cellType:.TextfieldTVCell))
+        tablerow.append(TableRow(title:"Email Address*",key: "email", text: "1", tempText: "Email",cellType:.TextfieldTVCell))
         tablerow.append(TableRow(title:"Mobile Number",key: "email", text: "12", tempText: "Mobile Number",cellType:.TextfieldTVCell))
         
         tablerow.append(TableRow(title:"Send",key: "Send", cellType: .ButtonTVCell))

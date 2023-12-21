@@ -83,7 +83,7 @@ extension UIColor {
    
     public static var SubtitleColor: UIColor {
         get {
-            return UIColor(named: "subtitleColor")!
+            return HexColor("#989898")
         }
     }
     

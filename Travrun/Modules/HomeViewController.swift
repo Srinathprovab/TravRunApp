@@ -153,6 +153,7 @@ class HomeViewController: BaseTableVC, AllCountryCodeListViewModelDelegate, TopF
         vc.modalPresentationStyle = .fullScreen
         keyStr = "search"
         vc.isfromVc = "dashboardvc"
+        defaults.set("Flights", forKey: UserDefaultsKeys.dashboardTapSelected)
         callapibool = true
         self.present(vc, animated: true)
     }
@@ -161,6 +162,7 @@ class HomeViewController: BaseTableVC, AllCountryCodeListViewModelDelegate, TopF
     @IBAction func hotelButtonAction(_ sender: Any) {
         guard let vc = SearchHotelsVC.newInstance.self else {return}
         vc.modalPresentationStyle = .overCurrentContext
+        defaults.set("Hotels", forKey: UserDefaultsKeys.dashboardTapSelected)
         vc.isFromvc = "HomeViewController"
         callapibool = true
         self.present(vc, animated: true)

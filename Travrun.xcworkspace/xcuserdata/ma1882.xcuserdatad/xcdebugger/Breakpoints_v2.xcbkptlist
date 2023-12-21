@@ -3,4 +3,54 @@
    uuid = "6E9EBFD6-7990-4860-81FB-70F12096C8A9"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FAB69626-4222-4642-AFB0-8284D1E25C02"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Travrun/Modules/Home/Hotel/TableView/SelectRatingTVCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "FAB69626-4222-4642-AFB0-8284D1E25C02 - 2ab04dcda799c7bc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travrun.SelectRatingTVCell.collectionView(_: __C.UICollectionView, didSelectItemAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Travrun"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ma1882/Desktop/TravRunApp/Travrun/Modules/Home/Hotel/TableView/SelectRatingTVCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "330">
+               </Location>
+               <Location
+                  uuid = "FAB69626-4222-4642-AFB0-8284D1E25C02 - 2ab04dcda799c7bc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travrun.SelectRatingTVCell.collectionView(_: __C.UICollectionView, didSelectItemAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Travrun"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ma1882/Desktop/TravRunApp/Travrun/Modules/Home/Hotel/TableView/SelectRatingTVCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "416">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

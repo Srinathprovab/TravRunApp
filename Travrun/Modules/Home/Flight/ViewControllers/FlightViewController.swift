@@ -72,9 +72,6 @@ class FlightViewController: BaseTableVC {
         
         NotificationCenter.default.addObserver(self, selector: #selector(topcity(notification:)), name: Notification.Name("topcity"), object: nil)
         
-        
-        defaults.set("Flights", forKey: UserDefaultsKeys.dashboardTapSelected)
-        
         setupIntialUI()
         
     }

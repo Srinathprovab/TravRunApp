@@ -117,6 +117,8 @@ var sub_total_adult : String?
 var sub_total_child : String?
 var sub_total_infant : String?
 var totalRooms = 0
+var totalAdults = 0
+var totalChildren = 0
 
 //MARK: - Profile details
 var pdetails:ProfileDetails?

@@ -27,6 +27,7 @@ class holidayTableViewCell: TableViewCell {
     
     
     func setupCV() {
+        holidayCollectionView.bounces = false
         let nib = UINib(nibName: "SpecialDealsCVCell", bundle: nil)
         holidayCollectionView.register(nib, forCellWithReuseIdentifier: "cell")
         holidayCollectionView.delegate = self

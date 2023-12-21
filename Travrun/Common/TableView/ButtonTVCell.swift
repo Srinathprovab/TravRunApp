@@ -98,6 +98,7 @@ class ButtonTVCell: TableViewCell {
         case "Search Hotels":
             self.btnView.backgroundColor = .AppBtnColor
             self.btnLeftConstraint.constant = 27
+            self.titlelbl.font = .InterSemiBold(size: 18)
             break
             
         case "filterbtn":

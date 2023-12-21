@@ -58,8 +58,8 @@ class SelectRatingTVCell: TableViewCell, UICollectionViewDataSource, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as? TopCityCVCell
-        cell?.cityImage.image = UIImage(named: "star")?.withRenderingMode(.alwaysOriginal).withTintColor(.WhiteColor)
+        let cell = collectionView.cellForItem(at: indexPath) as? RatingCollectionViewCell
+        cell?.starImage.image = UIImage(named: "star")
         cell?.holderView.backgroundColor = HexColor("#3C627A")
     }
 }

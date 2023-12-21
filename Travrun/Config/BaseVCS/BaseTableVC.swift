@@ -7,7 +7,8 @@
 
 import UIKit
 
-class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate, LabelTVCellDelegate, RegisterUserTVCellDelegate, UnderLineTVCellPrtocal, TextfieldTVCellDelegate, MenuBGTVCellDelegate, SideMenuTitleTVCellDelegate, SelectGenderTVCellDelegate, RegisterNowTableViewCellDelegate, LoginDetailsTableViewCellDelegate, AddAdultTableViewCellDelegate, FareSummaryTableViewCellDelegate, SearchHotelTVCellDelegate {
+class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate, LabelTVCellDelegate, RegisterUserTVCellDelegate, UnderLineTVCellPrtocal, TextfieldTVCellDelegate, MenuBGTVCellDelegate, SideMenuTitleTVCellDelegate, SelectGenderTVCellDelegate, RegisterNowTableViewCellDelegate, LoginDetailsTableViewCellDelegate, AddAdultTableViewCellDelegate, FareSummaryTableViewCellDelegate, SearchHotelTVCellDelegate, AddRoomsGuestsTVCellDelegate {
+   
     
     @IBOutlet weak var commonScrollView: UITableView!
     @IBOutlet weak var commonTableView: UITableView!
@@ -151,7 +152,11 @@ class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDe
     func didTapOnSearchHotelBtn(cell: SearchHotelTVCell) {}
     func didTapOnSearchHotelCityBtn(cell: SearchHotelTVCell) {}
     func didTapOnSelectCountryCodeList(cell: SearchHotelTVCell) {}
-    
+    func closeBtnAction(cell: AddRoomsGuestsTVCell) {}
+    func adultsIncrementButtonAction(cell: AddRoomsGuestsTVCell) {}
+    func adultsDecrementBtnAction(cell: AddRoomsGuestsTVCell) {}
+    func childrenIncrementButtonAction(cell: AddRoomsGuestsTVCell) {}
+    func childrenDecrementBtnAction(cell: AddRoomsGuestsTVCell) {}
 }
 
 extension BaseTableVC: UITableViewDelegate {
@@ -412,8 +417,14 @@ extension BaseTableVC: UITableViewDataSource {
                 cell.delegate = self
                 commonCell = cell
                 
-            case .SelectRatingTVCell :
+            case .SelectRatingTVCell:
                 let cell: SelectRatingTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+                
+            case .AddRoomsGuestsTVCell:
+                let cell: AddRoomsGuestsTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
                 commonCell = cell
                 
             
@@ -429,8 +440,6 @@ extension BaseTableVC: UITableViewDataSource {
         return commonCell
     }
 } 
-
-
 
 extension UITableView {
     func registerTVCells(_ classNames: [String]) {

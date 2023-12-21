@@ -33,8 +33,6 @@ class SearchHotelsVC: BaseTableVC, TopFlightDetailsViewModelDelegate {
         setInitalValues()
     }
     
-    
-    
     func setInitalValues() {
         adtArray.removeAll()
         chArray.removeAll()
@@ -83,36 +81,33 @@ class SearchHotelsVC: BaseTableVC, TopFlightDetailsViewModelDelegate {
         topView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         topView.layer.cornerRadius = 12
         backBtnView.layer.cornerRadius = backBtnView.layer.frame.width / 2
-        commonTableView.isScrollEnabled = false
+        commonTableView.isScrollEnabled = true
         commonTableView.registerTVCells(["SearchHotelTVCell",
                                          "EmptyTVCell",
-                                         "TopCityTVCell", "SelectRatingTVCell"])
+                                         "TopCityTVCell"])
         setuptv()
     }
     
     
     func setuptv() {
-        
         tablerow.removeAll()
-        tablerow.append(TableRow(cellType:. SearchHotelTVCell))
-        tablerow.append(TableRow(height:16,cellType:.EmptyTVCell))
-        tablerow.append(TableRow(cellType: .SelectRatingTVCell))
-        
+        tablerow.append(TableRow(isEditable: viewModel?.isCehckIn, cellType:. SearchHotelTVCell))
+        tablerow.append(TableRow(height:16, cellType:.EmptyTVCell))
         commonTVData = tablerow
         commonTableView.reloadData()
     }
     
-    @objc func didTapOnBackBtn(_ sender:UIButton) {
-        callapibool = true
-        if isFromvc == "dashboardvc" {
-            dismiss(animated: true)
-        } else {
-//            guard let vc = DashBoaardTabbarVC.newInstance.self else {return}
-//            vc.modalPresentationStyle = .overCurrentContext
-//            vc.selectedIndex = 0
-//            self.present(vc, animated: false)
-        }
-    }
+//    @objc func didTapOnBackBtn(_ sender:UIButton) {
+//        callapibool = true
+//        if isFromvc == "dashboardvc" {
+//            dismiss(animated: true)
+//        } else {
+////            guard let vc = DashBoaardTabbarVC.newInstance.self else {return}
+////            vc.modalPresentationStyle = .overCurrentContext
+////            vc.selectedIndex = 0
+////            self.present(vc, animated: false)
+//        }
+//    }
     
     
     
@@ -169,9 +164,9 @@ class SearchHotelsVC: BaseTableVC, TopFlightDetailsViewModelDelegate {
         
         if defaults.string(forKey: UserDefaultsKeys.locationcity) == "Add City" || defaults.string(forKey: UserDefaultsKeys.locationcity) == nil{
             showToast(message: "Enter Hotel or City ")
-        }else if defaults.string(forKey: UserDefaultsKeys.checkin) == "Add Check In Date" || defaults.string(forKey: UserDefaultsKeys.checkin) == nil{
+        }else if defaults.string(forKey: UserDefaultsKeys.checkin) == "+Add Date" || defaults.string(forKey: UserDefaultsKeys.checkin) == nil{
             showToast(message: "Enter Checkin Date")
-        }else if defaults.string(forKey: UserDefaultsKeys.checkout) == "Add Check Out Date" || defaults.string(forKey: UserDefaultsKeys.checkout) == nil{
+        }else if defaults.string(forKey: UserDefaultsKeys.checkout) == "+Add Date" || defaults.string(forKey: UserDefaultsKeys.checkout) == nil{
             showToast(message: "Enter Checkout Date")
         }else if defaults.string(forKey: UserDefaultsKeys.checkout) == defaults.string(forKey: UserDefaultsKeys.checkin) {
             showToast(message: "Enter Different Dates")
@@ -205,11 +200,12 @@ class SearchHotelsVC: BaseTableVC, TopFlightDetailsViewModelDelegate {
         loderBool = true
         callapibool = true
         defaults.set(false, forKey: "hoteltfilteronce")
-////        guard let vc = SearchHotelsResultVC.newInstance.self else {return}
-////        vc.modalPresentationStyle = .fullScreen
+//        guard let vc = SearchHotelsResultVC.newInstance.self else {return}
+//        vc.modalPresentationStyle = .fullScreen
 //        vc.countrycode = self.countrycode
 //        vc.payload = self.payload
 //        present(vc, animated: true)
+        
     }
     
     
@@ -221,9 +217,9 @@ class SearchHotelsVC: BaseTableVC, TopFlightDetailsViewModelDelegate {
     
     func gotoAddAdultEconomyVC() {
 //        //        guard let vc = AddRoomsGuestsVC.newInstance.self else {return}
-//        guard let vc = AddRoomsVCViewController.newInstance.self else {return}
-//        vc.modalPresentationStyle = .overCurrentContext
-//        self.present(vc, animated: true)
+        guard let vc = AddRoomsVCViewController.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true)
     }
     
     func gotoCalenderVC() {

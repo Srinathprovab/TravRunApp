@@ -15,11 +15,7 @@ protocol FlightListModelProtocal : BaseViewModelProtocol {
 
 
 class FlightListViewModel: HomeViewModelOutput  {
-    
-    
     var isCehckIn: Bool = false
-    
-    
     var view: FlightListModelProtocal!
     init(_ view: FlightListModelProtocal) {
         self.view = view

@@ -278,7 +278,7 @@ class Calvc: UIViewController {
                             NotificationCenter.default.post(name: Notification.Name("calreloadTV"), object: nil)
                             dismiss(animated: false)
                         }
-                    }else {
+                    } else {
                         
                         if calstartDate == "" {
                             showToast(message: "Please Select Date")
@@ -296,7 +296,7 @@ class Calvc: UIViewController {
                     }
                 }
                 
-            }else if selectedTab == "Insurence"{
+            } else if selectedTab == "Insurence"{
                 
                 if let journeyType = defaults.string(forKey: UserDefaultsKeys.InsurenceJourneyType) {
                     if journeyType == "oneway" {
@@ -325,7 +325,7 @@ class Calvc: UIViewController {
                 
                 
                 
-            }else if selectedTab == "Fasttrack"{
+            } else if selectedTab == "Fasttrack"{
                 
                 if calstartDate == "" && calendDate == "" {
                     showToast(message: "Please Select Dates")
@@ -340,7 +340,7 @@ class Calvc: UIViewController {
                 }
                 
                 
-            }else {
+            } else if selectedTab == "Hotels" {
                 
                 if calstartDate == "" && calendDate == "" {
                     showToast(message: "Please Select Dates")
@@ -377,9 +377,9 @@ class Calvc: UIViewController {
     
     
     func gotoSearchHotelsVC() {
-//        guard let vc = SearchHotelsVC.newInstance.self else {return}
-//        vc.modalPresentationStyle = .overCurrentContext
-//        self.present(vc, animated: false)
+        guard let vc = SearchHotelsVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: false)
     }
 }
 

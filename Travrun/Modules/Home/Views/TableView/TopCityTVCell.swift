@@ -47,6 +47,7 @@ class TopCityTVCell: TableViewCell {
     }
     
     func setupCV() {
+        citysCV.bounces = false
         let nib = UINib(nibName: "TopCityCVCell", bundle: nil)
         citysCV.register(nib, forCellWithReuseIdentifier: "cell")
         citysCV.delegate = self

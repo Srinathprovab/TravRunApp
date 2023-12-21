@@ -12,7 +12,6 @@ struct GenderModel {
     var isSelected: Bool
 }
 
-
 protocol ProfileDetailsViewModelDelegate : BaseViewModelProtocol {
     func getProfileDetails(response : ProfileDetailsModel)
     func updateProfileDetails(response : ProfileDetailsModel)
