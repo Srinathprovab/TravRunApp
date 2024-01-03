@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="109" id="KGk-i7-Jjw" customClass="BookFlightDetailsTVCell" customModule="BabSafar" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="431" height="109"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="431" height="109"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rAI-Of-eHw">
+                        <rect key="frame" x="10" y="0.0" width="411" height="109"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="4Of-az-qpe">
+                                <rect key="frame" x="15" y="12" width="381" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6Ld-2L-fOI"/>
+                                </constraints>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OAm-of-Tw1">
+                                <rect key="frame" x="15" y="74" width="170" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7lZ-h2-gLn">
+                                        <rect key="frame" x="64.333333333333329" y="5" width="41.333333333333329" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EIo-R8-DWs">
+                                        <rect key="frame" x="0.0" y="0.0" width="170" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <connections>
+                                            <action selector="didTapOnviewFlifgtDetailsBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uuE-FH-8pg"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="EIo-R8-DWs" secondAttribute="bottom" id="0Sz-se-fQ4"/>
+                                    <constraint firstItem="EIo-R8-DWs" firstAttribute="top" secondItem="OAm-of-Tw1" secondAttribute="top" id="3e9-4E-mdA"/>
+                                    <constraint firstItem="EIo-R8-DWs" firstAttribute="leading" secondItem="OAm-of-Tw1" secondAttribute="leading" id="9TU-WY-ToT"/>
+                                    <constraint firstAttribute="trailing" secondItem="EIo-R8-DWs" secondAttribute="trailing" id="AJM-2D-LpV"/>
+                                    <constraint firstAttribute="height" constant="30" id="is8-cF-pNi"/>
+                                    <constraint firstItem="7lZ-h2-gLn" firstAttribute="centerX" secondItem="OAm-of-Tw1" secondAttribute="centerX" id="qAU-66-K9B"/>
+                                    <constraint firstItem="7lZ-h2-gLn" firstAttribute="centerY" secondItem="OAm-of-Tw1" secondAttribute="centerY" id="xJ0-bg-Gwu"/>
+                                    <constraint firstAttribute="width" constant="170" id="yFs-sw-WWs"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w8k-y1-gIw">
+                                <rect key="frame" x="354" y="78.666666666666671" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="109" id="2SE-h5-wGB"/>
+                            <constraint firstItem="OAm-of-Tw1" firstAttribute="top" secondItem="4Of-az-qpe" secondAttribute="bottom" constant="12" id="JPH-kX-WD2"/>
+                            <constraint firstItem="w8k-y1-gIw" firstAttribute="centerY" secondItem="EIo-R8-DWs" secondAttribute="centerY" id="bOP-Me-rnG"/>
+                            <constraint firstItem="4Of-az-qpe" firstAttribute="leading" secondItem="rAI-Of-eHw" secondAttribute="leading" constant="15" id="d50-Pu-lRA"/>
+                            <constraint firstAttribute="trailing" secondItem="w8k-y1-gIw" secondAttribute="trailing" constant="15" id="dxF-J6-szy"/>
+                            <constraint firstItem="OAm-of-Tw1" firstAttribute="leading" secondItem="4Of-az-qpe" secondAttribute="leading" id="fLM-Bv-Q2v"/>
+                            <constraint firstItem="4Of-az-qpe" firstAttribute="top" secondItem="rAI-Of-eHw" secondAttribute="top" constant="12" id="ktx-na-zIV"/>
+                            <constraint firstAttribute="bottom" secondItem="OAm-of-Tw1" secondAttribute="bottom" constant="5" id="oof-91-lHi"/>
+                            <constraint firstAttribute="trailing" secondItem="4Of-az-qpe" secondAttribute="trailing" constant="15" id="sYW-fT-hDt"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" name="AppHolderViewColor"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="rAI-Of-eHw" secondAttribute="trailing" constant="10" id="7gn-SJ-edN"/>
+                    <constraint firstItem="rAI-Of-eHw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="BcF-Y5-0yH"/>
+                    <constraint firstItem="rAI-Of-eHw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Jay-4R-3NN"/>
+                    <constraint firstAttribute="bottom" secondItem="rAI-Of-eHw" secondAttribute="bottom" id="yFk-ji-iL2"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="detailsTV" destination="4Of-az-qpe" id="d21-OJ-Vha"/>
+                <outlet property="holderView" destination="rAI-Of-eHw" id="Lg3-yL-mZs"/>
+                <outlet property="refundlbl" destination="w8k-y1-gIw" id="KtK-Mi-lxN"/>
+                <outlet property="tvHeight" destination="6Ld-2L-fOI" id="0CO-bl-eXy"/>
+                <outlet property="viewFlifgtDetailsBtn" destination="EIo-R8-DWs" id="uBf-IW-DmS"/>
+                <outlet property="viewFlifgtDetailslbl" destination="7lZ-h2-gLn" id="wwu-Jh-a4b"/>
+                <outlet property="viewFlightDetailsBtnView" destination="OAm-of-Tw1" id="sZS-ig-PV0"/>
+            </connections>
+            <point key="canvasLocation" x="541.22137404580155" y="-36.267605633802816"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="AppHolderViewColor">
+            <color red="0.94499999284744263" green="0.95300000905990601" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
