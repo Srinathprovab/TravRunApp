@@ -16,7 +16,7 @@ class FareRulesTableViewCell: TableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
   
     
-    var fareRules = [FareRulesData]()
+    var fareRules: CustomFarerules?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,17 +25,21 @@ class FareRulesTableViewCell: TableViewCell {
     
     override func updateUI() {
         
-//        fareRules = cellInfo?.moreData as! [FareRulesData]
+        fareRules = cellInfo?.moreData as! CustomFarerules?
         
         if cellInfo?.key == "Cancellation Fee" {
 //            subTitleLabel.text = fareRules[indexPath].rule_heading
-            
-            leftDescription.text = "cancellation Free (airline Cancellation Chages)Cancellation done Before the departure)1"
-            rightDescription.text = "EGP 150.00 FOR cancellations done Before departure of the first Flight"
+            titleLabel.text = thefareRules?.cancelation_fee?.cancellation_title
+            subTitleLabel.text = "\(thefareRules?.cancelation_fee?.origin ?? "" ) - \(thefareRules?.cancelation_fee?.destination ?? "")"
+            leftDescription.text = thefareRules?.cancelation_fee?.text_left
+            rightDescription.text = thefareRules?.cancelation_fee?.text_right
+            ServiceLabel.text = thefareRules?.cancelation_fee?.text_bottom
         } else {
-            titleLabel.text = "Date Change Fee"
-            leftDescription.text = "Airline Date change"
-            rightDescription.text = "AED 150.00  + fare difference (if applicable)"
+            titleLabel.text = thefareRules?.date_charge_fee?.cancellation_title
+            subTitleLabel.text = "\(thefareRules?.date_charge_fee?.origin ?? "" ) - \(thefareRules?.date_charge_fee?.destination ?? "")"
+            leftDescription.text = thefareRules?.date_charge_fee?.text_left
+            rightDescription.text = thefareRules?.date_charge_fee?.text_right
+            ServiceLabel.text = thefareRules?.date_charge_fee?.text_bottom
         }
     }
 

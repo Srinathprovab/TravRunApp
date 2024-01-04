@@ -135,6 +135,7 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
         if isfromVc == "ModifySearchViewController" {
             guard let vc = FlightViewController.newInstance.self else {return}
             vc.modalPresentationStyle = .fullScreen
+            vc.isfromVc = "SearchResultPageViewController"
             present(vc, animated: true)
         } else {
             dismiss(animated: false)
@@ -338,9 +339,14 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
     //    }
     //
     override func didTapOnBookNowBtnAction(cell: NewFlightSearchResultTVCell) {
-        guard let vc = BookingDetailsViewController.newInstance.self else {return}
-        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: false)
+        guard let vc = BookingDetailsVC.newInstance.self else {return}
+        print("selectedResult....\(cell.selectedResult)")
+        defaults.set(cell.selectedResult, forKey: UserDefaultsKeys.selectedResult)
+        vc.modalPresentationStyle = .fullScreen
+        vc.totalPrice1 = totalprice
+        callapibool = true
+        fdbool = true
+        present(vc, animated: true)
     }
 }
 
@@ -430,9 +436,6 @@ extension SearchResultPageViewController {
             
             
         }
-        
-        
-        
         
         commonTVData = tablerow
         commonTableView.reloadData()

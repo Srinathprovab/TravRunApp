@@ -30,13 +30,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WKo-od-yxx" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="380"/>
+                        <rect key="frame" x="16" y="0.0" width="343" height="380"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1uH-2X-3HB">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="380"/>
+                                <rect key="frame" x="0.0" y="0.0" width="343" height="380"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1Q-0U-bNs">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="125"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="125"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="User Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6HI-eO-SJ9">
                                                 <rect key="frame" x="14" y="14" width="128" height="19.666666666666671"/>
@@ -51,7 +51,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="47q-cK-EQU">
-                                                <rect key="frame" x="14" y="73" width="345" height="44"/>
+                                                <rect key="frame" x="14" y="73" width="313" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="e7F-Cq-KvU"/>
                                                 </constraints>
@@ -73,7 +73,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="35B-j7-UFh">
-                                        <rect key="frame" x="0.0" y="125" width="375" height="77"/>
+                                        <rect key="frame" x="0.0" y="125" width="343" height="77"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RW1-8B-yrM">
                                                 <rect key="frame" x="16" y="0.0" width="99" height="17"/>
@@ -82,7 +82,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISO-5U-dQm" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
-                                                <rect key="frame" x="16" y="25" width="343" height="44"/>
+                                                <rect key="frame" x="16" y="25" width="311" height="44"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3JW-8c-ZKM">
                                                         <rect key="frame" x="0.0" y="0.0" width="88" height="44"/>
@@ -122,7 +122,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2sd-9F-Q7B">
-                                                        <rect key="frame" x="89" y="0.0" width="254" height="44"/>
+                                                        <rect key="frame" x="89" y="0.0" width="222" height="44"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                     </textField>
@@ -166,7 +166,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iqx-CX-Nd2">
-                                        <rect key="frame" x="0.0" y="202" width="375" height="178"/>
+                                        <rect key="frame" x="0.0" y="202" width="343" height="178"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="37j-sq-v0l">
                                                 <rect key="frame" x="16" y="0.0" width="71.666666666666671" height="17"/>
@@ -175,7 +175,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ze6-Dn-CZS">
-                                                <rect key="frame" x="16" y="25" width="343" height="44"/>
+                                                <rect key="frame" x="16" y="25" width="311" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="9Gz-Z5-ewc"/>
                                                 </constraints>
@@ -183,7 +183,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="geG-E7-iln">
-                                                <rect key="frame" x="16" y="98" width="343" height="55"/>
+                                                <rect key="frame" x="16" y="98" width="311" height="55"/>
                                                 <color key="backgroundColor" name="AppBtnColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="QE6-7T-ZOY"/>
@@ -235,8 +235,8 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="WKo-od-yxx" secondAttribute="trailing" id="832-4i-3g7"/>
-                    <constraint firstItem="WKo-od-yxx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Fe6-K4-ixp"/>
+                    <constraint firstAttribute="trailing" secondItem="WKo-od-yxx" secondAttribute="trailing" constant="16" id="832-4i-3g7"/>
+                    <constraint firstItem="WKo-od-yxx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Fe6-K4-ixp"/>
                     <constraint firstItem="WKo-od-yxx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Z0Y-sp-NJZ"/>
                     <constraint firstAttribute="bottom" secondItem="WKo-od-yxx" secondAttribute="bottom" id="nMr-Vy-hYV"/>
                 </constraints>

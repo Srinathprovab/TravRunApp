@@ -36,7 +36,7 @@ class SearchLocationTFTVCell: TableViewCell {
     
     func setupUI() {
         holderView.backgroundColor = .WhiteColor
-        mapBtnView.backgroundColor = .AppTabSelectColor
+        mapBtnView.backgroundColor = .clear
         holderView.layer.borderWidth = 1
         holderView.layer.borderColor = UIColor.AppBorderColor.cgColor
         searchImg.image = UIImage(named: "search")?.withRenderingMode(.alwaysOriginal).withTintColor(.gray)
@@ -45,7 +45,7 @@ class SearchLocationTFTVCell: TableViewCell {
         searchTF.backgroundColor = .clear
         searchTF.setLeftPaddingPoints(20)
         searchTF.placeholder = "Search Location /City"
-        searchTF.font = UIFont.ManropeMedium(size: 18)
+        searchTF.font = UIFont.InterMedium(size: 18)
         searchTF.addTarget(self, action: #selector(editingText(textField:)), for: .editingChanged)
         
         mapViewBtn.setTitle("", for: .normal)

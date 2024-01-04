@@ -24,6 +24,7 @@ class FlightDetailsViewController: BaseTableVC, FDViewModelDelegate, FareRulesMo
     @IBOutlet weak var iternaryView: BorderedView!
     
     var fareRulesData = [FareRulesData]()
+    var newFareRules: CustomFarerules?
     
     static var newInstance: FlightDetailsViewController? {
         let storyboard = UIStoryboard(name: Storyboard.FlightStoryBoard.name,
@@ -79,13 +80,13 @@ class FlightDetailsViewController: BaseTableVC, FDViewModelDelegate, FareRulesMo
         tvLeading.constant = 15
         tvTraling.constant = 15
         tableRow.removeAll()
-        tableRow.append(TableRow(key: "Cancellation Fee", moreData: fareRulesData,cellType: .FareRulesTableViewCell))
+        tableRow.append(TableRow(key: "Cancellation Fee", moreData: newFareRules,cellType: .FareRulesTableViewCell))
         tableRow.append(TableRow(height: 20,bgColor: UIColor.clear, cellType: .EmptyTVCell))
         tableRow.append(TableRow(key: "Airline Date change",cellType: .FareRulesTableViewCell))
         tableRow.append(TableRow(height: 20,bgColor: UIColor.clear, cellType: .EmptyTVCell))
         tableRow.append(TableRow(key:"note",bgColor: UIColor.clear, cellType: .HeaderTableViewCell))
         tableRow.append(TableRow(height: 7,bgColor: UIColor.clear, cellType: .EmptyTVCell))
-        tableRow.append(TableRow(key:"Lorem",height: 85, bgColor: UIColor.clear, cellType: .HeaderTableViewCell))
+        tableRow.append(TableRow(key:"Lorem",text: thefareRules?.please_note,height: 85, bgColor: UIColor.clear, cellType: .HeaderTableViewCell))
         self.commonTVData = tableRow
         self.commonTableView.reloadData()
     }
@@ -149,7 +150,8 @@ class FlightDetailsViewController: BaseTableVC, FDViewModelDelegate, FareRulesMo
         breakDownLabel.textColor = HexColor("#000000")
         bagInfoView.backgroundColor = HexColor("#FFFFFF")
         bagInfoLabel.textColor = HexColor("#000000")
-        callFareRulesAPI()
+        setUpFareRules()
+//        callFareRulesAPI()
     }
     
     @IBAction func bagInfoButtonAction(_ sender: Any) {
@@ -199,6 +201,7 @@ extension FlightDetailsViewController {
         farerulesrefcontent = response.farerulesref_content ?? ""
         jSummary = response.journeySummary ?? []
         
+        thefareRules = response.custom_farerules
         fareCurrencyType = String(response.priceDetails?.api_currency ?? "")
         Adults_Base_Price = String(response.priceDetails?.adultsBasePrice ?? "0")
         Adults_Tax_Price = String(response.priceDetails?.adultsTaxPrice ?? "0")
@@ -225,14 +228,13 @@ extension FlightDetailsViewController {
         //        self.view.backgroundColor = .black.withAlphaComponent(0.5)
         DispatchQueue.main.async {[self] in
             setupItineraryOneWayTVCell()
+//            setUpFareRules()
         }
     }
     
     
     //MARK: - callFareRulesAPI
     func callFareRulesAPI() {
-        
-        
         payload.removeAll()
         payload["fare_rule_ref_key"] = farerulerefkey
         payload["farerulesref_content"] = farerulesrefcontent
@@ -245,7 +247,7 @@ extension FlightDetailsViewController {
         fareRulesData = response.data ?? []
         
         DispatchQueue.main.async {[self] in
-            setUpFareRules()
+//            setUpFareRules()
         }
     }
     

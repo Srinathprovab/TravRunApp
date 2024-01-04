@@ -165,7 +165,17 @@ class FlightViewController: BaseTableVC {
     }
     
     @IBAction func backButtonAction(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        if isfromVc == "NoInternetConnectionVC" {
+            guard let vc = HomeViewController.newInstance.self else {return}
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+        } else if isfromVc == "SearchResultPageViewController" {
+            guard let vc = HomeViewController.newInstance.self else {return}
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+        } else   {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func oneWayButtonAction(_ sender: Any) {

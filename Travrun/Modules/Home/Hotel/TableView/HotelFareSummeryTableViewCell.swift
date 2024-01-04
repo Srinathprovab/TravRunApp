@@ -7,8 +7,9 @@
 
 import UIKit
 
-class HotelFareSummeryTableViewCell: UITableViewCell {
+class HotelFareSummeryTableViewCell: TableViewCell {
 
+    @IBOutlet weak var holderView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

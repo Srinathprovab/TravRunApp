@@ -26,7 +26,7 @@ class HeaderTableViewCell: TableViewCell {
             titleLabel.font = .InterMedium(size: 12)
         } else if cellInfo?.key == "Lorem" {
             leadingCopnst.constant = 0
-            titleLabel.text = "Lorem ipsum dolor sit amet consectetur. Integer nec ac in praesent sit id at a. Mi posuere donec ultrices auctor neque ullamcorper quisque viverra. Pellentesque tellus lectus tincidunt diam consectetur. Volutpat diam eu pellentesque scelerisque. Neque pellentesque fusce scelerisque cras sapien bibendum."
+            titleLabel.text = cellInfo?.text
             titleLabel.textColor = HexColor("#434242")
             titleLabel.font = .InterRegular(size: 12)
         } else if cellInfo?.key == "Passenger(s) Details" {

@@ -4,15 +4,22 @@
 //
 //  Created by MA673 on 29/07/22.
 //
-
+//HotelBookingDetailsViewController
 import UIKit
 import DropDown
 
 class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewModelDelegate {
     
+    @IBOutlet weak var backButton: UIButton!
     
+    @IBOutlet weak var modifyButton: UIButton!
+    @IBOutlet weak var modifyView: UIView!
+    @IBOutlet weak var roomAdultCountLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var cityNAme: UILabel!
+    @IBOutlet weak var backButtonView: UIView!
     @IBOutlet weak var holderView: UIView!
-    @IBOutlet weak var navView: NavBar!
+    @IBOutlet weak var navView: UIView!
     @IBOutlet weak var navHeight: NSLayoutConstraint!
     @IBOutlet weak var cvHolderView: UIView!
     @IBOutlet weak var recommandedView: UIView!
@@ -38,7 +45,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     var viewModel:HotelSearchViewModel?
     
     static var newInstance: SearchHotelsResultVC? {
-        let storyboard = UIStoryboard(name: Storyboard.Hotels.name,
+        let storyboard = UIStoryboard(name: Storyboard.SearchHotel.name,
                                       bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? SearchHotelsResultVC
         return vc
@@ -60,11 +67,11 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
         setupUI()
         commonTableView.register(UINib(nibName: "HotelsTVCell", bundle: nil), forCellReuseIdentifier: "cell44")
         
-        if screenHeight < 835 {
-            navHeight.constant = 130
-        }
-        filtered = hotelSearchResult
-        
+//        if screenHeight < 835 {
+//            navHeight.constant = 130
+//        }
+//        filtered = hotelSearchResult
+//        
         NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("nointernet"), object: nil)
     }
     
@@ -82,41 +89,21 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     //MARK: - setupRefreshControl
    
     func setupUI() {
-        
-     //   self.holderView.backgroundColor = .appb
-        navView.titlelbl.text = ""
-        navView.filterBtnView.isHidden = false
-        navView.backBtn.addTarget(self, action: #selector(didTapOnBackBtn(_:)), for: .touchUpInside)
-        navView.titlelbl.text = ""
-        
-        setuplabels(lbl: navView.lbl1, text: defaults.string(forKey: UserDefaultsKeys.locationcity) ?? "", textcolor: .WhiteColor, font: .LatoMedium(size: 18), align: .center)
-        setuplabels(lbl: navView.lbl2, text: "Checkin:\(defaults.string(forKey: UserDefaultsKeys.checkin) ?? "") | Checkout:\(defaults.string(forKey: UserDefaultsKeys.checkout) ?? "")", textcolor: .WhiteColor, font: .LatoBold(size: 14), align: .center)
-        
-        
-        navView.editBtnView.isHidden = true
-        navView.filterBtnView.isHidden = false
-        navView.filterBtn.addTarget(self, action: #selector(didTapOnEditBtn(_:)), for: .touchUpInside)
-        navView.filterImg.image = UIImage(named: "edit1")?.withRenderingMode(.alwaysOriginal)
-        navView.lbl1.isHidden = false
-        navView.lbl2.isHidden = false
+        backButtonView.layer.cornerRadius = backButtonView.layer.frame.width / 2
+        modifyView.layer.cornerRadius = modifyView.layer.frame.width / 2
+        cityNAme.text = defaults.string(forKey: UserDefaultsKeys.locationcity) ?? ""
+        dateLabel.text = "Checkin:\(defaults.string(forKey: UserDefaultsKeys.checkin) ?? "") | Checkout:\(defaults.string(forKey: UserDefaultsKeys.checkout) ?? "")"
+        modifyButton.addTarget(self, action: #selector(didTapOnEditBtn(_:)), for: .touchUpInside)
         cvHolderView.isHidden = true
-        
         holderView.layer.borderWidth = 1
         holderView.layer.borderColor = UIColor.AppBorderColor.cgColor
         cvHolderView.backgroundColor = .WhiteColor
         cvHolderView.addBottomBorderWithColor(color: .AppBorderColor, width: 1)
         recommandedbtn.setTitle("", for: .normal)
-        
-        setuplabels(lbl: recommandedlbl, text: "SORT", textcolor: .AppLabelColor, font: .LatoBold(size: 16), align: .right)
-        setuplabels(lbl: filterlbl, text: "FILTER", textcolor: .AppLabelColor, font: .LatoRegular(size: 16), align: .left)
+        setuplabels(lbl: recommandedlbl, text: "SORT", textcolor: .AppLabelColor, font: .InterBold(size: 16), align: .right)
+        setuplabels(lbl: filterlbl, text: "FILTER", textcolor: .AppLabelColor, font: .InterRegular(size: 16), align: .left)
         
         commonTableView.backgroundColor = .WhiteColor
-        //        hiddenView.isHidden = true
-        //        hiddenView.backgroundColor = .AppBtnColor
-        //        hiddenView.addCornerRadiusWithShadow(color: .lightGray, borderColor: .clear, cornerRadius: 4)
-        
-        
-        
         filterBtn.addTarget(self, action: #selector(didTapOnFilterBtnAction(_:)), for: .touchUpInside)
         recommandedbtn.addTarget(self, action: #selector(didTapOnSortBtnAction(_:)), for: .touchUpInside)
         setupDropDown()
@@ -162,7 +149,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
         
         callapibool = false
         if isvcfrom == "dashboard" {
-            guard let vc = DashBoaardTabbarVC.newInstance.self else {return}
+            guard let vc = DashBoardTabBarViewController.newInstance.self else {return}
             vc.modalPresentationStyle = .fullScreen
             vc.selectedIndex = 0
             self.present(vc, animated: false)
@@ -179,13 +166,13 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
         
         if let tabSelected = defaults.string(forKey: UserDefaultsKeys.dashboardTapSelected) {
             if tabSelected == "Flights" {
-                guard let vc = SearchFlightsVC.newInstance.self else {return}
+                guard let vc = FlightViewController.newInstance.self else {return}
                 vc.modalPresentationStyle = .overCurrentContext
                 present(vc, animated: true)
             }else {
-                guard let vc = ModifySearchHotelVC.newInstance.self else {return}
-                vc.modalPresentationStyle = .overCurrentContext
-                present(vc, animated: true)
+//                guard let vc = ModifySearchHotelVC.newInstance.self else {return}
+//                vc.modalPresentationStyle = .overCurrentContext
+//                present(vc, animated: true)
             }
         }
         
@@ -197,10 +184,10 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     }
     
     override func didTapOnDual1Btn(cell:CommonFromCityTVCell){
-        print(cell.dual1lbl2.text)
+        print(cell.dual1lbl2.text ?? "")
     }
     override func didTapOnDual2Btn(cell:CommonFromCityTVCell){
-        print(cell.dual2lbl2.text)
+        print(cell.dual2lbl2.text ?? "")
     }
     
     
@@ -228,7 +215,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     }
     
     
-    override func mapViewBtnAction(cell:SearchLocationTFTVCell){
+    override func mapViewBtnAction(cell: SearchLocationTFTVCell){
         print("mapViewBtnAction ..")
     }
     
@@ -241,11 +228,11 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     
     
     func goToTermsPopupVC(titlestr:String,hoteldesc:String) {
-        guard let vc = TermsPopupVC.newInstance.self else {return}
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.titlestr = titlestr
-        vc.hotel_desc = hoteldesc
-        present(vc, animated: false)
+//        guard let vc = TermsPopupVC.newInstance.self else {return}
+//        vc.modalPresentationStyle = .overCurrentContext
+//        vc.titlestr = titlestr
+//        vc.hotel_desc = hoteldesc
+//        present(vc, animated: false)
     }
     
     
@@ -257,12 +244,12 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     
     
     func goToHotelDetailsVC(hid:String,bs:String,kwdprice:String) {
-        guard let vc = HotelDetailsVC.newInstance.self else {return}
+        guard let vc = HotelBookingDetailsViewController.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
-        vc.hotelid = hid
-        vc.bookingsource = bs
-        vc.kwdprice = kwdprice
-        callapibool = true
+//        vc.hotelid = hid
+//        vc.bookingsource = bs
+//        vc.kwdprice = kwdprice
+//        callapibool = true
         present(vc, animated: true)
     }
     
@@ -317,10 +304,10 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     
     func setAttributedText1(str1:String,str2:String,lbl:UILabel)  {
         
-        let atter1 = [NSAttributedString.Key.foregroundColor:UIColor.AppTabSelectColor,
-                      NSAttributedString.Key.font:UIFont.LatoBold(size: 12)] as [NSAttributedString.Key : Any]
-        let atter2 = [NSAttributedString.Key.foregroundColor:UIColor.AppTabSelectColor,
-                      NSAttributedString.Key.font:UIFont.LatoBold(size: 18)] as [NSAttributedString.Key : Any]
+        let atter1 = [NSAttributedString.Key.foregroundColor:UIColor.AppBtnColor,
+                      NSAttributedString.Key.font:UIFont.InterBold(size: 12)] as [NSAttributedString.Key : Any]
+        let atter2 = [NSAttributedString.Key.foregroundColor:UIColor.AppBtnColor,
+                      NSAttributedString.Key.font:UIFont.InterBold(size: 18)] as [NSAttributedString.Key : Any]
         
         let atterStr1 = NSMutableAttributedString(string: str1, attributes: atter1)
         let atterStr2 = NSMutableAttributedString(string: str2, attributes: atter2)
@@ -401,7 +388,7 @@ extension SearchHotelsResultVC {
         payload["offset"] = "0"
         payload["limit"] = "10"
         payload["booking_source"] = bookingsource
-        payload["search_id"] = searchid
+        payload["search_id"] = "2252"
         
         viewModel?.CallHotelSearchAPI(dictParam: payload)
     }
@@ -415,7 +402,7 @@ extension SearchHotelsResultVC {
         mapModelArray.removeAll()
         hotelSearchResult.removeAll()
         
-        navView.isHidden = false
+//        navView.isHidden = false
         filterBtnView.isHidden = false
         commonTableView.isHidden = false
         cvHolderView.isHidden = false
@@ -485,7 +472,7 @@ extension SearchHotelsResultVC {
                 
                 cell.hotelNamelbl.text = dict.name
                 cell.hotelImg.sd_setImage(with: URL(string: dict.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
-                cell.ratingslbl.text = String(dict.star_rating ?? 0)
+                cell.ratingslbl.text = String(dict.star_rating ?? "0")
                 cell.locationlbl.text = dict.address
                 setAttributedText1(str1: dict.currency ?? "", str2: dict.price ?? "", lbl: cell.kwdlbl)
                 cell.bookingsource = dict.booking_source ?? ""
@@ -524,7 +511,7 @@ extension SearchHotelsResultVC {
                 
                 cell.hotelNamelbl.text = dict.name
                 cell.hotelImg.sd_setImage(with: URL(string: dict.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
-                cell.ratingslbl.text = String(dict.star_rating ?? 0)
+                cell.ratingslbl.text = String(dict.star_rating ?? "0")
                 cell.locationlbl.text = dict.address
                 setAttributedText1(str1: dict.currency ?? "", str2: dict.price ?? "", lbl: cell.kwdlbl)
                 cell.bookingsource = dict.booking_source ?? ""
@@ -641,13 +628,7 @@ extension SearchHotelsResultVC:AppliedFilters{
     
     
     func filtersByApplied(minpricerange: Double, maxpricerange: Double, noofStopsArray: [String], refundableTypeArray: [String], departureTime: [String], arrivalTime: [String], noOvernightFlight: [String], airlinesFilterArray: [String], luggageFilterArray: [String], connectingFlightsFilterArray: [String], ConnectingAirportsFilterArray: [String]) {
-        
-        
-        
-        
     }
-    
-    
     
     //MARK: - hotelFilterByApplied
     
@@ -671,7 +652,7 @@ extension SearchHotelsResultVC:AppliedFilters{
             guard let netPrice = Double(hotel.price ?? "0.0") else { return false }
             
             // Check if the hotel's star rating matches the selected star rating or is empty
-            let ratingMatches = starRating.isEmpty || String(hotel.star_rating ?? 0) == starRating
+            let ratingMatches = starRating.isEmpty || String(hotel.star_rating ?? "0") == starRating
             
             // Check if the hotel's refund type matches any selected refundable types or the array is empty
             let refundableMatch = refundableTypeArray.isEmpty || refundableTypeArray.contains(hotel.refund ?? "")

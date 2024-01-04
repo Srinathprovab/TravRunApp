@@ -30,7 +30,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62Z-d2-ehv" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="338"/>
+                        <rect key="frame" x="16" y="0.0" width="343" height="338"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Koj-Ay-G2c">
                                 <rect key="frame" x="14" y="14.000000000000002" width="128" height="18.666666666666671"/>
@@ -45,7 +45,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5lF-8K-dCB">
-                                <rect key="frame" x="14" y="71.666666666666671" width="345" height="44"/>
+                                <rect key="frame" x="14" y="71.666666666666671" width="313" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Qt2-E2-ash"/>
                                 </constraints>
@@ -72,7 +72,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fBH-rM-9Ca" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
-                                <rect key="frame" x="14" y="177.66666666666666" width="345" height="44"/>
+                                <rect key="frame" x="14" y="177.66666666666666" width="313" height="44"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bF7-2h-cUm">
                                         <rect key="frame" x="0.0" y="0.0" width="88" height="44"/>
@@ -112,7 +112,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T9v-Yw-Mq3">
-                                        <rect key="frame" x="89" y="0.0" width="256" height="44"/>
+                                        <rect key="frame" x="89" y="0.0" width="224" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                     </textField>
@@ -157,7 +157,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jjH-4k-o5S">
-                                <rect key="frame" x="16" y="266.66666666666669" width="343" height="55"/>
+                                <rect key="frame" x="16" y="266.66666666666669" width="311" height="55"/>
                                 <color key="backgroundColor" name="AppBtnColor"/>
                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -210,10 +210,10 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="62Z-d2-ehv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Fjb-Cg-01Q"/>
+                    <constraint firstItem="62Z-d2-ehv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Fjb-Cg-01Q"/>
                     <constraint firstAttribute="bottom" secondItem="62Z-d2-ehv" secondAttribute="bottom" id="mRL-9n-KCR"/>
                     <constraint firstItem="62Z-d2-ehv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="sSg-Bo-fl0"/>
-                    <constraint firstAttribute="trailing" secondItem="62Z-d2-ehv" secondAttribute="trailing" id="vVA-9b-44y"/>
+                    <constraint firstAttribute="trailing" secondItem="62Z-d2-ehv" secondAttribute="trailing" constant="16" id="vVA-9b-44y"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

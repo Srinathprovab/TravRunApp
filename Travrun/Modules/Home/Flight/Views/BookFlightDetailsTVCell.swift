@@ -45,16 +45,13 @@ class BookFlightDetailsTVCell: TableViewCell {
     
     
     func setupUI() {
-        
         holderView.backgroundColor = .WhiteColor
-        holderView.addCornerRadiusWithShadow(color: .clear, borderColor: .clear, cornerRadius: 5)
-        setuplabels(lbl: refundlbl, text: "", textcolor: HexColor("#288419"), font: .LatoRegular(size: 14), align: .center)
-        viewFlightDetailsBtnView.backgroundColor = HexColor("#FFCC33")
+        holderView.addCornerRadiusWithShadow(color: .clear, borderColor: HexColor("#E6E8E7"), cornerRadius: 8)
+        setuplabels(lbl: refundlbl, text: "", textcolor: HexColor("#288419"), font: .InterMedium(size: 12), align: .center)
+        viewFlightDetailsBtnView.backgroundColor = HexColor("#CFECFF")
         viewFlightDetailsBtnView.addCornerRadiusWithShadow(color: .clear, borderColor: .clear, cornerRadius: 5)
-        setuplabels(lbl: viewFlifgtDetailslbl, text: "Flight Details", textcolor: .AppLabelColor, font: .LatoRegular(size: 16), align: .center)
+        setuplabels(lbl: viewFlifgtDetailslbl, text: "Flight Details", textcolor: .AppLabelColor, font: .InterRegular(size: 12), align: .center)
         viewFlifgtDetailsBtn.setTitle("", for: .normal)
-        
-        
     }
     
     
@@ -102,9 +99,9 @@ extension BookFlightDetailsTVCell :UITableViewDataSource,UITableViewDelegate {
             cell.subtitlelbl.text = "(\(data.operator_code ?? "") \(data.flight_number ?? ""))"
             
             if cellInfo?.title == "Refundable" {
-                setuplabels(lbl: refundlbl, text: "Refundable", textcolor: HexColor("#2FA804"), font: .LatoRegular(size: 14), align: .center)
+                setuplabels(lbl: refundlbl, text: "Refundable", textcolor: HexColor("#00711F"), font: .InterMedium(size: 12), align: .center)
             }else {
-                setuplabels(lbl: refundlbl, text: "Non Refundable", textcolor: HexColor("#EC441E"), font: .LatoRegular(size: 14), align: .center)
+                setuplabels(lbl: refundlbl, text: "Non Refundable", textcolor: HexColor("#EE1935"), font: .InterMedium(size: 12), align: .center)
             }
             
             

@@ -27,10 +27,10 @@ struct passInfo {
 protocol MBViewModelDelegate : BaseViewModelProtocol {
     
     func mobilepreprocessbookingDetails(response : MBModel)
-//    func mobileprocesspassengerDetails(response:MBPModel)
+    func mobileprocesspassengerDetails(response:MBPModel)
     func mobilePreBookingModelDetails(response:MobilePreBookingModel)
-//    func mobileprepaymentconfirmationDetails(response:MobilePrePaymentModel)
-//    func mobilesendtopaymentDetails(response:MobilePrePaymentModel)
+    func mobileprepaymentconfirmationDetails(response:MobilePrePaymentModel)
+    func mobilesendtopaymentDetails(response:MobilePrePaymentModel)
 //    func mobolePaymentDetails(response:MobilePaymentModel)
     
     
@@ -69,27 +69,27 @@ class MBViewModel: MBInfoOutput {
     }
     
     
-//    //MARK:  mobile_process_passenger_detail
-//    func CALL_MOBILE_PROCESS_PASSENGER_DETAIL_API(dictParam: [String: Any]){
-//        let parms = NSDictionary(dictionary:dictParam)
-//        print("Parameters = \(parms)")
-//        
-//        self.view?.showLoader()
-//        
-//        ServiceManager.postOrPutApiCall(endPoint: "flight/\(ApiEndpoints.mobileprocesspassengerdetail)" , parameters: parms, resultType: MBPModel.self, p:dictParam) { sucess, result, errorMessage in
-//            
-//            DispatchQueue.main.async {
-//                self.view?.hideLoader()
-//                if sucess {
-//                    guard let response = result else {return}
-//                    self.view.mobileprocesspassengerDetails(response: response)
-//                } else {
-//                    // Show alert
-//                    self.view.showToast(message: errorMessage ?? "")
-//                }
-//            }
-//        }
-//    }
+    //MARK:  mobile_process_passenger_detail
+    func CALL_MOBILE_PROCESS_PASSENGER_DETAIL_API(dictParam: [String: Any]){
+        let parms = NSDictionary(dictionary:dictParam)
+        print("Parameters = \(parms)")
+        
+        self.view?.showLoader()
+        
+        ServiceManager.postOrPutApiCall(endPoint: "flight/\(ApiEndpoints.mobileprocesspassengerdetail)" , parameters: parms, resultType: MBPModel.self, p:dictParam) { sucess, result, errorMessage in
+            
+            DispatchQueue.main.async {
+                self.view?.hideLoader()
+                if sucess {
+                    guard let response = result else {return}
+                    self.view.mobileprocesspassengerDetails(response: response)
+                } else {
+                    // Show alert
+                    self.view.showToast(message: errorMessage ?? "")
+                }
+            }
+        }
+    }
 //    
 //    
     //MARK:  mobile_pre_booking
@@ -116,51 +116,51 @@ class MBViewModel: MBInfoOutput {
     
     
     
-//    //MARK:  mobile_pre_payment_confirmation API
-//    func Call_mobile_pre_payment_confirmation_API(dictParam: [String: Any],url:String){
-//        let parms = NSDictionary(dictionary:dictParam)
-//        print("Parameters = \(parms)")
-//        
-//        self.view?.showLoader()
-//        
-//        ServiceManager.postOrPutApiCall(endPoint: url , parameters: parms, resultType: MobilePrePaymentModel.self, p:dictParam) { sucess, result, errorMessage in
-//            
-//            DispatchQueue.main.async {
-//                self.view?.hideLoader()
-//                if sucess {
-//                    guard let response = result else {return}
-//                    self.view.mobileprepaymentconfirmationDetails(response: response)
-//                } else {
-//                    // Show alert
-//                    self.view.showToast(message: errorMessage ?? "")
-//                }
-//            }
-//        }
-//    }
+    //MARK:  mobile_pre_payment_confirmation API
+    func Call_mobile_pre_payment_confirmation_API(dictParam: [String: Any],url:String){
+        let parms = NSDictionary(dictionary:dictParam)
+        print("Parameters = \(parms)")
+        
+        self.view?.showLoader()
+        
+        ServiceManager.postOrPutApiCall(endPoint: url , parameters: parms, resultType: MobilePrePaymentModel.self, p:dictParam) { sucess, result, errorMessage in
+            
+            DispatchQueue.main.async {
+                self.view?.hideLoader()
+                if sucess {
+                    guard let response = result else {return}
+                    self.view.mobileprepaymentconfirmationDetails(response: response)
+                } else {
+                    // Show alert
+                    self.view.showToast(message: errorMessage ?? "")
+                }
+            }
+        }
+    }
 //    
 //    
 //    
-//    //MARK:  mobile_send_to_payment API
-//    func Call_mobile_send_to_payment_API(dictParam: [String: Any],url:String){
-//        let parms = NSDictionary(dictionary:dictParam)
-//        print("Parameters = \(parms)")
-//        
-//        self.view?.showLoader()
-//        
-//        ServiceManager.postOrPutApiCall(endPoint: url , parameters: parms, resultType: MobilePrePaymentModel.self, p:dictParam) { sucess, result, errorMessage in
-//            
-//            DispatchQueue.main.async {
-//                self.view?.hideLoader()
-//                if sucess {
-//                    guard let response = result else {return}
-//                    self.view.mobilesendtopaymentDetails(response: response)
-//                } else {
-//                    // Show alert
-//                    self.view.showToast(message: errorMessage ?? "")
-//                }
-//            }
-//        }
-//    }
+    //MARK:  mobile_send_to_payment API
+    func Call_mobile_send_to_payment_API(dictParam: [String: Any],url:String){
+        let parms = NSDictionary(dictionary:dictParam)
+        print("Parameters = \(parms)")
+        
+        self.view?.showLoader()
+        
+        ServiceManager.postOrPutApiCall(endPoint: url , parameters: parms, resultType: MobilePrePaymentModel.self, p:dictParam) { sucess, result, errorMessage in
+            
+            DispatchQueue.main.async {
+                self.view?.hideLoader()
+                if sucess {
+                    guard let response = result else {return}
+                    self.view.mobilesendtopaymentDetails(response: response)
+                } else {
+                    // Show alert
+                    self.view.showToast(message: errorMessage ?? "")
+                }
+            }
+        }
+    }
 //    
 //    
 //    

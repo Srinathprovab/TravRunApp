@@ -27,7 +27,7 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate {
     
     
     static var newInstance: MapViewVC? {
-        let storyboard = UIStoryboard(name: Storyboard.Hotels.name,
+        let storyboard = UIStoryboard(name: Storyboard.SearchHotel.name,
                                       bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? MapViewVC
         return vc

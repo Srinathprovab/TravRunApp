@@ -61,3 +61,41 @@ struct FDPriceDetails : Codable {
     
 }
 
+
+struct CustomFarerules: Codable {
+    let cancelation_fee: Fee?
+    let date_charge_fee: Fee?
+    let please_note: String?
+
+    enum CodingKeys: String, CodingKey {
+        case cancelation_fee = "cancelation_fee"
+        case date_charge_fee = "date_charge_fee"
+        case please_note = "please_note"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        cancelation_fee = try values.decodeIfPresent(Fee.self, forKey: .cancelation_fee)
+        date_charge_fee = try values.decodeIfPresent(Fee.self, forKey: .date_charge_fee)
+        please_note = try values.decodeIfPresent(String.self, forKey: .please_note)
+    }
+    
+    struct Fee: Codable {
+        let text_bottom: String?
+        let destination: String?
+        let cancellation_title: String?
+        let text_right: String?
+        let text_left: String?
+        let origin: String?
+
+        enum CodingKeys: String, CodingKey {
+            case text_bottom = "text_bottom"
+            case destination = "destination"
+            case cancellation_title = "cancellation_title"
+            case text_right = "text_right"
+            case text_left = "text_left"
+            case origin = "origin"
+        }
+    }
+}
+

@@ -341,7 +341,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldx-Ds-zEn">
-                                        <rect key="frame" x="0.0" y="19.666666666666689" width="431" height="40.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="431" height="60"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                     </button>
@@ -352,6 +352,7 @@
                                     <constraint firstItem="ldx-Ds-zEn" firstAttribute="leading" secondItem="CQN-ja-GL7" secondAttribute="leading" id="JCt-yk-L9H"/>
                                     <constraint firstAttribute="trailing" secondItem="ldx-Ds-zEn" secondAttribute="trailing" id="M38-FD-bHk"/>
                                     <constraint firstItem="3nr-5w-eMY" firstAttribute="centerX" secondItem="CQN-ja-GL7" secondAttribute="centerX" id="MAl-6S-ZOE"/>
+                                    <constraint firstItem="ldx-Ds-zEn" firstAttribute="top" secondItem="CQN-ja-GL7" secondAttribute="top" id="PRS-ZO-WJd"/>
                                     <constraint firstAttribute="height" constant="60" id="c37-k8-fl4"/>
                                     <constraint firstItem="3nr-5w-eMY" firstAttribute="centerY" secondItem="CQN-ja-GL7" secondAttribute="centerY" id="rgi-4r-alD"/>
                                 </constraints>

@@ -78,12 +78,14 @@ class NoInternetConnectionVC: UIViewController {
     }
     
     @IBAction func didTapOnTryAgainBtn(_ sender: Any) {
-//        if key == "noresult" {
-//            let tabselect = defaults.string(forKey: UserDefaultsKeys.dashboardTapSelected)
-//            if tabselect == "Flights" {
-//                guard let vc = SearchFlightsVC.newInstance.self else {return}
-//                vc.modalPresentationStyle = .fullScreen
-//                self.present(vc, animated: true)
+        if key == "noresult" {
+            let tabselect = defaults.string(forKey: UserDefaultsKeys.dashboardTapSelected)
+            if tabselect == "Flights" {
+                guard let vc = FlightViewController.newInstance.self else {return}
+                vc.modalPresentationStyle = .fullScreen
+                vc.isfromVc = "NoInternetConnectionVC"
+                self.present(vc, animated: true)
+            }
 //            }else if tabselect == "Insurence"{
 //                guard let vc = InsuranceVC.newInstance.self else {return}
 //                vc.modalPresentationStyle = .fullScreen
@@ -92,17 +94,18 @@ class NoInternetConnectionVC: UIViewController {
 //                guard let vc = SearchFastTrackVC.newInstance.self else {return}
 //                vc.modalPresentationStyle = .fullScreen
 //                self.present(vc, animated: true)
-//            }else {
-//                guard let vc = SearchHotelsVC.newInstance.self else {return}
-//                vc.modalPresentationStyle = .fullScreen
-//                self.present(vc, animated: true)
 //            }
-//            
-//            
-//        }else {
-//            NotificationCenter.default.post(name: NSNotification.Name("reloadTV"), object: nil)
-//            dismiss(animated: false)
-//        }
+            else {
+                guard let vc = SearchHotelsVC.newInstance.self else {return}
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true)
+            }
+            
+            
+        } else {
+            NotificationCenter.default.post(name: NSNotification.Name("reloadTV"), object: nil)
+            dismiss(animated: false)
+        }
     }
     
 }

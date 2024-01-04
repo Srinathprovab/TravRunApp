@@ -17,8 +17,6 @@ protocol SearchHotelTVCellDelegate {
     func didTapOnSearchHotelCityBtn(cell:SearchHotelTVCell)
     func didTapOnSelectCountryCodeList(cell:SearchHotelTVCell)
     func editingTextField(tf:UITextField)
-    
-    
 }
 
 class SearchHotelTVCell: TableViewCell, HotelCitySearchViewModelDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

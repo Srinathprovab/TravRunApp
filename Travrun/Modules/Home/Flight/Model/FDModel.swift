@@ -16,6 +16,7 @@ struct FDModel : Codable {
     let farerulesref_content : String?
     let journeySummary : [JourneySummary]?
     let baggage_details : [Baggage_details]?
+    let custom_farerules: CustomFarerules?
     
     
     enum CodingKeys: String, CodingKey {
@@ -28,6 +29,7 @@ struct FDModel : Codable {
         case farerulesref_content = "farerulesref_content"
         case journeySummary = "journeySummary"
         case baggage_details = "baggage_details"
+        case custom_farerules = "custom_farerules"
     }
 
     init(from decoder: Decoder) throws {
@@ -40,9 +42,8 @@ struct FDModel : Codable {
         farerulesref_content = try values.decodeIfPresent(String.self, forKey: .farerulesref_content)
         journeySummary = try values.decodeIfPresent([JourneySummary].self, forKey: .journeySummary)
         baggage_details = try values.decodeIfPresent([Baggage_details].self, forKey: .baggage_details)
-
+        custom_farerules = try values.decodeIfPresent(CustomFarerules.self, forKey: .custom_farerules)
     }
-
 }
 
 

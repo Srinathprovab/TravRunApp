@@ -70,6 +70,27 @@ enum TVCellType {
     case SelectRatingTVCell
     case AddRoomsGuestsTVCell
     case RoomsCountTVCell
+    case CommonFromCityTVCell
+    case HotelsTVCell
+    case SearchLocationTFTVCell
+    case HotelListTVCellTableViewCell
+    case HotelFareSummeryTableViewCell
+    case GuestDetailsTVCell
+    case BookFlightDetailsTVCell
+    case TDetailsLoginTVCell
+    case AddDeatilsOfTravellerTVCell
+    case TravelInsuranceTVCell
+    case ContactInformationTVCell
+    case UsePromoCodesTVCell
+    case PriceSummaryTVCell
+    case SpecialRequestTVCell
+    case TotalNoofTravellerTVCell
+    case ViewFlightDetailsBtnTVCell
+    case AddAdultsOrGuestTVCell
+    case SearchFlightResultTVCell
+    case TitleLblTVCell
+    case RadioButtonTVCell
+    
 }
 
 enum CVCellType {

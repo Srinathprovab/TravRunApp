@@ -8,7 +8,6 @@
 import Foundation
 
 struct MBFlightDetails : Codable {
-
     let summery : [Summary]?
 
     enum CodingKeys: String, CodingKey {

@@ -57,8 +57,10 @@ extension BaggageInfoTableViewCell{
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? BaggageInfoCollectionViewCell {
             commonCell = cell
             cell.cityLabel.text = "\(data.from_city ?? "") to \(data.to_city ?? "")"
-            cell.numberOfPieceLabel.text = data.cabin_baggage
-            cell.baggageInfoLabel.text = "2 Piece airlines usually permit \(data.weight_Allowance ?? "0") kg per piece"
+//            cell.numberOfPieceLabel.text = data.cabin_baggage
+            cell.titleLabel.text = "\(data.cabin_baggage ?? "0") cabin baggage"
+            cell.subTitleLabel.text = "Checked Baggage Included \(data.cabin_baggage ?? "0")"
+            cell.baggageInfoLabel.text = "\(data.weight_Allowance ?? "0")"
             if bagInfo.count == 1 {
                 cell.separatorView.isHidden = true
             } else if bagInfo.count > 1  {

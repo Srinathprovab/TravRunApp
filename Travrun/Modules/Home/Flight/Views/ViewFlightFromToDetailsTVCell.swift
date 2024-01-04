@@ -39,18 +39,17 @@ class ViewFlightFromToDetailsTVCell: UITableViewCell {
     func setupUI() {
         
         holderView.backgroundColor = .WhiteColor
-        lineView.backgroundColor = HexColor("#00A898")
-        setuplabels(lbl: fromtimelbl, text: "05:50", textcolor: .AppLabelColor, font: .LatoSemibold(size: 18), align: .left)
-        setuplabels(lbl: fromCityShortlbl, text: "dubai (dXB)", textcolor: .AppLabelColor, font: .LatoRegular(size: 12), align: .left)
-        setuplabels(lbl: totimelbl, text: "07:50", textcolor: .AppLabelColor, font: .LatoSemibold(size: 18), align: .right)
-        setuplabels(lbl: toCityShortlbl, text: "kuwait (KWI)", textcolor: .AppLabelColor, font: .LatoRegular(size: 12), align: .right)
-        setuplabels(lbl: hourslbl, text: "1h 40mis", textcolor: .AppLabelColor, font: .LatoRegular(size: 12), align: .center)
-        setuplabels(lbl: noStopslbl, text: "No Stops", textcolor: .AppLabelColor, font: .LatoRegular(size: 12), align: .center)
-        
-        
+        lineView.backgroundColor = HexColor("#3C627A")
+        setuplabels(lbl: fromtimelbl, text: "05:50", textcolor: .AppLabelColor, font: .InterSemiBold(size: 18), align: .left)
+        setuplabels(lbl: fromCityShortlbl, text: "dubai (dXB)", textcolor: .AppLabelColor, font: .InterRegular(size: 12), align: .left)
+        setuplabels(lbl: totimelbl, text: "07:50", textcolor: .AppLabelColor, font: .InterSemiBold(size: 18), align: .right)
+        setuplabels(lbl: toCityShortlbl, text: "kuwait (KWI)", textcolor: .AppLabelColor, font: .InterRegular(size: 12), align: .right)
+        setuplabels(lbl: hourslbl, text: "1h 40mis", textcolor: .AppLabelColor, font: .InterRegular(size: 12), align: .center)
+        setuplabels(lbl: noStopslbl, text: "No Stops", textcolor: .AppLabelColor, font: .InterRegular(size: 12), align: .center)
+
         airwaysImg.contentMode = .scaleToFill
-        setuplabels(lbl: titlelbl, text: "", textcolor: .AppLabelColor, font: .LatoRegular(size: 14), align: .left)
-        setuplabels(lbl: subtitlelbl, text: "", textcolor: .AppLabelColor, font: .LatoRegular(size: 14), align: .left)
+        setuplabels(lbl: titlelbl, text: "", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .left)
+        setuplabels(lbl: subtitlelbl, text: "", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .left)
     }
     
 }

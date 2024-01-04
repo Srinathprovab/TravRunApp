@@ -98,12 +98,12 @@ class CommonFromCityTVCell: TableViewCell, HotelCitySearchViewModelDelegate {
         setupViews(v: view1, radius: 4, color: HexColor("#FCFCFC"))
         setupViews(v: view2, radius: 4, color: HexColor("#FCFCFC"))
         
-        setupLabels(lbl: titlelbl, text: "", textcolor: .AppLabelColor, font: .LatoLight(size: 14))
-        setupLabels(lbl: subtitlelbl, text: "", textcolor: .AppLabelColor, font: .LatoSemibold(size: 18))
-        setupLabels(lbl: dual1lbl1, text: "", textcolor: .AppLabelColor, font: .LatoLight(size: 14))
-        setupLabels(lbl: dual2lbl1, text: "", textcolor: .AppLabelColor, font: .LatoLight(size: 14))
-        setupLabels(lbl: dual1lbl2, text: "", textcolor: .AppLabelColor, font: .LatoSemibold(size: 18))
-        setupLabels(lbl: dual2lbl2, text: "", textcolor: .AppLabelColor, font: .LatoSemibold(size: 18))
+        setupLabels(lbl: titlelbl, text: "", textcolor: .AppLabelColor, font: .InterRegular(size: 14))
+        setupLabels(lbl: subtitlelbl, text: "", textcolor: .AppLabelColor, font: .InterSemiBold(size: 18))
+        setupLabels(lbl: dual1lbl1, text: "", textcolor: .AppLabelColor, font: .InterRegular(size: 14))
+        setupLabels(lbl: dual2lbl1, text: "", textcolor: .AppLabelColor, font: .InterRegular(size: 14))
+        setupLabels(lbl: dual1lbl2, text: "", textcolor: .AppLabelColor, font: .InterSemiBold(size: 18))
+        setupLabels(lbl: dual2lbl2, text: "", textcolor: .AppLabelColor, font: .InterSemiBold(size: 18))
         
         btn.setTitle("", for: .normal)
         dual1Btn.setTitle("", for: .normal)
@@ -111,7 +111,7 @@ class CommonFromCityTVCell: TableViewCell, HotelCitySearchViewModelDelegate {
         
         cityTF.isHidden = true
         cityTF.textColor = .AppLabelColor
-        cityTF.font = .LatoSemibold(size: 18)
+        cityTF.font = .InterSemiBold(size: 18)
         cityTF.delegate = self
         cityTF.addTarget(self, action: #selector(textFiledEditingChanged(_:)), for: .editingChanged)
         
@@ -169,10 +169,7 @@ class CommonFromCityTVCell: TableViewCell, HotelCitySearchViewModelDelegate {
         dropDown.dataSource = cityNameArray
     }
     
-    
-    
-    
-    
+
     func setupDropDown() {
         
         dropDown.direction = .bottom

@@ -97,6 +97,7 @@ public var screenHeight: CGFloat {
     return UIScreen.main.bounds.size.height
 }
 
+var thefareRules: CustomFarerules?
 var fareCurrencyType = String()
 var tripCurrencyType = String()
 var totalprice = String()
@@ -136,13 +137,20 @@ var arrayOf_SelectedCellsAdult = [IndexPath]()
 var arrayOf_SelectedCellsChild = [IndexPath]()
 var arrayOf_SelectedCellsInfanta = [IndexPath]()
 var totalNoOfTravellers = String()
+var cityLocId:[String] = []
+var hotelSearchResult = [HotelSearchResult]()
 //var passengerA = [Passenger]()
 //var travelerArray: [Traveler] = []
 //var ageCategory: AgeCategory = .adult
 var latArray = [String]()
 var longArray = [String]()
 var passportExpireDateBool = false
-
+var mapModelArray: [MapModel] = []
+var travelerArray: [Traveler] = []
+var hotelSearchId = String()
+var MBfd :[[MBdetails]]?
+var mobilenoMaxLengthBool = false
+var ageCategory: AgeCategory = .adult
 
 //MARK: - FILTER RELATED VARIABLES
 var filterTap = String()
@@ -150,6 +158,10 @@ var filterPrice = String()
 var filterModel = FlightFilterModel()
 var sortBy: SortParameter = .nothing
 var hotelfiltermodel = HotelFilterModel()
+
+//Flight Paynow Screen
+var payemail = String()
+var paymobile = String()
 
 //var mapModelArray: [MapModel] = []
 
@@ -192,6 +204,7 @@ var selectedCellStates: [IndexPath: Bool] = [:]
 //MARK: - HOME SCREEN
 
 struct UserDefaultsKeys {
+    static var travellerTitle = "travellerTitle"
     static var totalTravellerCount = "totalTravellerCount"
     static var journeyTypeSelectedIndex = "Journey_TypeSelectedIndex"
     static var DashboardTapSelectedCellIndex = "DashboardTapSelectedCellIndex"

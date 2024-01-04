@@ -47,14 +47,14 @@
                                     <constraint firstAttribute="height" constant="16" id="tQm-jG-SdG"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancellation Fee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7D-EZ-zPj">
-                                <rect key="frame" x="31.999999999999993" y="62.666666666666664" width="78.333333333333314" height="12.333333333333336"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="cabin  baggage" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7D-EZ-zPj">
+                                <rect key="frame" x="32" y="62.666666666666664" width="73" height="12.333333333333336"/>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="10"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 Piece" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IcH-PW-MpX">
-                                <rect key="frame" x="117.00000000000001" y="62.666666666666664" width="33.666666666666671" height="12.333333333333336"/>
+                                <rect key="frame" x="111.66666666666667" y="62.666666666666664" width="33.666666666666671" height="12.333333333333336"/>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="10"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -131,6 +131,8 @@
                 <outlet property="cityLabel" destination="kkQ-SI-vit" id="DgA-ox-rZA"/>
                 <outlet property="numberOfPieceLabel" destination="IcH-PW-MpX" id="uff-9Z-bNs"/>
                 <outlet property="separatorView" destination="U3P-PD-sgO" id="DXG-HZ-WRL"/>
+                <outlet property="subTitleLabel" destination="3ix-bk-o5Q" id="HXl-b1-1CW"/>
+                <outlet property="titleLabel" destination="j7D-EZ-zPj" id="Y2p-DT-ZEf"/>
             </connections>
             <point key="canvasLocation" x="25.954198473282442" y="19.366197183098592"/>
         </collectionViewCell>

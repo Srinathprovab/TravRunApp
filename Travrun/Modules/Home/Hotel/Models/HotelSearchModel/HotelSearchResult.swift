@@ -22,7 +22,7 @@ struct HotelSearchResult : Codable {
     let giata_id : String?
     let longitude : String?
     let accomodation_cstr : String?
-    let star_rating : Int?
+    let star_rating : String?
     let price : String?
     let facility_cstr : String?
     let org_price : String?
@@ -97,7 +97,7 @@ struct HotelSearchResult : Codable {
         giata_id = try values.decodeIfPresent(String.self, forKey: .giata_id)
         longitude = try values.decodeIfPresent(String.self, forKey: .longitude)
         accomodation_cstr = try values.decodeIfPresent(String.self, forKey: .accomodation_cstr)
-        star_rating = try values.decodeIfPresent(Int.self, forKey: .star_rating)
+        star_rating = try values.decodeIfPresent(String.self, forKey: .star_rating)
         price = try values.decodeIfPresent(String.self, forKey: .price)
         facility_cstr = try values.decodeIfPresent(String.self, forKey: .facility_cstr)
         org_price = try values.decodeIfPresent(String.self, forKey: .org_price)
