@@ -1,33 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Inter-Bold.ttf">
-            <string>Inter-Bold</string>
-        </array>
         <array key="Lato-Bold.ttf">
             <string>Lato-Bold</string>
         </array>
-        <array key="Lato-Regular.ttf">
-            <string>Lato-Regular</string>
-        </array>
         <array key="OpenSans-Bold.ttf">
             <string>OpenSans-Bold</string>
+        </array>
+        <array key="latoregular.ttf">
+            <string>Lato-Regular</string>
         </array>
     </customFonts>
     <scenes>
         <!--Calvc-->
         <scene sceneID="BrD-LP-ks6">
             <objects>
-                <viewController storyboardIdentifier="Calvc" id="6RC-xD-mQM" customClass="Calvc" customModule="BabSafar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Calvc" id="6RC-xD-mQM" customClass="Calvc" customModule="Travrun" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uM3-LJ-4ho">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -304,7 +300,7 @@
         <!--Similar FlightsVC-->
         <scene sceneID="txy-jN-txx">
             <objects>
-                <viewController storyboardIdentifier="similarFlightsVC" id="hOL-AD-PWJ" customClass="similarFlightsVC" customModule="BabSafar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="similarFlightsVC" id="hOL-AD-PWJ" customClass="similarFlightsVC" customModule="Travrun" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="taf-jt-HJb">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -313,11 +309,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="H9v-6v-wRr">
-                                        <rect key="frame" x="0.0" y="105.66666666666669" width="393" height="746.33333333333326"/>
+                                        <rect key="frame" x="0.0" y="106" width="393" height="746"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Similar Flightes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lD3-Dl-fvn">
-                                        <rect key="frame" x="136" y="70" width="121.33333333333331" height="20.666666666666671"/>
+                                        <rect key="frame" x="136" y="70" width="121.33333333333331" height="21"/>
                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -361,106 +357,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOW-wu-q4N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2005.3435114503816" y="1741.549295774648"/>
-        </scene>
-        <!--Booking SucessVC-->
-        <scene sceneID="y7P-k5-afZ">
-            <objects>
-                <viewController storyboardIdentifier="BookingSucessVC" id="KLT-s3-t4K" customClass="BookingSucessVC" customModule="BabSafar" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="54z-9V-ViW">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loader" translatesAutoresizingMaskIntoConstraints="NO" id="y6x-vS-dyH">
-                                <rect key="frame" x="136.66666666666666" y="366" width="119.99999999999997" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="PeO-2K-5Lj"/>
-                                    <constraint firstAttribute="width" constant="120" id="w0H-R0-mZ2"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Booking Confirmed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CqG-fL-IzP">
-                                <rect key="frame" x="111.66666666666669" y="491" width="170" height="22"/>
-                                <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6pJ-Ld-bfC"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="CqG-fL-IzP" firstAttribute="centerX" secondItem="y6x-vS-dyH" secondAttribute="centerX" id="9xv-yf-Lb0"/>
-                            <constraint firstItem="y6x-vS-dyH" firstAttribute="centerY" secondItem="54z-9V-ViW" secondAttribute="centerY" id="JdV-Kt-zX3"/>
-                            <constraint firstItem="CqG-fL-IzP" firstAttribute="top" secondItem="y6x-vS-dyH" secondAttribute="bottom" constant="5" id="bPW-7v-AYE"/>
-                            <constraint firstItem="y6x-vS-dyH" firstAttribute="centerX" secondItem="54z-9V-ViW" secondAttribute="centerX" id="iLz-Xo-VC8"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="gifImageView" destination="y6x-vS-dyH" id="ZUA-gc-eJk"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MoC-S1-qoM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2844" y="1742"/>
-        </scene>
-        <!--Booking ConfirmedVC-->
-        <scene sceneID="hs8-7R-0bK">
-            <objects>
-                <viewController storyboardIdentifier="BookingConfirmedVC" id="Xsl-p7-pjO" customClass="BookingConfirmedVC" customModule="BabSafar" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="72L-zw-9o0">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XYV-81-diZ">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPS-Qe-16L" customClass="NavBar" customModule="BabSafar" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="130"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="130" id="A3d-aL-90L"/>
-                                        </constraints>
-                                    </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="YyK-FP-cLK">
-                                        <rect key="frame" x="0.0" y="130" width="393" height="722"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="YyK-FP-cLK" firstAttribute="leading" secondItem="XYV-81-diZ" secondAttribute="leading" id="523-it-uxM"/>
-                                    <constraint firstAttribute="trailing" secondItem="qPS-Qe-16L" secondAttribute="trailing" id="Mvg-vx-gEg"/>
-                                    <constraint firstItem="qPS-Qe-16L" firstAttribute="top" secondItem="XYV-81-diZ" secondAttribute="top" id="PZf-IP-TFy"/>
-                                    <constraint firstAttribute="trailing" secondItem="YyK-FP-cLK" secondAttribute="trailing" id="VoX-iu-Wii"/>
-                                    <constraint firstItem="YyK-FP-cLK" firstAttribute="top" secondItem="qPS-Qe-16L" secondAttribute="bottom" id="YNG-BP-4DX"/>
-                                    <constraint firstAttribute="bottom" secondItem="YyK-FP-cLK" secondAttribute="bottom" id="h0j-l1-X5x"/>
-                                    <constraint firstItem="qPS-Qe-16L" firstAttribute="leading" secondItem="XYV-81-diZ" secondAttribute="leading" id="pWh-EW-0L6"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Lp6-2N-klP"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="Lp6-2N-klP" firstAttribute="trailing" secondItem="XYV-81-diZ" secondAttribute="trailing" id="Idq-sa-1xg"/>
-                            <constraint firstItem="XYV-81-diZ" firstAttribute="top" secondItem="72L-zw-9o0" secondAttribute="top" id="MjQ-CA-KdS"/>
-                            <constraint firstItem="XYV-81-diZ" firstAttribute="leading" secondItem="Lp6-2N-klP" secondAttribute="leading" id="ZlG-MX-Bcx"/>
-                            <constraint firstAttribute="bottom" secondItem="XYV-81-diZ" secondAttribute="bottom" id="lfC-gu-jUk"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="commonTableView" destination="YyK-FP-cLK" id="Zgz-4c-2wg"/>
-                        <outlet property="navBar" destination="qPS-Qe-16L" id="WID-Rz-Qq1"/>
-                        <outlet property="navHeight" destination="A3d-aL-90L" id="v3c-bb-vUF"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="nT7-H4-FBP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1121" y="2461"/>
+            <point key="canvasLocation" x="1976" y="1730"/>
         </scene>
     </scenes>
     <resources>
         <image name="arrow.down.circle.fill" catalog="system" width="128" height="123"/>
         <image name="arrow.up.circle.fill" catalog="system" width="128" height="123"/>
-        <image name="loader" width="128" height="128"/>
         <image name="multiply" catalog="system" width="128" height="111"/>
         <namedColor name="AppHolderViewColor">
             <color red="0.94499999284744263" green="0.95300000905990601" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -469,7 +371,7 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

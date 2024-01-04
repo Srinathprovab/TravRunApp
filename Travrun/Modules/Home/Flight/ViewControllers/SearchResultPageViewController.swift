@@ -137,6 +137,11 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
             vc.modalPresentationStyle = .fullScreen
             vc.isfromVc = "SearchResultPageViewController"
             present(vc, animated: true)
+        } else if isfromVc == "BookingDetailsVC" {
+            guard let vc = FlightViewController.newInstance.self else {return}
+            vc.modalPresentationStyle = .fullScreen
+            vc.isfromVc = "SearchResultPageViewController"
+            present(vc, animated: true)
         } else {
             dismiss(animated: false)
         }

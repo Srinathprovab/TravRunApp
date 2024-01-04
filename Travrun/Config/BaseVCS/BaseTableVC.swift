@@ -571,9 +571,19 @@ extension BaseTableVC: UITableViewDataSource {
                 cell.delegate = self
                 commonCell = cell
                 
+            case .BookingConfirmedTVCell:
+                let cell: BookingConfirmedTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+            case .BCFlightDetailsTVCell:
+                let cell: BCFlightDetailsTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
                 
                 
-
+            case .BookedTravelDetailsTVCell:
+                let cell: BookedTravelDetailsTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
             default:
                 print("handle this case in getCurrentCellAt")
             }

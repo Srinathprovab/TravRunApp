@@ -62,7 +62,7 @@ class BookingConfirmedTVCell: TableViewCell {
     func setupUI() {
         setupViews(v: holderView, radius: 10, color: HexColor("#EDF7ED"))
         
-        setuplabels(lbl: bclbl, text: "Booking Confirmed", textcolor: HexColor("#4AA449"), font: .LatoSemibold(size: 18), align: .left)
+        setuplabels(lbl: bclbl, text: "Booking Confirmed", textcolor: HexColor("#4AA449"), font: .InterSemiBold(size: 18), align: .left)
         setuplabels(lbl: congratulationslbl, text: "Congratulations! your e-tickets  are successfuly booked.", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .left)
         congratulationslbl.numberOfLines = 2
      //   setuplabels(lbl: bookingIDlbl, text: "", textcolor: HexColor("#5B5B5B"), font: .LatoRegular(size: 14), align: .left)

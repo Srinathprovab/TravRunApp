@@ -44,7 +44,7 @@ class PaymentGatewayVC: UIViewController, updatePaymentFlightViewModelDelegate {
     
     
     static var newInstance: PaymentGatewayVC? {
-        let storyboard = UIStoryboard(name: Storyboard.PaymentGateway.name,
+        let storyboard = UIStoryboard(name: Storyboard.BookingDetails.name,
                                       bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? PaymentGatewayVC
         return vc
@@ -60,16 +60,16 @@ class PaymentGatewayVC: UIViewController, updatePaymentFlightViewModelDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        payButton.isEnabled = false
         payButton.isEnabled = false
-        
        // kwdpricelbl.text = grandTotalamount
         invoiceValue = Double(grand_total_Price ?? "0.0") ?? 0.0
         
         setAttributedTextnew(str1: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "")",
                              str2: "\(grand_total_Price ?? "")",
                              lbl: kwdpricelbl,
-                             str1font: .LatoBold(size: 12),
-                             str2font: .LatoBold(size: 18),
+                             str1font: .InterBold(size: 12),
+                             str2font: .InterBold(size: 18),
                              str1Color: .WhiteColor,
                              str2Color: .WhiteColor)
         
@@ -84,7 +84,8 @@ class PaymentGatewayVC: UIViewController, updatePaymentFlightViewModelDelegate {
     }
     
     
-    @IBAction func payDidPRessed(_ sender: Any) {
+    @IBAction func paymentButtonAction(_ sender: Any) {
+        
         if let paymentMethods = paymentMethods, !paymentMethods.isEmpty {
             if let selectedIndex = selectedPaymentMethodIndex {
                 
@@ -100,16 +101,10 @@ class PaymentGatewayVC: UIViewController, updatePaymentFlightViewModelDelegate {
             }
         }
     }
-    
-    
-    //    @IBAction func sendPaymentDidTapped(_ sender: Any) {
-    //        sendPayment()
-    //    }
-    
-    
+   
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
         BASE_URL = BASE_URL1
-        guard let vc = DashBoaardTabbarVC.newInstance.self else {return}
+        guard let vc = DashBoardTabBarViewController.newInstance.self else {return}
         vc.modalPresentationStyle = .overCurrentContext
         vc.selectedIndex = 0
         callapibool = true

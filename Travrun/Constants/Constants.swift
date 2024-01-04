@@ -180,7 +180,6 @@ var fdbool = true
 //var formatAmeArray = [Format_ame]()
 //var formatDesc = [Format_desc]()
 var hotel_filtersumry : Filter_sumry?
-
 var hsearchid = String()
 var hbookingsource = String()
 var htoken = String()
@@ -198,7 +197,13 @@ var nearBylocationsArray = [String]()
 
 var selectedCellIndices: [IndexPath] = [] // Keep track of selected cell indices
 var selectedCellStates: [IndexPath: Bool] = [:]
-
+var bookedDate = String()
+var pnrNo = String()
+var bookingRefrence = String()
+var bookingId = String()
+var flightSelectedIndex = Int()
+//var prebookingcancellationpolicy : Pre_booking_cancellation_policy?
+var userspecification = [String]()
 
 
 //MARK: - HOME SCREEN

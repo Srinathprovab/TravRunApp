@@ -90,6 +90,9 @@ enum TVCellType {
     case SearchFlightResultTVCell
     case TitleLblTVCell
     case RadioButtonTVCell
+    case BookingConfirmedTVCell
+    case BCFlightDetailsTVCell
+    case BookedTravelDetailsTVCell
     
 }
 

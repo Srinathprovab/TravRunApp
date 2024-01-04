@@ -15,7 +15,7 @@ class BookingSucessVC: UIViewController {
     
     
     static var newInstance: BookingSucessVC? {
-        let storyboard = UIStoryboard(name: Storyboard.Calender.name,
+        let storyboard = UIStoryboard(name: Storyboard.BookingDetails.name,
                                       bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? BookingSucessVC
         return vc

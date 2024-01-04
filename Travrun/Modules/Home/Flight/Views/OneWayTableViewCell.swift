@@ -308,56 +308,61 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
     }
     
     @IBAction func adultsDecrementButtonAction(_ sender: Any) {
+        
         if adultsCount > 1 {
             adultsCount -= 1
-            //            self.counts -= 1
             adultCountLabel.text = "\(adultsCount)"
+            infantsCount = 0
+            infantsCountLabel.text = "0"
         }
         
-        defaults.set(adultsCount, forKey: UserDefaultsKeys.adultCount)
+        updateTotalTravelerCount()
+        
     }
     
     @IBAction func childDecrementButtonAction(_ sender: Any) {
-        if self.counts > 0 {
-            self.counts -= 1
-            childCountLabel.text = "\(self.counts)"
+        
+        // Ensure adult count doesn't go below 1
+        if childCount >= 1 {
+            childCount -= 1
+            childCountLabel.text = "\(childCount)"
         }
-        childCount = self.counts
-        defaults.set(childCount, forKey: UserDefaultsKeys.childCount)
+        
+        updateTotalTravelerCount()
+        
+        
     }
     
     @IBAction func childIncrementButtonAction(_ sender: Any) {
+        // Increment adults and children, but don't exceed 9 travelers in total
         if (adultsCount + childCount) < 9 {
-            // Increment children, but don't exceed 9 travelers in total
-            if  self.counts >= 0 {
-                self.counts += 1
-                childCountLabel.text = "\(self.counts)"
-            }
-            childCount = self.counts
+            childCount += 1
+            self.childCountLabel.text = "\(childCount)"
         }
         
-        defaults.set(childCount, forKey: UserDefaultsKeys.childCount)
+        updateTotalTravelerCount()
     }
     
     @IBAction func infantsDecrementButtonAction(_ sender: Any) {
         
-        if infantsCount > 0 {
+        // Ensure infant count doesn't go below 1
+        if infantsCount >= 1 {
             infantsCount -= 1
-            self.counts -= 1
-            infantsCountLabel.text = "\(self.counts)"
+            infantsCountLabel.text = "\(infantsCount)"
         }
         
-        defaults.set(infantsCount, forKey: UserDefaultsKeys.infantsCount)
+        updateTotalTravelerCount()
     }
     
     @IBAction func infantsIncrementButtonAction(_ sender: Any) {
         
-        if infantsCount < adultsCount {
+        //        defaults.set(infantsCount, forKey: UserDefaultsKeys.infantsCount)
+        if adultsCount > infantsCount {
             infantsCount += 1
-            self.counts += 1
-            infantsCountLabel.text = "\(infantsCount)"
+            self.infantsCountLabel.text = "\(infantsCount)"
         }
-        defaults.set(infantsCount, forKey: UserDefaultsKeys.infantsCount)
+        
+        updateTotalTravelerCount()
     }
     
     @IBAction func toCancelButtonAction(_ sender: Any) {
@@ -382,13 +387,17 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
     }
     
     @IBAction func adultsIncrimentButtonAction(_ sender: Any) {
+        
+        // Increment adults, but don't exceed 9 travelers in total
         if (adultsCount + childCount) < 9 {
             adultsCount += 1
-            self.counts += 1
+            //            self.counts += 1
             adultCountLabel.text = "\(adultsCount)"
         }
         
-        defaults.set(adultsCount, forKey: UserDefaultsKeys.adultCount)
+        //        defaults.set(adultsCount, forKey: UserDefaultsKeys.adultCount)
+        //
+        updateTotalTravelerCount()
     }
     
     @IBAction func directFlightCheckBoxAction(_ sender: Any) {
@@ -771,5 +780,17 @@ extension OneWayTableViewCell {
         DispatchQueue.main.async {[self] in
             dropDown.dataSource = countryNames
         }
+    }
+}
+
+
+extension OneWayTableViewCell {
+    func updateTotalTravelerCount() {
+        let totalTravelers = adultsCount + childCount + infantsCount
+        print("Total Count === \(totalTravelers)")
+        defaults.set(totalTravelers, forKey: UserDefaultsKeys.totalTravellerCount)
+        defaults.set(adultsCount, forKey: UserDefaultsKeys.adultCount)
+        defaults.set(childCount, forKey: UserDefaultsKeys.childCount)
+        defaults.set(infantsCount, forKey: UserDefaultsKeys.infantsCount)
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 import FreshchatSDK
 
-class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate, HotelVoucherViewModelDelegate, InsurenceVoucherViewModelDelegate {
+class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate{
     
     
     @IBOutlet weak var navBar: NavBar!
@@ -16,17 +16,17 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate, HotelVouc
     
     
     var lastContentOffset: CGFloat = 0
-    var viewModel:VocherDetailsViewModel?
-    var hotelViewmodel:HotelVoucherViewModel?
-    var insurenceViewmodel:InsurenceVoucherViewModel?
+    var viewModel: VocherDetailsViewModel?
+//    var hotelViewmodel: HotelVoucherViewModel?
+//    var insurenceViewmodel: InsurenceVoucherViewModel?
     var urlString = String()
     var tablerow = [TableRow]()
     
-    var hItinerary_details = [HItinerary_details]()
+//    var hItinerary_details = [HItinerary_details]()
     var Customerdetails = [Customer_details]()
     var hCustomerdetails = [HCustomer_details]()
-    var hbookingDetails = [HBooking_details]()
-    var ibookingDetails = [IBooking_details]()
+//    var hbookingDetails = [HBooking_details]()
+//    var ibookingDetails = [IBooking_details]()
     var iCustomerdetails = [ICustomer_details]()
     var bookingsource = String()
     var bookingStatus = String()
@@ -42,11 +42,11 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate, HotelVouc
     var currency = ""
     var totalPrice = ""
     var totalPax = ""
-    var insurenceData : Insurance_data?
+//    var insurenceData : Insurance_data?
     
     
     static var newInstance: BookingConfirmedVC? {
-        let storyboard = UIStoryboard(name: Storyboard.Calender.name,
+        let storyboard = UIStoryboard(name: Storyboard.BookingDetails.name,
                                       bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? BookingConfirmedVC
         return vc
@@ -77,9 +77,9 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate, HotelVouc
             if selectedTap == "Flights" {
                 callGetFlightVoucherAPI()
             } else if selectedTap == "Hotels" {
-                callGetHotelVoucherAPI()
+//                callGetHotelVoucherAPI()
             } else {
-                callGetInsurenceVoucherAPI()
+//                callGetInsurenceVoucherAPI()
             }
         } else {
             // Handle the case where 'selectedTap' is not found in UserDefaults
@@ -95,8 +95,8 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate, HotelVouc
         // Do any additional setup after loading the view.
         setupUI()
         viewModel = VocherDetailsViewModel(self)
-        hotelViewmodel = HotelVoucherViewModel(self)
-        insurenceViewmodel = InsurenceVoucherViewModel(self)
+//        hotelViewmodel = HotelVoucherViewModel(self)
+//        insurenceViewmodel = InsurenceVoucherViewModel(self)
     }
     
     func setupUI() {
@@ -118,7 +118,7 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate, HotelVouc
     
     @objc func didTapOnBackButton(_ sender:UIButton) {
         BASE_URL = BASE_URL1
-        guard let vc = DashBoaardTabbarVC.newInstance.self else {return}
+        guard let vc = DashBoardTabBarViewController.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         vc.selectedIndex = 0
         callapibool = true
@@ -146,12 +146,12 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate, HotelVouc
     
     
     func gotoAboutUsVC(title:String,url:String) {
-        callapibool = false
-        guard let vc = AboutUsVC.newInstance.self else {return}
-        vc.urlString = url
-        vc.titleString = title
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
+//        callapibool = false
+//        guard let vc = AboutUsVC.newInstance.self else {return}
+//        vc.urlString = url
+//        vc.titleString = title
+//        vc.modalPresentationStyle = .fullScreen
+//        self.present(vc, animated: true)
         
     }
     
@@ -241,97 +241,97 @@ extension BookingConfirmedVC {
 
 
 
-//MARK: - Hotel Voucher Deatails
-extension BookingConfirmedVC {
-    
-    func callGetHotelVoucherAPI() {
-        hotelViewmodel?.CALL_HOTEL_VOUCHER_DETAILS_API(dictParam: [:], url: urlString)
-    }
-    
-    
-    func hotelDetails(response: HotelVoucherModel) {
-        BASE_URL = BASE_URL1
-        
-        hbookingDetails = response.data?.booking_details ?? []
-        response.data?.booking_details?.forEach({ i in
-            bookedDate = i.voucher_date ?? ""
-            bookingsource = i.booking_source ?? ""
-            bookingId = i.booking_id ?? ""
-            pnrNo = "i.pnr ?? "
-            
-            hItinerary_details = i.itinerary_details ?? []
-            hCustomerdetails = i.customer_details ?? []
-            
-            hotelimg = i.image ?? ""
-            hotel_check_in = i.hotel_check_in ?? ""
-            hotel_check_out = i.hotel_check_out ?? ""
-            hotel_name = i.hotel_name ?? ""
-            hotel_address = i.hotel_location ?? ""
-            total_rooms = "\(i.total_rooms ?? 0)"
-            adult_count = "\(i.adult_count ?? 0)"
-            
-        })
-        
-        hItinerary_details.forEach({ i in
-            
-            bookingRefrence = i.app_reference ?? ""
-            bookingStatus = i.status ?? ""
-            
-        })
-        
-        
-        DispatchQueue.main.async {
-            self.setupHpotelTV()
-        }
-        
-    }
-    
-    
-    func setupHpotelTV() {
-        tablerow.removeAll()
-        
-        tablerow.append(TableRow(title:"Booking Confirmed",
-                                 subTitle: bookingId,
-                                 key: "hotel",
-                                 text: bookedDate,
-                                 buttonTitle: bookingRefrence,
-                                 tempText: pnrNo,
-                                 cellType:.BookingConfirmedTVCell))
-        
-        tablerow.append(TableRow(title:"Hotel Details",cellType:.LabelTVCell))
-        
-        hbookingDetails.forEach { i in
-            
-            tablerow.append(TableRow(title:hotel_name,
-                                     subTitle: hotel_address,
-                                     text: hotel_check_in,
-                                     buttonTitle: adult_count,
-                                     image:hotelimg,
-                                     tempText: hotel_check_out,
-                                     tempInfo: total_rooms,
-                                     cellType:.VoucherHotelDetailsTVCell))
-            
-        }
-        
-        
-        
-        
-        
-        tablerow.append(TableRow(title:"Guest Details",cellType:.LabelTVCell))
-        tablerow.append(TableRow(title:"Lead Guest",moreData:hCustomerdetails,cellType:.BookedTravelDetailsTVCell))
-        tablerow.append(TableRow(height:35,cellType:.EmptyTVCell))
-        
-        tablerow.append(TableRow(title:"Thank you for booking with bab safar Your attraction voucher has been shared on the confirmed email.",key: "booked",cellType:.LabelTVCell))
-        
-       // tablerow.append(TableRow(title:"Download E - Ticket",key:"booked",cellType:.ButtonTVCell))
-        tablerow.append(TableRow(height:60,cellType:.EmptyTVCell))
-        
-        commonTVData = tablerow
-        commonTableView.reloadData()
-    }
-    
-    
-}
+////MARK: - Hotel Voucher Deatails
+//extension BookingConfirmedVC {
+//    
+//    func callGetHotelVoucherAPI() {
+//        hotelViewmodel?.CALL_HOTEL_VOUCHER_DETAILS_API(dictParam: [:], url: urlString)
+//    }
+//    
+//    
+//    func hotelDetails(response: HotelVoucherModel) {
+//        BASE_URL = BASE_URL1
+//        
+//        hbookingDetails = response.data?.booking_details ?? []
+//        response.data?.booking_details?.forEach({ i in
+//            bookedDate = i.voucher_date ?? ""
+//            bookingsource = i.booking_source ?? ""
+//            bookingId = i.booking_id ?? ""
+//            pnrNo = "i.pnr ?? "
+//            
+//            hItinerary_details = i.itinerary_details ?? []
+//            hCustomerdetails = i.customer_details ?? []
+//            
+//            hotelimg = i.image ?? ""
+//            hotel_check_in = i.hotel_check_in ?? ""
+//            hotel_check_out = i.hotel_check_out ?? ""
+//            hotel_name = i.hotel_name ?? ""
+//            hotel_address = i.hotel_location ?? ""
+//            total_rooms = "\(i.total_rooms ?? 0)"
+//            adult_count = "\(i.adult_count ?? 0)"
+//            
+//        })
+//        
+//        hItinerary_details.forEach({ i in
+//            
+//            bookingRefrence = i.app_reference ?? ""
+//            bookingStatus = i.status ?? ""
+//            
+//        })
+//        
+//        
+//        DispatchQueue.main.async {
+//            self.setupHpotelTV()
+//        }
+//        
+//    }
+//    
+//    
+//    func setupHpotelTV() {
+//        tablerow.removeAll()
+//        
+//        tablerow.append(TableRow(title:"Booking Confirmed",
+//                                 subTitle: bookingId,
+//                                 key: "hotel",
+//                                 text: bookedDate,
+//                                 buttonTitle: bookingRefrence,
+//                                 tempText: pnrNo,
+//                                 cellType:.BookingConfirmedTVCell))
+//        
+//        tablerow.append(TableRow(title:"Hotel Details",cellType:.LabelTVCell))
+//        
+//        hbookingDetails.forEach { i in
+//            
+//            tablerow.append(TableRow(title:hotel_name,
+//                                     subTitle: hotel_address,
+//                                     text: hotel_check_in,
+//                                     buttonTitle: adult_count,
+//                                     image:hotelimg,
+//                                     tempText: hotel_check_out,
+//                                     tempInfo: total_rooms,
+//                                     cellType:.VoucherHotelDetailsTVCell))
+//            
+//        }
+//        
+//        
+//        
+//        
+//        
+//        tablerow.append(TableRow(title:"Guest Details",cellType:.LabelTVCell))
+//        tablerow.append(TableRow(title:"Lead Guest",moreData:hCustomerdetails,cellType:.BookedTravelDetailsTVCell))
+//        tablerow.append(TableRow(height:35,cellType:.EmptyTVCell))
+//        
+//        tablerow.append(TableRow(title:"Thank you for booking with bab safar Your attraction voucher has been shared on the confirmed email.",key: "booked",cellType:.LabelTVCell))
+//        
+//       // tablerow.append(TableRow(title:"Download E - Ticket",key:"booked",cellType:.ButtonTVCell))
+//        tablerow.append(TableRow(height:60,cellType:.EmptyTVCell))
+//        
+//        commonTVData = tablerow
+//        commonTableView.reloadData()
+//    }
+//    
+//    
+//}
 
 
 
@@ -341,96 +341,96 @@ extension BookingConfirmedVC {
 
 
 //MARK: - Insurence Voucher Deatails
-extension BookingConfirmedVC {
-    
-    func callGetInsurenceVoucherAPI() {
-        BASE_URL = ""
-        insurenceViewmodel?.CALL_INSURECE_VOUCHER_API(dictParam: [:], url: urlString)
-    }
-    
-    
-    func insurencevoucherDetails(response: InsurenceVoucherModel) {
-        BASE_URL = BASE_URL1
-        
-        ibookingDetails = response.data?.booking_details ?? []
-        insurenceData = response.insurance_data
-        
-        response.data?.booking_details?.forEach({ i in
-            
-            bookedDate = i.booked_date ?? ""
-            bookingsource = i.booking_source ?? ""
-            bookingId = i.created_by_id ?? ""
-            pnrNo = "i.pnr"
-           
-           
-            iCustomerdetails = i.customer_details ?? []
-            
-            i.booking_itinerary_details?.forEach({ j in
-                bookingRefrence = j.app_reference ?? ""
-                bookingStatus = i.status ?? ""
-                
-                
-                
-            })
-            
-            i.booking_transaction_details?.forEach({ j in
-                currency = j.currency ?? ""
-                totalPrice = j.total_price ?? ""
-                totalPax = j.total_pax ?? ""
-            })
-            
-        })
-        
-        DispatchQueue.main.async {
-            self.setupInsurenceTVCells()
-        }
-    }
-    
-    
-    
-    
-    
-    
-    
-    func setupInsurenceTVCells() {
-        tablerow.removeAll()
-        
-        tablerow.append(TableRow(title:"Booking Confirmed",
-                                 subTitle: bookingId,
-                                 key: "insurence",
-                                 text: bookedDate,
-                                 buttonTitle: bookingRefrence,
-                                 tempText: pnrNo,
-                                 cellType:.BookingConfirmedTVCell))
-        
-        tablerow.append(TableRow(title:"Insurence Details",cellType:.LabelTVCell))
-        
-        
-        tablerow.append(TableRow(title:insurenceData?.planTitle ?? "",
-                                 key: "bc",
-                                 text: insurenceData?.currencyCode ?? "",
-                                 headerText: insurenceData?.totalPremiumAmount ?? "",
-                                 buttonTitle:totalPax,
-                                 image: insurenceData?.plan_image ?? "",
-                                 cellType:.InsurenceResultTVCell))
-        
-        
-        tablerow.append(TableRow(title:"Passenger Details",cellType:.LabelTVCell))
-        tablerow.append(TableRow(title:"Lead Guest",moreData:iCustomerdetails,cellType:.BookedTravelDetailsTVCell))
-        tablerow.append(TableRow(height:35,cellType:.EmptyTVCell))
-        
-        tablerow.append(TableRow(title:"Thank you for booking with bab safar Your attraction voucher has been shared on the confirmed email.",key: "booked",cellType:.LabelTVCell))
-        
-      //  tablerow.append(TableRow(title:"Download E - Ticket",key:"booked",cellType:.ButtonTVCell))
-        tablerow.append(TableRow(height:60,cellType:.EmptyTVCell))
-        
-        commonTVData = tablerow
-        commonTableView.reloadData()
-    }
-    
-    
-}
-
+//extension BookingConfirmedVC {
+//    
+//    func callGetInsurenceVoucherAPI() {
+//        BASE_URL = ""
+//        insurenceViewmodel?.CALL_INSURECE_VOUCHER_API(dictParam: [:], url: urlString)
+//    }
+//    
+//    
+//    func insurencevoucherDetails(response: InsurenceVoucherModel) {
+//        BASE_URL = BASE_URL1
+//        
+//        ibookingDetails = response.data?.booking_details ?? []
+//        insurenceData = response.insurance_data
+//        
+//        response.data?.booking_details?.forEach({ i in
+//            
+//            bookedDate = i.booked_date ?? ""
+//            bookingsource = i.booking_source ?? ""
+//            bookingId = i.created_by_id ?? ""
+//            pnrNo = "i.pnr"
+//           
+//           
+//            iCustomerdetails = i.customer_details ?? []
+//            
+//            i.booking_itinerary_details?.forEach({ j in
+//                bookingRefrence = j.app_reference ?? ""
+//                bookingStatus = i.status ?? ""
+//                
+//                
+//                
+//            })
+//            
+//            i.booking_transaction_details?.forEach({ j in
+//                currency = j.currency ?? ""
+//                totalPrice = j.total_price ?? ""
+//                totalPax = j.total_pax ?? ""
+//            })
+//            
+//        })
+//        
+//        DispatchQueue.main.async {
+//            self.setupInsurenceTVCells()
+//        }
+//    }
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+//    func setupInsurenceTVCells() {
+//        tablerow.removeAll()
+//        
+//        tablerow.append(TableRow(title:"Booking Confirmed",
+//                                 subTitle: bookingId,
+//                                 key: "insurence",
+//                                 text: bookedDate,
+//                                 buttonTitle: bookingRefrence,
+//                                 tempText: pnrNo,
+//                                 cellType:.BookingConfirmedTVCell))
+//        
+//        tablerow.append(TableRow(title:"Insurence Details",cellType:.LabelTVCell))
+//        
+//        
+//        tablerow.append(TableRow(title:insurenceData?.planTitle ?? "",
+//                                 key: "bc",
+//                                 text: insurenceData?.currencyCode ?? "",
+//                                 headerText: insurenceData?.totalPremiumAmount ?? "",
+//                                 buttonTitle:totalPax,
+//                                 image: insurenceData?.plan_image ?? "",
+//                                 cellType:.InsurenceResultTVCell))
+//        
+//        
+//        tablerow.append(TableRow(title:"Passenger Details",cellType:.LabelTVCell))
+//        tablerow.append(TableRow(title:"Lead Guest",moreData:iCustomerdetails,cellType:.BookedTravelDetailsTVCell))
+//        tablerow.append(TableRow(height:35,cellType:.EmptyTVCell))
+//        
+//        tablerow.append(TableRow(title:"Thank you for booking with bab safar Your attraction voucher has been shared on the confirmed email.",key: "booked",cellType:.LabelTVCell))
+//        
+//      //  tablerow.append(TableRow(title:"Download E - Ticket",key:"booked",cellType:.ButtonTVCell))
+//        tablerow.append(TableRow(height:60,cellType:.EmptyTVCell))
+//        
+//        commonTVData = tablerow
+//        commonTableView.reloadData()
+//    }
+//    
+//    
+//}
+//
 
 
 

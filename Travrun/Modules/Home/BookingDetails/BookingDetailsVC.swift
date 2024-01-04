@@ -776,7 +776,7 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
         
         DispatchQueue.main.async {
             BASE_URL = ""
-            self.viewmodel1?.Call_mobile_secure_booking_API(dictParam: [:], url: "https://provabdevelopment.com/pro_new/mobile/index.php/flight/mobile_secure_booking/\(self.tmpFlightPreBookingId)/\(defaults.string(forKey: UserDefaultsKeys.searchid) ?? "")")
+            self.viewmodel1?.Call_mobile_secure_booking_API(dictParam: [:], url: "https://travrun.com/pro_new/mobile/index.php/flight/mobile_secure_booking/\(self.tmpFlightPreBookingId)/\(defaults.string(forKey: UserDefaultsKeys.searchid) ?? "")")
         }
         
         
@@ -785,19 +785,19 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
     
     
     func mobilesecurebookingDetails(response: MobilePrePaymentModel) {
-//        loderBool = false
-//        if response.status == false {
-//            showToast(message: response.message ?? "")
-//        }else {
-//            TimerManager.shared.stopTimer()
-//            guard let vc = PaymentGatewayVC.newInstance.self else {return}
-//            vc.modalPresentationStyle = .fullScreen
-//            vc.payload = payload
-//            vc.grandTotalamount = self.totalPrice1
-//            vc.grand_total_Price = self.grand_total_Price
-//            vc.tmpFlightPreBookingId = self.tmpFlightPreBookingId
-//            present(vc, animated: true)
-//        }
+        loderBool = false
+        if response.status == false {
+            showToast(message: response.message ?? "")
+        }else {
+            TimerManager.shared.stopTimer()
+            guard let vc = PaymentGatewayVC.newInstance.self else {return}
+            vc.modalPresentationStyle = .fullScreen
+            vc.payload = payload
+            vc.grandTotalamount = self.totalPrice1
+            vc.grand_total_Price = self.grand_total_Price
+            vc.tmpFlightPreBookingId = self.tmpFlightPreBookingId
+            present(vc, animated: true)
+        }
     }
     
     
@@ -816,7 +816,7 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
         if response.status == false {
             showToast(message: response.message ?? "")
         }else {
-            mbviewmodel?.Call_mobile_pre_payment_confirmation_API(dictParam: payload, url: "https://provabdevelopment.com/babsafar/mobile_webservices/mobile/index.php/flight/mobile_pre_payment_confirmation")
+            mbviewmodel?.Call_mobile_pre_payment_confirmation_API(dictParam: payload, url: "https://travrun.com/pro_new/mobile/index.php/flight/mobile_pre_payment_confirmation")
         }
     }
     
@@ -919,7 +919,7 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
         payload.removeAll()
         BASE_URL = ""
         payload["id"] = "3"
-        moreDeatilsViewModel?.CALL_GET_TERMSANDCONDITION_API(dictParam: payload, url: "https://provabdevelopment.com/pro_new/mobile/index.php/general/cms")
+        moreDeatilsViewModel?.CALL_GET_TERMSANDCONDITION_API(dictParam: payload, url: "https://travrun.com/pro_new/mobile/index.php/general/cms")
     }
     
     func termsandcobditionDetails(response: AboutUsModel) {
@@ -941,7 +941,7 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
         payload.removeAll()
         BASE_URL = ""
         payload["id"] = "4"
-        moreDeatilsViewModel?.CALL_GET_PRIVICYPOLICY_API(dictParam: payload, url: "https://provabdevelopment.com/pro_new/mobile/index.php/general/cms")
+        moreDeatilsViewModel?.CALL_GET_PRIVICYPOLICY_API(dictParam: payload, url: "https://travrun.com/pro_new/mobile/index.php/general/cms")
     }
     
     
@@ -1293,6 +1293,7 @@ extension BookingDetailsVC {
         vc.modalPresentationStyle = .fullScreen
         defaults.set(false, forKey: "flightfilteronce")
         vc.isFromVc = "searchvc"
+        vc.isfromVc = "BookingDetailsVC"
         callapibool = true
         vc.payload = payload33
         self.present(vc, animated: true)
