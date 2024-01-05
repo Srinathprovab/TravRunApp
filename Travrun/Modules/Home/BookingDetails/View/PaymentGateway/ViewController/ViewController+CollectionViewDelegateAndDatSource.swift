@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension PaymentGatewayVC: UICollectionViewDataSource {
+extension PaymentGatewayVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }

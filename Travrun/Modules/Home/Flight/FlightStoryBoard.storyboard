@@ -1610,7 +1610,7 @@
         <!--Booking SucessVC-->
         <scene sceneID="shD-tY-7gt">
             <objects>
-                <viewController storyboardIdentifier="BookingSucessVC" id="0CD-4A-Bg5" customClass="BookingSucessVC" customModule="BabSafar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookingSucessVC" id="0CD-4A-Bg5" customClass="BookingSucessVC" customModule="Travrun" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CJ9-JI-aLy">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1649,7 +1649,7 @@
         <!--Booking ConfirmedVC-->
         <scene sceneID="eaq-FW-qSl">
             <objects>
-                <viewController storyboardIdentifier="BookingConfirmedVC" id="Ipn-2R-ylt" customClass="BookingConfirmedVC" customModule="BabSafar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BookingConfirmedVC" id="Ipn-2R-ylt" customClass="BookingConfirmedVC" customModule="Travrun" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Uy-VZ-vYk">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1657,7 +1657,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rt1-PU-v4U">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56R-na-2J3" customClass="NavBar" customModule="BabSafar" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56R-na-2J3" customClass="NavBar" customModule="Travrun" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="130"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -1700,6 +1700,87 @@
             </objects>
             <point key="canvasLocation" x="6350" y="-2"/>
         </scene>
+        <!--Apple Pay Button View Controller-->
+        <scene sceneID="TG8-D1-gM3">
+            <objects>
+                <viewController id="o9Y-Hh-C2U" customClass="MFApplePayButtonViewController" customModule="BabSafar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cc7-kz-R0C">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="EUb-1i-Wvr">
+                                <rect key="frame" x="20" y="72" width="353" height="67.333333333333314"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Enter Payment Amount:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBN-ko-QDi">
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="19.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CCG-gy-2c1">
+                                        <rect key="frame" x="0.0" y="33.333333333333329" width="353" height="34"/>
+                                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6eH-Hs-fuE" customClass="MFApplePayButton" customModule="MFSDK">
+                                <rect key="frame" x="80" y="149.33333333333334" width="233" height="150.00000000000003"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="OQ9-jQ-mhY"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="X1n-sA-fUA">
+                                <rect key="frame" x="186.66666666666666" y="214.33333333333334" width="20" height="20"/>
+                                <color key="color" systemColor="labelColor"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUM-l9-JgS">
+                                <rect key="frame" x="25" y="417.33333333333331" width="67.666666666666671" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Result:" translatesAutoresizingMaskIntoConstraints="NO" id="4Nd-Bz-hfD">
+                                <rect key="frame" x="23.666666666666657" y="461.33333333333326" width="345.66666666666674" height="376.66666666666674"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="cWL-Uy-5Ak"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="lUM-l9-JgS" firstAttribute="top" secondItem="6eH-Hs-fuE" secondAttribute="bottom" constant="118" id="28G-KG-657"/>
+                            <constraint firstItem="EUb-1i-Wvr" firstAttribute="top" secondItem="cWL-Uy-5Ak" secondAttribute="top" constant="13" id="BYu-bV-gq5"/>
+                            <constraint firstItem="cWL-Uy-5Ak" firstAttribute="trailing" secondItem="EUb-1i-Wvr" secondAttribute="trailing" constant="20" id="CE8-Em-yTx"/>
+                            <constraint firstItem="X1n-sA-fUA" firstAttribute="centerX" secondItem="6eH-Hs-fuE" secondAttribute="centerX" id="HVD-Ug-Ao1"/>
+                            <constraint firstItem="X1n-sA-fUA" firstAttribute="centerY" secondItem="6eH-Hs-fuE" secondAttribute="centerY" id="N8o-3n-9wZ"/>
+                            <constraint firstItem="4Nd-Bz-hfD" firstAttribute="centerX" secondItem="cWL-Uy-5Ak" secondAttribute="centerX" id="QgR-G5-Gvy"/>
+                            <constraint firstItem="4Nd-Bz-hfD" firstAttribute="top" secondItem="lUM-l9-JgS" secondAttribute="bottom" constant="20" id="Rj8-gq-fC2"/>
+                            <constraint firstItem="4Nd-Bz-hfD" firstAttribute="width" secondItem="cc7-kz-R0C" secondAttribute="width" multiplier="0.879227" id="VXr-Q5-HTF"/>
+                            <constraint firstItem="6eH-Hs-fuE" firstAttribute="top" secondItem="EUb-1i-Wvr" secondAttribute="bottom" constant="10" id="XU0-iD-HS5"/>
+                            <constraint firstItem="cWL-Uy-5Ak" firstAttribute="trailing" secondItem="6eH-Hs-fuE" secondAttribute="trailing" constant="80" id="heg-aM-lg0"/>
+                            <constraint firstItem="6eH-Hs-fuE" firstAttribute="leading" secondItem="cWL-Uy-5Ak" secondAttribute="leading" constant="80" id="k65-ZV-m6A"/>
+                            <constraint firstItem="4Nd-Bz-hfD" firstAttribute="bottom" secondItem="cWL-Uy-5Ak" secondAttribute="bottom" constant="20" id="kaI-pF-vkS"/>
+                            <constraint firstItem="EUb-1i-Wvr" firstAttribute="leading" secondItem="cc7-kz-R0C" secondAttribute="leading" constant="20" id="mEy-PD-Mkv"/>
+                            <constraint firstItem="lUM-l9-JgS" firstAttribute="leading" secondItem="cWL-Uy-5Ak" secondAttribute="leading" constant="25" id="sJ1-Nw-esd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ali-3l-Fes"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="X1n-sA-fUA" id="dYo-0k-eOi"/>
+                        <outlet property="amountTextField" destination="CCG-gy-2c1" id="DZU-2c-plH"/>
+                        <outlet property="applePayView" destination="6eH-Hs-fuE" id="1Or-tt-o5s"/>
+                        <outlet property="errorCodeLabel" destination="lUM-l9-JgS" id="1pp-YW-Phm"/>
+                        <outlet property="resultTextView" destination="4Nd-Bz-hfD" id="bkc-Kg-JjZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JmF-z1-d3q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7271" y="-2"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ConformBooking" width="68.666664123535156" height="44.333332061767578"/>
@@ -1716,6 +1797,12 @@
         <namedColor name="WhiteColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

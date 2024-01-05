@@ -55,95 +55,65 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "667DC1B1-FC08-454A-B505-62F98431D830"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Travrun/Modules/Home/BookingDetails/ViewController+MFSDKServicesCall.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "executePayment(paymentMethodId:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "667DC1B1-FC08-454A-B505-62F98431D830 - eb757b806f9b8e55"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Travrun.PaymentGatewayVC.executePayment(paymentMethodId: Swift.Int) -&gt; ()"
-                  moduleName = "Travrun"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ma1882/Desktop/TravRunApp/Travrun/Modules/Home/BookingDetails/ViewController+MFSDKServicesCall.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "76">
-               </Location>
-               <Location
-                  uuid = "667DC1B1-FC08-454A-B505-62F98431D830 - bfaa58a03d1e6ddf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;MFSDK.MFPaymentStatusResponse, MFSDK.MFFailResponse&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in Travrun.PaymentGatewayVC.executePayment(paymentMethodId: Swift.Int) -&gt; ()"
-                  moduleName = "Travrun"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ma1882/Desktop/TravRunApp/Travrun/Modules/Home/BookingDetails/ViewController+MFSDKServicesCall.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "236">
-               </Location>
-               <Location
-                  uuid = "667DC1B1-FC08-454A-B505-62F98431D830 - eb757b806f9b8e55"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Travrun.PaymentGatewayVC.executePayment(paymentMethodId: Swift.Int) -&gt; ()"
-                  moduleName = "Travrun"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ma1882/Desktop/TravRunApp/Travrun/Modules/Home/BookingDetails/ViewController+MFSDKServicesCall.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "68">
-               </Location>
-               <Location
-                  uuid = "667DC1B1-FC08-454A-B505-62F98431D830 - bfaa58a03d1e6ddf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;MFSDK.MFPaymentStatusResponse, MFSDK.MFFailResponse&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in Travrun.PaymentGatewayVC.executePayment(paymentMethodId: Swift.Int) -&gt; ()"
-                  moduleName = "Travrun"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ma1882/Desktop/TravRunApp/Travrun/Modules/Home/BookingDetails/ViewController+MFSDKServicesCall.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "240">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "824284A3-7D72-466E-B198-57FDA40F50BE"
+            uuid = "0FB35EE5-EF0E-4098-9FC0-37C43A2A932F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Travrun/Modules/Home/BookingDetails/ViewController+CollectionViewDelegateAndDatSource.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "collectionView(_:didSelectItemAt:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A0B08FC5-4C0A-4609-B94A-5416EBA3BE18"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Travrun/Modules/Home/BookingDetails/View/PaymentGateway/ViewController/ViewController+MFSDKServicesCall.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "initiatePayment()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A0B08FC5-4C0A-4609-B94A-5416EBA3BE18 - 4bdb4f4790f0dfe6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;MFSDK.MFInitiatePaymentResponse, MFSDK.MFFailResponse&gt;) -&gt; () in Travrun.PaymentGatewayVC.initiatePayment() -&gt; ()"
+                  moduleName = "Travrun"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ma1882/Desktop/TravRunApp/Travrun/Modules/Home/BookingDetails/View/PaymentGateway/ViewController/ViewController+MFSDKServicesCall.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "1065">
+               </Location>
+               <Location
+                  uuid = "A0B08FC5-4C0A-4609-B94A-5416EBA3BE18 - 4bdb4f4790f0df87"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;MFSDK.MFInitiatePaymentResponse, MFSDK.MFFailResponse&gt;) -&gt; () in Travrun.PaymentGatewayVC.initiatePayment() -&gt; ()"
+                  moduleName = "Travrun"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ma1882/Desktop/TravRunApp/Travrun/Modules/Home/BookingDetails/View/PaymentGateway/ViewController/ViewController+MFSDKServicesCall.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "1123">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

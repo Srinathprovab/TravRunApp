@@ -22,6 +22,7 @@ extension PaymentGatewayVC {
             case .success(let initiatePaymentResponse):
                 self?.paymentMethods = initiatePaymentResponse.paymentMethods
                 self?.collectionView.reloadData()
+                self?.showSuccess("Success")
             case .failure(let failError):
                 self?.showFailError(failError)
             }

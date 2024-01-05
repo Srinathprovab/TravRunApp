@@ -44,7 +44,7 @@ class PaymentGatewayVC: UIViewController, updatePaymentFlightViewModelDelegate {
     
     
     static var newInstance: PaymentGatewayVC? {
-        let storyboard = UIStoryboard(name: Storyboard.BookingDetails.name,
+        let storyboard = UIStoryboard(name: Storyboard.PaymentGateway.name,
                                       bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? PaymentGatewayVC
         return vc
@@ -60,9 +60,11 @@ class PaymentGatewayVC: UIViewController, updatePaymentFlightViewModelDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        payButton.isEnabled = false
         payButton.isEnabled = false
+        
        // kwdpricelbl.text = grandTotalamount
+        
+//        MFSettings.shared.configure(token: <#T##String#>, country: <#T##MFCountry#>, environment: <#T##MFEnvironment#>)
         invoiceValue = Double(grand_total_Price ?? "0.0") ?? 0.0
         
         setAttributedTextnew(str1: "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "")",
@@ -84,8 +86,7 @@ class PaymentGatewayVC: UIViewController, updatePaymentFlightViewModelDelegate {
     }
     
     
-    @IBAction func paymentButtonAction(_ sender: Any) {
-        
+    @IBAction func payDidPRessed(_ sender: Any) {
         if let paymentMethods = paymentMethods, !paymentMethods.isEmpty {
             if let selectedIndex = selectedPaymentMethodIndex {
                 
@@ -101,7 +102,13 @@ class PaymentGatewayVC: UIViewController, updatePaymentFlightViewModelDelegate {
             }
         }
     }
-   
+    
+    
+    //    @IBAction func sendPaymentDidTapped(_ sender: Any) {
+    //        sendPayment()
+    //    }
+    
+    
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
         BASE_URL = BASE_URL1
         guard let vc = DashBoardTabBarViewController.newInstance.self else {return}
@@ -144,8 +151,8 @@ extension PaymentGatewayVC  {
     }
     
     func showFailError(_ error: MFFailResponse) {
-        //        errorCodeLabel.text = "responseCode: \(error.statusCode)"
-        //        resultTextView.text = "Error: \(error.errorDescription)"
+        print("responseCode: \(error.statusCode)")
+        print("Error: \(error.errorDescription)")
     }
 }
 extension PaymentGatewayVC {

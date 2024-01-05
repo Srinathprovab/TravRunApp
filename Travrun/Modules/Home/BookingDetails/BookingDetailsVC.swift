@@ -801,8 +801,6 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
     }
     
     
-    
-    
     func mobilePreBookingModelDetails(response: MobilePreBookingModel) {
         
         BASE_URL = ""
@@ -811,8 +809,7 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
         payload["promocode_val"] = response.data?.promocode_val
         payload["selectedCurrency"] = defaults.string(forKey: UserDefaultsKeys.selectedCurrency)
         
-        
-        
+
         if response.status == false {
             showToast(message: response.message ?? "")
         }else {
