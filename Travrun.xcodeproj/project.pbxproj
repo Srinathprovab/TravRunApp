@@ -1164,9 +1164,9 @@
 		07C454C02B07289400D0E53D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				07CC2B132B10B6BF00A71A30 /* CollectionViews */,
 				07D674E42B46B4800092A439 /* BookedTravelDetailsTVCell.swift */,
 				07D674E22B46B4790092A439 /* BookedTravelDetailsTVCell.xib */,
-				07CC2B132B10B6BF00A71A30 /* CollectionViews */,
 				07A99F5D2B317B450069523D /* BookingDetailsRoundTripTVCell.swift */,
 				07A99F5E2B317B450069523D /* BookingDetailsRoundTripTVCell.xib */,
 				07D674E02B46B3B90092A439 /* BCFlightDetailsTVCell.swift */,
