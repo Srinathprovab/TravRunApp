@@ -460,12 +460,106 @@
             </objects>
             <point key="canvasLocation" x="894" y="-2"/>
         </scene>
+        <!--Booking SucessVC-->
+        <scene sceneID="Wi7-7q-mIM">
+            <objects>
+                <viewController storyboardIdentifier="BookingSucessVC" id="efj-aa-yHc" customClass="BookingSucessVC" customModule="BabSafar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9oV-h3-h2Q">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loader" translatesAutoresizingMaskIntoConstraints="NO" id="xnb-ta-dQM">
+                                <rect key="frame" x="136.66666666666666" y="366" width="119.99999999999997" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="ArF-rm-pJ6"/>
+                                    <constraint firstAttribute="width" constant="120" id="NBF-fl-XkJ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Booking Confirmed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nR8-jQ-AIT">
+                                <rect key="frame" x="111.66666666666669" y="491" width="170" height="22"/>
+                                <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3Q5-iQ-bJq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nR8-jQ-AIT" firstAttribute="centerX" secondItem="xnb-ta-dQM" secondAttribute="centerX" id="4iI-83-VKK"/>
+                            <constraint firstItem="xnb-ta-dQM" firstAttribute="centerY" secondItem="9oV-h3-h2Q" secondAttribute="centerY" id="5UN-8C-RwC"/>
+                            <constraint firstItem="xnb-ta-dQM" firstAttribute="centerX" secondItem="9oV-h3-h2Q" secondAttribute="centerX" id="mbX-Mv-d0e"/>
+                            <constraint firstItem="nR8-jQ-AIT" firstAttribute="top" secondItem="xnb-ta-dQM" secondAttribute="bottom" constant="5" id="mbu-1D-XW6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="gifImageView" destination="xnb-ta-dQM" id="28u-IN-tB0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mm3-E7-OJ8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1660" y="-2"/>
+        </scene>
+        <!--Booking ConfirmedVC-->
+        <scene sceneID="brE-gq-efI">
+            <objects>
+                <viewController storyboardIdentifier="BookingConfirmedVC" id="9IJ-OM-Qe9" customClass="BookingConfirmedVC" customModule="BabSafar" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F8p-xb-oDD">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c5d-CQ-Ctw">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6OV-Nf-fsT" customClass="NavBar" customModule="BabSafar" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="130"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="130" id="QJP-tT-EjB"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ZT9-aW-mIZ">
+                                        <rect key="frame" x="0.0" y="130" width="393" height="722"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="6OV-Nf-fsT" firstAttribute="leading" secondItem="c5d-CQ-Ctw" secondAttribute="leading" id="7TP-fW-VSS"/>
+                                    <constraint firstAttribute="trailing" secondItem="6OV-Nf-fsT" secondAttribute="trailing" id="TBz-2p-pSC"/>
+                                    <constraint firstItem="6OV-Nf-fsT" firstAttribute="top" secondItem="c5d-CQ-Ctw" secondAttribute="top" id="UbB-k7-YJk"/>
+                                    <constraint firstItem="ZT9-aW-mIZ" firstAttribute="top" secondItem="6OV-Nf-fsT" secondAttribute="bottom" id="idO-rx-OWW"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZT9-aW-mIZ" secondAttribute="bottom" id="t1o-Df-Ie8"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZT9-aW-mIZ" secondAttribute="trailing" id="tsm-Y7-nYF"/>
+                                    <constraint firstItem="ZT9-aW-mIZ" firstAttribute="leading" secondItem="c5d-CQ-Ctw" secondAttribute="leading" id="uTF-2B-UTz"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="5nv-y3-XaQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5nv-y3-XaQ" firstAttribute="trailing" secondItem="c5d-CQ-Ctw" secondAttribute="trailing" id="5Vh-nT-rkP"/>
+                            <constraint firstItem="c5d-CQ-Ctw" firstAttribute="top" secondItem="F8p-xb-oDD" secondAttribute="top" id="QaO-DT-7eB"/>
+                            <constraint firstItem="c5d-CQ-Ctw" firstAttribute="leading" secondItem="5nv-y3-XaQ" secondAttribute="leading" id="a5s-Pz-efy"/>
+                            <constraint firstAttribute="bottom" secondItem="c5d-CQ-Ctw" secondAttribute="bottom" id="oCm-MS-NXo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="commonTableView" destination="ZT9-aW-mIZ" id="z1B-FK-1kY"/>
+                        <outlet property="navBar" destination="6OV-Nf-fsT" id="k35-qR-OCc"/>
+                        <outlet property="navHeight" destination="QJP-tT-EjB" id="fey-gl-lvv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5m3-ov-Tzs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2520" y="-2"/>
+        </scene>
     </scenes>
     <resources>
         <image name="backIcon" width="20" height="20"/>
         <image name="baner" width="360" height="300"/>
         <image name="chat" width="52" height="52"/>
         <image name="chevron.up" catalog="system" width="128" height="70"/>
+        <image name="loader" width="128" height="128"/>
         <namedColor name="AppHolderViewColor">
             <color red="0.94499999284744263" green="0.95300000905990601" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -23,9 +23,7 @@ class BookingSucessVC: UIViewController {
     
     
     var voucherUrl = String()
-    
-    
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

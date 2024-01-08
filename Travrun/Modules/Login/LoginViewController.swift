@@ -9,6 +9,8 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate, RegisterViewModelProtocal {
    
+    @IBOutlet weak var eyeButton: UIButton!
+    @IBOutlet weak var eyeImage: UIImageView!
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var passwodTextField: UITextField!
@@ -50,12 +52,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate, RegisterViewMo
     }
     
     func setiupUI()  {
+        
         self.view.backgroundColor = .black.withAlphaComponent(0.5)
         holderView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         holderView.layer.cornerRadius = 30
         holderView.clipsToBounds = true
         passwodTextField.placeholder = "Enter Password"
-        emailTextField.placeholder = "Enter Email Adress"
+        emailTextField.placeholder = "Enter Email Address"
+        emailTextField.layer.borderColor = HexColor("#CCCCCC").cgColor
+        emailTextField.layer.borderWidth = 0.6
+        
+        passwodTextField.layer.borderColor = HexColor("#CCCCCC").cgColor
+        passwodTextField.layer.borderWidth = 0.6
+        eyeImage.image = UIImage(named: "eyeslash")
         passwodTextField.setLeftPaddingPoints(16)
         emailTextField.setLeftPaddingPoints(16)
         passwodTextField.layer.cornerRadius = 4
@@ -67,6 +76,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate, RegisterViewMo
         passwodTextField.addTarget(self, action: #selector(editingText(textField:)), for: .editingChanged)
         
     }
+    
+    @IBAction func eyeBtnAction(_ sender: Any) {
+        
+        if showPwdBool == true {
+            eyeImage.image = UIImage(named: "showpass")?.withTintColor(.black)
+            passwodTextField.isSecureTextEntry = false
+            showPwdBool = false
+        }else {
+            passwodTextField.isSecureTextEntry = true
+            eyeImage.image = UIImage(named: "eyeslash")
+            showPwdBool = true
+        }
+        
+    }
+    
     
     @IBAction func registerNowAction(_ sender: Any) {
         guard let vc = RegisterViewController.newInstance.self else {return}

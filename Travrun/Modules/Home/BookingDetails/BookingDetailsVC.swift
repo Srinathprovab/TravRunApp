@@ -212,7 +212,7 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
         
         passengertypeArray.removeAll()
         tablerow.append(TableRow(height:20, bgColor:.AppHolderViewColor,cellType:.EmptyTVCell))
-        tablerow.append(TableRow(title:"Traveller Details",
+        tablerow.append(TableRow(title:"Passanger Details",
                                  subTitle: defaults.string(forKey: UserDefaultsKeys.totalTravellerCount),
                                  cellType:.TotalNoofTravellerTVCell))
         

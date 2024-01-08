@@ -19,6 +19,7 @@ struct RegistrationModel {
 
 class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterViewModelProtocal  {
    
+    @IBOutlet weak var eyeImage: UIImageView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var countryCodeTextField: UITextField!
     @IBOutlet weak var phoneNumerTextField: UITextField!
@@ -86,11 +87,25 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterVie
         emailTextField.addTarget(self, action: #selector(editingText(textField:)), for: .editingChanged)
         passwodTextField.addTarget(self, action: #selector(editingText(textField:)), for: .editingChanged)
         phoneNumerTextField.addTarget(self, action: #selector(editingText(textField:)), for: .editingChanged)
+        eyeImage.image = UIImage(named: "eyeslash")
     }
     
     @objc func editingText(textField:UITextField) {
         uname = emailTextField.text ?? ""
         password = passwodTextField.text ?? ""
+    }
+    
+    @IBAction func eyeBtnAction(_ sender: Any) {
+        if showPwdBool == true {
+            eyeImage.image = UIImage(named: "showpass")?.withTintColor(.black)
+            passwodTextField.isSecureTextEntry = false
+            showPwdBool = false
+        }else {
+            passwodTextField.isSecureTextEntry = true
+            eyeImage.image = UIImage(named: "eyeslash")
+            showPwdBool = true
+        }
+        
     }
     
     @IBAction func registerButtonAction(_ sender: Any) {

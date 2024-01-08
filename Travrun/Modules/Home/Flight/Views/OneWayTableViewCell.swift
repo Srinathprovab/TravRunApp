@@ -114,7 +114,7 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
     var fromEonomy = ["Economy", "Premium Economy", "Business", "Frist"]
     var toEonomy = ["Economy", "Premium Economy", "Business", "Frist"]
     var otward = ["12:00 AM - 6:00 AM", "12:00 PM - 6:00 AM", "06:00 PM - 12:00 AM"]
-    var returnJourny = ["12:00 AM - 6:00 AM", "12:00 PM - 6:00 AM", "06:00 PM - 12:00 AM"]
+    var returnJourny = ["12:00 AM - 6:00 AM", "12:00 PM - 6:00 AM", "6:00 PM - 12:00 AM"]
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -144,14 +144,6 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
         }
         
         self.adultCountLabel.text = "\(adultsCount)"
-        self.fromTitleLabel.textColor = UIColor.AppLabelColor
-        self.toTitleLabel.textColor = UIColor.AppLabelColor
-        self.fromTitleLabel.font = UIFont.InterMedium(size: 16)
-        self.toTitleLabel.font = UIFont.InterMedium(size: 16)
-        self.departureDateLabel.font = UIFont.InterRegular(size: 15)
-        self.departureDateLabel.textColor = UIColor.lightGray
-        self.returnDateLabel.font = UIFont.InterRegular(size: 15)
-        self.returnDateLabel.textColor = UIColor.lightGray
         setupLabels(lbl: airlineValuelbl, text: "Airline", textcolor: HexColor("#191919"), font: .InterMedium(size: 18))
         fromTextfiled.tag = 1
         fromTextfiled.addTarget(self, action: #selector(textFiledEditingChanged(_:)), for: .editingChanged)
@@ -186,26 +178,97 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
         toTVHeight.constant = 0
         CallShowCityListAPI(str: "")
         
+        
         if let journeyType = defaults.string(forKey: UserDefaultsKeys.journeyType) {
             if journeyType == "oneway" {
-                economy = defaults.string(forKey: UserDefaultsKeys.selectClass) ?? ""
+//                economy = defaults.string(forKey: UserDefaultsKeys.selectClass) ?? ""
                 infantsCount = Int(defaults.string(forKey: UserDefaultsKeys.infantsCount) ?? "0") ?? 0
                 fromSubtitleLabel.text = defaults.string(forKey: UserDefaultsKeys.fromcityCode) ?? ""
                 toSubtitleLabel.text = defaults.string(forKey: UserDefaultsKeys.toCityCode) ?? ""
                 fromTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.fromCity) ?? "Origin"
                 toTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.toCity) ?? "Destination"
+                fromDropdownLabel.text = defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "Economy"
                 self.departureDateLabel.text = defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "Departure Date"
                 self.returnDateLabel.text = defaults.string(forKey: UserDefaultsKeys.rcalRetDate) ?? "Return Date"
+                
+                
+                if fromTitleLabel.text == "Origin" {
+                    fromTitleLabel.font = UIFont.InterRegular(size: 12)
+                    fromTitleLabel.textColor = UIColor.lightGray
+                } else {
+                    fromTitleLabel.font = UIFont.InterMedium(size: 16)
+                    fromTitleLabel.textColor = .AppLabelColor
+                }
+                
+                if toTitleLabel.text == "Destination" {
+                    toTitleLabel.font = UIFont.InterRegular(size: 12)
+                    toTitleLabel.textColor = UIColor.lightGray
+                } else {
+                    toTitleLabel.font = UIFont.InterMedium(size: 16)
+                    toTitleLabel.textColor = .AppLabelColor
+                }
+                
+                if departureDateLabel.text == "Departure Date" {
+                    departureDateLabel.font = UIFont.InterRegular(size: 12)
+                    departureDateLabel.textColor = UIColor.lightGray
+                } else {
+                    departureDateLabel.font = UIFont.InterMedium(size: 16)
+                    departureDateLabel.textColor = .AppLabelColor
+                }
+                
+                if returnDateLabel.text == "Return Date" {
+                    returnDateLabel.font = UIFont.InterRegular(size: 12)
+                    returnDateLabel.textColor = UIColor.lightGray
+                } else {
+                    returnDateLabel.font = UIFont.InterMedium(size: 16)
+                    returnDateLabel.textColor = .AppLabelColor
+                }
             } else {
-                //                defaults.string(forKey:UserDefaultsKeys.selectClass)
-                toEco = defaults.string(forKey:UserDefaultsKeys.rselectClass) ?? ""
+                fromDropdownLabel.text = defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "Economy"
+                toDropDownLabel.text = defaults.string(forKey: UserDefaultsKeys.rselectClass) ?? "Economy"
                 fromSubtitleLabel.text = defaults.string(forKey: UserDefaultsKeys.fromcityCode) ?? ""
                 toSubtitleLabel.text = defaults.string(forKey: UserDefaultsKeys.toCityCode) ?? ""
                 fromTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.fromCity) ?? "Origin"
                 toTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.toCity) ?? "Destination"
-                self.departureDateLabel.text = defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? "Departure Date"
+                toDropDownLabel.text = defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "Economy"
+                self.departureDateLabel.text = defaults.string(forKey: UserDefaultsKeys.rcalDepDate) ?? "Departure Date"
                 self.returnDateLabel.text = defaults.string(forKey: UserDefaultsKeys.rcalRetDate) ?? "Return Date"
                 returnView.alpha = 1
+                
+                
+                if fromTitleLabel.text == "Origin" {
+                    fromTitleLabel.font = UIFont.InterRegular(size: 12)
+                    fromTitleLabel.textColor = UIColor.lightGray
+                } else {
+                    fromTitleLabel.font = UIFont.InterMedium(size: 16)
+                    fromTitleLabel.textColor = .AppLabelColor
+                }
+                
+                if toTitleLabel.text == "Destination" {
+                    toTitleLabel.font = UIFont.InterRegular(size: 12)
+                    toTitleLabel.textColor = UIColor.lightGray
+                } else {
+                    toTitleLabel.font = UIFont.InterMedium(size: 16)
+                    toTitleLabel.textColor = .AppLabelColor
+                }
+                
+                if departureDateLabel.text == "Departure Date" {
+                    departureDateLabel.font = UIFont.InterRegular(size: 12)
+                    departureDateLabel.textColor = UIColor.lightGray
+                } else {
+                    departureDateLabel.font = UIFont.InterMedium(size: 16)
+                    departureDateLabel.textColor = .AppLabelColor
+                }
+                
+                if returnDateLabel.text == "Return Date" {
+                    returnDateLabel.font = UIFont.InterRegular(size: 12)
+                    returnDateLabel.textColor = UIColor.lightGray
+                } else {
+                    returnDateLabel.font = UIFont.InterMedium(size: 16)
+                    returnDateLabel.textColor = .AppLabelColor
+                }
+                
+                
             }
         }
         
@@ -230,26 +293,27 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
     
     
     func setupfromEconomyDropDown() {
-        fromEconomyDropdown.backgroundColor = HexColor("#F0F0F0")
         fromEconomyDropdown.dataSource = fromEonomy
         fromEconomyDropdown.direction = .bottom
         fromEconomyDropdown.backgroundColor = .WhiteColor
         fromEconomyDropdown.anchorView = self.fromEconomyView
-        fromEconomyDropdown.bottomOffset = CGPoint(x: 0, y: self.fromEconomyView.frame.size.height + 10)
+        fromEconomyDropdown.bottomOffset = CGPoint(x: 0, y: fromEconomyView.frame.size.height + 10)
         fromEconomyDropdown.selectionAction = { [weak self] (index: Int, item: String) in
-            self?.fromDropdownLabel.text = self?.fromEonomy[index]
+            self?.fromDropdownLabel.text = item
+            defaults.set(item, forKey: UserDefaultsKeys.selectClass)
         }
     }
     
     func setupToEconomyDropDown() {
         toEconomyDropdown.backgroundColor = HexColor("#F0F0F0")
-        toEconomyDropdown.dataSource = toEonomy
+        toEconomyDropdown.dataSource = fromEonomy
         toEconomyDropdown.direction = .bottom
         toEconomyDropdown.backgroundColor = .WhiteColor
         toEconomyDropdown.anchorView = self.toEconomyView
         toEconomyDropdown.bottomOffset = CGPoint(x: 0, y: self.toEconomyView.frame.size.height + 10)
         toEconomyDropdown.selectionAction = { [weak self] (index: Int, item: String) in
-            self?.toDropDownLabel.text = self?.toEonomy[index]
+            self?.toDropDownLabel.text = item
+            defaults.set(item, forKey: UserDefaultsKeys.rselectClass)
         }
     }
     
@@ -313,11 +377,11 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
             adultsCount -= 1
             adultCountLabel.text = "\(adultsCount)"
             infantsCount = 0
+            infantsPlusView.backgroundColor = HexColor("#FFFFFF")
+            infantsPlusLabel.textColor = HexColor("#000000")
             infantsCountLabel.text = "0"
         }
-        
         updateTotalTravelerCount()
-        
     }
     
     @IBAction func childDecrementButtonAction(_ sender: Any) {
@@ -326,6 +390,14 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
         if childCount >= 1 {
             childCount -= 1
             childCountLabel.text = "\(childCount)"
+            
+            if childCount >= 1 {
+                childPlusView.backgroundColor = HexColor("#3C627A")
+                childPlusLabel.textColor = HexColor("#FFFFFF")
+            } else {
+                childPlusView.backgroundColor = HexColor("#FFFFFF")
+                childPlusLabel.textColor = HexColor("#000000")
+            }
         }
         
         updateTotalTravelerCount()
@@ -338,6 +410,14 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
         if (adultsCount + childCount) < 9 {
             childCount += 1
             self.childCountLabel.text = "\(childCount)"
+            
+            if childCount >= 1 {
+                childPlusView.backgroundColor = HexColor("#3C627A")
+                childPlusLabel.textColor = HexColor("#FFFFFF")
+            } else {
+                childPlusView.backgroundColor = HexColor("#FFFFFF")
+                childPlusLabel.textColor = HexColor("#000000")
+            }
         }
         
         updateTotalTravelerCount()
@@ -349,8 +429,14 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
         if infantsCount >= 1 {
             infantsCount -= 1
             infantsCountLabel.text = "\(infantsCount)"
+            if infantsCount >= 1 {
+                infantsPlusView.backgroundColor = HexColor("#3C627A")
+                infantsPlusLabel.textColor = HexColor("#FFFFFF")
+            } else {
+                infantsPlusView.backgroundColor = HexColor("#FFFFFF")
+                infantsPlusLabel.textColor = HexColor("#000000")
+            }
         }
-        
         updateTotalTravelerCount()
     }
     
@@ -360,6 +446,13 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
         if adultsCount > infantsCount {
             infantsCount += 1
             self.infantsCountLabel.text = "\(infantsCount)"
+            if infantsCount >= 1 {
+                infantsPlusView.backgroundColor = HexColor("#3C627A")
+                infantsPlusLabel.textColor = HexColor("#FFFFFF")
+            } else {
+                infantsPlusView.backgroundColor = HexColor("#FFFFFF")
+                infantsPlusLabel.textColor = HexColor("#000000")
+            }
         }
         
         updateTotalTravelerCount()
@@ -649,10 +742,13 @@ extension OneWayTableViewCell: UITableViewDelegate, UITableViewDataSource {
             
             if tableView == fromTV {
                 fromSubtitleLabel.text = cityList[indexPath.row].code ?? ""
-                fromTitleLabel.textColor = .AppLabelColor
+//                fromTitleLabel.textColor = .AppLabelColor
                 fromTitleLabel.font = .InterMedium(size: 16)
+                fromSubtitleLabel.text = cityList[indexPath.row].code
                 fromTitleLabel.text = cityList[indexPath.row].label ?? ""
                 fromTitleLabel.textColor = .AppLabelColor
+                fromTextfiled.text = ""
+                fromTextfiled.placeholder = ""
                 fromTextfiled.resignFirstResponder()
                 
                 if let selectedJType = defaults.string(forKey: UserDefaultsKeys.journeyType) {
@@ -679,9 +775,12 @@ extension OneWayTableViewCell: UITableViewDelegate, UITableViewDataSource {
                 toSubtitleLabel.text = cityList[indexPath.row].code ?? ""
                 toTitleLabel.text = cityList[indexPath.row].label ?? ""
                 toTitleLabel.textColor = .AppLabelColor
+                toTitleLabel.font = .InterMedium(size: 16)
                 toTextField.text = ""
                 toTextField.placeholder = ""
                 toTextField.resignFirstResponder()
+                fromSubtitleLabel.text = cityList[indexPath.row].code
+                
                 
                 if let selectedJType = defaults.string(forKey: UserDefaultsKeys.journeyType) {
                     if selectedJType == "circle" {

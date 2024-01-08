@@ -127,10 +127,10 @@ class Calvc: UIViewController {
                 calendarView.allowsMultipleSelection = false
             }else if journyType == "circle"{
                 calendarView.allowsMultipleSelection = true
-            }else {
+            } else {
                 calendarView.allowsMultipleSelection = false
             }
-        }else if tabselect == "Insurence" {
+        } else if tabselect == "Insurence" {
             let journyType = defaults.string(forKey: UserDefaultsKeys.InsurenceJourneyType)
             if journyType == "oneway" {
                 calendarView.allowsMultipleSelection = false
@@ -259,19 +259,19 @@ class Calvc: UIViewController {
                     if journeyType == "oneway" {
                         if calstartDate == "" {
                             showToast(message: "Please Select Date")
-                        }else {
+                        } else {
                             defaults.set(calstartDate, forKey: UserDefaultsKeys.calDepDate)
                             keyStr = "select"
                             NotificationCenter.default.post(name: Notification.Name("calreloadTV"), object: nil)
                             dismiss(animated: false)
                         }
                         
-                    }else if journeyType == "circle"{
+                    } else if journeyType == "circle"{
                         if calstartDate == "" && calendDate == "" {
                             showToast(message: "Please Select Dates")
                         }else if calstartDate == calendDate{
                             showToast(message: "Please Select Multiple Dates")
-                        }else{
+                        } else{
                             defaults.set(calstartDate, forKey: UserDefaultsKeys.rcalDepDate)
                             defaults.set(calendDate, forKey: UserDefaultsKeys.rcalRetDate)
                             keyStr = "select1"
@@ -322,9 +322,6 @@ class Calvc: UIViewController {
                         }
                     }
                 }
-                
-                
-                
             } else if selectedTab == "Fasttrack"{
                 
                 if calstartDate == "" && calendDate == "" {

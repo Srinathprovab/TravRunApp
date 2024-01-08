@@ -16,6 +16,7 @@ protocol MenuBGTVCellDelegate {
 
 class MenuBGTVCell: TableViewCell {
     
+    @IBOutlet weak var btnWidth: NSLayoutConstraint!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var editProfileView: UIView!
@@ -28,6 +29,8 @@ class MenuBGTVCell: TableViewCell {
         super.awakeFromNib()
         // Initialization code
         setupUI()
+        loginBtn.titleLabel?.font = UIFont.InterMedium(size: 20)
+        btnWidth.constant = 300
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -38,17 +41,25 @@ class MenuBGTVCell: TableViewCell {
     
     
     override func updateUI() {
+        loginBtn.titleLabel?.font = UIFont.InterMedium(size: 20)
         if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == true {
             loginBtn.isHidden = false
             loginBtn.isUserInteractionEnabled = false
             loginBtn.setTitle("\(pdetails?.first_name ?? pdetails?.email ?? "") \(pdetails?.last_name ?? "")", for: .normal)
             profileImage.sd_setImage(with: URL(string: pdetails?.image ?? "" ), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
             editProfileView.isHidden = false
+            editProfilelbl.text = "Edit Profile"
+            editProfilelbl.textColor = .white
+            editProfileView.layer.cornerRadius = 4
+            editProfileView.backgroundColor = .AppBtnColor
+            btnWidth.constant = 170
+            
         } else {
             profileImage.image = UIImage(named: "profile")?.withRenderingMode(.alwaysOriginal)
             editProfileView.isHidden = false
             loginBtn.setTitle("Login / Signup", for: .normal)
             loginBtn.isUserInteractionEnabled = true
+            btnWidth.constant = 300
         }
     }
     

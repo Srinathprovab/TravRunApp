@@ -39,7 +39,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62n-dA-B6M">
                                 <rect key="frame" x="76" y="102" width="300" height="30"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUc-gT-OTv">
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUc-gT-OTv">
                                         <rect key="frame" x="276" y="0.0" width="24" height="30"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
@@ -59,8 +59,8 @@
                                     <constraint firstItem="UXn-zr-vTF" firstAttribute="centerY" secondItem="62n-dA-B6M" secondAttribute="centerY" id="2AL-jD-dUe"/>
                                     <constraint firstItem="UXn-zr-vTF" firstAttribute="leading" secondItem="62n-dA-B6M" secondAttribute="leading" constant="12" id="2Wx-AU-Uaq"/>
                                     <constraint firstAttribute="bottom" secondItem="pUc-gT-OTv" secondAttribute="bottom" id="IbK-5h-zVx"/>
+                                    <constraint firstAttribute="width" constant="300" id="c8T-I2-Eat"/>
                                     <constraint firstAttribute="height" constant="30" id="cy7-N2-91H"/>
-                                    <constraint firstAttribute="trailing" secondItem="pUc-gT-OTv" secondAttribute="trailing" id="d28-4j-leC"/>
                                     <constraint firstItem="UXn-zr-vTF" firstAttribute="top" secondItem="62n-dA-B6M" secondAttribute="top" constant="5" id="ls9-pN-UZE"/>
                                     <constraint firstItem="pUc-gT-OTv" firstAttribute="top" secondItem="62n-dA-B6M" secondAttribute="top" id="odW-J2-fYH"/>
                                 </constraints>
@@ -71,7 +71,6 @@
                             <constraint firstItem="DvT-bk-Axu" firstAttribute="leading" secondItem="E0W-st-kZg" secondAttribute="leading" constant="16" id="3x7-Ul-R7N"/>
                             <constraint firstItem="DdZ-av-uCd" firstAttribute="top" secondItem="E0W-st-kZg" secondAttribute="top" constant="78" id="8HT-ua-GeE"/>
                             <constraint firstItem="62n-dA-B6M" firstAttribute="leading" secondItem="DdZ-av-uCd" secondAttribute="leading" id="AXH-Qe-EIU"/>
-                            <constraint firstItem="62n-dA-B6M" firstAttribute="trailing" secondItem="DdZ-av-uCd" secondAttribute="trailing" id="ClV-J0-44U"/>
                             <constraint firstAttribute="bottom" secondItem="DvT-bk-Axu" secondAttribute="bottom" constant="33" id="EtF-2W-jIW"/>
                             <constraint firstAttribute="bottom" secondItem="62n-dA-B6M" secondAttribute="bottom" constant="31" id="Gez-0B-psR"/>
                             <constraint firstAttribute="height" constant="163" id="agB-PM-X5h"/>
@@ -89,6 +88,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="btnWidth" destination="c8T-I2-Eat" id="DiO-RM-BqW"/>
                 <outlet property="editProfileBtn" destination="pUc-gT-OTv" id="YTR-2V-ocx"/>
                 <outlet property="editProfileView" destination="62n-dA-B6M" id="dfb-jA-p31"/>
                 <outlet property="editProfilelbl" destination="UXn-zr-vTF" id="ioy-On-Iax"/>

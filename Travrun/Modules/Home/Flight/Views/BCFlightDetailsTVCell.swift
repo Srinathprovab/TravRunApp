@@ -43,8 +43,6 @@ class BCFlightDetailsTVCell: TableViewCell {
     
 }
 
-
-
 extension BCFlightDetailsTVCell: UITableViewDelegate,UITableViewDataSource {
     
     
