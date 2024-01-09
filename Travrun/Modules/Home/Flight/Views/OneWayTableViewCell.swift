@@ -230,7 +230,7 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
                 toSubtitleLabel.text = defaults.string(forKey: UserDefaultsKeys.toCityCode) ?? ""
                 fromTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.fromCity) ?? "Origin"
                 toTitleLabel.text = defaults.string(forKey: UserDefaultsKeys.toCity) ?? "Destination"
-                toDropDownLabel.text = defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "Economy"
+//                toDropDownLabel.text = defaults.string(forKey: UserDefaultsKeys.selectClass) ?? "Economy"
                 self.departureDateLabel.text = defaults.string(forKey: UserDefaultsKeys.rcalDepDate) ?? "Departure Date"
                 self.returnDateLabel.text = defaults.string(forKey: UserDefaultsKeys.rcalRetDate) ?? "Return Date"
                 returnView.alpha = 1
@@ -358,9 +358,6 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
     @IBAction func toEconomyButtonAction(_ sender: Any) {
         toEconomyDropdown.show()
         setupToEconomyDropDown()
-        toEco = toDropDownLabel.text ?? ""
-        //        defaults.set(economy, forKey: UserDefaultsKeys.selectClass)
-        defaults.set(toEco, forKey: UserDefaultsKeys.rselectClass)
     }
     
     @IBAction func departureButtonAction(_ sender: Any) {
@@ -754,7 +751,7 @@ extension OneWayTableViewCell: UITableViewDelegate, UITableViewDataSource {
                 if let selectedJType = defaults.string(forKey: UserDefaultsKeys.journeyType) {
                     if selectedJType == "circle" {
                         defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.fromcityCode)
-                        defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.toCityCode)
+//                        defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.toCityCode)
                         defaults.set(cityList[indexPath.row].label ?? "", forKey: UserDefaultsKeys.fromCity)
                         defaults.set(cityList[indexPath.row].id ?? "", forKey: UserDefaultsKeys.fromlocid)
                         defaults.set("\(cityList[indexPath.row].city ?? "") (\(cityList[indexPath.row].code ?? ""))", forKey: UserDefaultsKeys.fromairport)
@@ -762,7 +759,7 @@ extension OneWayTableViewCell: UITableViewDelegate, UITableViewDataSource {
                         
                     } else {
                         defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.fromcityCode)
-                        defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.toCityCode)
+//                        defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.toCityCode)
                         defaults.set(cityList[indexPath.row].label ?? "", forKey: UserDefaultsKeys.fromCity)
                         defaults.set(cityList[indexPath.row].id ?? "", forKey: UserDefaultsKeys.fromlocid)
                         defaults.set("\(cityList[indexPath.row].city ?? "") (\(cityList[indexPath.row].code ?? ""))", forKey: UserDefaultsKeys.fromairport)
@@ -779,12 +776,11 @@ extension OneWayTableViewCell: UITableViewDelegate, UITableViewDataSource {
                 toTextField.text = ""
                 toTextField.placeholder = ""
                 toTextField.resignFirstResponder()
-                fromSubtitleLabel.text = cityList[indexPath.row].code
-                
-                
+//                fromSubtitleLabel.text = cityList[indexPath.row].code
+//
                 if let selectedJType = defaults.string(forKey: UserDefaultsKeys.journeyType) {
                     if selectedJType == "circle" {
-                        defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.fromcityCode)
+//                        defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.fromcityCode)
                         defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.toCityCode)
                         defaults.set(cityList[indexPath.row].label ?? "", forKey: UserDefaultsKeys.toCity)
                         defaults.set(cityList[indexPath.row].id ?? "", forKey: UserDefaultsKeys.tolocid)
@@ -792,7 +788,7 @@ extension OneWayTableViewCell: UITableViewDelegate, UITableViewDataSource {
                         defaults.set(cityList[indexPath.row].city ?? "", forKey: UserDefaultsKeys.tocityname)
                         
                     }else {
-                        defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.fromcityCode)
+//                        defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.fromcityCode)
                         defaults.set(cityList[indexPath.row].code ?? "", forKey: UserDefaultsKeys.toCityCode)
                         defaults.set(cityList[indexPath.row].label ?? "", forKey: UserDefaultsKeys.toCity)
                         defaults.set(cityList[indexPath.row].id ?? "", forKey: UserDefaultsKeys.tolocid)

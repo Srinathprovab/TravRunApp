@@ -201,10 +201,12 @@ class BookingDetailsViewController: BaseTableVC, RegisterViewModelProtocal, Prof
     override func loginNowButtonAction(cell: RegisterNowTableViewCell, email: String, pass: String) {
         print("loginNowButtonAction")
         callLoginAPI(email: email, pass: pass)
+        callProfileDetailsAPI()
     }
     
     override func RegisterNowButtonAction(cell: LoginDetailsTableViewCell, email: String, pass: String, phone: String) {
         callRegisterAPI(email: email, pass: pass, mobile: phone)
+        callProfileDetailsAPI()
     }
     
     override func didTaponSwitchButton(cell: AddAdultTableViewCell) {

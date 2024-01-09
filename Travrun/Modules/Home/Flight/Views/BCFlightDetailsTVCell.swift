@@ -74,7 +74,7 @@ extension BCFlightDetailsTVCell: UITableViewDelegate,UITableViewDataSource {
             
             cell.img.sd_setImage(with: URL(string: data.airline_image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
 
-            cell.airlineNamelbl.text = data.airline_name ?? ""
+//            cell.airlineNamelbl.text = data.airline_name ?? ""
             cell.flightNolbl.text = "(\(data.airline_code ?? "")-\(data.flight_number ?? ""))"
             cell.durationlbl.text = data.duration ?? ""
             cell.economylbl.text = data.cabin_class ?? ""
@@ -93,7 +93,7 @@ extension BCFlightDetailsTVCell: UITableViewDelegate,UITableViewDataSource {
        
 
             
-            cell.layoverTimelbl.text = "Layover At \(data.to_airport_name ?? "") (\(data.to_airport_code ?? "")) \(data.layover ?? "")"
+//            cell.layoverTimelbl.text = "Layover At \(data.to_airport_name ?? "") (\(data.to_airport_code ?? "")) \(data.layover ?? "")"
             
 //            if indexPath.row != 0 {
 //                cell.hideLayover()
@@ -102,9 +102,7 @@ extension BCFlightDetailsTVCell: UITableViewDelegate,UITableViewDataSource {
             if tableView.isLast(for: indexPath) == true {
                 cell.hideLayover()
             }
-                
-            
-            
+    
             ccell = cell
         }
         return ccell

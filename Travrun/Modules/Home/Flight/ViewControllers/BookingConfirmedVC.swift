@@ -10,10 +10,15 @@ import FreshchatSDK
 
 class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate{
     
-    
-    @IBOutlet weak var navBar: NavBar!
+    @IBOutlet weak var bookingDateLabel: UILabel!
+    @IBOutlet weak var refereneLabel: UILabel!
+    @IBOutlet weak var bookingIdLabel: UILabel!
+    @IBOutlet weak var backButtonView: BorderedView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var navBar: UIView!
     @IBOutlet weak var navHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var titleLabel: UILabel!
     
     var lastContentOffset: CGFloat = 0
     var viewModel: VocherDetailsViewModel?
@@ -59,11 +64,11 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate{
         addObserver()
         
         
-        if screenHeight < 835 {
-            navHeight.constant = 90
-        }
-        
-        
+//        if screenHeight < 835 {
+//            navHeight.constant = 90
+//        }
+//        
+//        
         if callapibool == true {
             callAPI()
         }
@@ -91,17 +96,17 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
         setupUI()
         viewModel = VocherDetailsViewModel(self)
+      
 //        hotelViewmodel = HotelVoucherViewModel(self)
 //        insurenceViewmodel = InsurenceVoucherViewModel(self)
     }
     
     func setupUI() {
-        navBar.titlelbl.text = "Booking Confirmed"
-        navBar.backBtn.addTarget(self, action: #selector(didTapOnBackButton(_:)), for: .touchUpInside)
+        backButtonView.layer.cornerRadius = backButtonView.layer.frame.width / 2
+        titleLabel.text = "Booking Confirmed Receipt"
+        backButton.addTarget(self, action: #selector(didTapOnBackButton(_:)), for: .touchUpInside)
         setupTV()
         commonTableView.registerTVCells(["BookingConfirmedTVCell",
                                          "EmptyTVCell",
@@ -110,7 +115,7 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate{
                                          "BCFlightDetailsTVCell",
                                          "BookedTravelDetailsTVCell",
                                          "VoucherHotelDetailsTVCell",
-                                         "InsurenceResultTVCell"])
+                                         "InsurenceResultTVCell", "TitleLblTVCell"])
         
     }
     
@@ -162,6 +167,10 @@ class BookingConfirmedVC: BaseTableVC, VocherDetailsViewModelDelegate{
 extension BookingConfirmedVC {
     func callGetFlightVoucherAPI() {
         viewModel?.Call_Get_voucher_Details_API(dictParam: [:], url: urlString)
+        
+        bookingDateLabel.text = "Booking Date: \(bookedDate)"
+        refereneLabel.text =  "\(bookingsource)"
+        bookingIdLabel.text = "\(bookingId)"
     }
     
     
@@ -213,15 +222,10 @@ extension BookingConfirmedVC {
                                  tempText: pnrNo,
                                  cellType:.BookingConfirmedTVCell))
         
-        tablerow.append(TableRow(title:"Flight Details",key: "bc",cellType:.LabelTVCell))
-        
-        
+        tablerow.append(TableRow(title:"Flight Details",key: "bc",cellType:. LabelTVCell))
         tablerow.append(TableRow(moreData: bookingitinerarydetails,cellType:.BCFlightDetailsTVCell))
-        
-        
-        
-        tablerow.append(TableRow(title:"Passenger Details",key: "bc",cellType:.LabelTVCell))
-        
+        tablerow.append(TableRow(title:"Passenger Details",key: "bookingDetails",cellType:.TitleLblTVCell))
+        tablerow.append(TableRow(title: "Booking Details", key: "bookingDetails", height: 50, cellType:. TitleLblTVCell))
         tablerow.append(TableRow(title:"Lead Passenger",moreData:Customerdetails,cellType:.BookedTravelDetailsTVCell))
         tablerow.append(TableRow(height:35,cellType:.EmptyTVCell))
         tablerow.append(TableRow(title:"Thank you for booking with bab safar Your attraction voucher has been shared on the confirmed email.",key: "booked",cellType:.LabelTVCell))

@@ -214,7 +214,7 @@ extension NewFlightSearchResultTVCell: UITableViewDelegate,UITableViewDataSource
             cell.fromCitylbl.text = "\(data.origin?.city ?? "")(\(data.origin?.loc ?? ""))"
             cell.toTimelbl.text = data.destination?.time ?? ""
             cell.toCitylbl.text = "\(data.destination?.city ?? "")(\(data.destination?.loc ?? ""))"
-            //            cell.deplogo.image = UIImage(named: "dep")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppBtnColor)
+            cell.deplogo.image = UIImage(named: "dep")
             
             if data.weight_Allowance == "" || data.weight_Allowance == nil {
                 cell.cabinlbl.text = "0Kg"
@@ -229,6 +229,7 @@ extension NewFlightSearchResultTVCell: UITableViewDelegate,UITableViewDataSource
                 cell.separatorLabel.isHidden = false
                 if tableView.isLast(for: indexPath) == true {
                     cell.separatorLabel.isHidden = true
+                    cell.deplogo.image = UIImage(named: "flightDown")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppBtnColor)
 //                    cell.topView.isHidden = true
                 }
             }
@@ -269,8 +270,8 @@ extension NewFlightSearchResultTVCell {
     
     func setAttributedString1(str1:String,str2:String) {
         
-        let atter1 = [NSAttributedString.Key.foregroundColor:UIColor.IttenarySelectedColor,NSAttributedString.Key.font:UIFont.latoBold(size: 10),NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue] as [NSAttributedString.Key : Any]
-        let atter2 = [NSAttributedString.Key.foregroundColor:UIColor.IttenarySelectedColor,NSAttributedString.Key.font:UIFont.latoBold(size: 14),NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue] as [NSAttributedString.Key : Any]
+        let atter1 = [NSAttributedString.Key.foregroundColor:HexColor("#3C627A"),NSAttributedString.Key.font:UIFont.latoBold(size: 10),NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue] as [NSAttributedString.Key : Any]
+        let atter2 = [NSAttributedString.Key.foregroundColor:HexColor("#3C627A"),NSAttributedString.Key.font:UIFont.latoBold(size: 14),NSAttributedString.Key.strikethroughStyle: NSUnderlineStyle.single.rawValue] as [NSAttributedString.Key : Any]
         
         let atterStr1 = NSMutableAttributedString(string: str1, attributes: atter1)
         let atterStr2 = NSMutableAttributedString(string: str2, attributes: atter2)

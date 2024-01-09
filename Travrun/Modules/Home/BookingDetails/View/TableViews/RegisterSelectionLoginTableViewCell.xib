@@ -157,6 +157,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
+                <color key="backgroundColor" name="AppHolderViewColor"/>
                 <constraints>
                     <constraint firstItem="EGA-sk-qQP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="GrV-Kd-6hy"/>
                     <constraint firstAttribute="trailing" secondItem="EGA-sk-qQP" secondAttribute="trailing" constant="10" id="Krr-0n-YmR"/>
@@ -176,6 +177,9 @@
     <resources>
         <image name="radioSelect" width="20" height="20"/>
         <image name="radioUnselect" width="20" height="20"/>
+        <namedColor name="AppHolderViewColor">
+            <color red="0.94499999284744263" green="0.95300000905990601" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="AppLabelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

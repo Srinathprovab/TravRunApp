@@ -93,7 +93,7 @@ class ContactInformationTVCell: TableViewCell {
     func setupUI() {
         contentView.backgroundColor = .AppHolderViewColor
         
-        contactImg.image = UIImage(named: "contact")?.withRenderingMode(.alwaysOriginal)
+//        contactImg.image = UIImage(named: "contact")?.withRenderingMode(.alwaysOriginal)
         
         setupViews(v: holderView, radius: 4, color: .WhiteColor)
         setupViews(v: emailTfView, radius: 4, color: .WhiteColor)
@@ -101,7 +101,7 @@ class ContactInformationTVCell: TableViewCell {
         setupViews(v: codeView, radius: 0, color: .WhiteColor)
         
         
-        setupLabels(lbl: titlelbl, text: "Contact Information", textcolor: .AppLabelColor, font: .InterSemiBold(size: 16))
+        setupLabels(lbl: titlelbl, text: "Contact Information", textcolor: .AppLabelColor, font: .InterMedium(size: 16))
         setupLabels(lbl: subTitlelbl, text: "E-Ticket will be sent to the registered email address", textcolor: .SubTitleColor, font: .InterRegular(size: 12))
         setupLabels(lbl: countryCodeLbl, text: "", textcolor: .SubTitleColor, font: .InterRegular(size: 16))
         

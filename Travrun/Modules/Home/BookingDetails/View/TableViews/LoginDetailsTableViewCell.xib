@@ -234,6 +234,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
+                <color key="backgroundColor" name="AppHolderViewColor"/>
                 <constraints>
                     <constraint firstItem="SnG-mR-WTF" firstAttribute="top" secondItem="Ygl-IU-jCo" secondAttribute="top" id="42t-8g-X72"/>
                     <constraint firstAttribute="bottom" secondItem="SnG-mR-WTF" secondAttribute="bottom" id="QQx-4k-XNR"/>
@@ -257,6 +258,9 @@
         <image name="dropDownArrow" width="24" height="24"/>
         <namedColor name="AppBtnColor">
             <color red="0.93333333333333335" green="0.098039215686274508" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AppHolderViewColor">
+            <color red="0.94499999284744263" green="0.95300000905990601" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

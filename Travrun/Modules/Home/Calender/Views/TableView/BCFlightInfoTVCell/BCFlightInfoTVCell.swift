@@ -14,7 +14,7 @@ class BCFlightInfoTVCell: TableViewCell {
     
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var img: UIImageView!
-    @IBOutlet weak var airlineNamelbl: UILabel!
+//    @IBOutlet weak var airlineNamelbl: UILabel!
     @IBOutlet weak var flightNolbl: UILabel!
     @IBOutlet weak var fromTimelbl: UILabel!
     @IBOutlet weak var fromCitylbl: UILabel!
@@ -48,7 +48,7 @@ class BCFlightInfoTVCell: TableViewCell {
     
     
     func hideLayover() {
-        layoverView.isHidden = true
+//        layoverView.isHidden = true
        //layoverHeight.constant = 0
     }
     

@@ -326,12 +326,9 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
     
     override func didTapOnFlightDetailsBtnAction(cell: NewFlightSearchResultTVCell) {
         defaults.set(cell.selectedResult, forKey: UserDefaultsKeys.selectedResult)
-        
-        
         defaults.set(cell.bsource, forKey: UserDefaultsKeys.bookingsource)
         defaults.set(cell.bsourcekey, forKey: UserDefaultsKeys.bookingsourcekey)
         defaults.set(cell.faretypelbl.text, forKey: UserDefaultsKeys.selectedFareType)
-        
         guard let vc = FlightDetailsViewController.newInstance.self else {return}
         vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: false)
@@ -344,9 +341,15 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
     //    }
     //
     override func didTapOnBookNowBtnAction(cell: NewFlightSearchResultTVCell) {
+        
+        defaults.set(cell.bsource, forKey: UserDefaultsKeys.bookingsource)
+        defaults.set(cell.bsourcekey, forKey: UserDefaultsKeys.bookingsourcekey)
+        defaults.set(cell.faretypelbl.text, forKey: UserDefaultsKeys.selectedFareType)
+        defaults.set(cell.selectedResult, forKey: UserDefaultsKeys.selectedResult)
+        
         guard let vc = BookingDetailsVC.newInstance.self else {return}
         print("selectedResult....\(cell.selectedResult)")
-        defaults.set(cell.selectedResult, forKey: UserDefaultsKeys.selectedResult)
+       
         vc.modalPresentationStyle = .fullScreen
         vc.totalPrice1 = totalprice
         callapibool = true
@@ -948,9 +951,7 @@ extension SearchResultPageViewController {
                     
                     multicityFilterdList(list: filtered ?? [[]])
                     
-                    
-                    
-                }else {
+                } else {
                     
                     let filtered = FlightList?.sorted { (item1, item2) in
                         let price1 = item1.first?.price?.api_total_display_fare ?? 0.0

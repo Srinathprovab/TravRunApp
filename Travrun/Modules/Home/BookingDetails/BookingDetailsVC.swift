@@ -184,7 +184,6 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
     }
     
     
-    
     func setupTV() {
         sessionTimerView.isHidden = false
         tablerow.removeAll()
@@ -195,24 +194,23 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
                                  cellType:.BookFlightDetailsTVCell))
         
         if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == false {
-            tablerow.append(TableRow(height: 14, cellType:.EmptyTVCell))
+            tablerow.append(TableRow(height: 14,bgColor:.AppHolderViewColor, cellType:.EmptyTVCell))
             tablerow.append(TableRow(cellType: .RegisterSelectionLoginTableViewCell))
-            tablerow.append(TableRow(height: 12, cellType:.EmptyTVCell))
+            tablerow.append(TableRow(height: 12,bgColor:.AppHolderViewColor, cellType:.EmptyTVCell))
             if mbviewmodel?.section == .guestLogin {
                 tablerow.append(TableRow(cellType: .GuestRegisterTableViewCell))
-                tablerow.append(TableRow(height: 12, cellType:.EmptyTVCell))
+                tablerow.append(TableRow(height: 12,bgColor:.AppHolderViewColor, cellType:.EmptyTVCell))
             } else if mbviewmodel?.section == .register {
                 tablerow.append(TableRow(cellType: .LoginDetailsTableViewCell))
-                tablerow.append(TableRow(height: 12, cellType:.EmptyTVCell))
+                tablerow.append(TableRow(height: 12,bgColor:.AppHolderViewColor, cellType:.EmptyTVCell))
             } else if mbviewmodel?.section == .login {
                 tablerow.append(TableRow(key: "register",cellType: .RegisterNowTableViewCell))
-                tablerow.append(TableRow(height: 12, cellType:.EmptyTVCell))
+                tablerow.append(TableRow(height: 12,bgColor:.AppHolderViewColor, cellType:.EmptyTVCell))
             }
         }
         
         passengertypeArray.removeAll()
-        tablerow.append(TableRow(height:20, bgColor:.AppHolderViewColor,cellType:.EmptyTVCell))
-        tablerow.append(TableRow(title:"Passanger Details",
+        tablerow.append(TableRow(title:"Passenger Details",
                                  subTitle: defaults.string(forKey: UserDefaultsKeys.totalTravellerCount),
                                  cellType:.TotalNoofTravellerTVCell))
         
@@ -224,8 +222,7 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
             tablerow.append(travellerCell)
             
         }
-        
-        
+    
         if childCount != 0 {
             for i in 1...childCount {
                 positionsCount += 1
@@ -443,10 +440,7 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
         payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
         deleteTreavelerVM?.CALL_DELETE_TRAVELLER_DETAILS(dictParam: payload)
     }
-    
-    
-    
-    
+
     //MARK: - didTapOnViewFlightsDetailsBtn
     override func didTapOnViewFlightDetailsButton(cell: ViewFlightDetailsBtnTVCell) {
         guard let vc = FlightDetailsViewController.newInstance.self else {return}
@@ -1026,11 +1020,8 @@ extension BookingDetailsVC {
     
     
     func mobilepreprocessbookingDetails(response: MBModel) {
-        
-        
-        
+    
         holderView.isHidden = false
-        
         accesskey = response.pre_booking_params?.access_key ?? ""
         accesskeytp = response.access_key_tp ?? ""
         bookingsource = response.booking_source ?? ""

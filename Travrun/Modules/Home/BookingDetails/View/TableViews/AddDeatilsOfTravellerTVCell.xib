@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Inter-Medium.otf">
+            <string>Inter-Medium</string>
+        </array>
         <array key="Lato-Bold.ttf">
             <string>Lato-Bold</string>
         </array>
@@ -35,11 +38,11 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dropup" translatesAutoresizingMaskIntoConstraints="NO" id="riY-6t-tXR">
-                                        <rect key="frame" x="392" y="20" width="10" height="5"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sliderdrop" translatesAutoresizingMaskIntoConstraints="NO" id="riY-6t-tXR">
+                                        <rect key="frame" x="387" y="17.666666666666668" width="15" height="10"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="5" id="BJ5-He-y5p"/>
-                                            <constraint firstAttribute="width" constant="10" id="uJk-UI-116"/>
+                                            <constraint firstAttribute="height" constant="10" id="BJ5-He-y5p"/>
+                                            <constraint firstAttribute="width" constant="15" id="uJk-UI-116"/>
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0X-3P-7EC">
@@ -54,7 +57,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="n0X-3P-7EC" secondAttribute="trailing" id="1BX-9G-wbd"/>
-                                    <constraint firstItem="riY-6t-tXR" firstAttribute="centerY" secondItem="dh2-pq-fEi" secondAttribute="centerY" id="3cq-to-QzC"/>
+                                    <constraint firstItem="riY-6t-tXR" firstAttribute="top" secondItem="dh2-pq-fEi" secondAttribute="top" constant="17.670000000000002" id="4BD-8Y-Mf3"/>
                                     <constraint firstAttribute="bottom" secondItem="n0X-3P-7EC" secondAttribute="bottom" id="5xQ-p4-kFK"/>
                                     <constraint firstAttribute="trailing" secondItem="riY-6t-tXR" secondAttribute="trailing" constant="15" id="MoJ-aU-L6L"/>
                                     <constraint firstItem="n0X-3P-7EC" firstAttribute="top" secondItem="dh2-pq-fEi" secondAttribute="top" id="N5V-LK-N0I"/>
@@ -91,7 +94,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTy-MZ-Dof">
                                                 <rect key="frame" x="212.66666666666663" y="0.0" width="208.33333333333337" height="40"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cal" translatesAutoresizingMaskIntoConstraints="NO" id="8Jm-Kc-Tgd">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calender" translatesAutoresizingMaskIntoConstraints="NO" id="8Jm-Kc-Tgd">
                                                         <rect key="frame" x="178.33333333333334" y="10" width="18" height="20"/>
                                                         <color key="tintColor" name="AppTabSelectColor"/>
                                                         <constraints>
@@ -152,7 +155,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downarrow" translatesAutoresizingMaskIntoConstraints="NO" id="77e-Ey-tH3">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sliderdrop" translatesAutoresizingMaskIntoConstraints="NO" id="77e-Ey-tH3">
                                                         <rect key="frame" x="180.66666666666666" y="17.666666666666657" width="10" height="5"/>
                                                         <color key="tintColor" name="AppImageDefaultColor"/>
                                                         <constraints>
@@ -184,7 +187,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QPD-A5-geT">
                                                 <rect key="frame" x="212.66666666666663" y="0.0" width="208.33333333333337" height="40"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cal" translatesAutoresizingMaskIntoConstraints="NO" id="WMo-77-Xru">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calender" translatesAutoresizingMaskIntoConstraints="NO" id="WMo-77-Xru">
                                                         <rect key="frame" x="178.33333333333334" y="10" width="18" height="20"/>
                                                         <color key="tintColor" name="AppImageDefaultColor"/>
                                                         <constraints>
@@ -273,15 +276,15 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Passport Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IAt-M5-zyR">
-                                        <rect key="frame" x="13.999999999999993" y="103" width="101.33333333333331" height="17"/>
-                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="4" y="103" width="109.66666666666667" height="17"/>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                        <color key="textColor" name="AppLabelColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frequent Flyer (Optional)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K0l-1x-UXT">
-                                        <rect key="frame" x="14" y="232" width="156" height="17"/>
-                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="4" y="232" width="167.66666666666666" height="17"/>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                        <color key="textColor" name="AppLabelColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="8on-da-Jx9">
@@ -295,7 +298,7 @@
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downarrow" translatesAutoresizingMaskIntoConstraints="NO" id="BbQ-bx-5XI">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sliderdrop" translatesAutoresizingMaskIntoConstraints="NO" id="BbQ-bx-5XI">
                                                         <rect key="frame" x="180.66666666666666" y="17.666666666666686" width="10" height="5"/>
                                                         <color key="tintColor" name="AppImageDefaultColor"/>
                                                         <constraints>
@@ -370,7 +373,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEl-tJ-2zu">
-                                        <rect key="frame" x="115.33333333333334" y="103" width="6" height="17"/>
+                                        <rect key="frame" x="113.66666666666666" y="103" width="6" height="17"/>
                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
                                         <color key="textColor" name="CommonButtonColor"/>
                                         <nil key="highlightedColor"/>
@@ -378,13 +381,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="K0l-1x-UXT" firstAttribute="leading" secondItem="IAt-M5-zyR" secondAttribute="leading" id="1N2-8h-H68"/>
                                     <constraint firstItem="8on-da-Jx9" firstAttribute="leading" secondItem="i9P-r0-f8U" secondAttribute="leading" id="7s3-Rq-A6J"/>
                                     <constraint firstItem="xwe-gb-GmN" firstAttribute="leading" secondItem="i9P-r0-f8U" secondAttribute="leading" id="9zL-Uv-mth"/>
                                     <constraint firstAttribute="height" constant="305" id="CrS-Rd-YLy"/>
                                     <constraint firstItem="B47-rc-E9M" firstAttribute="top" secondItem="xwe-gb-GmN" secondAttribute="bottom" constant="10" id="MBx-Qz-9Ya"/>
-                                    <constraint firstItem="K0l-1x-UXT" firstAttribute="leading" secondItem="i9P-r0-f8U" secondAttribute="leading" constant="14" id="NYF-7D-Aa9"/>
                                     <constraint firstItem="8on-da-Jx9" firstAttribute="top" secondItem="K0l-1x-UXT" secondAttribute="bottom" constant="10" id="Nqd-EO-DNF"/>
-                                    <constraint firstItem="IAt-M5-zyR" firstAttribute="leading" secondItem="i9P-r0-f8U" secondAttribute="leading" constant="14" id="SVj-mz-L6v"/>
                                     <constraint firstAttribute="trailing" secondItem="ZQn-H9-2Yf" secondAttribute="trailing" id="Th6-wc-DXx"/>
                                     <constraint firstItem="IAt-M5-zyR" firstAttribute="top" secondItem="B47-rc-E9M" secondAttribute="bottom" constant="12" id="Vc9-hZ-y0a"/>
                                     <constraint firstItem="ZQn-H9-2Yf" firstAttribute="top" secondItem="IAt-M5-zyR" secondAttribute="bottom" constant="10" id="f9o-Ib-Z3v"/>
@@ -407,6 +409,7 @@
                         <color key="backgroundColor" name="WhiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="i9P-r0-f8U" secondAttribute="bottom" id="2Uv-g3-jpz"/>
+                            <constraint firstItem="IAt-M5-zyR" firstAttribute="leading" secondItem="qDI-FW-WlU" secondAttribute="leading" id="6bF-ik-5JR"/>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="350" id="DbF-Qd-6iZ"/>
                             <constraint firstAttribute="trailing" secondItem="i9P-r0-f8U" secondAttribute="trailing" constant="6" id="NXv-VW-nhL"/>
                             <constraint firstItem="dh2-pq-fEi" firstAttribute="leading" secondItem="ITi-BM-ZZP" secondAttribute="leading" constant="10" id="R8o-c8-wsW"/>
@@ -467,9 +470,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="cal" width="18" height="20"/>
-        <image name="downarrow" width="8.6666669845581055" height="4.3333334922790527"/>
-        <image name="dropup" width="17.333333969116211" height="17.333333969116211"/>
+        <image name="calender" width="24" height="24"/>
+        <image name="sliderdrop" width="15" height="9"/>
         <namedColor name="AppBorderColor">
             <color red="0.90200001001358032" green="0.9100000262260437" blue="0.90600001811981201" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -478,6 +480,9 @@
         </namedColor>
         <namedColor name="AppImageDefaultColor">
             <color red="0.35699999332427979" green="0.35699999332427979" blue="0.35699999332427979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AppLabelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="AppTabSelectColor">
             <color red="0.3919999897480011" green="0.15299999713897705" blue="0.43500000238418579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

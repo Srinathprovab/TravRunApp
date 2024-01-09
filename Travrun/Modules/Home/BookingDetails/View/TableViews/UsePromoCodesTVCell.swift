@@ -76,7 +76,8 @@ class UsePromoCodesTVCell: TableViewCell {
         
         holderView.addCornerRadiusWithShadow(color: .clear, borderColor: .AppBorderColor, cornerRadius: 5)
         holderView.backgroundColor = .WhiteColor
-        logoImg.image = UIImage(named: "promo1")?.withRenderingMode(.alwaysOriginal)
+        
+        logoImg.image =   UIImage(named: "promo1")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppBtnColor)
         logoImg.contentMode = .scaleToFill
         setuplabels(lbl: titlelbl, text: "Have promo-code (optional)", textcolor: .AppLabelColor, font: .InterMedium(size: 16), align: .left)
         setuplabels(lbl: viewAlllbl, text: "ViewAll", textcolor: .WhiteColor, font: .InterMedium(size: 12), align: .center)
@@ -84,7 +85,7 @@ class UsePromoCodesTVCell: TableViewCell {
         tfHolderView.backgroundColor = .WhiteColor
         codesTF.delegate = self
         codesTF.setLeftPaddingPoints(10)
-        codesTF.placeholder = "Enter Promo Codes"
+        codesTF.placeholder = "Enter Promo Code"
         codesTF.font = .InterMedium(size: 15)
         codesTF.isSecureTextEntry = false
         codesTF.addTarget(self, action: #selector(editingChanged(_:)), for: .editingChanged)

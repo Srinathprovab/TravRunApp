@@ -42,7 +42,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="274" height="61"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="langugeImage" translatesAutoresizingMaskIntoConstraints="NO" id="zwv-We-3WR">
-                                                <rect key="frame" x="6" y="10" width="94" height="32"/>
+                                                <rect key="frame" x="40" y="10" width="94" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="94" id="25U-Jv-kGd"/>
                                                     <constraint firstAttribute="height" constant="32" id="Tul-aP-mqN"/>
@@ -50,7 +50,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="(QR10003)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QL3-Qo-0fI">
-                                                <rect key="frame" x="112" y="20" width="157" height="12"/>
+                                                <rect key="frame" x="146" y="20" width="123" height="12"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
                                                 <color key="textColor" name="AppLabelColor"/>
                                                 <nil key="highlightedColor"/>
@@ -61,16 +61,26 @@
                                                 <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dep" translatesAutoresizingMaskIntoConstraints="NO" id="6eq-is-GlJ">
+                                                <rect key="frame" x="10" y="16" width="20" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="20" id="6iA-05-yf8"/>
+                                                    <constraint firstAttribute="height" constant="20" id="aXE-JD-Vfj"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="61" id="0Wo-0c-1rF"/>
+                                            <constraint firstAttribute="bottom" secondItem="zwv-We-3WR" secondAttribute="bottom" constant="19" id="1Xz-d7-DNs"/>
+                                            <constraint firstItem="6eq-is-GlJ" firstAttribute="centerY" secondItem="zwv-We-3WR" secondAttribute="centerY" id="5Z0-Tq-2gY"/>
                                             <constraint firstItem="QL3-Qo-0fI" firstAttribute="leading" secondItem="zwv-We-3WR" secondAttribute="trailing" constant="12" id="7bS-Wt-xLK"/>
                                             <constraint firstAttribute="bottom" secondItem="DOQ-rp-L8v" secondAttribute="bottom" id="NjQ-Eu-dec"/>
+                                            <constraint firstItem="6eq-is-GlJ" firstAttribute="leading" secondItem="ZaA-HD-5mX" secondAttribute="leading" constant="10" id="guU-KQ-Ljl"/>
                                             <constraint firstItem="zwv-We-3WR" firstAttribute="top" secondItem="ZaA-HD-5mX" secondAttribute="top" constant="10" id="hQr-3T-wlP"/>
                                             <constraint firstAttribute="trailing" secondItem="QL3-Qo-0fI" secondAttribute="trailing" constant="5" id="nDx-G6-Zbb"/>
                                             <constraint firstItem="QL3-Qo-0fI" firstAttribute="centerY" secondItem="zwv-We-3WR" secondAttribute="centerY" id="oct-nX-WC9"/>
-                                            <constraint firstItem="zwv-We-3WR" firstAttribute="leading" secondItem="ZaA-HD-5mX" secondAttribute="leading" constant="6" id="s9J-1B-Grb"/>
+                                            <constraint firstItem="zwv-We-3WR" firstAttribute="leading" secondItem="6eq-is-GlJ" secondAttribute="trailing" constant="10" id="tea-Lv-gav"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SEG-hF-O8a">
@@ -275,6 +285,7 @@
                 <outlet property="airlinelogo" destination="zwv-We-3WR" id="vh9-Ce-Dbh"/>
                 <outlet property="cabinlbl" destination="aea-8P-Xeh" id="oyh-Bs-uoq"/>
                 <outlet property="checkinBaggagelbl" destination="qcw-TS-t7O" id="lH4-oH-wU3"/>
+                <outlet property="deplogo" destination="6eq-is-GlJ" id="Pvv-S5-sZw"/>
                 <outlet property="durationlbl" destination="Qdi-oj-DDF" id="rvE-R2-dHB"/>
                 <outlet property="economyLabel" destination="DOQ-rp-L8v" id="t3M-Ml-ueD"/>
                 <outlet property="fromCitylbl" destination="M3J-IP-oPJ" id="x2V-gZ-Hcl"/>
@@ -292,6 +303,7 @@
     </objects>
     <resources>
         <image name="bag1" width="7.3333334922790527" height="10"/>
+        <image name="dep" width="24" height="24"/>
         <image name="langugeImage" width="94" height="32"/>
         <image name="sute1" width="10" height="8"/>
         <namedColor name="AppLabelColor">

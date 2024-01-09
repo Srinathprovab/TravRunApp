@@ -116,5 +116,53 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9EBFBF69-2AE8-4059-B2E1-87C70589E265"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Travrun/Modules/Home/Calender/similarFlightsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "118"
+            endingLineNumber = "118"
+            landmarkName = "didTapOnFlightDetailsBtnAction(cell:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9EBFBF69-2AE8-4059-B2E1-87C70589E265 - 8d55bdaf62620340"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travrun.similarFlightsVC.didTapOnFlightDetailsBtnAction(cell: Travrun.NewFlightSearchResultTVCell) -&gt; ()"
+                  moduleName = "Travrun"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ma1882/Desktop/TravRunApp/Travrun/Modules/Home/Calender/similarFlightsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "377">
+               </Location>
+               <Location
+                  uuid = "9EBFBF69-2AE8-4059-B2E1-87C70589E265 - 8d55bdaf62620340"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Travrun.similarFlightsVC.didTapOnFlightDetailsBtnAction(cell: Travrun.NewFlightSearchResultTVCell) -&gt; ()"
+                  moduleName = "Travrun"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ma1882/Desktop/TravRunApp/Travrun/Modules/Home/Calender/similarFlightsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "670">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -289,6 +289,7 @@ class FlightViewController: BaseTableVC {
                 
             } else {
                 
+                payload["v_class_round"] = defaults.string(forKey:UserDefaultsKeys.rselectClass)
                 payload["trip_type"] = defaults.string(forKey:UserDefaultsKeys.journeyType)
                 payload["adult"] = defaults.string(forKey:UserDefaultsKeys.adultCount)
                 payload["child"] = defaults.string(forKey:UserDefaultsKeys.childCount)

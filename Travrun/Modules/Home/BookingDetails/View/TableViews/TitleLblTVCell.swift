@@ -73,7 +73,12 @@ class TitleLblTVCell: TableViewCell {
             //  holderView.addCornerRadiusWithShadow(color: .clear, borderColor: .AppBorderColor, cornerRadius: 8)
         }
         
-        
+        if cellInfo?.key == "bookingDetails" {
+            titlelbl.textColor = .AppLabelColor
+            titlelbl.font = .InterSemiBold(size: 18)
+            editView.isHidden = true
+            subtitlelbl.isHidden = true
+        }
         
         if cellInfo?.key == "hoteldisc" {
             tripcost()

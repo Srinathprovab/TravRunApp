@@ -97,7 +97,7 @@ extension SpecialRequestTVCell {
     
     func setAttributedString(str1:String,str2:String,str3:String) {
         
-        let atter1 = [NSAttributedString.Key.foregroundColor:HexColor("#ED1654"),NSAttributedString.Key.font:UIFont.InterRegular(size: 12)] as [NSAttributedString.Key : Any]
+        let atter1 = [NSAttributedString.Key.foregroundColor: HexColor("#ED1654"),NSAttributedString.Key.font:UIFont.InterRegular(size: 12)] as [NSAttributedString.Key : Any]
         let atter2 : [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor:UIColor.AppLabelColor,
                                                       NSAttributedString.Key.font:UIFont.InterRegular(size: 12),
                                                       .underlineStyle: NSUnderlineStyle.single.rawValue]
@@ -140,10 +140,6 @@ extension SpecialRequestTVCell {
     
     
 }
-
-
-
-
 
 extension SpecialRequestTVCell {
     
