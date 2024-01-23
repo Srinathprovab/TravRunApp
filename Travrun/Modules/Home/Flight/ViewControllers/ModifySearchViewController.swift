@@ -106,7 +106,7 @@ class ModifySearchViewController: BaseTableVC {
     
     func setUpView() {
         view.backgroundColor = .clear
-        holderView.layer.cornerRadius = 12
+        holderView.layer.cornerRadius = 20
 //        gobackLabel.textColor = HexColor("#000000")
         onewayBabel.textColor = HexColor("#FFFFFF")
 //        bannerImage.image = UIImage(named: "onewayBanner")

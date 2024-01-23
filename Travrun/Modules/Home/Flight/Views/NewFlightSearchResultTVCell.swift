@@ -104,7 +104,7 @@ class NewFlightSearchResultTVCell: TableViewCell {
             print("Similar List Count: \(similarListCount)")
             
             if similarListCount > 1 {
-                setuplabels(lbl: moreSimlarOptionlbl, text: "More similar options(\(similarListCount))", textcolor: UIColor.WhiteColor, font: UIFont.latoRegular(size: 12), align: .right)
+                setuplabels(lbl: moreSimlarOptionlbl, text: "More similar options(\(similarListCount))", textcolor: UIColor.AppLabelColor, font: UIFont.InterRegular(size: 12), align: .right)
                 showSimilarlbl()
             } else {
                 hideSimilarlbl()
@@ -206,7 +206,7 @@ extension NewFlightSearchResultTVCell: UITableViewDelegate,UITableViewDataSource
             cell.economyLabel.text =  data.cabin_class
             cell.airlinelogo.sd_setImage(with: URL(string: data.operator_image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
             
-            cell.airlinelbl.text = "(\(data.operator_code ?? "")-\(data.flight_number ?? ""))"
+            cell.airlinelbl.text = " (\(data.operator_code ?? "")-\(data.flight_number ?? ""))"
             cell.durationlbl.text = data.duration ?? ""
             cell.noofStopslbl.text = "\(data.no_of_stops ?? 0) Stops"
             
@@ -224,11 +224,11 @@ extension NewFlightSearchResultTVCell: UITableViewDelegate,UITableViewDataSource
                 cell.cabinlbl.text = convertToDesiredFormat(data.weight_Allowance ?? "")
             }
             
-            cell.separatorLabel.isHidden = true
+            cell.separatorLabel.isHidden = false
             if key == "circle" {
                 cell.separatorLabel.isHidden = false
                 if tableView.isLast(for: indexPath) == true {
-                    cell.separatorLabel.isHidden = true
+                    cell.separatorLabel.isHidden = false
                     cell.deplogo.image = UIImage(named: "flightDown")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppBtnColor)
 //                    cell.topView.isHidden = true
                 }

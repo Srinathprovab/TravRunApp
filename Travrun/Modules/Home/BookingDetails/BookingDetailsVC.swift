@@ -1229,8 +1229,8 @@ extension BookingDetailsVC {
                 payload["to"] = defaults.string(forKey:UserDefaultsKeys.toCity)
                 payload["to_loc_id"] = defaults.string(forKey:UserDefaultsKeys.tolocid)
                 
-                payload["depature"] = defaults.string(forKey:UserDefaultsKeys.calDepDate)
-                payload["return"] = defaults.string(forKey:UserDefaultsKeys.calRetDate)
+                payload["depature"] = defaults.string(forKey:UserDefaultsKeys.rcalDepDate)
+                payload["return"] = defaults.string(forKey:UserDefaultsKeys.rcalRetDate)
                 payload["out_jrn"] = "All Times"
                 payload["ret_jrn"] = "All Times"
                 payload["carrier"] = ""
@@ -1264,7 +1264,7 @@ extension BookingDetailsVC {
                     showToast(message: "Please Select Different Citys")
                 }else if checkDepartureAndReturnDates(payload, p1: "depature", p2: "return") == false {
                     showToast(message: "Invalid Date")
-                }else{
+                } else{
                     gotoSearchFlightResultVC(payload33: payload)
                 }
                 

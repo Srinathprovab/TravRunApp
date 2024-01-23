@@ -2,7 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,62 +22,70 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0W-st-kZg">
                         <rect key="frame" x="0.0" y="0.0" width="391" height="163"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DvT-bk-Axu">
-                                <rect key="frame" x="16" y="70" width="60" height="60"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DvT-bk-Axu">
+                                <rect key="frame" x="16" y="71.5" width="60" height="57"/>
+                                <color key="tintColor" name="AppImageDefaultColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="hEX-zA-2SF"/>
                                     <constraint firstAttribute="height" constant="60" id="lL1-hs-vfL"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdZ-av-uCd">
-                                <rect key="frame" x="76" y="78" width="300" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="IsJ-oK-GRR"/>
-                                    <constraint firstAttribute="width" constant="300" id="rP1-2r-LRw"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62n-dA-B6M">
-                                <rect key="frame" x="76" y="102" width="300" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="oL9-JQ-lga">
+                                <rect key="frame" x="86" y="73" width="300" height="54"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUc-gT-OTv">
-                                        <rect key="frame" x="276" y="0.0" width="24" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DdZ-av-uCd">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="IsJ-oK-GRR"/>
+                                            <constraint firstAttribute="width" constant="300" id="rP1-2r-LRw"/>
+                                        </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain"/>
-                                        <connections>
-                                            <action selector="didTapOnEditProfileBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mF2-tY-xuv"/>
-                                        </connections>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add your details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXn-zr-vTF">
-                                        <rect key="frame" x="12" y="5" width="121.5" height="20"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62n-dA-B6M">
+                                        <rect key="frame" x="0.0" y="24" width="200" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUc-gT-OTv">
+                                                <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain"/>
+                                                <connections>
+                                                    <action selector="didTapOnEditProfileBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mF2-tY-xuv"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="add your details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UXn-zr-vTF">
+                                                <rect key="frame" x="12" y="5" width="188" height="20"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="UXn-zr-vTF" firstAttribute="centerY" secondItem="62n-dA-B6M" secondAttribute="centerY" id="2AL-jD-dUe"/>
+                                            <constraint firstAttribute="bottom" secondItem="pUc-gT-OTv" secondAttribute="bottom" id="2zQ-0X-G5b"/>
+                                            <constraint firstAttribute="bottom" secondItem="pUc-gT-OTv" secondAttribute="bottom" id="IbK-5h-zVx"/>
+                                            <constraint firstAttribute="bottom" secondItem="UXn-zr-vTF" secondAttribute="bottom" constant="5" id="J9d-9l-KuJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="pUc-gT-OTv" secondAttribute="trailing" id="Pa4-bz-o9V"/>
+                                            <constraint firstAttribute="width" constant="200" id="ant-dx-zMM"/>
+                                            <constraint firstItem="pUc-gT-OTv" firstAttribute="top" secondItem="62n-dA-B6M" secondAttribute="top" id="b2Q-4O-8Ar"/>
+                                            <constraint firstItem="pUc-gT-OTv" firstAttribute="leading" secondItem="62n-dA-B6M" secondAttribute="leading" id="ctj-vX-hkO"/>
+                                            <constraint firstAttribute="height" constant="30" id="cy7-N2-91H"/>
+                                            <constraint firstItem="UXn-zr-vTF" firstAttribute="leading" secondItem="62n-dA-B6M" secondAttribute="leading" constant="12" id="jAH-Re-d2C"/>
+                                            <constraint firstAttribute="trailing" secondItem="UXn-zr-vTF" secondAttribute="trailing" id="r0E-sc-Ukc"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="UXn-zr-vTF" firstAttribute="centerY" secondItem="62n-dA-B6M" secondAttribute="centerY" id="2AL-jD-dUe"/>
-                                    <constraint firstItem="UXn-zr-vTF" firstAttribute="leading" secondItem="62n-dA-B6M" secondAttribute="leading" constant="12" id="2Wx-AU-Uaq"/>
-                                    <constraint firstAttribute="bottom" secondItem="pUc-gT-OTv" secondAttribute="bottom" id="IbK-5h-zVx"/>
-                                    <constraint firstAttribute="width" constant="300" id="c8T-I2-Eat"/>
-                                    <constraint firstAttribute="height" constant="30" id="cy7-N2-91H"/>
-                                    <constraint firstItem="UXn-zr-vTF" firstAttribute="top" secondItem="62n-dA-B6M" secondAttribute="top" constant="5" id="ls9-pN-UZE"/>
-                                    <constraint firstItem="pUc-gT-OTv" firstAttribute="top" secondItem="62n-dA-B6M" secondAttribute="top" id="odW-J2-fYH"/>
-                                </constraints>
-                            </view>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.81176470588235294" green="0.92549019607843142" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="DvT-bk-Axu" firstAttribute="leading" secondItem="E0W-st-kZg" secondAttribute="leading" constant="16" id="3x7-Ul-R7N"/>
-                            <constraint firstItem="DdZ-av-uCd" firstAttribute="top" secondItem="E0W-st-kZg" secondAttribute="top" constant="78" id="8HT-ua-GeE"/>
-                            <constraint firstItem="62n-dA-B6M" firstAttribute="leading" secondItem="DdZ-av-uCd" secondAttribute="leading" id="AXH-Qe-EIU"/>
                             <constraint firstAttribute="bottom" secondItem="DvT-bk-Axu" secondAttribute="bottom" constant="33" id="EtF-2W-jIW"/>
-                            <constraint firstAttribute="bottom" secondItem="62n-dA-B6M" secondAttribute="bottom" constant="31" id="Gez-0B-psR"/>
+                            <constraint firstItem="oL9-JQ-lga" firstAttribute="centerY" secondItem="DvT-bk-Axu" secondAttribute="centerY" id="HUl-MY-agT"/>
+                            <constraint firstItem="oL9-JQ-lga" firstAttribute="leading" secondItem="DvT-bk-Axu" secondAttribute="trailing" constant="10" id="Y1r-Ig-F8D"/>
                             <constraint firstAttribute="height" constant="163" id="agB-PM-X5h"/>
-                            <constraint firstItem="DdZ-av-uCd" firstAttribute="leading" secondItem="DvT-bk-Axu" secondAttribute="trailing" id="t3i-Z4-qsa"/>
-                            <constraint firstItem="62n-dA-B6M" firstAttribute="top" secondItem="DdZ-av-uCd" secondAttribute="bottom" id="xDa-L8-IrV"/>
+                            <constraint firstAttribute="trailing" secondItem="oL9-JQ-lga" secondAttribute="trailing" constant="5" id="sl2-bC-dU4"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -88,9 +98,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="btnWidth" destination="c8T-I2-Eat" id="DiO-RM-BqW"/>
+                <outlet property="btnWidth" destination="ant-dx-zMM" id="eTy-Dl-9bm"/>
                 <outlet property="editProfileBtn" destination="pUc-gT-OTv" id="YTR-2V-ocx"/>
                 <outlet property="editProfileView" destination="62n-dA-B6M" id="dfb-jA-p31"/>
+                <outlet property="editProfileViewHeight" destination="cy7-N2-91H" id="Qwd-7s-KRH"/>
                 <outlet property="editProfilelbl" destination="UXn-zr-vTF" id="ioy-On-Iax"/>
                 <outlet property="loginBtn" destination="DdZ-av-uCd" id="eMA-gz-J0u"/>
                 <outlet property="profileImage" destination="DvT-bk-Axu" id="sey-3K-moH"/>
@@ -99,6 +110,10 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <namedColor name="AppImageDefaultColor">
+            <color red="0.35699999332427979" green="0.35699999332427979" blue="0.35699999332427979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

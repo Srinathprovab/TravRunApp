@@ -27,6 +27,7 @@ class SideMenuViewController: BaseTableVC, ProfileDetailsViewModelDelegate, Logo
         viewmodel1 = ProfileDetailsViewModel(self)
         logoutvm = LogoutViewModel(self)
         setupUI()
+        setupMenuTVCells()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,22 +59,20 @@ class SideMenuViewController: BaseTableVC, ProfileDetailsViewModelDelegate, Logo
     
     
     func setupUI() {
-        setupMenuTVCells()
         commonTableView.isScrollEnabled = true
         commonTableView.registerTVCells(["MenuBGTVCell",
                                          "QuickLinkTableViewCell",
                                          "SideMenuTitleTVCell",
-                                         "EmptyTVCell"])
-    }
+                                         "EmptyTVCell", "SupportTVCellTableViewCell"])
+      }
     
     func setupMenuTVCells() {
-        
         tablerow.removeAll()
         tablerow.append(TableRow(cellType: .MenuBGTVCell))
         tablerow.append(TableRow(height: 20,cellType: .EmptyTVCell))
         tablerow.append(TableRow(title:"Services",key: "links", image: "", height: 250, cellType: .QuickLinkTableViewCell))
         tablerow.append(TableRow(height: 10, bgColor: HexColor("#FFFFFF") , cellType: .EmptyTVCell))
-        tablerow.append(TableRow(title:"Services",key: "bookings", image: "",height: 170, cellType: .QuickLinkTableViewCell))
+        tablerow.append(TableRow(title:"Services",key: "bookings", image: "",height: 170, cellType: .SupportTVCellTableViewCell))
         tablerow.append(TableRow(height: 80, cellType: .EmptyTVCell))
         if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == true {
             tablerow.append(TableRow(title:"Logout",key: "logout", image: "IonLogOut",cellType:.SideMenuTitleTVCell))
@@ -90,37 +89,50 @@ class SideMenuViewController: BaseTableVC, ProfileDetailsViewModelDelegate, Logo
 
     }
     
+    override func didTaponFlightBtn(cell: QuickLinkTableViewCell) {
+        guard let vc = FlightViewController.newInstance.self else {return}
+        vc.modalPresentationStyle = .overFullScreen
+        vc.isfromVc = "SideMenuViewController"
+        present(vc, animated: true)
+    }
+    override func didTaponHotelBtn(cell: QuickLinkTableViewCell) {
+        guard let vc = SearchHotelsVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overFullScreen
+        vc.isFromvc = "SideMenuViewController"
+        present(vc, animated: true)
+    }
+    
     override func didTaponCell(cell: SideMenuTitleTVCell) {
-        switch cell.menuTitlelbl.text {
-        case "Flight":
-            print("Flight")
-            showFlightSearchVC()
-            break
-        case "Hotel":
-            print("Hotel")
-            break
-        case "Visa":
-            print("Visa")
-            break
-        case "Auto Payment":
-            print("Auto Payment")
-            break
-        case "My Bookings":
-            print("My Bookings")
-            break
-        case "Free Cancelation":
-            print("Free Cancelation")
-            break
-        case "Customer Support":
-            print("Customer Support")
-            break
-        case "Logout":
-            print("logout here")
-            callLogoutAPI()
-            break
-        default:
-            break
-        }
+//        switch cell.menuTitlelbl.text {
+//        case "Flight":
+//            print("Flight")
+//            showFlightSearchVC()
+//            break
+//        case "Hotel":
+//            print("Hotel")
+//            break
+//        case "Visa":
+//            print("Visa")
+//            break
+//        case "Auto Payment":
+//            print("Auto Payment")
+//            break
+//        case "My Bookings":
+//            print("My Bookings")
+//            break
+//        case "Free Cancelation":
+//            print("Free Cancelation")
+//            break
+//        case "Customer Support":
+//            print("Customer Support")
+//            break
+//        case "Logout":
+//            print("logout here")
+//            callLogoutAPI()
+//            break
+//        default:
+//            break
+//        }
     }
     
     func showFlightSearchVC() {
@@ -158,10 +170,16 @@ class SideMenuViewController: BaseTableVC, ProfileDetailsViewModelDelegate, Logo
     
     
     override func didTapOnEditProfileBtn(cell: MenuBGTVCell) {
-//        guard let vc = EditProfileVC.newInstance.self else {return}
-//        vc.modalPresentationStyle = .fullScreen
-//        vc.showKey = "profiledit"
-//        present(vc, animated: true)
+        if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == true {
+            guard let vc = EditProfileVC.newInstance.self else {return}
+            vc.modalPresentationStyle = .fullScreen
+            vc.showKey = "profiledit"
+            present(vc, animated: true)
+        } else {
+            guard let vc = LoginViewController.newInstance.self else {return}
+            vc.modalPresentationStyle = .overCurrentContext
+            present(vc, animated: true)
+        }
     }
     
     //MARK: - call Profile Details API

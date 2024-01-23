@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -455,8 +456,8 @@ flight</string>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3cm-iU-loe">
                                                         <rect key="frame" x="0.0" y="0.0" width="184" height="74"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Infants(0-2)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7It-dX-iAm">
-                                                                <rect key="frame" x="13" y="7" width="73" height="22"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Infant(0-2)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7It-dX-iAm">
+                                                                <rect key="frame" x="13" y="7" width="66.333333333333329" height="22"/>
                                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
                                                                 <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -1201,6 +1202,7 @@ flight</string>
                 <outlet property="infantsView" destination="3cm-iU-loe" id="Rt8-9l-BMr"/>
                 <outlet property="outwardsLabel" destination="7HR-BI-DL5" id="gxK-zd-qUX"/>
                 <outlet property="outwardsView" destination="wDe-d4-VJd" id="bMx-py-rpt"/>
+                <outlet property="redCancelImage" destination="LkS-iM-BDG" id="qKi-pc-6ua"/>
                 <outlet property="returnDateLabel" destination="0hE-pg-WaZ" id="QGC-XY-fl3"/>
                 <outlet property="returnJournyLabel" destination="M7g-at-M1Y" id="DIN-mw-e8s"/>
                 <outlet property="returnJournyView" destination="krm-zV-k4z" id="J1R-Lu-fe4"/>

@@ -57,6 +57,7 @@ class HomeViewController: BaseTableVC, AllCountryCodeListViewModelDelegate, TopF
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        priceLabel.text = defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? ""
         print("HomeViewController")
         setUpView()
         viewmodel = TopFlightDetailsViewModel(self)
@@ -64,7 +65,6 @@ class HomeViewController: BaseTableVC, AllCountryCodeListViewModelDelegate, TopF
         callCountryListAPI()
         self.callApi()
     }
-    
     
     override func viewWillAppear(_ animated: Bool) {
         addObserver()
@@ -122,6 +122,7 @@ class HomeViewController: BaseTableVC, AllCountryCodeListViewModelDelegate, TopF
         } else {
             tableRow.append(TableRow(height: 0,cellType: .EmptyTVCell))
         }
+        tableRow.append(TableRow(height: 80,cellType: .EmptyTVCell))
         self.commonTVData = tableRow
         self.commonTableView.reloadData()
     }
@@ -134,8 +135,8 @@ class HomeViewController: BaseTableVC, AllCountryCodeListViewModelDelegate, TopF
     
     
     @IBAction func currencyButtonAction(_ sender: Any) {
-        
         guard let vc = SelectLanguageViewController.newInstance.self else {return}
+        priceLabel.text = defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? ""
         vc.modalPresentationStyle = .overCurrentContext
         callapibool = true
         self.present(vc, animated: true)
@@ -381,6 +382,8 @@ extension HomeViewController: UIGestureRecognizerDelegate {
 extension HomeViewController {
     
     func addObserver() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(currencyCall), name: Notification.Name("currency"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("nointernet"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTV), name: Notification.Name("reloadTV"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reload(notification:)), name: Notification.Name("reload"), object: nil)
@@ -490,6 +493,10 @@ extension HomeViewController {
         self.present(vc, animated: true)
     }
     
+    @objc func currencyCall()
+    {
+        priceLabel.text = defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? ""
+    }
     
     @objc func reloadTV() {
         //callApi()

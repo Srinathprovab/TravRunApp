@@ -175,7 +175,7 @@ class SelectLanguageViewController: BaseTableVC, CurrencyListViewModelDelegate {
                 default:
                     break
                 }
-            }else {
+            } else {
                 switch cell.titlelbl.text {
                 case "English":
                     defaults.set("EN", forKey: UserDefaultsKeys.APILanguageType)

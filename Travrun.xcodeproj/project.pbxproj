@@ -17,6 +17,8 @@
 		07077E932B0F152200D0010C /* AllCountryCodeListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07077E912B0F152200D0010C /* AllCountryCodeListModel.swift */; };
 		07077E942B0F152200D0010C /* All_country_code_list.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07077E922B0F152200D0010C /* All_country_code_list.swift */; };
 		07077E962B0F595200D0010C /* FlightDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07077E952B0F595200D0010C /* FlightDetailsViewController.swift */; };
+		070A8AAF2B5E696000026097 /* SupportTVCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070A8AAD2B5E696000026097 /* SupportTVCellTableViewCell.swift */; };
+		070A8AB02B5E696000026097 /* SupportTVCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 070A8AAE2B5E696000026097 /* SupportTVCellTableViewCell.xib */; };
 		071AEA5E2B2C5F3100C225A7 /* ModifySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071AEA5D2B2C5F3100C225A7 /* ModifySearchViewController.swift */; };
 		0731145C2B2314EE00394AC5 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0731145A2B2314ED00394AC5 /* AddressTableViewCell.swift */; };
 		0731145D2B2314EE00394AC5 /* AddressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0731145B2B2314ED00394AC5 /* AddressTableViewCell.xib */; };
@@ -61,6 +63,7 @@
 		073DB9CE2B2ACB6F00F6C75F /* FareRulesModelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073DB9CD2B2ACB6F00F6C75F /* FareRulesModelViewModel.swift */; };
 		073DB9D02B2ACC4300F6C75F /* FareRulesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073DB9CF2B2ACC4300F6C75F /* FareRulesModel.swift */; };
 		073DB9D22B2ACCB600F6C75F /* FareRulesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073DB9D12B2ACCB600F6C75F /* FareRulesData.swift */; };
+		0740246C2B4E723D0063BAD2 /* EditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0740246B2B4E723D0063BAD2 /* EditProfileVC.swift */; };
 		074946FD2B16030300238F8D /* AllCountryCodeListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074946FC2B16030300238F8D /* AllCountryCodeListViewModel.swift */; };
 		074946FF2B1611D600238F8D /* ProcessingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074946FE2B1611D600238F8D /* ProcessingViewController.swift */; };
 		074B39EF2B3EEF1700A43F77 /* HotelBookingDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074B39EE2B3EEF1700A43F77 /* HotelBookingDetailsViewModel.swift */; };
@@ -419,6 +422,8 @@
 		07077E912B0F152200D0010C /* AllCountryCodeListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCountryCodeListModel.swift; sourceTree = "<group>"; };
 		07077E922B0F152200D0010C /* All_country_code_list.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = All_country_code_list.swift; sourceTree = "<group>"; };
 		07077E952B0F595200D0010C /* FlightDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightDetailsViewController.swift; sourceTree = "<group>"; };
+		070A8AAD2B5E696000026097 /* SupportTVCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportTVCellTableViewCell.swift; sourceTree = "<group>"; };
+		070A8AAE2B5E696000026097 /* SupportTVCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SupportTVCellTableViewCell.xib; sourceTree = "<group>"; };
 		071AEA5D2B2C5F3100C225A7 /* ModifySearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifySearchViewController.swift; sourceTree = "<group>"; };
 		0731145A2B2314ED00394AC5 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		0731145B2B2314ED00394AC5 /* AddressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressTableViewCell.xib; sourceTree = "<group>"; };
@@ -463,6 +468,7 @@
 		073DB9CD2B2ACB6F00F6C75F /* FareRulesModelViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FareRulesModelViewModel.swift; sourceTree = "<group>"; };
 		073DB9CF2B2ACC4300F6C75F /* FareRulesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FareRulesModel.swift; sourceTree = "<group>"; };
 		073DB9D12B2ACCB600F6C75F /* FareRulesData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FareRulesData.swift; sourceTree = "<group>"; };
+		0740246B2B4E723D0063BAD2 /* EditProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileVC.swift; sourceTree = "<group>"; };
 		074946FC2B16030300238F8D /* AllCountryCodeListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllCountryCodeListViewModel.swift; sourceTree = "<group>"; };
 		074946FE2B1611D600238F8D /* ProcessingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessingViewController.swift; sourceTree = "<group>"; };
 		074B39EE2B3EEF1700A43F77 /* HotelBookingDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelBookingDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -831,6 +837,7 @@
 			children = (
 				070131742B218219000F45B2 /* SelectGenderTVCell.swift */,
 				070131762B218220000F45B2 /* SelectGenderTVCell.xib */,
+				0740246B2B4E723D0063BAD2 /* EditProfileVC.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1439,6 +1446,8 @@
 				07DD95D42B04CE0A0021494E /* QuickLinkTableViewCell.xib */,
 				07F484252B05FD0300AAB84A /* holidayTableViewCell.swift */,
 				07F484262B05FD0300AAB84A /* holidayTableViewCell.xib */,
+				070A8AAD2B5E696000026097 /* SupportTVCellTableViewCell.swift */,
+				070A8AAE2B5E696000026097 /* SupportTVCellTableViewCell.xib */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -2056,6 +2065,7 @@
 				076984CC2B19DA4F002422AF /* GuestRegisterTableViewCell.xib in Resources */,
 				3D5DEF752AFCC039007E3265 /* Poppins-Light.ttf in Resources */,
 				3D5DEF7B2AFCC039007E3265 /* Poppins-SemiBold.ttf in Resources */,
+				070A8AB02B5E696000026097 /* SupportTVCellTableViewCell.xib in Resources */,
 				3D5DEF782AFCC039007E3265 /* Poppins-ExtraBold.ttf in Resources */,
 				07DD95D62B04CE0A0021494E /* QuickLinkTableViewCell.xib in Resources */,
 				07CD5CE82B14A12B00D49204 /* PassengersInfoTableViewCell.xib in Resources */,
@@ -2178,6 +2188,7 @@
 				078BF7C22B0C679900174A80 /* RTJ_flight_list.swift in Sources */,
 				0786C08B2B48069800A65E2E /* ViewController+MFSDKServicesCall.swift in Sources */,
 				076BE5782B32ED2F002DD534 /* Filter_sumry.swift in Sources */,
+				0740246C2B4E723D0063BAD2 /* EditProfileVC.swift in Sources */,
 				3D0B28B32AFE1A7B001E1A69 /* ButtonTVCell.swift in Sources */,
 				073176872B4520A0006A1FBE /* BookingDetailsVC.swift in Sources */,
 				076984C72B19C102002422AF /* RegisterSelectionLoginTableViewCell.swift in Sources */,
@@ -2343,6 +2354,7 @@
 				3D0B28BD2AFE3722001E1A69 /* TabSelectCVCell.swift in Sources */,
 				070458F32B0E040D009EDF28 /* FromCityTVCell.swift in Sources */,
 				078BF7C12B0C679900174A80 /* Segments.swift in Sources */,
+				070A8AAF2B5E696000026097 /* SupportTVCellTableViewCell.swift in Sources */,
 				07DD95D12B04CA640021494E /* MenuBGTVCell.swift in Sources */,
 				07C481142B1ED853007030C8 /* Country_code.swift in Sources */,
 				076BE5552B32ECCE002DD534 /* HotelSearchViewModel.swift in Sources */,
@@ -2584,7 +2596,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Q9XRR2Y9GQ;
+				DEVELOPMENT_TEAM = 5TLY5PME9K;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Travrun/Info.plist;
@@ -2593,7 +2605,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2620,7 +2632,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = Q9XRR2Y9GQ;
+				DEVELOPMENT_TEAM = 5TLY5PME9K;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Travrun/Info.plist;
@@ -2629,7 +2641,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

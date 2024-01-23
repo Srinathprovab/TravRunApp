@@ -92,7 +92,7 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
         }
         
         self.datelbl.text = defaults.string(forKey:UserDefaultsKeys.calDepDate)
-        personsCategoryLabel.text = "\(adult ?? "0") Adults | \(child ?? "0") Children | \(infant ?? "") infants | \(eClass ?? "0")"
+        personsCategoryLabel.text = "\(adult ?? "0") Adults | \(child ?? "0") Children | \(infant ?? "") infant"
         backButtonView.layer.cornerRadius = backButtonView.layer.frame.width / 2
         editButtonView.layer.cornerRadius = editButtonView.layer.frame.width / 2
         leftButtonView.layer.cornerRadius = leftButtonView.layer.frame.width / 2

@@ -200,7 +200,7 @@ class Calvc: UIViewController {
     func handleCellSelected(cell: calendarCVCell, cellState: CellState) {
         cell.selectedView.isHidden = !cellState.isSelected
         
-        cell.selectedView.layer.cornerRadius = cell.selectedView.frame.width / 2
+        cell.selectedView.layer.cornerRadius = cell.selectedView.layer.frame.width / 2
         cell.clipsToBounds = true
         
         switch cellState.selectedPosition() {
@@ -208,25 +208,25 @@ class Calvc: UIViewController {
             //            cell.selectedView.layer.cornerRadius = 3
             //            cell.selectedView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
             //            cell.selectedView.isHidden = false
-            cell.selectedView.backgroundColor = UIColor.AppCalenderDateSelectColor
+            cell.selectedView.backgroundColor = HexColor("#3C627A")
             cell.label.textColor = UIColor.white
         case .middle:
             //            cell.selectedView.layer.cornerRadius = 3
             //            cell.selectedView.layer.maskedCorners = []
             //            cell.selectedView.isHidden = false
-            cell.selectedView.backgroundColor = UIColor.AppCalenderDateSelectColor.withAlphaComponent(0.3)
+            cell.selectedView.backgroundColor = HexColor("#3C627A").withAlphaComponent(0.3)
             cell.label.textColor = UIColor.AppLabelColor.withAlphaComponent(0.4)
         case .right:
             //            cell.selectedView.layer.cornerRadius = 3
             //            cell.selectedView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner]
             //            cell.selectedView.isHidden = false
-            cell.selectedView.backgroundColor = UIColor.AppCalenderDateSelectColor
+            cell.selectedView.backgroundColor = HexColor("#3C627A")
             cell.label.textColor = UIColor.white
         case .full:
             //            cell.selectedView.layer.cornerRadius = 3
             //            cell.selectedView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
             //            cell.selectedView.isHidden = false
-            cell.selectedView.backgroundColor = UIColor.AppCalenderDateSelectColor
+            cell.selectedView.backgroundColor = HexColor("#3C627A")
             cell.label.textColor = UIColor.white
         default: break
         }

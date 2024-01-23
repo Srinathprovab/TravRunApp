@@ -1,8 +1,8 @@
 //
-//  MyAccountVC.swift
+//  EditProfileVC.swift
 //  BabSafar
 //
-//  Created by MA673 on 27/07/22.
+//  Created by MA673 on 21/07/22.
 //
 
 import UIKit
@@ -10,22 +10,21 @@ import MobileCoreServices
 import Alamofire
 
 
-
-class MyAccountVC: BaseTableVC, ProfileDetailsViewModelDelegate {
+class EditProfileVC: BaseTableVC, ProfileDetailsViewModelDelegate {
     
     
-    @IBOutlet weak var nav: NavBar!
+    @IBOutlet weak var backBtnView: UIView!
+    @IBOutlet weak var nav: UIView!
     @IBOutlet weak var profileImgView: UIView!
     @IBOutlet weak var profileImg: UIImageView!
     @IBOutlet weak var changeProfileImgView: UIView!
     @IBOutlet weak var camImg: UIImageView!
     @IBOutlet weak var changeProfileBtn: UIButton!
-    @IBOutlet weak var navHeight: NSLayoutConstraint!
     
-    static var newInstance: MyAccountVC? {
+    static var newInstance: EditProfileVC? {
         let storyboard = UIStoryboard(name: Storyboard.Login.name,
                                       bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? MyAccountVC
+        let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? EditProfileVC
         return vc
     }
     
@@ -46,7 +45,7 @@ class MyAccountVC: BaseTableVC, ProfileDetailsViewModelDelegate {
     
     var viewmodel:ProfileDetailsViewModel?
     var payload = [String:Any]()
-    var showKey = "profile"
+    var showKey = "profiledit"
     var pickerbool = false
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,37 +77,22 @@ class MyAccountVC: BaseTableVC, ProfileDetailsViewModelDelegate {
     //MARK: - callApi
     func callApi() {
         
-        
         if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == true {
-            navHeight.constant = 180
             TableViewHelper.EmptyMessage(message: "", tableview: commonTableView, vc: self)
-            self.changeProfileImgView.isHidden = false
             self.profileImgView.isHidden = false
             camImg.isHidden = false
-            nav.filterBtnView.isHidden = false
+            
             
             payload["user_id"] = defaults.string(forKey: UserDefaultsKeys.userid) ?? "0"
             viewmodel?.CallGetProileDetails_API(dictParam: payload)
             
             
         }else {
-            navHeight.constant = 90
-            self.changeProfileImgView.isHidden = true
             self.profileImgView.isHidden = true
             camImg.isHidden = true
-            nav.filterBtnView.isHidden = true
-            TableViewHelper.EmptyMessage(message: "Please Login To View Your Profile Details", tableview: commonTableView, vc: self)
-            gotoLoginVC()
             
+            TableViewHelper.EmptyMessage(message: "Please Login To View Your Profile Details", tableview: commonTableView, vc: self)
         }
-    }
-    
-    
-    func gotoLoginVC() {
-        guard let vc = LoginViewController.newInstance.self else {return}
-        vc.modalPresentationStyle = .overCurrentContext
-        callapibool = true
-        present(vc, animated: true)
     }
     
     //MARK: - getProfileDetails
@@ -134,11 +118,11 @@ class MyAccountVC: BaseTableVC, ProfileDetailsViewModelDelegate {
             
         }
         DispatchQueue.main.async {[self] in
-            nav.titlelbl.text = "My Profile"
-            nav.titlelbl.textColor = HexColor("#191919")
-            nav.titlelbl.font = .InterMedium(size: 20)
-            changeProfileImgView.isHidden = true
-            appendProfileTvcells(str: "profile")
+//            nav.titlelbl.text = "Edit Profile"
+//            nav.contentView.backgroundColor = HexColor("")
+//            changeProfileImgView.isHidden = false
+//            nav.filterBtnView.isHidden = true
+            appendProfileTvcells(str: "profiledit")
         }
     }
     
@@ -150,81 +134,76 @@ class MyAccountVC: BaseTableVC, ProfileDetailsViewModelDelegate {
         setupUI()
         setupTV()
         viewmodel = ProfileDetailsViewModel(self)
-        
     }
     
     
     func setupUI() {
-        nav.titlelbl.textColor = HexColor("#191919")
-        nav.titlelbl.font = .InterMedium(size: 20)
-        nav.titlelbl.text = "My Profile"
-        nav.contentView.backgroundColor = HexColor("#CFECFF")
+        
+        backBtnView.layer.cornerRadius = backBtnView.layer.frame.width / 2
         changeProfileImgView.backgroundColor = .WhiteColor
         profileImgView.backgroundColor = .WhiteColor
         changeProfileImgView.backgroundColor = .WhiteColor
         changeProfileImgView.addBottomBorderWithColor(color: .AppLabelColor, width: 0.8)
-        
         profileImgView.layer.borderWidth = 4
         profileImgView.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
-        
         profileImgView.layer.cornerRadius = 50
         profileImgView.clipsToBounds = true
-        
-        profileImg.layer.cornerRadius = 45
-        profileImg.clipsToBounds = true
-        
-        
+        profileImg.contentMode = .scaleToFill
         changeProfileImgView.layer.cornerRadius = 20
         changeProfileImgView.clipsToBounds = true
         changeProfileBtn.setTitle("", for: .normal)
-        camImg.image = UIImage(named: "cam")
+        camImg.image = UIImage(named: "cam")?.withRenderingMode(.alwaysOriginal)
     }
     
     func setupTV() {
         
-        nav.backBtnView.isHidden = true
-        nav.filterImg.image = UIImage(named: "pencilEdit")?.withRenderingMode(.alwaysOriginal)
-        nav.filterBtn.addTarget(self, action: #selector(didTapOnEditAccountBtn(_:)), for: .touchUpInside)
-        commonTableView.registerTVCells(["TextfieldTVCell","ButtonTVCell","UnderLineTVCell","SignUpWithTVCell","EmptyTVCell","SelectGenderTVCell"])
-        
-        
+//        nav.backBtnView.isHidden = false
+//        nav.filterImg.image = UIImage(named: "edit")?.withRenderingMode(.alwaysOriginal)
+//        nav.filterBtn.addTarget(self, action: #selector(didTapOnEditAccountBtn(_:)), for: .touchUpInside)
+//        nav.backBtn.addTarget(self, action: #selector(didTapOnBackBtn(_:)), for: .touchUpInside)
+        commonTableView.registerTVCells(["TextfieldTVCell",
+                                         "ButtonTVCell",
+                                         "UnderLineTVCell",
+                                         "SignUpWithTVCell",
+                                         "EmptyTVCell",
+                                         "SelectGenderTVCell"])
+    }
+    
+    
+    @objc func didTapOnBackBtn(_ sender:UIButton) {
+        dismiss(animated: true)
     }
     
     
     func appendProfileTvcells(str:String) {
         tablerow.removeAll()
+        
+        tablerow.append(TableRow(height:10,cellType:.EmptyTVCell))
         tablerow.append(TableRow(title:gender,key:"gender",cellType:.SelectGenderTVCell))
         tablerow.append(TableRow(title:"First Name",subTitle: pdetails?.first_name ?? "",key: str, text: "1", tempText: "First Name",cellType:.TextfieldTVCell))
         tablerow.append(TableRow(title:"Last Name",subTitle: pdetails?.last_name ?? "",key: str, text: "2", tempText: "Last Name",cellType:.TextfieldTVCell))
         tablerow.append(TableRow(title:"Mobile Number",subTitle: pdetails?.phone ?? "",key: str, text: "3", tempText: "+961",cellType:.TextfieldTVCell))
         tablerow.append(TableRow(title:"Email address",subTitle: pdetails?.email ?? "",key: str, text: "4", tempText: "Address",cellType:.TextfieldTVCell))
-//        tablerow.append(TableRow(title:"Country Name",subTitle: pdetails?.country_name ?? "",key: str, text: "7", tempText: "Country Name",cellType:.TextfieldTVCell))
-//        tablerow.append(TableRow(title:"City Name",subTitle: pdetails?.city_name ?? "",key: str, text: "9", tempText: "City Name",cellType:.TextfieldTVCell))
         
-        //        tablerow.append(TableRow(title:"Address",subTitle: pdetails?.address ?? "",key: str, text: "5", tempText: "Address",cellType:.TextfieldTVCell))
-        //
-        //        tablerow.append(TableRow(title:"Address2",subTitle: pdetails?.address2 ?? "",key: str, text: "6", tempText: "Address2",cellType:.TextfieldTVCell))
-        //
-        //        tablerow.append(TableRow(title:"Country Name",subTitle: pdetails?.country_name ?? "",key: str, text: "7", tempText: "Country Name",cellType:.TextfieldTVCell))
-        //
-        //        tablerow.append(TableRow(title:"State Name",subTitle: pdetails?.state_name ?? "",key: str, text: "8", tempText: "State Name",cellType:.TextfieldTVCell))
-        //
-        //
+        tablerow.append(TableRow(title:"Address",subTitle: pdetails?.address ?? "",key: str, text: "5", tempText: "Address",cellType:.TextfieldTVCell))
         
-        //
-        //
-        //        tablerow.append(TableRow(title:"Pincode",subTitle: pdetails?.pin_code ?? "",key: str, text: "10", tempText: "City Name",cellType:.TextfieldTVCell))
+        tablerow.append(TableRow(title:"Address2",subTitle: pdetails?.address2 ?? "",key: str, text: "6", tempText: "Address2",cellType:.TextfieldTVCell))
         
-        tablerow.append(TableRow(title:"Date Of Birth",subTitle: dob,key: str, text: "11",key1: "pdob", tempText: "Date Of Birth",cellType:.TextfieldTVCell))
+        tablerow.append(TableRow(title:"Country Name",subTitle: pdetails?.country_name ?? "",key: str, text: "7", tempText: "Country Name",cellType:.TextfieldTVCell))
+        
+        tablerow.append(TableRow(title:"State Name",subTitle: pdetails?.state_name ?? "",key: str, text: "8", tempText: "State Name",cellType:.TextfieldTVCell))
         
         
+        tablerow.append(TableRow(title:"City Name",subTitle: pdetails?.city_name ?? "",key: str, text: "9", tempText: "City Name",cellType:.TextfieldTVCell))
         
-        if showKey == "edit" {
-            //   tablerow.append(TableRow(title:"Password",subTitle: pass,key: "profilepass", text: "5", tempText: "Password",cellType:.TextfieldTVCell))
-            
-            tablerow.append(TableRow(title:"Update",key: "filterbtn",cellType:.ButtonTVCell))
-            tablerow.append(TableRow(height:30,cellType:.EmptyTVCell))
-        }
+        
+        tablerow.append(TableRow(title:"Pincode",subTitle: pdetails?.pin_code ?? "",key: str, text: "10", tempText: "City Name",cellType:.TextfieldTVCell))
+        
+        tablerow.append(TableRow(title:"Date Of Birth",subTitle: pdetails?.date_of_birth ?? "",key: str, text: "11",key1: "pdob", tempText: "Date Of Birth",cellType:.TextfieldTVCell))
+        
+        
+        tablerow.append(TableRow(title:"Update",key: "filterbtn",cellType:.ButtonTVCell))
+        tablerow.append(TableRow(height:30,cellType:.EmptyTVCell))
         
         
         commonTVData = tablerow
@@ -241,11 +220,7 @@ class MyAccountVC: BaseTableVC, ProfileDetailsViewModelDelegate {
         v.layer.borderColor = UIColor.AppBorderColor.cgColor
     }
     
-    func setupLabels(lbl:UILabel,text:String,textcolor:UIColor,font:UIFont) {
-        lbl.text = text
-        lbl.textColor = textcolor
-        lbl.font = font
-    }
+    
     
     
     override func editingTextField(tf: UITextField) {
@@ -294,12 +269,10 @@ class MyAccountVC: BaseTableVC, ProfileDetailsViewModelDelegate {
     
     override func didSelectMaleRadioBtn(cell: SelectGenderTVCell) {
         gender = cell.gender
-        defaults.set(gender, forKey: UserDefaultsKeys.gender)
     }
     
     override func didSelectOnFemaleBtn(cell: SelectGenderTVCell) {
         gender = cell.gender
-        defaults.set(gender, forKey: UserDefaultsKeys.gender)
     }
     
     override func didTapOnForGetPassword(cell:TextfieldTVCell){
@@ -310,10 +283,16 @@ class MyAccountVC: BaseTableVC, ProfileDetailsViewModelDelegate {
     
     
     @objc func didTapOnEditAccountBtn(_ sender: UIButton) {
-        showKey = "edit"
+        showKey = "profiledit"
         changeProfileImgView.isHidden = false
         appendProfileTvcells(str: "profiledit")
     }
+    
+    
+    @IBAction func backButtonAction(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
     
     @IBAction func didTapOnChangeProfilePhotoBtn(_ sender: Any) {
         let alert = UIAlertController(title: "Choose To Open", message: "", preferredStyle: .alert)
@@ -357,20 +336,19 @@ class MyAccountVC: BaseTableVC, ProfileDetailsViewModelDelegate {
         }else if email.isValidEmail() == false {
             showToast(message: "Enter Valid Email")
         }
-        
-        //        else if address.isEmpty == true {
-        //            showToast(message: "Enter Address")
-        //        }else if countryname.isEmpty == true {
-        //            showToast(message: "Enter Country Name")
-        //        }else if statename.isEmpty == true {
-        //            showToast(message: "State Name")
-        //        }else if cityname.isEmpty == true {
-        //            showToast(message: "City Name")
-        //        }else if pincode.isEmpty == true {
-        //            showToast(message: "Enter PinCode")
-        //        }else if dob.isEmpty == true {
-        //            showToast(message: "Enter Date Of Birth")
-        //        }
+//        else if address.isEmpty == true {
+//            showToast(message: "Enter Address")
+//        }else if countryname.isEmpty == true {
+//            showToast(message: "Enter Country Name")
+//        }else if statename.isEmpty == true {
+//            showToast(message: "State Name")
+//        }else if cityname.isEmpty == true {
+//            showToast(message: "City Name")
+//        }else if pincode.isEmpty == true {
+//            showToast(message: "Enter PinCode")
+//        }else if dob.isEmpty == true {
+//            showToast(message: "Enter Date Of Birth")
+//        }
         
         
         else {
@@ -388,7 +366,9 @@ class MyAccountVC: BaseTableVC, ProfileDetailsViewModelDelegate {
             payload["pin_code"] = pincode
             payload["date_of_birth"] = convertDateFormat(inputDate: dob, f1: "dd-MM-yyyy", f2: "yyyy-MM-dd")
             payload["gender"] = gender
+     
             
+            //  viewmodel?.UpdateProfileDetails(dictParam: payload)
             callUpdateProfileAPI()
         }
     }
@@ -400,8 +380,8 @@ class MyAccountVC: BaseTableVC, ProfileDetailsViewModelDelegate {
         
         let seconds = 1.0
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
-            self.showKey = "profile"
-            self.appendProfileTvcells(str: "profile")
+            self.showKey = "profiledit"
+            self.appendProfileTvcells(str: "profiledit")
         }
     }
     
@@ -427,14 +407,20 @@ class MyAccountVC: BaseTableVC, ProfileDetailsViewModelDelegate {
             
             switch resp.result{
             case let .success(data):
-                print("AF.upload ===== > \(data)")
+                print("AF.upload ===== >")
                 self.viewmodel?.view.hideLoader()
                 self.showToast(message: data.msg ?? "")
-                DispatchQueue.main.async {
-                    self.changeProfileImgView.isHidden = true
-                    self.showKey = "profile"
-                    self.appendProfileTvcells(str: "profile")
+                //                DispatchQueue.main.async {
+                //                    self.changeProfileImgView.isHidden = true
+                //                    self.showKey = "profiledit"
+                //                    self.appendProfileTvcells(str: "profiledit")
+                //                }
+                
+                let seconds = 2.0
+                DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+                    self.dismiss(animated: true)
                 }
+                
                 
                 break
                 
@@ -451,7 +437,7 @@ class MyAccountVC: BaseTableVC, ProfileDetailsViewModelDelegate {
 
 
 
-extension MyAccountVC:UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+extension EditProfileVC:UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -494,10 +480,8 @@ extension MyAccountVC:UIImagePickerControllerDelegate & UINavigationControllerDe
             self.present(alert, animated: true, completion: nil)
         }
     }
-}
-
-extension MyAccountVC {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        defaults.set(gender, forKey: UserDefaultsKeys.gender)
-    }
+    
+    
+    
+    
 }

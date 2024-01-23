@@ -16,6 +16,9 @@ protocol MenuBGTVCellDelegate {
 
 class MenuBGTVCell: TableViewCell {
     
+    @IBOutlet weak var topConstant: NSLayoutConstraint!
+    @IBOutlet weak var bottomConst: NSLayoutConstraint!
+    @IBOutlet weak var leftConstrnt: NSLayoutConstraint!
     @IBOutlet weak var btnWidth: NSLayoutConstraint!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var loginBtn: UIButton!
@@ -39,40 +42,58 @@ class MenuBGTVCell: TableViewCell {
         // Configure the view for the selected state
     }
     
-    
     override func updateUI() {
         loginBtn.titleLabel?.font = UIFont.InterMedium(size: 20)
         if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == true {
-            loginBtn.isHidden = false
+//            loginBtn.isHidden = false
             loginBtn.isUserInteractionEnabled = false
+            
             loginBtn.setTitle("\(pdetails?.first_name ?? pdetails?.email ?? "") \(pdetails?.last_name ?? "")", for: .normal)
+            bottomConst.constant = 25
+            loginBtn.setTitleColor(.AppLabelColor , for: .normal)
+            loginBtn.titleLabel?.font = UIFont.InterMedium(size: 20)
+            loginBtn.titleLabel?.textAlignment = .left
             profileImage.sd_setImage(with: URL(string: pdetails?.image ?? "" ), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
             editProfileView.isHidden = false
             editProfilelbl.text = "Edit Profile"
+            editProfilelbl.textAlignment = .center
+            editProfilelbl.font = .InterMedium(size: 12)
+            profileImage.image = UIImage(named: "profile")?.withRenderingMode(.alwaysOriginal)
             editProfilelbl.textColor = .white
             editProfileView.layer.cornerRadius = 4
             editProfileView.backgroundColor = .AppBtnColor
-            btnWidth.constant = 170
+            btnWidth.constant = 130
+//            leftConstrnt.constant = 0
             
         } else {
-            profileImage.image = UIImage(named: "profile")?.withRenderingMode(.alwaysOriginal)
-            editProfileView.isHidden = false
+//            bottomConst.constant = 31
+//            profileImage.image = UIImage(named: "profile")?.withRenderingMode(.alwaysOriginal)
+            editProfileView.isHidden = true
             loginBtn.setTitle("Login / Signup", for: .normal)
+            editProfilelbl.text = "Add Your Details"
+            editProfilelbl.textAlignment = .left
+            editProfilelbl.textColor = .AppLabelColor
+            editProfilelbl.font = UIFont.latoRegular(size: 14)
+            editProfileView.backgroundColor = .clear
             loginBtn.isUserInteractionEnabled = true
+//            leftConstrnt.constant = 10
             btnWidth.constant = 300
+            editProfilelbl.textAlignment = .left
+            btnWidth.constant = 130
         }
     }
     
     
     func setupUI() {
-        profileImage.image = UIImage(named: "profile")?.withRenderingMode(.alwaysOriginal)
+//        leftConstrnt.constant = 10
+//        bottomConst.constant = 31
+//        profileImage.image = UIImage(named: "profile")?.withRenderingMode(.alwaysOriginal)
         profileImage.layer.cornerRadius = profileImage.layer.frame.width / 2
         profileImage.clipsToBounds = true
-        profileImage.layer.borderWidth = 4
+        profileImage.layer.borderWidth = 1
         profileImage.layer.borderColor = UIColor.WhiteColor.cgColor
         
         editProfileView.isHidden = true
-//        editProfileBtn.setTitle("Add Your Details", for: .normal)
         editProfileBtn.setTitleColor(.AppLabelColor, for: .normal)
         
         editProfileBtn.titleLabel?.font = UIFont.InterRegular(size: 12)
@@ -84,7 +105,7 @@ class MenuBGTVCell: TableViewCell {
         editProfileView.backgroundColor = .clear
         editProfileView.layer.cornerRadius = 15
         editProfileView.clipsToBounds = true
-        
+        editProfilelbl.textAlignment = .left
         editProfilelbl.text = "Add Your Details"
         editProfilelbl.textColor = .AppLabelColor
         editProfilelbl.font = UIFont.latoRegular(size: 14)
@@ -99,6 +120,5 @@ class MenuBGTVCell: TableViewCell {
     
     @IBAction func didTapOnEditProfileBtn(_ sender: Any) {
         delegate?.didTapOnEditProfileBtn(cell: self)
-        
     }
 }

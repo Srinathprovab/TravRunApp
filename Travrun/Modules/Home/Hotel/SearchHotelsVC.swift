@@ -47,7 +47,7 @@ class SearchHotelsVC: BaseTableVC, TopFlightDetailsViewModelDelegate {
     }
     
     
-  
+    
     
     //MARK: CALL TOP FLIGHT HOTEL DETAILS API FUNCTION
     func callTopFlightsHotelsDetailsAPI() {
@@ -97,17 +97,17 @@ class SearchHotelsVC: BaseTableVC, TopFlightDetailsViewModelDelegate {
         commonTableView.reloadData()
     }
     
-//    @objc func didTapOnBackBtn(_ sender:UIButton) {
-//        callapibool = true
-//        if isFromvc == "dashboardvc" {
-//            dismiss(animated: true)
-//        } else {
-////            guard let vc = DashBoaardTabbarVC.newInstance.self else {return}
-////            vc.modalPresentationStyle = .overCurrentContext
-////            vc.selectedIndex = 0
-////            self.present(vc, animated: false)
-//        }
-//    }
+    //    @objc func didTapOnBackBtn(_ sender:UIButton) {
+    //        callapibool = true
+    //        if isFromvc == "dashboardvc" {
+    //            dismiss(animated: true)
+    //        } else {
+    ////            guard let vc = DashBoaardTabbarVC.newInstance.self else {return}
+    ////            vc.modalPresentationStyle = .overCurrentContext
+    ////            vc.selectedIndex = 0
+    ////            self.present(vc, animated: false)
+    //        }
+    //    }
     
     
     
@@ -119,9 +119,15 @@ class SearchHotelsVC: BaseTableVC, TopFlightDetailsViewModelDelegate {
         gotoCalenderVC()
     }
     
-
+    
     @IBAction func backButtonAction(_ sender: Any) {
-        dismiss(animated: true)
+        if isFromvc == "SideMenuViewController" {
+            guard let vc = HomeViewController.newInstance.self else {return}
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: false)
+        } else {
+            dismiss(animated: true)
+        }
     }
     override func didTapOnCheckoutBtn(cell: SearchHotelTVCell) {
         gotoCalenderVC()
@@ -210,13 +216,13 @@ class SearchHotelsVC: BaseTableVC, TopFlightDetailsViewModelDelegate {
     
     
     func gotoFromCitySearchVC() {
-//        guard let vc = SelectFromCityVC.newInstance.self else {return}
-//        vc.modalPresentationStyle = .overCurrentContext
-//        self.present(vc, animated: true)
+        //        guard let vc = SelectFromCityVC.newInstance.self else {return}
+        //        vc.modalPresentationStyle = .overCurrentContext
+        //        self.present(vc, animated: true)
     }
     
     func gotoAddAdultEconomyVC() {
-//        //        guard let vc = AddRoomsGuestsVC.newInstance.self else {return}
+        //        //        guard let vc = AddRoomsGuestsVC.newInstance.self else {return}
         guard let vc = AddRoomsVCViewController.newInstance.self else {return}
         vc.modalPresentationStyle = .overCurrentContext
         self.present(vc, animated: true)
@@ -234,7 +240,7 @@ class SearchHotelsVC: BaseTableVC, TopFlightDetailsViewModelDelegate {
     
     
     override func btnAction(cell: ButtonTVCell) {
-         gotoSearchHotelsResultVC()
+        gotoSearchHotelsResultVC()
     }
     
     

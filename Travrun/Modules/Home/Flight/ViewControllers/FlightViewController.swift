@@ -173,6 +173,10 @@ class FlightViewController: BaseTableVC {
             guard let vc = HomeViewController.newInstance.self else {return}
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true)
+        } else if isfromVc == "SideMenuViewController" {
+            guard let vc = HomeViewController.newInstance.self else {return}
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
         } else   {
             dismiss(animated: true, completion: nil)
         }

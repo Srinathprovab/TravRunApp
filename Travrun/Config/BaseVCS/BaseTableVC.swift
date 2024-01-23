@@ -7,9 +7,8 @@
 
 import UIKit
 
-class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate, LabelTVCellDelegate, RegisterUserTVCellDelegate, UnderLineTVCellPrtocal, TextfieldTVCellDelegate, MenuBGTVCellDelegate, SideMenuTitleTVCellDelegate, SelectGenderTVCellDelegate, RegisterNowTableViewCellDelegate, LoginDetailsTableViewCellDelegate, AddAdultTableViewCellDelegate, FareSummaryTableViewCellDelegate, SearchHotelTVCellDelegate, AddRoomsGuestsTVCellDelegate, CommonFromCityTVCellDelegate, HotelsTVCellelegate, SearchLocationTFTVCellDelegate, BookFlightDetailsTVCellDelegate, TDetailsLoginTVCellDelegate, AddDeatilsOfTravellerTVCellDelegate, TravelInsuranceTVCellDelegate, ContactInformationTVCellDelegate, UsePromoCodesTVCellDelegate, PriceSummaryTVCellDelegate, SpecialRequestTVCellDelegate, ViewFlightDetailsBtnTVCellDelegate, AddAdultsOrGuestTVCellDelegate, SearchFlightResultTVCellDelegate, TitleLblTVCellDelegate, RadioButtonTVCellDelegate {
+class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate, LabelTVCellDelegate, RegisterUserTVCellDelegate, UnderLineTVCellPrtocal, TextfieldTVCellDelegate, MenuBGTVCellDelegate, SideMenuTitleTVCellDelegate, SelectGenderTVCellDelegate, RegisterNowTableViewCellDelegate, LoginDetailsTableViewCellDelegate, AddAdultTableViewCellDelegate, FareSummaryTableViewCellDelegate, SearchHotelTVCellDelegate, AddRoomsGuestsTVCellDelegate, CommonFromCityTVCellDelegate, HotelsTVCellelegate, SearchLocationTFTVCellDelegate, BookFlightDetailsTVCellDelegate, TDetailsLoginTVCellDelegate, AddDeatilsOfTravellerTVCellDelegate, TravelInsuranceTVCellDelegate, ContactInformationTVCellDelegate, UsePromoCodesTVCellDelegate, PriceSummaryTVCellDelegate, SpecialRequestTVCellDelegate, ViewFlightDetailsBtnTVCellDelegate, AddAdultsOrGuestTVCellDelegate, SearchFlightResultTVCellDelegate, TitleLblTVCellDelegate, RadioButtonTVCellDelegate, QuickLinkTableViewCellDelegate {
    
-  
     @IBOutlet weak var commonScrollView: UITableView!
     @IBOutlet weak var commonTableView: UITableView!
     @IBOutlet weak var commonTVTopConstraint: NSLayoutConstraint!
@@ -92,6 +91,8 @@ class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDe
     
     
     //Delegate Methods
+    func didTaponFlightBtn(cell: QuickLinkTableViewCell) {}
+    func didTaponHotelBtn(cell: QuickLinkTableViewCell) {}
     func travListButtonAction() {}
     func didTapOnAddReturnFlightAction(cell: NewFlightSearchResultTVCell) {}
     func didTapOnLoginBtn(cell: MenuBGTVCell) {}
@@ -293,6 +294,7 @@ extension BaseTableVC: UITableViewDataSource {
                 
             case .QuickLinkTableViewCell:
                 let cell: QuickLinkTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
                 commonCell = cell
                 
             case .holidayTableViewCell:
@@ -583,6 +585,13 @@ extension BaseTableVC: UITableViewDataSource {
             case .BookedTravelDetailsTVCell:
                 let cell: BookedTravelDetailsTVCell = commonTV.dequeTVCell(indexPath: indexPath)
                 commonCell = cell
+                
+            case .SupportTVCellTableViewCell:
+                let cell: SupportTVCellTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+                
+                
                 
             default:
                 print("handle this case in getCurrentCellAt")

@@ -19,6 +19,7 @@ struct RegistrationModel {
 
 class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterViewModelProtocal  {
    
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var eyeImage: UIImageView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var countryCodeTextField: UITextField!
@@ -64,11 +65,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterVie
     
     
     func setiupUI()  {
-        containerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        containerView.layer.cornerRadius = 30
+        self.view.backgroundColor = .black.withAlphaComponent(0.5)
+        backgroundImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        backgroundImage.layer.cornerRadius = 30
         containerView.clipsToBounds = true
         passwodTextField.placeholder = "Enter Password"
-        emailTextField.placeholder = "Enter Email Adress"
+        emailTextField.placeholder = "Enter Email Id"
         phoneNumerTextField.placeholder = "Enter Phone Number"
         countryCodeTextField.placeholder = "+91"
         countryCodeTextField.setLeftPaddingPoints(16)
@@ -122,6 +124,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterVie
         dismiss(animated: true)
     }
     
+    @IBAction func loginNowButtonAction(_ sender: Any) {
+        dismiss(animated: true)
+    }
     func callRegisterAPI() {
         mobile = phoneNumerTextField.text ?? ""
         email = emailTextField.text ?? ""

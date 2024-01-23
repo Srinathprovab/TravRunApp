@@ -204,7 +204,7 @@ class TextfieldTVCell: TableViewCell {
         txtField.delegate = self
         txtField.backgroundColor = .clear
         txtField.setLeftPaddingPoints(20)
-        txtField.font = UIFont.InterMedium(size: 18)
+        txtField.font = UIFont.InterRegular(size: 16)
         txtField.addTarget(self, action: #selector(editingText(textField:)), for: .editingChanged)
         txtField.isSecureTextEntry = false
         

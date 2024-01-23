@@ -58,7 +58,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, RegisterViewMo
         holderView.layer.cornerRadius = 30
         holderView.clipsToBounds = true
         passwodTextField.placeholder = "Enter Password"
-        emailTextField.placeholder = "Enter Email Address"
+        emailTextField.placeholder = "Enter Email Id"
         emailTextField.layer.borderColor = HexColor("#CCCCCC").cgColor
         emailTextField.layer.borderWidth = 0.6
         

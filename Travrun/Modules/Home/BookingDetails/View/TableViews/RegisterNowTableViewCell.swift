@@ -75,7 +75,7 @@ class RegisterNowTableViewCell: TableViewCell {
         self.pass = passwordTxtfld.text!
         self.email = emailTextFld.text!
         if email == "" {
-            showToastMsg(message: "Enter Email Adress")
+            showToastMsg(message: "Enter Email id")
         } else if email.isValidEmail() == false {
             showToastMsg(message: "Enter Valid Email")
         } else if pass == "" {

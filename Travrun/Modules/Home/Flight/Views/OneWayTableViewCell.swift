@@ -23,6 +23,7 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
     
     func ShowCityListMulticity(response: [SelectCityModel]) {}
     
+    @IBOutlet weak var redCancelImage: UIImageView!
     @IBOutlet weak var infantsPlusLabel: UILabel!
     @IBOutlet weak var childPlusLabel: UILabel!
     @IBOutlet weak var adultPlusLabel: UILabel!
@@ -111,8 +112,8 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
     let dropDown = DropDown()
     var isAdvanceSearh = false
     var delegate: OneWayTableViewCellDelegate?
-    var fromEonomy = ["Economy", "Premium Economy", "Business", "Frist"]
-    var toEonomy = ["Economy", "Premium Economy", "Business", "Frist"]
+    var fromEonomy = ["Economy", "Premium Economy", "Business", "First"]
+    var toEonomy = ["Economy", "Premium Economy", "Business", "First"]
     var otward = ["12:00 AM - 6:00 AM", "12:00 PM - 6:00 AM", "06:00 PM - 12:00 AM"]
     var returnJourny = ["12:00 AM - 6:00 AM", "12:00 PM - 6:00 AM", "6:00 PM - 12:00 AM"]
     override func awakeFromNib() {
@@ -279,7 +280,9 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
             toDropDownLabel.isHidden = false
             toDropDownImage.isHidden = false
             toEconomyView.backgroundColor = HexColor("#FFFFFF")
+            redCancelImage.isHidden = false
         } else {
+            redCancelImage.isHidden = true
             addReturnTopVIew.isHidden = false
             toClassLabel.isHidden = true
             toDropDownLabel.isHidden = true
@@ -708,7 +711,7 @@ extension OneWayTableViewCell: UITableViewDelegate, UITableViewDataSource {
         if tableView == fromTV {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? FromCityTVCell {
                 cell.selectionStyle = .none
-                cell.titlelbl.text = cityList[indexPath.row].city
+                cell.titlelbl.text = cityList[indexPath.row].label
                 cell.subTitlelbl.text = cityList[indexPath.row].name
                 cell.id = cityList[indexPath.row].id ?? ""
                 cell.cityname = cityList[indexPath.row].name ?? ""
@@ -718,7 +721,7 @@ extension OneWayTableViewCell: UITableViewDelegate, UITableViewDataSource {
         } else {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") as? FromCityTVCell {
                 cell.selectionStyle = .none
-                cell.titlelbl.text = cityList[indexPath.row].city
+                cell.titlelbl.text = cityList[indexPath.row].label
                 cell.subTitlelbl.text = cityList[indexPath.row].name
                 cell.id = cityList[indexPath.row].id ?? ""
                 cell.cityname = cityList[indexPath.row].name ?? ""
