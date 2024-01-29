@@ -16,6 +16,7 @@ protocol MenuBGTVCellDelegate {
 
 class MenuBGTVCell: TableViewCell {
     
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var topConstant: NSLayoutConstraint!
     @IBOutlet weak var bottomConst: NSLayoutConstraint!
     @IBOutlet weak var leftConstrnt: NSLayoutConstraint!
@@ -33,7 +34,7 @@ class MenuBGTVCell: TableViewCell {
         // Initialization code
         setupUI()
         loginBtn.titleLabel?.font = UIFont.InterMedium(size: 20)
-        btnWidth.constant = 300
+        btnWidth.constant = 100
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -47,29 +48,28 @@ class MenuBGTVCell: TableViewCell {
         if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == true {
 //            loginBtn.isHidden = false
             loginBtn.isUserInteractionEnabled = false
-            
-            loginBtn.setTitle("\(pdetails?.first_name ?? pdetails?.email ?? "") \(pdetails?.last_name ?? "")", for: .normal)
-            bottomConst.constant = 25
+            titleLabel.text = ("\(pdetails?.first_name ?? pdetails?.email ?? "") \(pdetails?.last_name ?? "")")
+//            loginBtn.setTitle("\(pdetails?.first_name ?? pdetails?.email ?? "") \(pdetails?.last_name ?? "")", for: .normal)
+//            bottomConst.constant = 25
             loginBtn.setTitleColor(.AppLabelColor , for: .normal)
             loginBtn.titleLabel?.font = UIFont.InterMedium(size: 20)
             loginBtn.titleLabel?.textAlignment = .left
-            profileImage.sd_setImage(with: URL(string: pdetails?.image ?? "" ), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+//            profileImage.sd_setImage(with: URL(string: pdetails?.image ?? "" ), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
             editProfileView.isHidden = false
             editProfilelbl.text = "Edit Profile"
             editProfilelbl.textAlignment = .center
-            editProfilelbl.font = .InterMedium(size: 12)
-            profileImage.image = UIImage(named: "profile")?.withRenderingMode(.alwaysOriginal)
+            editProfilelbl.font = .InterMedium(size: 14)
+//            profileImage.image = UIImage(named: "profile")?.withRenderingMode(.alwaysOriginal)
             editProfilelbl.textColor = .white
             editProfileView.layer.cornerRadius = 4
             editProfileView.backgroundColor = .AppBtnColor
-            btnWidth.constant = 130
-//            leftConstrnt.constant = 0
+            btnWidth.constant = 100//            leftConstrnt.constant = 0
             
         } else {
 //            bottomConst.constant = 31
 //            profileImage.image = UIImage(named: "profile")?.withRenderingMode(.alwaysOriginal)
             editProfileView.isHidden = true
-            loginBtn.setTitle("Login / Signup", for: .normal)
+            titleLabel.text = "Login / Signup"
             editProfilelbl.text = "Add Your Details"
             editProfilelbl.textAlignment = .left
             editProfilelbl.textColor = .AppLabelColor
@@ -77,7 +77,7 @@ class MenuBGTVCell: TableViewCell {
             editProfileView.backgroundColor = .clear
             loginBtn.isUserInteractionEnabled = true
 //            leftConstrnt.constant = 10
-            btnWidth.constant = 300
+            btnWidth.constant = 100
             editProfilelbl.textAlignment = .left
             btnWidth.constant = 130
         }
@@ -97,7 +97,7 @@ class MenuBGTVCell: TableViewCell {
         editProfileBtn.setTitleColor(.AppLabelColor, for: .normal)
         
         editProfileBtn.titleLabel?.font = UIFont.InterRegular(size: 12)
-        loginBtn.setTitle("Login/Signup", for: .normal)
+        titleLabel.text = "Login / Signup"
         loginBtn.setTitleColor(.AppLabelColor , for: .normal)
         loginBtn.titleLabel?.font = UIFont.InterMedium(size: 20)
         loginBtn.addTarget(self, action: #selector(didTapOnLoginBtn(_:)), for: .touchUpInside)
@@ -108,7 +108,7 @@ class MenuBGTVCell: TableViewCell {
         editProfilelbl.textAlignment = .left
         editProfilelbl.text = "Add Your Details"
         editProfilelbl.textColor = .AppLabelColor
-        editProfilelbl.font = UIFont.latoRegular(size: 14)
+        editProfilelbl.font = UIFont.InterRegular(size: 14)
         
         //editProfileViewHeight.constant = 0
     }

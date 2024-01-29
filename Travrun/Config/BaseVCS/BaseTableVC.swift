@@ -589,8 +589,11 @@ extension BaseTableVC: UITableViewDataSource {
             case .SupportTVCellTableViewCell:
                 let cell: SupportTVCellTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
                 commonCell = cell
+        
                 
-                
+            case .AddonTableViewCell:
+                let cell: AddonTableViewCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
                 
                 
             default:

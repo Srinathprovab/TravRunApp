@@ -10,6 +10,8 @@ import UIKit
 class FlightDetailsViewController: BaseTableVC, FDViewModelDelegate, FareRulesModelViewModelDelegate{
     @IBOutlet weak var tvTraling: NSLayoutConstraint!
     
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var middleConstraint: NSLayoutConstraint!
     @IBOutlet weak var tvLeading: NSLayoutConstraint!
@@ -56,6 +58,7 @@ class FlightDetailsViewController: BaseTableVC, FDViewModelDelegate, FareRulesMo
     }
     
     func setUpView() {
+        amountLabel.text = grandTotal
         topView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         topView.layer.cornerRadius = 30
         topView.clipsToBounds = true
@@ -104,6 +107,14 @@ class FlightDetailsViewController: BaseTableVC, FDViewModelDelegate, FareRulesMo
         self.commonTableView.reloadData()
     }
     
+    @IBAction func bookNowButtonAction(_ sender: Any) {
+        guard let vc = BookingDetailsVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.totalPrice1 = totalprice
+        callapibool = true
+        fdbool = true
+        present(vc, animated: true)
+    }
     
     @IBAction func breakDownButtonAction(_ sender: Any) {
         breakdownView.layer.borderColor = UIColor.clear.cgColor
@@ -190,6 +201,7 @@ extension FlightDetailsViewController {
     }
     
     func flightDetails(response: FDModel) {
+       
         holderView.isHidden = false
         fd = response.flightDetails ?? []
         
@@ -197,6 +209,15 @@ extension FlightDetailsViewController {
         fareRulehtml = response.fareRulehtml ?? []
         totalprice = "\(response.priceDetails?.api_currency ?? "") : \(response.priceDetails?.grand_total ?? "")"
         grandTotal = totalprice
+        
+        setAttributedTextnew(str1: "\(response.priceDetails?.api_currency ?? "")",
+                             str2: "\(response.priceDetails?.grand_total ?? "")",
+                             lbl: amountLabel,
+                             str1font: .InterBold(size: 12),
+                             str2font: .InterBold(size: 18),
+                             str1Color: .WhiteColor,
+                             str2Color: .WhiteColor)
+        
         farerulerefkey = response.fare_rule_ref_key ?? ""
         farerulesrefcontent = response.farerulesref_content ?? ""
         jSummary = response.journeySummary ?? []
@@ -251,14 +272,12 @@ extension FlightDetailsViewController {
         }
     }
     
-    
-    
     func setupItineraryOneWayTVCell() {
         tablerow.removeAll()
         fd.enumerated().forEach { (index, element) in
             tablerow.append(TableRow(title:"\(String(describing: index))",moreData:element,cellType:.ItineraryAddTVCell))
         }
-        tablerow.append(TableRow(height:100,cellType:.EmptyTVCell))
+        tablerow.append(TableRow(height:100, cellType:.EmptyTVCell))
         commonTVData = tablerow
         commonTableView.reloadData()
     }

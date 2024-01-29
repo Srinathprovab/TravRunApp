@@ -51,13 +51,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="(QR10003)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QL3-Qo-0fI">
-                                                <rect key="frame" x="146" y="20.333333333333332" width="123" height="11.666666666666668"/>
+                                                <rect key="frame" x="146" y="20" width="123" height="12"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
                                                 <color key="textColor" name="AppLabelColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Premium Economy" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DOQ-rp-L8v">
-                                                <rect key="frame" x="176.66666666666666" y="48" width="93.333333333333343" height="13"/>
+                                                <rect key="frame" x="172.33333333333334" y="47.666666666666664" width="97.666666666666657" height="13.333333333333336"/>
                                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="11"/>
                                                 <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -70,7 +70,7 @@
                                                 </constraints>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="61" id="0Wo-0c-1rF"/>
                                             <constraint firstAttribute="bottom" secondItem="zwv-We-3WR" secondAttribute="bottom" constant="19" id="1Xz-d7-DNs"/>
@@ -94,13 +94,13 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="42"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:50" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ly0-tx-KEq">
-                                                                <rect key="frame" x="0.0" y="0.0" width="85" height="23.333333333333332"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="85" height="24.333333333333332"/>
                                                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="20"/>
                                                                 <color key="textColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="dubai (dXB)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3J-IP-oPJ">
-                                                                <rect key="frame" x="0.0" y="26.333333333333329" width="85" height="13"/>
+                                                                <rect key="frame" x="0.0" y="27.333333333333325" width="85" height="13.333333333333332"/>
                                                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="11"/>
                                                                 <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -122,7 +122,7 @@
                                                         <rect key="frame" x="85" y="0.0" width="85" height="42"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5h 35m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qdi-oj-DDF">
-                                                                <rect key="frame" x="25.666666666666668" y="0.0" width="33.666666666666657" height="12.666666666666666"/>
+                                                                <rect key="frame" x="24.666666666666671" y="0.0" width="36" height="12.666666666666666"/>
                                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="10"/>
                                                                 <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -135,7 +135,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5h 35m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lC9-SE-Azt">
-                                                                <rect key="frame" x="25.666666666666668" y="29.333333333333332" width="33.666666666666657" height="12.666666666666668"/>
+                                                                <rect key="frame" x="24.666666666666671" y="29.333333333333332" width="36" height="12.666666666666668"/>
                                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="10"/>
                                                                 <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -160,13 +160,13 @@
                                                         <rect key="frame" x="170" y="0.0" width="85" height="42"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:50" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3c-7T-HGh">
-                                                                <rect key="frame" x="0.0" y="0.0" width="85" height="23.333333333333332"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="85" height="24.333333333333332"/>
                                                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="20"/>
                                                                 <color key="textColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dubai (dXB)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="197-nH-RFf">
-                                                                <rect key="frame" x="0.0" y="26.333333333333329" width="85" height="13"/>
+                                                                <rect key="frame" x="0.0" y="27.333333333333325" width="85" height="13.333333333333332"/>
                                                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="11"/>
                                                                 <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
@@ -191,7 +191,7 @@
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HgY-ot-Mez">
-                                                <rect key="frame" x="16" y="74" width="254" height="1"/>
+                                                <rect key="frame" x="15" y="74" width="255" height="1"/>
                                                 <color key="backgroundColor" red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="aMC-PO-ixo"/>
@@ -201,7 +201,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="9ud-y7-RKw">
-                                                <rect key="frame" x="95" y="50" width="84" height="12"/>
+                                                <rect key="frame" x="95.333333333333343" y="50" width="83.333333333333343" height="12"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sute1" translatesAutoresizingMaskIntoConstraints="NO" id="SR7-8z-QBY">
                                                         <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
@@ -212,20 +212,20 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 kg" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aea-8P-Xeh">
-                                                        <rect key="frame" x="14" y="0.0" width="25" height="12"/>
+                                                        <rect key="frame" x="14.000000000000002" y="0.0" width="24.666666666666671" height="12"/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
                                                         <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bag1" translatesAutoresizingMaskIntoConstraints="NO" id="5M0-Uz-kcm">
-                                                        <rect key="frame" x="43" y="0.0" width="12" height="10"/>
+                                                        <rect key="frame" x="42.666666666666671" y="0.0" width="12" height="10"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="10" id="xFy-Zt-RS0"/>
                                                             <constraint firstAttribute="width" constant="12" id="zYh-cU-SHo"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 kg" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qcw-TS-t7O">
-                                                        <rect key="frame" x="59" y="0.0" width="25" height="11.666666666666666"/>
+                                                        <rect key="frame" x="58.666666666666664" y="0.0" width="24.666666666666664" height="12"/>
                                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
                                                         <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -251,10 +251,10 @@
                                             <constraint firstAttribute="bottom" secondItem="HgY-ot-Mez" secondAttribute="bottom" constant="5" id="Htf-pf-z11"/>
                                             <constraint firstItem="hPN-Mv-kLm" firstAttribute="leading" secondItem="SEG-hF-O8a" secondAttribute="leading" constant="15" id="Myw-5e-Z7f"/>
                                             <constraint firstItem="9ud-y7-RKw" firstAttribute="centerX" secondItem="SEG-hF-O8a" secondAttribute="centerX" id="NCX-kX-cBZ"/>
-                                            <constraint firstItem="HgY-ot-Mez" firstAttribute="leading" secondItem="SEG-hF-O8a" secondAttribute="leading" constant="16" id="Q5L-Ho-Voh"/>
                                             <constraint firstItem="9ud-y7-RKw" firstAttribute="top" secondItem="hPN-Mv-kLm" secondAttribute="bottom" constant="8" symbolic="YES" id="REt-rP-ZwI"/>
                                             <constraint firstItem="HgY-ot-Mez" firstAttribute="top" secondItem="9ud-y7-RKw" secondAttribute="bottom" constant="12" id="YUK-2Q-b3w"/>
                                             <constraint firstItem="HgY-ot-Mez" firstAttribute="trailing" secondItem="197-nH-RFf" secondAttribute="trailing" id="j4c-eV-fDX"/>
+                                            <constraint firstItem="HgY-ot-Mez" firstAttribute="leading" secondItem="hPN-Mv-kLm" secondAttribute="leading" id="uaR-iO-qe1"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -263,7 +263,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="KGj-2E-q33" firstAttribute="leading" secondItem="lEk-Tf-352" secondAttribute="leading" id="566-Ba-zfS"/>
                             <constraint firstItem="KGj-2E-q33" firstAttribute="top" secondItem="lEk-Tf-352" secondAttribute="top" id="ML2-bN-BpR"/>

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -29,13 +30,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="198" height="143"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dubai to Kuwait" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkQ-SI-vit">
-                                <rect key="frame" x="12" y="13" width="105" height="17"/>
+                                <rect key="frame" x="12" y="13.000000000000002" width="105" height="17.666666666666671"/>
                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Baggage allowance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1PK-tn-woM">
-                                <rect key="frame" x="11.999999999999993" y="36" width="110.33333333333331" height="14.666666666666664"/>
+                                <rect key="frame" x="11.999999999999993" y="36.666666666666664" width="110.33333333333331" height="14"/>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                 <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -66,14 +67,14 @@
                                     <constraint firstAttribute="height" constant="16" id="uRM-vq-wYe"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checked Baggage Included" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ix-bk-o5Q">
-                                <rect key="frame" x="33" y="88" width="156" height="13.333333333333329"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Checked Baggage Included" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ix-bk-o5Q">
+                                <rect key="frame" x="33" y="88.666666666666671" width="156" height="12.333333333333329"/>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="10"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXq-0n-85S">
-                                <rect key="frame" x="33" y="104.33333333333333" width="158" height="24.333333333333329"/>
+                                <rect key="frame" x="33" y="104" width="158" height="24.666666666666657"/>
                                 <string key="text">2 Piece airlines usually permit
  27 kg per piece</string>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="10"/>

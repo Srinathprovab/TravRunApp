@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -135,23 +136,29 @@
                                     <constraint firstAttribute="trailing" secondItem="8py-ky-H7U" secondAttribute="trailing" constant="30" id="wLI-D4-uAf"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="76E-HV-PfO">
-                                <rect key="frame" x="192" y="68" width="187.5" height="20.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="55" translatesAutoresizingMaskIntoConstraints="NO" id="76E-HV-PfO">
+                                <rect key="frame" x="116.5" y="68" width="338" height="20.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KWD 110.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxS-pT-y7W">
-                                        <rect key="frame" x="0.0" y="0.0" width="82" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KWD 110.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxS-pT-y7W">
+                                        <rect key="frame" x="0.0" y="0.0" width="110" height="20.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="Yhw-v9-3bW"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8SD-TO-68P">
-                                        <rect key="frame" x="87" y="0.0" width="8" height="20.5"/>
+                                        <rect key="frame" x="165" y="0.0" width="8" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KWD 200.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSo-k7-4YM">
-                                        <rect key="frame" x="100" y="0.0" width="87.5" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KWD 200.0" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSo-k7-4YM">
+                                        <rect key="frame" x="228" y="0.0" width="110" height="20.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="DBZ-Nv-M6O"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -167,6 +174,7 @@
                             <constraint firstAttribute="trailing" secondItem="HC3-hb-JII" secondAttribute="trailing" id="Ze6-9H-5fU"/>
                             <constraint firstItem="HC3-hb-JII" firstAttribute="top" secondItem="asd-kU-OEt" secondAttribute="top" id="Zl8-Od-GzP"/>
                             <constraint firstItem="oIj-iB-4XC" firstAttribute="top" secondItem="HC3-hb-JII" secondAttribute="bottom" id="car-de-W6M"/>
+                            <constraint firstItem="76E-HV-PfO" firstAttribute="centerX" secondItem="asd-kU-OEt" secondAttribute="centerX" id="gkS-XW-anr"/>
                             <constraint firstAttribute="height" relation="lessThanOrEqual" constant="158" id="i70-gO-o7D"/>
                             <constraint firstItem="oIj-iB-4XC" firstAttribute="leading" secondItem="asd-kU-OEt" secondAttribute="leading" id="vro-Fa-gCh"/>
                             <constraint firstAttribute="bottom" secondItem="oIj-iB-4XC" secondAttribute="bottom" id="yz4-yV-7fj"/>
@@ -197,11 +205,6 @@
             <point key="canvasLocation" x="316.66666666666669" y="132.58928571428572"/>
         </tableViewCell>
     </objects>
-    <designables>
-        <designable name="8py-ky-H7U">
-            <size key="intrinsicContentSize" width="-1" height="65"/>
-        </designable>
-    </designables>
     <resources>
         <image name="down" width="12" height="7"/>
         <namedColor name="AppCalenderDateSelectColor">

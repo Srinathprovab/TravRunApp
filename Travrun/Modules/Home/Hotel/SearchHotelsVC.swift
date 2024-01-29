@@ -59,7 +59,7 @@ class SearchHotelsVC: BaseTableVC, TopFlightDetailsViewModelDelegate {
         loderBool = false
         topFlightDetails = response.topFlightDetails ?? []
         topHotelDetails = response.topHotelDetails ?? []
-        deailcodelist = response.deail_code_list ?? []
+        deailcodelist = response.deal_code_list ?? []
         
         
         DispatchQueue.main.async {[self] in

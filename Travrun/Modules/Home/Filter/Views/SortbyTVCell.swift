@@ -49,14 +49,14 @@ class SortbyTVCell: TableViewCell {
             setuplabels(lbl: hightoLowhlbl, text: "Z-A", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
         } else if cellInfo?.key == "departure" {
             setuplabels(lbl: lowtoHighlbl, text: "Earlist flight", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
-            setuplabels(lbl: hightoLowhlbl, text: "Last  flight", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
+            setuplabels(lbl: hightoLowhlbl, text: "Last flight", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
         } else if cellInfo?.key == "low" {
             setuplabels(lbl: lowtoHighlbl, text: "Low to high", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
             setuplabels(lbl: hightoLowhlbl, text: "Hight to low", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
         }
         switch sortBy {
             
-            //Price
+            //Price 
         case .PriceLow:
             if titlelbl.text == "Price" {
                 lowtoheigh()
@@ -72,14 +72,14 @@ class SortbyTVCell: TableViewCell {
             
             //Departure
         case .DepartureLow:
-            if titlelbl.text == "Departure" {
+            if titlelbl.text == "Departure Time" {
                 lowtoheigh()
             }
             break
             
         case .DepartureHigh:
             
-            if titlelbl.text == "Departure" {
+            if titlelbl.text == "Departure Time" {
                 heightolow()
             }
             break
@@ -98,8 +98,6 @@ class SortbyTVCell: TableViewCell {
                 heightolow()
             }
             break
-            
-            
             
             //Duration
         case .DurationLow:
@@ -142,7 +140,7 @@ class SortbyTVCell: TableViewCell {
     func setupUI() {
         holderView.backgroundColor = .WhiteColor
 //        setupViews(v: buttonsView, radius: 4, color: .WhiteColor)
-        setuplabels(lbl: titlelbl, text: "", textcolor: .AppLabelColor, font: .InterMedium(size: 16), align: .left)
+        setuplabels(lbl: titlelbl, text: "", textcolor: .AppLabelColor, font: .InterMedium(size: 16), align: .center)
         setupinitallyvalues()
         lowtoHighBtn.setTitle("", for: .normal)
         hightoLowBtn.setTitle("", for: .normal)

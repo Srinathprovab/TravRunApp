@@ -30,8 +30,8 @@
                         <rect key="frame" x="16" y="0.0" width="343" height="262"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick Links" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vzk-7w-hb9">
-                                <rect key="frame" x="16" y="15.999999999999998" width="311" height="24.333333333333329"/>
-                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="20"/>
+                                <rect key="frame" x="16" y="16" width="311" height="22"/>
+                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

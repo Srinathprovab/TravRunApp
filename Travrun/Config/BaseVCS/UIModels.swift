@@ -94,6 +94,8 @@ enum TVCellType {
     case BCFlightDetailsTVCell
     case BookedTravelDetailsTVCell
     case SupportTVCellTableViewCell
+    case AddonContentTVCell
+    case AddonTableViewCell
     
 }
 

@@ -712,7 +712,7 @@ extension OneWayTableViewCell: UITableViewDelegate, UITableViewDataSource {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? FromCityTVCell {
                 cell.selectionStyle = .none
                 cell.titlelbl.text = cityList[indexPath.row].label
-                cell.subTitlelbl.text = cityList[indexPath.row].name
+                cell.subTitlelbl.text = cityList[indexPath.row].country
                 cell.id = cityList[indexPath.row].id ?? ""
                 cell.cityname = cityList[indexPath.row].name ?? ""
                 cell.citycode = cityList[indexPath.row].code ?? ""
@@ -722,7 +722,7 @@ extension OneWayTableViewCell: UITableViewDelegate, UITableViewDataSource {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "cell1") as? FromCityTVCell {
                 cell.selectionStyle = .none
                 cell.titlelbl.text = cityList[indexPath.row].label
-                cell.subTitlelbl.text = cityList[indexPath.row].name
+                cell.subTitlelbl.text = cityList[indexPath.row].country
                 cell.id = cityList[indexPath.row].id ?? ""
                 cell.cityname = cityList[indexPath.row].name ?? ""
                 cell.citycode = cityList[indexPath.row].code ?? ""

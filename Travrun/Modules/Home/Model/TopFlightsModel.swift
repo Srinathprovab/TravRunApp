@@ -13,7 +13,7 @@ struct TopFlightDetailsModel : Codable {
     let status : Bool?
     let topFlightDetails : [TopFlightDetails]?
     let topHotelDetails : [TopHotelDetails]?
-    let deail_code_list : [Deail_code_list]?
+    let deal_code_list : [Deail_code_list]?
     let holiday_top_destination : [HolidaydestinationList]?
     
     enum CodingKeys: String, CodingKey {
@@ -21,7 +21,7 @@ struct TopFlightDetailsModel : Codable {
         case status = "status"
         case topFlightDetails = "topFlightDetails"
         case topHotelDetails = "topHotelDetails"
-        case deail_code_list = "deail_code_list"
+        case deal_code_list = "deal_code_list"
         case holiday_top_destination = "holiday_top_destination"
     }
     
@@ -30,7 +30,7 @@ struct TopFlightDetailsModel : Codable {
         status = try values.decodeIfPresent(Bool.self, forKey: .status)
         topFlightDetails = try values.decodeIfPresent([TopFlightDetails].self, forKey: .topFlightDetails)
         topHotelDetails = try values.decodeIfPresent([TopHotelDetails].self, forKey: .topHotelDetails)
-        deail_code_list = try values.decodeIfPresent([Deail_code_list].self, forKey: .deail_code_list)
+        deal_code_list = try values.decodeIfPresent([Deail_code_list].self, forKey: .deal_code_list)
         holiday_top_destination = try values.decodeIfPresent([HolidaydestinationList].self, forKey: .holiday_top_destination)
     }
     

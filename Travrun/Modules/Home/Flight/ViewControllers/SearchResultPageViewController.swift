@@ -83,15 +83,16 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
     func setUpView() {
         
         if defaults.string(forKey: UserDefaultsKeys.journeyType) == "oneway" {
+            self.datelbl.text = defaults.string(forKey:UserDefaultsKeys.calDepDate)
             depDate = defaults.string(forKey:UserDefaultsKeys.calDepDate) ?? ""
             subTitleLabel.text = "\(depDate)"
         } else {
-            depDate = defaults.string(forKey:UserDefaultsKeys.calDepDate) ?? ""
-            retDate = defaults.string(forKey:UserDefaultsKeys.calRetDate) ?? ""
+            depDate = defaults.string(forKey:UserDefaultsKeys.rcalDepDate) ?? ""
+            retDate = defaults.string(forKey:UserDefaultsKeys.rcalRetDate) ?? ""
+            self.datelbl.text = defaults.string(forKey:UserDefaultsKeys.rcalDepDate)
             subTitleLabel.text = "\(depDate)"
         }
-        
-        self.datelbl.text = defaults.string(forKey:UserDefaultsKeys.calDepDate)
+    
         personsCategoryLabel.text = "\(adult ?? "0") Adults | \(child ?? "0") Children | \(infant ?? "") infant"
         backButtonView.layer.cornerRadius = backButtonView.layer.frame.width / 2
         editButtonView.layer.cornerRadius = editButtonView.layer.frame.width / 2
@@ -126,9 +127,9 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
     
     @IBAction func modifyButtonAction(_ sender: Any) {
         guard let vc = ModifySearchViewController.newInstance.self else {return}
-        vc.modalPresentationStyle = .popover
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = "edit"
         present(vc, animated: true)
-//        dismiss(animated: true)
     }
     
     @IBAction func backButtonAction(_ sender: Any) {
@@ -191,7 +192,7 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
                 // Convert the date string to a Date object
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd-MM-yyyy"
-                let dateString = defaults.string(forKey: UserDefaultsKeys.calDepDate) ?? ""
+                let dateString = defaults.string(forKey: UserDefaultsKeys.rcalDepDate) ?? ""
                 guard let date = dateFormatter.date(from: dateString) else { return }
                 
                 // Get the next day's date
@@ -206,8 +207,8 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
                     
                     
                     print("nextDayString ==== > \(nextDayString)")
-                    defaults.set(nextDayString, forKey: UserDefaultsKeys.calDepDate)
-                    payload["depature"] = defaults.string(forKey:UserDefaultsKeys.calDepDate)
+                    defaults.set(nextDayString, forKey: UserDefaultsKeys.rcalDepDate)
+                    payload["depature"] = defaults.string(forKey:UserDefaultsKeys.rcalDepDate)
                     self.datelbl.text = nextDayString
                     callAPI()
                 }
@@ -252,7 +253,7 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
                 
                 callAPI()
                 
-            }else {
+            } else {
                 
                 
                 // Convert the date string to a Date object
@@ -269,14 +270,12 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
                 print("nextDayString ==== > \(nextDayString)")
                 
                 if returnDatalbl.text == nextDayString {
-                    showToast(message: "Journey Dates Should Not Same")
-                }else {
-                    
-                    
+                    showToast(message: "Journey Dates Should Not be Same")
+                    callAPI()
+                } else {
                     defaults.set(nextDayString, forKey: UserDefaultsKeys.rcalDepDate)
                     payload["depature"] = defaults.string(forKey:UserDefaultsKeys.rcalDepDate)
                     self.datelbl.text = nextDayString
-                    
                     callAPI()
                 }
             }
@@ -285,6 +284,18 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
         
     }
     
+    
+    override func didTapOnAddReturnFlightAction(cell: NewFlightSearchResultTVCell) {
+        gotoModifySearchFlightVC(key: "addreturn")
+        
+    }
+    
+    func gotoModifySearchFlightVC(key:String) {
+        guard let vc = ModifySearchViewController.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = key
+        present(vc, animated: true)
+    }
     
     //MARK: - didTapOnMoreSimilarBtnAction NewFlightSearchResultTVCell
     override func didTapOnMoreSimilarBtnAction(cell: NewFlightSearchResultTVCell) {
@@ -377,7 +388,7 @@ extension SearchResultPageViewController {
     
     
     func onewayFilterdList(list:[[J_flight_list]]) {
-        commonTableView.backgroundColor = .AppHolderViewColor
+        commonTableView.backgroundColor = .WhiteColor
         tablerow.removeAll()
         var updatedUniqueList: [[J_flight_list]] = []
         updatedUniqueList = getUniqueElements_oneway(inputArray: list)
@@ -415,6 +426,8 @@ extension SearchResultPageViewController {
                 }
             })
             
+            tablerow.append(TableRow(height: 70,bgColor: HexColor("#FFFFFF"),  cellType:.EmptyTVCell))
+         
             commonTVData = tablerow
             commonTableView.reloadData()
         }
@@ -422,7 +435,7 @@ extension SearchResultPageViewController {
     
     
     func onewayFilterdList1(list:[J_flight_list]) {
-        commonTableView.backgroundColor = .AppHolderViewColor
+        commonTableView.backgroundColor = .WhiteColor
         tablerow.removeAll()
         
         
@@ -441,7 +454,6 @@ extension SearchResultPageViewController {
                                      data: similarFlights1,
                                      moreData: j.flight_details?.summary ?? [],
                                      cellType:.NewFlightSearchResultTVCell))
-            
             
         }
         
@@ -467,7 +479,7 @@ extension SearchResultPageViewController {
     //MARK: - multicityFilterdList
     
     func multicityFilterdList(list:[[MCJ_flight_list]]) {
-        commonTableView.backgroundColor = .AppHolderViewColor
+        commonTableView.backgroundColor = .WhiteColor
         tablerow.removeAll()
         var updatedUniqueList: [[MCJ_flight_list]] = []
         updatedUniqueList = getUniqueElements_multicity(inputArray: list)
@@ -515,7 +527,7 @@ extension SearchResultPageViewController {
     
     
     func multicityFilterdList1(list:[MCJ_flight_list]) {
-        commonTableView.backgroundColor = .AppHolderViewColor
+        commonTableView.backgroundColor = .WhiteColor
         tablerow.removeAll()
         
         
@@ -791,7 +803,7 @@ extension SearchResultPageViewController {
             self.subTitleLabel.text = depDate
             oldjournyType = response.data?.search_params?.trip_type ?? ""
             //   chatBtnView.isHidden = false
-            holderView.backgroundColor = .AppHolderViewColor
+            holderView.backgroundColor = .WhiteColor
             FlightList = response.data?.j_flight_list
             defaults.set(response.data?.search_id, forKey: UserDefaultsKeys.searchid)
             defaults.set(response.data?.traceId, forKey: UserDefaultsKeys.traceId)

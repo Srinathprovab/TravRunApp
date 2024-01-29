@@ -52,7 +52,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, RegisterViewMo
     }
     
     func setiupUI()  {
-        
+        passwodTextField.isSecureTextEntry = true
         self.view.backgroundColor = .black.withAlphaComponent(0.5)
         holderView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         holderView.layer.cornerRadius = 30
@@ -153,7 +153,7 @@ extension LoginViewController {
             let seconds = 2.0
             DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {[self] in
                 
-                if isVcFrom == "BookingDetailsViewController" || isVcFrom == "SideMenuViewController"{
+                if isVcFrom == "BookingDetailsVC" || isVcFrom == "SideMenuViewController"{
                     NotificationCenter.default.post(name: NSNotification.Name("reloadAfterLogin"), object: nil)
                     self.dismiss(animated: true)
                 }else {

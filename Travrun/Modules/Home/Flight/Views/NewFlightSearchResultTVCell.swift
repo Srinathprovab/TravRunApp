@@ -104,7 +104,7 @@ class NewFlightSearchResultTVCell: TableViewCell {
             print("Similar List Count: \(similarListCount)")
             
             if similarListCount > 1 {
-                setuplabels(lbl: moreSimlarOptionlbl, text: "More similar options(\(similarListCount))", textcolor: UIColor.AppLabelColor, font: UIFont.InterRegular(size: 12), align: .right)
+                setuplabels(lbl: moreSimlarOptionlbl, text: "More similar options(\(similarListCount))", textcolor: UIColor.WhiteColor, font: UIFont.InterRegular(size: 12), align: .right)
                 showSimilarlbl()
             } else {
                 hideSimilarlbl()
@@ -208,8 +208,12 @@ extension NewFlightSearchResultTVCell: UITableViewDelegate,UITableViewDataSource
             
             cell.airlinelbl.text = " (\(data.operator_code ?? "")-\(data.flight_number ?? ""))"
             cell.durationlbl.text = data.duration ?? ""
-            cell.noofStopslbl.text = "\(data.no_of_stops ?? 0) Stops"
-            
+            if data.no_of_stops ?? 0  > 1 {
+                cell.noofStopslbl.text = "\(data.no_of_stops ?? 0) Stops"
+            } else {
+                cell.noofStopslbl.text = "\(data.no_of_stops ?? 0) Stop"
+            }
+           
             cell.fromTimelbl.text = data.origin?.time ?? ""
             cell.fromCitylbl.text = "\(data.origin?.city ?? "")(\(data.origin?.loc ?? ""))"
             cell.toTimelbl.text = data.destination?.time ?? ""
@@ -224,14 +228,16 @@ extension NewFlightSearchResultTVCell: UITableViewDelegate,UITableViewDataSource
                 cell.cabinlbl.text = convertToDesiredFormat(data.weight_Allowance ?? "")
             }
             
-            cell.separatorLabel.isHidden = false
+            
             if key == "circle" {
                 cell.separatorLabel.isHidden = false
                 if tableView.isLast(for: indexPath) == true {
-                    cell.separatorLabel.isHidden = false
+//                    cell.separatorLabel.isHidden = false
                     cell.deplogo.image = UIImage(named: "flightDown")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppBtnColor)
 //                    cell.topView.isHidden = true
                 }
+            } else {
+                cell.separatorLabel.isHidden = true
             }
             
             ccell = cell

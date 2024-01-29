@@ -137,7 +137,7 @@ class similarFlightsVC: BaseTableVC {
     }
     
     func gotoBookingDetailsVC() {
-        guard let vc = BookingDetailsViewController.newInstance.self else {return}
+        guard let vc = BookingDetailsVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         vc.totalPrice1 = totalprice
         callapibool = true
@@ -153,15 +153,10 @@ class similarFlightsVC: BaseTableVC {
         gotoModifySearchFlightVC(key: "addreturn")
     }
     
-    
-    override func didTapOnAddReturnFlightBtnAction(cell: NewFlightSearchResultTVCell) {
-        gotoModifySearchFlightVC(key: "addreturn")
-    }
-    
     func gotoModifySearchFlightVC(key:String) {
         guard let vc = ModifySearchViewController.newInstance.self else {return}
-        vc.modalPresentationStyle = .fullScreen
-//        vc.key = key
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.key = key
         present(vc, animated: true)
     }
     

@@ -20,8 +20,8 @@ struct MBModel : Codable {
     let session_expiry_details : Session_expiry_details?
     //   let insurancePeriod : [InsurancePeriod]?
     //   let search_data : MBSearch_data?
-    let converted_currency_rate : Int?
-    //   let app_supported_currency_usd : App_supported_currency_usd?
+    let converted_currency_rate : Double?
+//       let app_supported_currency_usd : App_supported_currency_usd?
     let tmp_flight_pre_booking_id : String?
     let booking_source : String?
     //   let form_params : Form_params?
@@ -81,7 +81,7 @@ struct MBModel : Codable {
         session_expiry_details = try values.decodeIfPresent(Session_expiry_details.self, forKey: .session_expiry_details)
         //    insurancePeriod = try values.decodeIfPresent([InsurancePeriod].self, forKey: .insurancePeriod)
         //     search_data = try values.decodeIfPresent(Search_data.self, forKey: .search_data)
-        converted_currency_rate = try values.decodeIfPresent(Int.self, forKey: .converted_currency_rate)
+        converted_currency_rate = try values.decodeIfPresent(Double.self, forKey: .converted_currency_rate)
         //      app_supported_currency_usd = try values.decodeIfPresent(App_supported_currency_usd.self, forKey: .app_supported_currency_usd)
         tmp_flight_pre_booking_id = try values.decodeIfPresent(String.self, forKey: .tmp_flight_pre_booking_id)
         booking_source = try values.decodeIfPresent(String.self, forKey: .booking_source)

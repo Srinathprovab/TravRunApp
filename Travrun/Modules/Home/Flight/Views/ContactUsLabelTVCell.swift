@@ -46,7 +46,7 @@ class ContactUsLabelTVCell: TableViewCell {
             lblLeftConstraint.constant = 16
         } else if cellInfo?.key == "info" {
             leadingConst.constant = 0
-            titlelbl.text = " After booking you can contact a travel advisor to add extra baggage, subject to the airlines availability & rates."
+            titlelbl.text = "After booking you can contact a travel advisor to add extra baggage, subject to the airlines availability & rates."
             titlelbl.font = .InterRegular(size: 12)
             titlelbl.textColor = .AppLabelColor
             img.image = UIImage(named: "infoImage")

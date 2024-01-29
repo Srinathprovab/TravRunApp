@@ -236,7 +236,7 @@ class FilterVC: BaseTableVC{
         
         tablerow.append(TableRow(title:"Price",cellType:.SliderTVCell))
         tablerow.append(TableRow(title:"No. of stops",data: stopsArray,cellType:.CheckBoxTVCell))
-        tablerow.append(TableRow(title:"Refundable",data: faretypeArray,cellType:.CheckBoxTVCell))
+        tablerow.append(TableRow(title:"Cancellation Type",data: faretypeArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Luggage",data: luggageArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Duration", key:"duriation",cellType:.SliderTVCell))
         tablerow.append(TableRow(title:"Transit Time", key:"time",cellType:.SliderTVCell))
@@ -264,13 +264,11 @@ class FilterVC: BaseTableVC{
         tablerow.removeAll()
         
         tablerow.append(TableRow(title:"Price",key: "low",cellType:.SortbyTVCell))
-        tablerow.append(TableRow(title:"Departure",key: "departure",cellType:.SortbyTVCell))
+        tablerow.append(TableRow(title:"Departure Time",key: "departure",cellType: .SortbyTVCell))
         tablerow.append(TableRow(title:"Arrival Time",key: "departure",cellType:.SortbyTVCell))
-        tablerow.append(TableRow(title:"Duration",key: "departure",cellType:.SortbyTVCell))
+        tablerow.append(TableRow(title:"Duration",key: "low",cellType:.SortbyTVCell))
         tablerow.append(TableRow(title:"Airlines",key: "airline",cellType:.SortbyTVCell))
-        
-        
-        tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
+        tablerow.append(TableRow(height: 25,cellType:.EmptyTVCell))
         tablerow.append(TableRow(title:"Done",key: "filterbtn",bgColor: .AppBtnColor,cellType:.ButtonTVCell))
         tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
         
@@ -366,8 +364,7 @@ class FilterVC: BaseTableVC{
         cell.hightoLowhlbl.textColor = .AppLabelColor
         cell.hightoLowView.backgroundColor = .WhiteColor
         
-        
-        
+    
         if cell.titlelbl.text == "Price" {
             sortBy = .PriceLow
             
@@ -485,7 +482,7 @@ class FilterVC: BaseTableVC{
             if let cell5 = commonTableView.cellForRow(at: IndexPath(item: 4, section: 0)) as? SortbyTVCell {
                 resetSortBy(cell: cell5)
             }
-        }else if cell.titlelbl.text == "Departure" {
+        } else if cell.titlelbl.text == "Departure Time" {
             sortBy = .DepartureHigh
             
             if let cell1 = commonTableView.cellForRow(at: IndexPath(item: 0, section: 0)) as? SortbyTVCell {
@@ -728,7 +725,6 @@ class FilterVC: BaseTableVC{
                 case "Stops":
                     
                     if cell.titlelbl.text == "0 Stop" {
-                        
                         if let index = noOfStopsFilterArray.firstIndex(of: "0") {
                             noOfStopsFilterArray.remove(at: index)
                         }
@@ -863,12 +859,7 @@ class FilterVC: BaseTableVC{
             let pricesFloat = prices.compactMap { Float($0) }
             
             if tabselect == "Flights" {
-                
-                
                 if filterKey == "filter" {
-                    
-                    
-                    
                     
                     if minpricerangefilter != 0.0 {
                         filterModel.minPriceRange = minpricerangefilter

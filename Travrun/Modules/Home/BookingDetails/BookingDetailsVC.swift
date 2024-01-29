@@ -125,8 +125,6 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
             holderView.isHidden = true
             callAllAPIS()
         }
-        
-        
     }
     
     
@@ -180,9 +178,9 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
                                          "AddDeatilsOfTravellerTVCell",
                                          "AcceptTermsAndConditionTVCell",
                                          "TotalNoofTravellerTVCell",
-                                         "BookFlightDetailsTVCell", "RegisterNowTableViewCell", "EmptyTVCell", "LoginDetailsTableViewCell", "GuestRegisterTableViewCell", "RegisterSelectionLoginTableViewCell"])
+                                         "BookFlightDetailsTVCell", "RegisterNowTableViewCell", "EmptyTVCell", "LoginDetailsTableViewCell", "GuestRegisterTableViewCell", "RegisterSelectionLoginTableViewCell", "AddonTableViewCell"])
     }
-    
+  
     
     func setupTV() {
         sessionTimerView.isHidden = false
@@ -240,9 +238,10 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
                 searchTextArray.append("Infant \(i)")
             }
         }
-        
+        tablerow.append(TableRow(height: 12,bgColor:.AppHolderViewColor, cellType:.EmptyTVCell))
+        tablerow.append(TableRow(cellType:.AddonTableViewCell))
         tablerow.append(TableRow(cellType:.ContactInformationTVCell))
-        tablerow.append(TableRow(cellType:.UsePromoCodesTVCell))
+//        tablerow.append(TableRow(cellType:.UsePromoCodesTVCell))
         tablerow.append(TableRow(price:grand_total_Price,cellType:.PriceSummaryTVCell))
         tablerow.append(TableRow(key:"flight",
                                  cellType:.SpecialRequestTVCell))
@@ -1001,14 +1000,11 @@ extension BookingDetailsVC {
         DispatchQueue.main.async {
             self.callMobilePreProcessingBookingAPI()
         }
-        
-        
     }
     
     
     //MARK: -call Mobile Pre Processing Booking API
     func callMobilePreProcessingBookingAPI() {
-        
         payload.removeAll()
         payload["search_id"] = defaults.string(forKey: UserDefaultsKeys.searchid)
         payload["selectedResult"] = defaults.string(forKey: UserDefaultsKeys.selectedResult)
@@ -1020,7 +1016,7 @@ extension BookingDetailsVC {
     
     
     func mobilepreprocessbookingDetails(response: MBModel) {
-    
+
         holderView.isHidden = false
         accesskey = response.pre_booking_params?.access_key ?? ""
         accesskeytp = response.access_key_tp ?? ""
@@ -1034,11 +1030,7 @@ extension BookingDetailsVC {
         DispatchQueue.main.async {
             mbSummery = response.flight_data?[0].flightDetails?.summery ?? []
         }
-        
-        
         mbRefundable = defaults.string(forKey: UserDefaultsKeys.selectedFareType) ?? "Non Refundable"
-        
-        
         let i = response.pre_booking_params?.priceDetails
         Adults_Base_Price = String(i?.adultsBasePrice ?? "0.0")
         Adults_Tax_Price = String(i?.adultsTaxPrice ?? "0.0")
@@ -1057,7 +1049,7 @@ extension BookingDetailsVC {
         totalAmountforBooking = i?.grand_total ?? ""
         
         setAttributedTextnew(str1: "\(i?.api_currency ?? "")",
-                             str2: "\(i?.grand_total ?? "")",
+                             str2: " \(i?.grand_total ?? "")",
                              lbl: bookNowlbl,
                              str1font: .InterBold(size: 12),
                              str2font: .InterBold(size: 18),
@@ -1249,11 +1241,11 @@ extension BookingDetailsVC {
                     showToast(message: "Please Select To City")
                 }else if defaults.string(forKey:UserDefaultsKeys.toCity) == defaults.string(forKey:UserDefaultsKeys.fromCity) {
                     showToast(message: "Please Select Different Citys")
-                }else if defaults.string(forKey:UserDefaultsKeys.calDepDate) == "+ Add Departure Date" || defaults.string(forKey:UserDefaultsKeys.calDepDate) == nil{
+                }else if defaults.string(forKey:UserDefaultsKeys.rcalDepDate) == "+ Add Departure Date" || defaults.string(forKey:UserDefaultsKeys.rcalDepDate) == nil{
                     showToast(message: "Please Select Departure Date")
-                }else if defaults.string(forKey:UserDefaultsKeys.calRetDate) == "+ Add Departure Date" || defaults.string(forKey:UserDefaultsKeys.calRetDate) == nil{
+                }else if defaults.string(forKey:UserDefaultsKeys.rcalRetDate) == "+ Add Departure Date" || defaults.string(forKey:UserDefaultsKeys.rcalRetDate) == nil{
                     showToast(message: "Please Select Return Date")
-                }else if defaults.string(forKey:UserDefaultsKeys.calDepDate) == defaults.string(forKey:UserDefaultsKeys.calRetDate) {
+                }else if defaults.string(forKey:UserDefaultsKeys.rcalDepDate) == defaults.string(forKey:UserDefaultsKeys.rcalRetDate) {
                     showToast(message: "Please Select Different Dates")
                 }
                 else if defaults.string(forKey:UserDefaultsKeys.travellerDetails) == nil {

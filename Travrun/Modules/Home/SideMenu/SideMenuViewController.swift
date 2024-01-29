@@ -77,6 +77,7 @@ class SideMenuViewController: BaseTableVC, ProfileDetailsViewModelDelegate, Logo
         if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == true {
             tablerow.append(TableRow(title:"Logout",key: "logout", image: "IonLogOut",cellType:.SideMenuTitleTVCell))
         }
+        tablerow.append(TableRow(height: 25, cellType: .EmptyTVCell))
         commonTVData = tablerow
         commonTableView.reloadData()
     }
@@ -133,6 +134,7 @@ class SideMenuViewController: BaseTableVC, ProfileDetailsViewModelDelegate, Logo
 //        default:
 //            break
 //        }
+        callLogoutAPI()
     }
     
     func showFlightSearchVC() {

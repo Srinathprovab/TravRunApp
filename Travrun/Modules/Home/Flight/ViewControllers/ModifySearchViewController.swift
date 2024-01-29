@@ -39,6 +39,7 @@ class ModifySearchViewController: BaseTableVC {
     var calRetDate: String!
     var fromdataArray = [[String:Any]]()
     var isfromVc = String()
+    var key = ""
     
     static var newInstance: ModifySearchViewController? {
         let storyboard = UIStoryboard(name: Storyboard.FlightStoryBoard.name,
@@ -71,6 +72,15 @@ class ModifySearchViewController: BaseTableVC {
         defaults.set("Flights", forKey: UserDefaultsKeys.dashboardTapSelected)
         
         setupIntialUI()
+        
+        if key == "edit" {
+            setupIntialUI()
+        } else {
+            setupRoundTrip()
+            DispatchQueue.main.async {
+                self.gotoCalenderVC(key: "ret", titleStr: "Ruturn Date", isvc: "modify")
+            }
+        }
         
     }
     
@@ -193,15 +203,15 @@ class ModifySearchViewController: BaseTableVC {
     
     override func didTapOnAddReturnFlight(cell: OneWayTableViewCell) {
         setupRoundTrip()
-        gotoCalenderVC(key: "ret", titleStr: "Ruturn Date")
+        gotoCalenderVC(key: "ret", titleStr: "Ruturn Date", isvc: "modify")
     }
     
     override func didTapOnDepartureBtnAction(cell: OneWayTableViewCell) {
-        gotoCalenderVC(key: "dep", titleStr: "Departure Date")
+        gotoCalenderVC(key: "dep", titleStr: "Departure Date", isvc: "modify")
     }
     
     override func didTapOnReturnBtnAction(cell: OneWayTableViewCell) {
-        gotoCalenderVC(key: "ret", titleStr: "Ruturn Date")
+        gotoCalenderVC(key: "ret", titleStr: "Ruturn Date", isvc: "modify")
     }
     
     override func didTapOnAdvanedSearchOptions(cell: OneWayTableViewCell) {
@@ -288,7 +298,7 @@ class ModifySearchViewController: BaseTableVC {
                 payload["from_loc_id"] = defaults.string(forKey:UserDefaultsKeys.fromlocid)
                 payload["to"] = defaults.string(forKey:UserDefaultsKeys.toCity)
                 payload["to_loc_id"] = defaults.string(forKey:UserDefaultsKeys.tolocid)
-                payload["depature"] = defaults.string(forKey:UserDefaultsKeys.calDepDate)
+                payload["depature"] = defaults.string(forKey:UserDefaultsKeys.rcalDepDate)
                 payload["return"] = defaults.string(forKey:UserDefaultsKeys.rcalRetDate)
                 payload["out_jrn"] = "All Times"
                 payload["ret_jrn"] = "All Times"
@@ -345,7 +355,7 @@ extension ModifySearchViewController {
         self.present(vc, animated: true)
     }
     
-    func gotoCalenderVC(key:String,titleStr:String) {
+    func gotoCalenderVC(key:String,titleStr:String, isvc:String) {
         dateSelectKey = key
         guard let vc = Calvc.newInstance.self else {return}
         vc.modalPresentationStyle = .overCurrentContext

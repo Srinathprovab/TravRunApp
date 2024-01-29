@@ -25,7 +25,6 @@ struct passInfo {
 }
 
 protocol MBViewModelDelegate : BaseViewModelProtocol {
-    
     func mobilepreprocessbookingDetails(response : MBModel)
     func mobileprocesspassengerDetails(response:MBPModel)
     func mobilePreBookingModelDetails(response:MobilePreBookingModel)

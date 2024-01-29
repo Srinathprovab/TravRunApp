@@ -30,8 +30,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.makeKeyAndVisible()
         }  else {
             window = UIWindow(windowScene: windowScene)
-            let sb = UIStoryboard(name: "DashBoard", bundle: nil)
-            let vc = sb.instantiateViewController(withIdentifier: "DashBoardTabBarViewController")
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let vc = sb.instantiateViewController(withIdentifier: "ViewController")
             window?.rootViewController = vc
             window?.makeKeyAndVisible()
         }

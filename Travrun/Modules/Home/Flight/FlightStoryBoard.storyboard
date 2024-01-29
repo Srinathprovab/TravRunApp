@@ -388,7 +388,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KJA-8O-Twx">
-                                                                <rect key="frame" x="0.0" y="16" width="80" height="14"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain"/>
                                                                 <connections>
@@ -403,6 +403,7 @@
                                                             <constraint firstAttribute="width" constant="80" id="8SK-Gh-8EW"/>
                                                             <constraint firstAttribute="trailing" secondItem="KJA-8O-Twx" secondAttribute="trailing" id="SCz-hz-hcq"/>
                                                             <constraint firstItem="KJA-8O-Twx" firstAttribute="leading" secondItem="txF-QW-cmI" secondAttribute="leading" id="e0f-09-A2b"/>
+                                                            <constraint firstItem="KJA-8O-Twx" firstAttribute="top" secondItem="txF-QW-cmI" secondAttribute="top" id="eTp-of-PZq"/>
                                                             <constraint firstItem="wy3-HB-SOn" firstAttribute="leading" secondItem="noB-GO-69v" secondAttribute="trailing" constant="5" id="liP-Ei-Prf"/>
                                                             <constraint firstItem="noB-GO-69v" firstAttribute="leading" secondItem="txF-QW-cmI" secondAttribute="leading" constant="6" id="naZ-ss-Khi"/>
                                                             <constraint firstItem="wy3-HB-SOn" firstAttribute="centerY" secondItem="noB-GO-69v" secondAttribute="centerY" id="q0U-mH-NbB"/>
@@ -432,7 +433,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8I-ht-Yyf">
-                                                                <rect key="frame" x="0.0" y="16" width="80" height="14"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
                                                                 <state key="normal" title="Button"/>
                                                                 <buttonConfiguration key="configuration" style="plain"/>
                                                                 <connections>
@@ -444,6 +445,7 @@
                                                         <constraints>
                                                             <constraint firstItem="rY0-6A-Xfp" firstAttribute="leading" secondItem="MK8-Zg-czS" secondAttribute="leading" constant="6" id="FFZ-Cc-0Cd"/>
                                                             <constraint firstAttribute="trailing" secondItem="9Pt-Ji-Yoa" secondAttribute="trailing" constant="5" id="Mh8-OY-rHU"/>
+                                                            <constraint firstItem="I8I-ht-Yyf" firstAttribute="top" secondItem="MK8-Zg-czS" secondAttribute="top" id="RDv-b0-G4d"/>
                                                             <constraint firstAttribute="bottom" secondItem="I8I-ht-Yyf" secondAttribute="bottom" id="TeJ-AI-Wyu"/>
                                                             <constraint firstItem="9Pt-Ji-Yoa" firstAttribute="leading" secondItem="rY0-6A-Xfp" secondAttribute="trailing" constant="5" id="Tz9-uv-1S4"/>
                                                             <constraint firstItem="9Pt-Ji-Yoa" firstAttribute="centerY" secondItem="rY0-6A-Xfp" secondAttribute="centerY" id="e3z-77-fGF"/>
@@ -921,8 +923,11 @@
                                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="18"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <connections>
+                                                    <action selector="bookNowButtonAction:" destination="afT-ps-fdH" eventType="touchUpInside" id="h9B-1U-2II"/>
+                                                </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFz-lL-JaQ">
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFz-lL-JaQ">
                                                 <rect key="frame" x="235.33333333333334" y="18" width="24.000000000000028" height="14"/>
                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1002,6 +1007,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="amountLabel" destination="d4e-WY-aQd" id="A6g-gW-lQB"/>
                         <outlet property="bagInfoLabel" destination="9B4-K1-fKb" id="PtZ-bS-a2G"/>
                         <outlet property="bagInfoView" destination="5F0-LO-sFT" id="tay-Zi-4Il"/>
                         <outlet property="breakDownLabel" destination="g4D-ec-DZW" id="muA-xf-tiM"/>
@@ -1012,6 +1018,7 @@
                         <outlet property="holderView" destination="svT-AN-1lj" id="SmM-ak-eyx"/>
                         <outlet property="iternaryLabel" destination="2JP-7O-pP9" id="u8N-Zc-nJ6"/>
                         <outlet property="iternaryView" destination="WSB-84-l6A" id="Rn3-JD-NBf"/>
+                        <outlet property="priceLabel" destination="vFz-lL-JaQ" id="9rB-do-531"/>
                         <outlet property="topView" destination="svT-AN-1lj" id="GEF-Zt-NUJ"/>
                         <outlet property="tvLeading" destination="yrT-Jo-Ecd" id="O1Q-rN-XBW"/>
                         <outlet property="tvTraling" destination="AIp-AE-iGh" id="ovs-wu-Fvp"/>

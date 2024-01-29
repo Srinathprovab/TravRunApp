@@ -10,6 +10,7 @@ import UIKit
 class ResetPasswordVC: BaseTableVC, ForgetPasswordViewModelDelegate {
     
 
+    @IBOutlet weak var popUpView: UIView!
     @IBOutlet weak var backButtonView: UIView!
     @IBOutlet weak var nav: UIView!
     @IBOutlet weak var holderView: UIView!
@@ -60,6 +61,8 @@ class ResetPasswordVC: BaseTableVC, ForgetPasswordViewModelDelegate {
     
     
     func setupUI() {
+        commonTableView.isHidden = false
+        popUpView.isHidden = true
         backButtonView.layer.cornerRadius = backButtonView.layer.frame.width / 2
         commonTableView.registerTVCells(["LabelTVCell","TextfieldTVCell","ButtonTVCell"])
         setuptv()
@@ -69,7 +72,7 @@ class ResetPasswordVC: BaseTableVC, ForgetPasswordViewModelDelegate {
     func setuptv() {
         tablerow.removeAll()
         tablerow.append(TableRow(title:"Enter the Email adress or Id associated with your account and we’ll send an email with instructions to reset your password.",key: "cpwd",cellType:.LabelTVCell))
-        tablerow.append(TableRow(title:"Email Address*",key: "email", text: "1", tempText: "Email Id",cellType:.TextfieldTVCell))
+        tablerow.append(TableRow(title:"Email Id*",key: "email", text: "1", tempText: "Email Id",cellType:.TextfieldTVCell))
         tablerow.append(TableRow(title:"Mobile Number*",key: "email", text: "12", tempText: "Mobile Number",cellType:.TextfieldTVCell))
         
         tablerow.append(TableRow(title:"Send",key: "Send", cellType: .ButtonTVCell))
@@ -129,12 +132,14 @@ class ResetPasswordVC: BaseTableVC, ForgetPasswordViewModelDelegate {
         let seconds = 2.0
         if response.status == false {
             showToast(message: response.data ?? "")
-        }else {
+        } else {
             showToast(message: response.data ?? "")
+            commonTableView.isHidden = true
+            popUpView.isHidden = false
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {[self] in
-            gotoCreateNewPasswordVC()
+            
         }
     }
     

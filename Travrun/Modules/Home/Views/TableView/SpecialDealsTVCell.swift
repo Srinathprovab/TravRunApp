@@ -47,9 +47,17 @@ class SpecialDealsTVCell: TableViewCell {
         if cellInfo?.key == "flights" {
             if topFlightDetails.count == 0 {
                 specialDealsCV.setEmptyMessage("No Data Found")
-            }else {
+            } else {
                 specialDealsCV.restore()
                 itemCount = topFlightDetails.count
+                startAutoScroll()
+            }
+        } else if cellInfo?.key == "offer" {
+            if deailcodelist.count == 0 {
+                specialDealsCV.setEmptyMessage("No Data Found")
+            }else {
+                specialDealsCV.restore()
+                itemCount = deailcodelist.count
                 startAutoScroll()
             }
         } else {
@@ -142,7 +150,9 @@ extension SpecialDealsTVCell:UICollectionViewDelegate,UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if cellInfo?.key == "flights" {
             return topFlightDetails.count
-        }else {
+        } else if cellInfo?.key == "offer" {
+            return deailcodelist.count
+        }  else {
             return topHotelDetails.count
         }
     }
@@ -156,12 +166,17 @@ extension SpecialDealsTVCell:UICollectionViewDelegate,UICollectionViewDataSource
                 cell.offerImage.sd_setImage(with: URL(string: data.topFlightImg ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
                 cell.bookinglbl.text = "\(data.to_city_name ?? "")"
                 cell.promoCodelbl.isHidden = true
+            } else if cellInfo?.key == "offer" {
+                let data = deailcodelist[indexPath.row]
+                cell.offerImage.sd_setImage(with: URL(string: data.topDealImg ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
+                cell.bookinglbl.text = "\(data.promo_code ?? "")"
+                cell.promoCodelbl.isHidden = true
             } else {
-                
                 let data = topHotelDetails[indexPath.row]
                 cell.offerImage.sd_setImage(with: URL(string: data.topHotelImg ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
                 cell.bookinglbl.text = "\(data.country ?? "")"
                 cell.promoCodelbl.text =  "\(data.city_name ?? "")"
+                cell.promoCodelbl.isHidden = false
             }
             
             commonCell = cell

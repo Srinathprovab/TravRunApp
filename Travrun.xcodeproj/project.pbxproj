@@ -275,6 +275,10 @@
 		07CD5CE82B14A12B00D49204 /* PassengersInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07CD5CE62B14A12B00D49204 /* PassengersInfoTableViewCell.xib */; };
 		07CD5CEB2B14AE2B00D49204 /* ImportentInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CD5CE92B14AE2B00D49204 /* ImportentInfoTableViewCell.swift */; };
 		07CD5CEC2B14AE2B00D49204 /* ImportentInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07CD5CEA2B14AE2B00D49204 /* ImportentInfoTableViewCell.xib */; };
+		07D018AD2B67A7CC00D80E37 /* AddonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07D018AC2B67A7CC00D80E37 /* AddonTableViewCell.xib */; };
+		07D018AF2B67A7D300D80E37 /* AddonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D018AE2B67A7D300D80E37 /* AddonTableViewCell.swift */; };
+		07D018B12B67A7DB00D80E37 /* AddonContentTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07D018B02B67A7DB00D80E37 /* AddonContentTVCell.xib */; };
+		07D018B32B67A7E100D80E37 /* AddonContentTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D018B22B67A7E100D80E37 /* AddonContentTVCell.swift */; };
 		07D674D52B46B1230092A439 /* BookingSucessVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D674D42B46B1230092A439 /* BookingSucessVC.swift */; };
 		07D674D72B46B1850092A439 /* BookingConfirmedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D674D62B46B1850092A439 /* BookingConfirmedVC.swift */; };
 		07D674D92B46B26B0092A439 /* VocherDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D674D82B46B26B0092A439 /* VocherDetailsViewModel.swift */; };
@@ -680,6 +684,10 @@
 		07CD5CE62B14A12B00D49204 /* PassengersInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PassengersInfoTableViewCell.xib; sourceTree = "<group>"; };
 		07CD5CE92B14AE2B00D49204 /* ImportentInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportentInfoTableViewCell.swift; sourceTree = "<group>"; };
 		07CD5CEA2B14AE2B00D49204 /* ImportentInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImportentInfoTableViewCell.xib; sourceTree = "<group>"; };
+		07D018AC2B67A7CC00D80E37 /* AddonTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddonTableViewCell.xib; sourceTree = "<group>"; };
+		07D018AE2B67A7D300D80E37 /* AddonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddonTableViewCell.swift; sourceTree = "<group>"; };
+		07D018B02B67A7DB00D80E37 /* AddonContentTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddonContentTVCell.xib; sourceTree = "<group>"; };
+		07D018B22B67A7E100D80E37 /* AddonContentTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddonContentTVCell.swift; sourceTree = "<group>"; };
 		07D674D42B46B1230092A439 /* BookingSucessVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingSucessVC.swift; sourceTree = "<group>"; };
 		07D674D62B46B1850092A439 /* BookingConfirmedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookingConfirmedVC.swift; sourceTree = "<group>"; };
 		07D674D82B46B26B0092A439 /* VocherDetailsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocherDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -1234,6 +1242,10 @@
 			isa = PBXGroup;
 			children = (
 				07CC2B132B10B6BF00A71A30 /* CollectionViews */,
+				07D018B22B67A7E100D80E37 /* AddonContentTVCell.swift */,
+				07D018B02B67A7DB00D80E37 /* AddonContentTVCell.xib */,
+				07D018AE2B67A7D300D80E37 /* AddonTableViewCell.swift */,
+				07D018AC2B67A7CC00D80E37 /* AddonTableViewCell.xib */,
 				07D674E42B46B4800092A439 /* BookedTravelDetailsTVCell.swift */,
 				07D674E22B46B4790092A439 /* BookedTravelDetailsTVCell.xib */,
 				07A99F5D2B317B450069523D /* BookingDetailsRoundTripTVCell.swift */,
@@ -1974,6 +1986,7 @@
 				07CD5CE42B149DA300D49204 /* PassangerDetailsTableViewCell.xib in Resources */,
 				07ED14ED2B18ABBB005A2618 /* SliderTVCell.xib in Resources */,
 				070131772B218220000F45B2 /* SelectGenderTVCell.xib in Resources */,
+				07D018B12B67A7DB00D80E37 /* AddonContentTVCell.xib in Resources */,
 				07CC2B192B10BF1300A71A30 /* ContactUsLabelTVCell.xib in Resources */,
 				073176B12B45290F006A1FBE /* SearchFlightResultTVCell.xib in Resources */,
 				3DD95B0E2AFDECBE00F4092D /* latoregular.ttf in Resources */,
@@ -2025,6 +2038,7 @@
 				076984BB2B19B6C8002422AF /* BookingDetails.storyboard in Resources */,
 				07CD5CD32B147AF800D49204 /* BookedAdultDetailsTVCell.xib in Resources */,
 				07C481222B1EDAC9007030C8 /* RegisterUserTVCell.xib in Resources */,
+				07D018AD2B67A7CC00D80E37 /* AddonTableViewCell.xib in Resources */,
 				073176D02B453F76006A1FBE /* TravellerAdultTVCell.xib in Resources */,
 				3D9024582AFCDD160020C38A /* Inter-Bold.ttf in Resources */,
 				07B79FD32B1DD13B006AC03F /* FareSummaryTableViewCell.xib in Resources */,
@@ -2216,6 +2230,7 @@
 				3D5DEF742AFCC039007E3265 /* TextFieldExtension.swift in Sources */,
 				07CBC9122B2988BC00039747 /* ItineraryAddTVCell.swift in Sources */,
 				07C4810F2B1ED853007030C8 /* Data.swift in Sources */,
+				07D018B32B67A7E100D80E37 /* AddonContentTVCell.swift in Sources */,
 				3D9024732AFCFD320020C38A /* TripsViewController.swift in Sources */,
 				07C4811A2B1ED9A2007030C8 /* LabelTVCell.swift in Sources */,
 				07CBC9142B29896500039747 /* FDFlightDetails.swift in Sources */,
@@ -2280,6 +2295,7 @@
 				074B39EF2B3EEF1700A43F77 /* HotelBookingDetailsViewModel.swift in Sources */,
 				07EC17B92B3AE5AD00DA966E /* GuestDetailsTVCell.swift in Sources */,
 				078BF7E52B0C67A600174A80 /* Price.swift in Sources */,
+				07D018AF2B67A7D300D80E37 /* AddonTableViewCell.swift in Sources */,
 				07BC9FB92B43F4BD00B3556C /* ViewFlightFromToDetailsTVCell.swift in Sources */,
 				078BF7C32B0C679900174A80 /* RTData.swift in Sources */,
 				3D0B28A12AFE0DF8001E1A69 /* SpecialDealsTVCell.swift in Sources */,

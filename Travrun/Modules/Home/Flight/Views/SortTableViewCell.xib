@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -33,7 +34,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="QWj-Fa-QSl">
-                                <rect key="frame" x="16" y="55.666666666666657" width="317" height="40"/>
+                                <rect key="frame" x="29" y="55.666666666666657" width="317" height="40"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fik-aJ-mf9" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="152" height="40"/>
@@ -116,12 +117,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="QWj-Fa-QSl" firstAttribute="leading" secondItem="Wgn-aa-zu9" secondAttribute="leading" constant="16" id="Hkf-fd-hvA"/>
+                            <constraint firstItem="QWj-Fa-QSl" firstAttribute="centerX" secondItem="Wgn-aa-zu9" secondAttribute="centerX" id="8mQ-M8-mR9"/>
                             <constraint firstItem="phK-Ew-mRQ" firstAttribute="leading" secondItem="Wgn-aa-zu9" secondAttribute="leading" constant="16" id="NYA-d1-Z9e"/>
                             <constraint firstItem="phK-Ew-mRQ" firstAttribute="top" secondItem="Wgn-aa-zu9" secondAttribute="top" constant="20" id="O3O-Gg-xCD"/>
                             <constraint firstItem="QWj-Fa-QSl" firstAttribute="top" secondItem="phK-Ew-mRQ" secondAttribute="bottom" constant="16" id="cu4-cd-I6W"/>
                             <constraint firstAttribute="bottom" secondItem="QWj-Fa-QSl" secondAttribute="bottom" constant="5.3300000000000001" id="fx1-Yn-O4L"/>
-                            <constraint firstAttribute="trailing" secondItem="QWj-Fa-QSl" secondAttribute="trailing" constant="42" id="n4X-uW-j1v"/>
                         </constraints>
                     </view>
                 </subviews>

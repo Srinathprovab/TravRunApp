@@ -65,6 +65,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterVie
     
     
     func setiupUI()  {
+        passwodTextField.isSecureTextEntry = true
         self.view.backgroundColor = .black.withAlphaComponent(0.5)
         backgroundImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         backgroundImage.layer.cornerRadius = 30

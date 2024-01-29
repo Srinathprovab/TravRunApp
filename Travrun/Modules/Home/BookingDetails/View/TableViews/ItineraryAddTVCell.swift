@@ -70,9 +70,16 @@ extension ItineraryAddTVCell:UITableViewDelegate,UITableViewDataSource {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? FlightInfoTableViewCell {
             
             let data = fdetais[indexPath.row]
+//            cell.separationLine.isHidden = true
+//            if indexPath.row / 2 == 0 {
+//                cell.separatorView.isHidden = true
+//            } else {
+//                cell.separatorView.isHidden = false
+//            }
+//            
             cell.toCodeLabel.text = "(\(data.origin?.city ?? "") \(data.origin?.loc ?? ""))"
             cell.destinationCodeLabel.text = "(\(data.destination?.city ?? "") \(data.destination?.loc ?? ""))"
-            cell.cityTolbl.text = "\(data.origin?.city ?? "") to \(data.destination?.city ?? "")"
+//            cell.cityTolbl.text = "\(data.origin?.city ?? "") to \(data.destination?.city ?? "")"
             cell.arivalTime.text = "\(data.origin?.time ?? "")"
             cell.airportlbl.text = "\(data.origin?.airport_name ?? "")"
             if data.origin?.terminal == "" {
@@ -95,6 +102,7 @@ extension ItineraryAddTVCell:UITableViewDelegate,UITableViewDataSource {
             cell.bottomLabel.text = "Layover Duration \(data.destination?.city ?? "") (\(data.destination?.loc ?? "")) \(data.layOverDuration ?? "")"
             
             if tableView.isLast(for: indexPath) {
+//                cell.separationLine.isHidden = false
                 cell.bottomLabel.textColor = HexColor("#000000")
                 cell.bottomLabel.font = .InterRegular(size: 12)
                 cell.bottomLabel.text = "Arrival flight in different day"

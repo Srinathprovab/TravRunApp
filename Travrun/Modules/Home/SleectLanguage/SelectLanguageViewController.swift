@@ -138,7 +138,7 @@ class SelectLanguageViewController: BaseTableVC, CurrencyListViewModelDelegate {
     func setupLanguage() {
         onTap = "language"
         langlbl.textColor = .AppLabelColor
-        langUL.backgroundColor = HexColor("#64276F")
+        langUL.backgroundColor = HexColor("#3C627A")
         
         currencylbl.textColor = .AppLabelColor
         currencyUL.backgroundColor = .WhiteColor
@@ -153,7 +153,7 @@ class SelectLanguageViewController: BaseTableVC, CurrencyListViewModelDelegate {
         langUL.backgroundColor = .WhiteColor
         
         currencylbl.textColor = .AppLabelColor
-        currencyUL.backgroundColor = HexColor("#64276F")
+        currencyUL.backgroundColor = HexColor("#3C627A")
         setupCurencyTVCell()
     }
     

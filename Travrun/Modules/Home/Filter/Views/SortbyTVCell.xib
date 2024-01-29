@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -23,14 +24,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qu6-Qu-Nui">
                                 <rect key="frame" x="16" y="0.0" width="391" height="102"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Znd-yB-WN4">
-                                        <rect key="frame" x="16" y="0.0" width="41.5" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Znd-yB-WN4">
+                                        <rect key="frame" x="37.5" y="0.0" width="41.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="XO7-Dl-nIK">
-                                        <rect key="frame" x="16" y="36.5" width="316" height="40"/>
+                                        <rect key="frame" x="37.5" y="36.5" width="316" height="40"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pl7-fF-QeU">
                                                 <rect key="frame" x="0.0" y="0.0" width="152" height="40"/>
@@ -97,12 +98,11 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Znd-yB-WN4" firstAttribute="leading" secondItem="Qu6-Qu-Nui" secondAttribute="leading" constant="16" id="3K1-tL-emf"/>
                                     <constraint firstItem="Znd-yB-WN4" firstAttribute="top" secondItem="Qu6-Qu-Nui" secondAttribute="top" id="Fd9-EW-f0U"/>
-                                    <constraint firstAttribute="trailing" secondItem="XO7-Dl-nIK" secondAttribute="trailing" constant="59" id="Jif-8I-fQJ"/>
                                     <constraint firstItem="XO7-Dl-nIK" firstAttribute="top" secondItem="Znd-yB-WN4" secondAttribute="bottom" constant="16" id="gZc-4i-XAc"/>
                                     <constraint firstAttribute="bottom" secondItem="XO7-Dl-nIK" secondAttribute="bottom" constant="25.5" id="hYD-DE-uPn"/>
-                                    <constraint firstItem="XO7-Dl-nIK" firstAttribute="leading" secondItem="Qu6-Qu-Nui" secondAttribute="leading" constant="16" id="nRd-Xa-z7x"/>
+                                    <constraint firstItem="Znd-yB-WN4" firstAttribute="leading" secondItem="XO7-Dl-nIK" secondAttribute="leading" id="r6x-AF-Ehv"/>
+                                    <constraint firstItem="XO7-Dl-nIK" firstAttribute="centerX" secondItem="Qu6-Qu-Nui" secondAttribute="centerX" id="ulP-SU-nxZ"/>
                                 </constraints>
                             </view>
                         </subviews>

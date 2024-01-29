@@ -67,11 +67,6 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
         setupUI()
         commonTableView.register(UINib(nibName: "HotelsTVCell", bundle: nil), forCellReuseIdentifier: "cell44")
         
-//        if screenHeight < 835 {
-//            navHeight.constant = 130
-//        }
-//        filtered = hotelSearchResult
-//        
         NotificationCenter.default.addObserver(self, selector: #selector(nointernet), name: Notification.Name("nointernet"), object: nil)
     }
     

@@ -9,6 +9,7 @@ import UIKit
 
 class FlightInfoTableViewCell: TableViewCell {
 
+    @IBOutlet weak var separationLine: UIView!
     @IBOutlet weak var AirwaysImg1: UIImageView!
     @IBOutlet weak var infoImage: UIImageView!
     @IBOutlet weak var middleView: UIView!

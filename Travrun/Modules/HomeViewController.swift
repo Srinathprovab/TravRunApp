@@ -9,6 +9,10 @@ import UIKit
 
 class HomeViewController: BaseTableVC, AllCountryCodeListViewModelDelegate, TopFlightDetailsViewModelDelegate {
     
+    @IBOutlet weak var sideMenuTopConst: NSLayoutConstraint!
+    @IBOutlet weak var langTopConst: NSLayoutConstraint!
+    @IBOutlet weak var logoBottomConst: NSLayoutConstraint!
+    @IBOutlet weak var bannerHeight: NSLayoutConstraint!
     @IBOutlet weak var payIcon: UIImageView!
     @IBOutlet weak var visaIcon: UIImageView!
     @IBOutlet weak var hotelImage: UIImageView!
@@ -96,6 +100,14 @@ class HomeViewController: BaseTableVC, AllCountryCodeListViewModelDelegate, TopF
     //MARK: REGISTER TABEL VIEW CELLS
     
     func setUpView() {
+        if screenHeight < 835 {
+        bannerHeight.constant = 200
+            logoBottomConst.constant = 30
+            sideMenuTopConst.constant = 25
+        } else {
+            bannerHeight.constant = 250
+            logoBottomConst.constant = 50
+        }
         self.commonTableView.registerTVCells(["SpecialDealsTVCell","TopCityTVCell","EmptyTVCell", "holidayTableViewCell"])
         priceLabel.textColor = .white
         priceLabel.font = UIFont.latoRegular(size: 14)
@@ -122,7 +134,9 @@ class HomeViewController: BaseTableVC, AllCountryCodeListViewModelDelegate, TopF
         } else {
             tableRow.append(TableRow(height: 0,cellType: .EmptyTVCell))
         }
-        tableRow.append(TableRow(height: 80,cellType: .EmptyTVCell))
+        tableRow.append(TableRow(height: 30,cellType: .EmptyTVCell))
+        tableRow.append(TableRow(title:"Top Offers",key: "offer", cellType: .SpecialDealsTVCell))
+        tableRow.append(TableRow(height: 40,cellType: .EmptyTVCell))
         self.commonTVData = tableRow
         self.commonTableView.reloadData()
     }
@@ -254,7 +268,7 @@ extension HomeViewController {
     func topFlightDetailsImages(response: TopFlightDetailsModel) {
         topFlightDetails = response.topFlightDetails ?? []
         topHotelDetails = response.topHotelDetails ?? []
-        deailcodelist = response.deail_code_list ?? []
+        deailcodelist = response.deal_code_list ?? []
         topHolidayList = response.holiday_top_destination ?? []
         DispatchQueue.main.async {[self] in
             setUpTableView()
@@ -465,7 +479,7 @@ extension HomeViewController {
                 defaults.set((userinfo["travel_date"] as? String) ?? "" , forKey: UserDefaultsKeys.calDepDate)
                 defaults.set((userinfo["return_date"] as? String) ?? "" , forKey: UserDefaultsKeys.calRetDate)
             }else {
-                defaults.set((userinfo["travel_date"] as? String) ?? "" , forKey: UserDefaultsKeys.calDepDate)
+                defaults.set((userinfo["travel_date"] as? String) ?? "" , forKey: UserDefaultsKeys.rcalDepDate)
                 defaults.set((userinfo["return_date"] as? String) ?? "" , forKey: UserDefaultsKeys.rcalRetDate)
             }
             

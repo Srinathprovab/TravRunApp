@@ -145,7 +145,7 @@ class AddDeatilsOfTravellerTVCell: TableViewCell {
     
     
     func collapsView() {
-        dropdownimg.image = UIImage(named: "down")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppLabelColor)
+        dropdownimg.image = UIImage(named: "sliderdrop")?.withRenderingMode(.alwaysOriginal).withTintColor(.AppLabelColor)
         saveView.isHidden = true
         viewHeight.constant = 0
     }
@@ -450,7 +450,7 @@ class AddDeatilsOfTravellerTVCell: TableViewCell {
                 }
                 
             }else {
-                if let newdate = formatter.date(from: defaults.string(forKey: UserDefaultsKeys.calRetDate) ?? "") {
+                if let newdate = formatter.date(from: defaults.string(forKey: UserDefaultsKeys.rcalRetDate) ?? "") {
                     components.year = -12 // Allow selecting a date at least 12 years in the past
                     let twelveYearsLater = calendar.date(byAdding: components, to: newdate)
                     if let adultcount = defaults.string(forKey: UserDefaultsKeys.adultCount) {
@@ -483,7 +483,7 @@ class AddDeatilsOfTravellerTVCell: TableViewCell {
                 
                 
             }else {
-                if let newdate = formatter.date(from: defaults.string(forKey: UserDefaultsKeys.calRetDate) ?? "") {
+                if let newdate = formatter.date(from: defaults.string(forKey: UserDefaultsKeys.rcalRetDate) ?? "") {
                     
                     components.year = -2 // Allow selecting a date at least 2 years in the past
                     dobDatePicker.maximumDate = calendar.date(byAdding: components, to: newdate)
@@ -514,7 +514,7 @@ class AddDeatilsOfTravellerTVCell: TableViewCell {
                 
                 
             }else {
-                if let newdate = formatter.date(from: defaults.string(forKey: UserDefaultsKeys.calRetDate) ?? "") {
+                if let newdate = formatter.date(from: defaults.string(forKey: UserDefaultsKeys.rcalRetDate) ?? "") {
                     
                     
                     components1.day = +1
