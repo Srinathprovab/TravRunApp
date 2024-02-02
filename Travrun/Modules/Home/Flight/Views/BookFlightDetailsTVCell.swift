@@ -93,7 +93,13 @@ extension BookFlightDetailsTVCell :UITableViewDataSource,UITableViewDelegate {
             cell.totimelbl.text = data.destination?.time
             cell.toCityShortlbl.text = data.destination?.city
             cell.hourslbl.text = data.duration
-            cell.noStopslbl.text = "\(String(data.no_of_stops ?? 0)) Stops"
+            
+            if data.no_of_stops ?? 1 > 1 {
+                cell.noStopslbl.text = "\(String(data.no_of_stops ?? 0)) Stops"
+            } else {
+                cell.noStopslbl.text = "\(String(data.no_of_stops ?? 0)) Stop"
+            }
+            
             cell.airwaysImg.sd_setImage(with: URL(string: data.operator_image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
             cell.titlelbl.text = data.operator_name
             cell.subtitlelbl.text = "(\(data.operator_code ?? "") \(data.flight_number ?? ""))"

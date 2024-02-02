@@ -569,14 +569,14 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="50"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flightIcon" translatesAutoresizingMaskIntoConstraints="NO" id="xbJ-8j-WI3">
-                                                                                <rect key="frame" x="8" y="15" width="20" height="20"/>
+                                                                                <rect key="frame" x="9.3333333333333321" y="15" width="20" height="20"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="20" id="46m-MZ-AlI"/>
                                                                                     <constraint firstAttribute="height" constant="20" id="vmy-uU-2pT"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pug-Nz-i0b">
-                                                                                <rect key="frame" x="30.999999999999996" y="15.333333333333345" width="43.666666666666657" height="19.666666666666671"/>
+                                                                                <rect key="frame" x="32.333333333333343" y="15.333333333333345" width="43.666666666666657" height="19.666666666666671"/>
                                                                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
                                                                                 <color key="textColor" red="0.23529411764705882" green="0.38431372549019605" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <nil key="highlightedColor"/>
@@ -597,7 +597,7 @@
                                                                             <constraint firstItem="Pug-Nz-i0b" firstAttribute="centerY" secondItem="xbJ-8j-WI3" secondAttribute="centerY" id="EQ3-Xi-l0T"/>
                                                                             <constraint firstItem="q3G-fm-FyR" firstAttribute="top" secondItem="Sbl-Er-sU4" secondAttribute="top" id="Zan-qc-IyF"/>
                                                                             <constraint firstItem="xbJ-8j-WI3" firstAttribute="top" secondItem="Sbl-Er-sU4" secondAttribute="top" constant="15" id="cAf-tG-Rbp"/>
-                                                                            <constraint firstItem="xbJ-8j-WI3" firstAttribute="leading" secondItem="Sbl-Er-sU4" secondAttribute="leading" constant="8" id="fqf-Bh-qSs"/>
+                                                                            <constraint firstItem="xbJ-8j-WI3" firstAttribute="leading" secondItem="Sbl-Er-sU4" secondAttribute="leading" constant="9.1999999999999993" id="fqf-Bh-qSs"/>
                                                                             <constraint firstAttribute="trailing" secondItem="q3G-fm-FyR" secondAttribute="trailing" id="igz-WD-ZOs"/>
                                                                             <constraint firstItem="Pug-Nz-i0b" firstAttribute="leading" secondItem="xbJ-8j-WI3" secondAttribute="trailing" constant="3" id="ugF-L9-QQE"/>
                                                                         </constraints>
@@ -618,14 +618,14 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="50"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hotelIcon" translatesAutoresizingMaskIntoConstraints="NO" id="4He-zv-3Av">
-                                                                                <rect key="frame" x="8" y="15" width="20" height="20"/>
+                                                                                <rect key="frame" x="9.3333333333333286" y="15" width="20" height="20"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="20" id="XRy-Uh-CCI"/>
                                                                                     <constraint firstAttribute="height" constant="20" id="eFI-UD-mVP"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hotel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCz-jN-3KG">
-                                                                                <rect key="frame" x="33" y="15.333333333333345" width="41.333333333333343" height="19.666666666666671"/>
+                                                                                <rect key="frame" x="34.333333333333343" y="15.333333333333345" width="41.333333333333343" height="19.666666666666671"/>
                                                                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
                                                                                 <color key="textColor" red="0.23529411764705882" green="0.38431372549019605" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <nil key="highlightedColor"/>
@@ -648,7 +648,7 @@
                                                                             <constraint firstItem="4He-zv-3Av" firstAttribute="top" secondItem="aPc-tR-pn5" secondAttribute="top" constant="15" id="gBM-mh-NsZ"/>
                                                                             <constraint firstItem="bDd-Wp-gqr" firstAttribute="top" secondItem="aPc-tR-pn5" secondAttribute="top" id="ibL-l1-fyQ"/>
                                                                             <constraint firstAttribute="trailing" secondItem="bDd-Wp-gqr" secondAttribute="trailing" id="oDY-cb-H25"/>
-                                                                            <constraint firstItem="4He-zv-3Av" firstAttribute="leading" secondItem="aPc-tR-pn5" secondAttribute="leading" constant="8" id="xYI-ZN-oUg"/>
+                                                                            <constraint firstItem="4He-zv-3Av" firstAttribute="leading" secondItem="aPc-tR-pn5" secondAttribute="leading" constant="9.1999999999999993" id="xYI-ZN-oUg"/>
                                                                         </constraints>
                                                                     </view>
                                                                 </subviews>
@@ -667,14 +667,14 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="50"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visaIcon" translatesAutoresizingMaskIntoConstraints="NO" id="iZe-7h-NHZ">
-                                                                                <rect key="frame" x="8" y="15.666666666666659" width="15" height="18.666666666666679"/>
+                                                                                <rect key="frame" x="15.333333333333343" y="15.666666666666659" width="15" height="18.666666666666679"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="18.890000000000001" id="aSz-e6-POm"/>
                                                                                     <constraint firstAttribute="width" constant="15" id="gfc-8J-FSy"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hhe-Ye-1aq">
-                                                                                <rect key="frame" x="28" y="15.333333333333345" width="34" height="19.666666666666671"/>
+                                                                                <rect key="frame" x="35.333333333333343" y="15.333333333333345" width="34" height="19.666666666666671"/>
                                                                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
                                                                                 <color key="textColor" red="0.23529411764705882" green="0.38431372549019605" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <nil key="highlightedColor"/>
@@ -693,7 +693,7 @@
                                                                             <constraint firstItem="Hhe-Ye-1aq" firstAttribute="centerY" secondItem="iZe-7h-NHZ" secondAttribute="centerY" id="cC9-dV-Hwn"/>
                                                                             <constraint firstItem="Hhe-Ye-1aq" firstAttribute="leading" secondItem="iZe-7h-NHZ" secondAttribute="trailing" constant="5" id="pD3-9Y-wAS"/>
                                                                             <constraint firstItem="4Bh-Wh-7nI" firstAttribute="top" secondItem="VyR-Fl-BU5" secondAttribute="top" id="pWZ-hE-AuX"/>
-                                                                            <constraint firstItem="iZe-7h-NHZ" firstAttribute="leading" secondItem="VyR-Fl-BU5" secondAttribute="leading" constant="8" id="qdy-0U-ORv"/>
+                                                                            <constraint firstItem="iZe-7h-NHZ" firstAttribute="leading" secondItem="VyR-Fl-BU5" secondAttribute="leading" constant="15.4" id="qdy-0U-ORv"/>
                                                                         </constraints>
                                                                     </view>
                                                                 </subviews>
@@ -712,14 +712,14 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="85" height="50"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="payIcon" translatesAutoresizingMaskIntoConstraints="NO" id="MrF-qY-hYh">
-                                                                                <rect key="frame" x="8" y="17.666666666666657" width="21" height="15"/>
+                                                                                <rect key="frame" x="15.333333333333314" y="17.666666666666657" width="21" height="15"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="21.050000000000001" id="SWS-ro-o0V"/>
                                                                                     <constraint firstAttribute="height" constant="15" id="lgZ-ly-0em"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GMO-Xt-E1d">
-                                                                                <rect key="frame" x="34" y="15.333333333333345" width="28.333333333333329" height="19.666666666666671"/>
+                                                                                <rect key="frame" x="41.333333333333314" y="15.333333333333345" width="28.333333333333329" height="19.666666666666671"/>
                                                                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
                                                                                 <color key="textColor" red="0.23529411764705882" green="0.38431372549019605" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
                                                                                 <nil key="highlightedColor"/>
@@ -731,11 +731,12 @@
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
-                                                                            <constraint firstItem="MrF-qY-hYh" firstAttribute="leading" secondItem="KRb-MQ-0uZ" secondAttribute="leading" constant="8" id="BZP-Tg-1gd"/>
+                                                                            <constraint firstItem="MrF-qY-hYh" firstAttribute="centerY" secondItem="KRb-MQ-0uZ" secondAttribute="centerY" id="4oI-AA-F0L"/>
                                                                             <constraint firstAttribute="bottom" secondItem="9K7-kp-7rE" secondAttribute="bottom" id="FnN-Q8-AmW"/>
                                                                             <constraint firstItem="GMO-Xt-E1d" firstAttribute="leading" secondItem="MrF-qY-hYh" secondAttribute="trailing" constant="5" id="Iyo-cq-Ate"/>
                                                                             <constraint firstItem="GMO-Xt-E1d" firstAttribute="centerY" secondItem="MrF-qY-hYh" secondAttribute="centerY" id="J7O-Ka-pbY"/>
                                                                             <constraint firstItem="9K7-kp-7rE" firstAttribute="leading" secondItem="KRb-MQ-0uZ" secondAttribute="leading" id="VI3-1t-p91"/>
+                                                                            <constraint firstItem="MrF-qY-hYh" firstAttribute="leading" secondItem="KRb-MQ-0uZ" secondAttribute="leading" constant="15.4" id="ZIJ-mS-dIS"/>
                                                                             <constraint firstItem="MrF-qY-hYh" firstAttribute="centerY" secondItem="KRb-MQ-0uZ" secondAttribute="centerY" id="oN7-06-eIj"/>
                                                                             <constraint firstItem="9K7-kp-7rE" firstAttribute="top" secondItem="KRb-MQ-0uZ" secondAttribute="top" id="sAX-Pr-y6L"/>
                                                                             <constraint firstAttribute="trailing" secondItem="9K7-kp-7rE" secondAttribute="trailing" id="zDa-bL-3Dm"/>
@@ -1277,13 +1278,13 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBrownColor">
-            <color red="0.63529411759999999" green="0.51764705879999995" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemMintColor">
-            <color red="0.0" green="0.78039215689999997" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

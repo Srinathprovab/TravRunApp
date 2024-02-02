@@ -209,7 +209,7 @@ class AddDeatilsOfTravellerTVCell: TableViewCell {
         
         
         if cellInfo?.title == "Adult 1" {
-            setAttributedText(str1: "Adult 1", str2: "  Lead Passanger")
+            setAttributedText(str1: "Adult 1", str2: "  Lead Passenger")
             travelerArray[self.indexposition ].laedpassenger = "1"
             expandView()
             expandViewBool = false
@@ -231,10 +231,10 @@ class AddDeatilsOfTravellerTVCell: TableViewCell {
         collapsView()
         
         
-        setupTextField(txtField: titleTF, tag1: 11, label: "Title*", placeholder: "MR")
-        setupTextField(txtField: fnameTF, tag1: 1, label: "First Name*", placeholder: "First Name")
-        setupTextField(txtField: lnameTF, tag1: 2, label: "Last Name*", placeholder: "Last Name")
-        setupTextField(txtField: dobTF, tag1: 3, label: "Date of Birth*", placeholder: "DOB")
+        setupTextField(txtField: titleTF, tag1: 11, label: "Title*", placeholder: "MR*")
+        setupTextField(txtField: fnameTF, tag1: 1, label: "First Name*", placeholder: "First Name*")
+        setupTextField(txtField: lnameTF, tag1: 2, label: "Last Name*", placeholder: "Last Name*")
+        setupTextField(txtField: dobTF, tag1: 3, label: "Date of Birth*", placeholder: "DOB*")
         setupTextField(txtField: passportnoTF, tag1: 5, label: "Passport NO*", placeholder: "Passport NO")
         setupTextField(txtField: passportIssuingCountryTF, tag1: 6, label: "Passport Issuing Country*", placeholder: "Issuing Country")
         setupTextField(txtField: passportExpireDateTF, tag1: 7, label: "Passport Expiry Date*", placeholder: "Expiry Date")

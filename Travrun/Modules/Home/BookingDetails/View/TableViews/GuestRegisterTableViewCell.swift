@@ -20,7 +20,7 @@ class GuestRegisterTableViewCell: TableViewCell {
         super.awakeFromNib()
         // Initialization code
         emailTxtFld.layer.borderWidth = 0.7
-        emailTxtFld.placeholder = "Email Address"
+        emailTxtFld.placeholder = "Email Id"
         phoneNumberTxtFld.placeholder = "Phone Number"
         phoneNumberTxtFld.placeholder = "Phone Number"
         

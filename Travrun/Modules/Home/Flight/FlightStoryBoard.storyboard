@@ -1012,6 +1012,7 @@
                         <outlet property="bagInfoView" destination="5F0-LO-sFT" id="tay-Zi-4Il"/>
                         <outlet property="breakDownLabel" destination="g4D-ec-DZW" id="muA-xf-tiM"/>
                         <outlet property="breakdownView" destination="0uR-Px-2U7" id="Vg9-OS-foP"/>
+                        <outlet property="buttonView" destination="5Yd-0y-H9m" id="ktY-sX-Zcd"/>
                         <outlet property="commonTableView" destination="YLC-qV-VZC" id="4eS-Sa-tx1"/>
                         <outlet property="fareRulesView" destination="nkw-dU-4aR" id="ftM-ff-97n"/>
                         <outlet property="farerulesLabel" destination="6gh-PE-xBa" id="weC-th-nC8"/>

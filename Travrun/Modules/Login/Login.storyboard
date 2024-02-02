@@ -855,7 +855,7 @@ instructions to your email.</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RJ-dz-2Es">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RJ-dz-2Es">
                                 <rect key="frame" x="0.0" y="20" width="414" height="876"/>
                                 <subviews>
                                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="XAf-0k-uxj">
@@ -1002,18 +1002,18 @@ instructions to your email.</string>
                                                             <action selector="registerButtonAction:" destination="Sqf-jA-TWm" eventType="touchUpInside" id="yZm-Jk-ax5"/>
                                                         </connections>
                                                     </button>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T6n-Y4-nhC" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
-                                                        <rect key="frame" x="29" y="389" width="137" height="55"/>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T6n-Y4-nhC">
+                                                        <rect key="frame" x="29" y="389" width="80" height="55"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2RT-M0-DHe">
-                                                                <rect key="frame" x="0.0" y="0.0" width="137" height="55"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="55"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="137" id="AdD-TU-5yi"/>
+                                                            <constraint firstAttribute="width" constant="80" id="AdD-TU-5yi"/>
                                                             <constraint firstAttribute="trailing" secondItem="2RT-M0-DHe" secondAttribute="trailing" id="O9B-Jh-HKF"/>
                                                             <constraint firstAttribute="bottom" secondItem="2RT-M0-DHe" secondAttribute="bottom" id="Rdr-c5-fuJ"/>
                                                             <constraint firstItem="2RT-M0-DHe" firstAttribute="leading" secondItem="T6n-Y4-nhC" secondAttribute="leading" id="Zhn-jS-lo3"/>
@@ -1022,7 +1022,7 @@ instructions to your email.</string>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="1"/>
+                                                                <real key="value" value="0.69999999999999996"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="4"/>
@@ -1033,7 +1033,7 @@ instructions to your email.</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ID9-9n-YqF">
-                                                        <rect key="frame" x="168" y="389" width="217" height="55"/>
+                                                        <rect key="frame" x="111" y="389" width="274" height="55"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="55" id="hWu-dg-bHQ"/>
@@ -1143,6 +1143,7 @@ instructions to your email.</string>
                         <outlet property="backgroundImage" destination="L2l-08-Of8" id="Yoq-fa-b3N"/>
                         <outlet property="containerView" destination="ySH-Ib-gsx" id="NcU-Jv-NpF"/>
                         <outlet property="countryCodeTextField" destination="2RT-M0-DHe" id="Ff5-Em-jY5"/>
+                        <outlet property="countryCodeView" destination="T6n-Y4-nhC" id="faP-CC-LmM"/>
                         <outlet property="emailTextField" destination="Q94-xq-zW3" id="kiu-WW-v3z"/>
                         <outlet property="eyeImage" destination="FR7-RD-3E1" id="Svb-uQ-Z5X"/>
                         <outlet property="holderView" destination="XAf-0k-uxj" id="HEk-cW-3un"/>

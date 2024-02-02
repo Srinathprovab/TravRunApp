@@ -102,7 +102,7 @@ class ContactInformationTVCell: TableViewCell {
         
         
         setupLabels(lbl: titlelbl, text: "Contact Information", textcolor: .AppLabelColor, font: .InterMedium(size: 16))
-        setupLabels(lbl: subTitlelbl, text: "E-Ticket will be sent to the registered email address", textcolor: .SubTitleColor, font: .InterRegular(size: 12))
+        setupLabels(lbl: subTitlelbl, text: "E-Ticket will be sent to the registered email id", textcolor: .SubTitleColor, font: .InterRegular(size: 12))
         setupLabels(lbl: countryCodeLbl, text: "", textcolor: .SubTitleColor, font: .InterRegular(size: 16))
         
         
@@ -111,7 +111,7 @@ class ContactInformationTVCell: TableViewCell {
         
         countryCodeBtn.setTitle("", for: .normal)
         
-        setuptf(tf: emailTF, tag1: 1, leftpadding: 20, font: .InterRegular(size: 16), placeholder: "Email Address")
+        setuptf(tf: emailTF, tag1: 1, leftpadding: 20, font: .InterRegular(size: 16), placeholder: "Email Id")
         setuptf(tf: mobileTF, tag1: 2, leftpadding: 20, font: .InterRegular(size: 16), placeholder: "Enter Mobile Number")
         setuptf(tf: countrycodeTF, tag1: 3, leftpadding: 20, font: .InterRegular(size: 16), placeholder: "+355")
         

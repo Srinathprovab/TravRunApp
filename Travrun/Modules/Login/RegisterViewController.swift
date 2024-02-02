@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DropDown
 
 struct RegistrationModel {
     var firstName: String?
@@ -19,6 +20,7 @@ struct RegistrationModel {
 
 class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterViewModelProtocal  {
    
+    @IBOutlet weak var countryCodeView: BorderedView!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var eyeImage: UIImageView!
     @IBOutlet weak var containerView: UIView!
@@ -50,13 +52,25 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterVie
     var uname = String()
     var password = String()
     var isVcFrom = String()
+    
+    let dropDown = DropDown()
+    var countryNameArray = [All_country_code_list]()
+    var searchText = String()
+    var isSearchBool = Bool()
+    var countryNames = [String]()
+    var countrycodesArray = [String]()
+    var isocountrycodeArray = [String]()
+    var originArray = [String]()
+    var isoCountryCode = String()
+    var billingCountryName = String()
+    var nationalityCode = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         regViewModel = RegisterViewModel(self)
         setiupUI()
-    
+        loadCountryNamesAndCode()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +79,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterVie
     
     
     func setiupUI()  {
+        countryNameArray = countrylist
+        setupDropDown()
+        phoneNumerTextField.layer.cornerRadius = 4
         passwodTextField.isSecureTextEntry = true
         self.view.backgroundColor = .black.withAlphaComponent(0.5)
         backgroundImage.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -73,6 +90,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterVie
         passwodTextField.placeholder = "Enter Password"
         emailTextField.placeholder = "Enter Email Id"
         phoneNumerTextField.placeholder = "Enter Phone Number"
+        countryCodeView.layer.cornerRadius = 4
+        countryCodeView.layer.borderColor = HexColor("#CCCCCC").cgColor
+        countryCodeView.layer.borderWidth =  0.7
         countryCodeTextField.placeholder = "+91"
         countryCodeTextField.setLeftPaddingPoints(16)
         passwodTextField.setLeftPaddingPoints(16)
@@ -87,6 +107,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterVie
         emailTextField.layer.borderColor = HexColor("#CCCCCC").cgColor
         emailTextField.layer.cornerRadius = 4
         regButton.layer.cornerRadius = 4
+        countryCodeTextField.addTarget(self, action: #selector(searchTextChanged(textField:)), for: .editingChanged)
+        countryCodeTextField.addTarget(self, action: #selector(searchTextBegin(textField:)), for: .editingDidBegin)
         emailTextField.addTarget(self, action: #selector(editingText(textField:)), for: .editingChanged)
         passwodTextField.addTarget(self, action: #selector(editingText(textField:)), for: .editingChanged)
         phoneNumerTextField.addTarget(self, action: #selector(editingText(textField:)), for: .editingChanged)
@@ -128,6 +150,77 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterVie
     @IBAction func loginNowButtonAction(_ sender: Any) {
         dismiss(animated: true)
     }
+    
+    func setupDropDown() {
+        dropDown.direction = .any
+        dropDown.backgroundColor = .WhiteColor
+        dropDown.anchorView = self.countryCodeView
+        dropDown.bottomOffset = CGPoint(x: 0, y: countryCodeView.frame.size.height + 10)
+        dropDown.selectionAction = { [weak self] (index: Int, item: String) in
+            self?.countryCodeTextField.text = self?.countrycodesArray[index]
+            self?.isoCountryCode = self?.isocountrycodeArray[index] ?? ""
+            self?.billingCountryName = self?.countryNames[index] ?? ""
+            self?.nationalityCode = self?.originArray[index] ?? ""
+            self?.countryCodeTextField.text = self?.countrycodesArray[index] ?? ""
+            paymobilecountrycode = self?.countrycodesArray[index] ?? ""
+            self?.countryCodeTextField.resignFirstResponder()
+            self?.phoneNumerTextField.text = ""
+            self?.phoneNumerTextField.becomeFirstResponder()
+        }
+    }
+    
+    @objc func searchTextBegin(textField: UITextField) {
+        textField.text = ""
+        countryNameArray.removeAll()
+        countryNameArray = countrylist
+        loadCountryNamesAndCode()
+        dropDown.show()
+    }
+    
+    
+    @objc func searchTextChanged(textField: UITextField) {
+        searchText = textField.text ?? ""
+        if searchText == "" {
+            isSearchBool = false
+            filterContentForSearchText(searchText)
+        }else {
+            isSearchBool = true
+            filterContentForSearchText(searchText)
+        }
+    }
+    
+    
+    func filterContentForSearchText(_ searchText: String) {
+        print("Filterin with:", searchText)
+        
+        countryNameArray.removeAll()
+        countryNameArray = countrylist.filter { thing in
+            return "\(thing.name?.lowercased() ?? "")".contains(searchText.lowercased())
+        }
+        
+        loadCountryNamesAndCode()
+        dropDown.show()
+        
+    }
+    
+    func loadCountryNamesAndCode(){
+        countryNames.removeAll()
+        countrycodesArray.removeAll()
+        isocountrycodeArray.removeAll()
+        originArray.removeAll()
+        
+        countryNameArray.forEach { i in
+            countryNames.append(i.name ?? "")
+            countrycodesArray.append(i.country_code ?? "")
+            isocountrycodeArray.append(i.iso_country_code ?? "")
+            originArray.append(i.origin ?? "")
+        }
+        
+        DispatchQueue.main.async {[self] in
+            dropDown.dataSource = countryNames
+        }
+    }
+
     func callRegisterAPI() {
         mobile = phoneNumerTextField.text ?? ""
         email = emailTextField.text ?? ""

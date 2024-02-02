@@ -122,7 +122,7 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
         
         
         if callapibool == true {
-            holderView.isHidden = true
+//            holderView.isHidden = true
             callAllAPIS()
         }
     }
@@ -181,7 +181,6 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
                                          "BookFlightDetailsTVCell", "RegisterNowTableViewCell", "EmptyTVCell", "LoginDetailsTableViewCell", "GuestRegisterTableViewCell", "RegisterSelectionLoginTableViewCell", "AddonTableViewCell"])
     }
   
-    
     func setupTV() {
         sessionTimerView.isHidden = false
         tablerow.removeAll()
@@ -314,6 +313,7 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
     override func didTapOnviewFlifgtDetailsBtn(cell: BookFlightDetailsTVCell) {
         guard let vc = FlightDetailsViewController.newInstance.self else {return}
         vc.modalPresentationStyle = .overCurrentContext
+        vc.isVCFrom = "BookingDetailsVC"
         present(vc, animated: true)
     }
     
@@ -441,11 +441,11 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
     }
 
     //MARK: - didTapOnViewFlightsDetailsBtn
-    override func didTapOnViewFlightDetailsButton(cell: ViewFlightDetailsBtnTVCell) {
-        guard let vc = FlightDetailsViewController.newInstance.self else {return}
-        vc.modalPresentationStyle = .overCurrentContext
-        present(vc, animated: true)
-    }
+//    override func didTapOnViewFlightDetailsButton(cell: ViewFlightDetailsBtnTVCell) {
+//        guard let vc = FlightDetailsViewController.newInstance.self else {return}
+//        vc.modalPresentationStyle = .overCurrentContext
+//        present(vc, animated: true)
+//    }
     
     
     //MARK: - didTapOnFlightsDetails
@@ -953,11 +953,9 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
     }
     
     @IBAction func didTapOnBackBtnAction(_ sender: Any) {
-        searchWithsameInputs()
+//        searchWithsameInputs()
+        dismiss(animated: true)
     }
-    
-    
-    
 }
 
 
@@ -1026,7 +1024,7 @@ extension BookingDetailsVC {
         totalPrice = Double(String(format: "%.2f", response.total_price ?? "")) ?? 0.0
         appreference = response.pre_booking_params?.transaction_id ?? ""
         frequent_flyersArray = response.frequent_flyers ?? []
-        
+        addon_services = response.addon_services ?? []
         DispatchQueue.main.async {
             mbSummery = response.flight_data?[0].flightDetails?.summery ?? []
         }
@@ -1047,7 +1045,7 @@ extension BookingDetailsVC {
         
         grand_total_Price = i?.grand_total ?? ""
         totalAmountforBooking = i?.grand_total ?? ""
-        
+        totalDiscount = i?.admin_discount ?? ""
         setAttributedTextnew(str1: "\(i?.api_currency ?? "")",
                              str2: " \(i?.grand_total ?? "")",
                              lbl: bookNowlbl,

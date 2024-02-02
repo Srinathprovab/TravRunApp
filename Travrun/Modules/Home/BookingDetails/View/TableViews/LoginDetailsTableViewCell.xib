@@ -197,9 +197,40 @@
                                                     <action selector="guestButtonAction:" destination="MSD-LR-R4g" eventType="touchUpInside" id="uL7-oz-aVt"/>
                                                 </connections>
                                             </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C2k-tj-vA0">
+                                                <rect key="frame" x="303" y="37" width="20" height="20"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Pgr-cu-X7g">
+                                                        <rect key="frame" x="0.0" y="2.3333333333333321" width="20" height="16.000000000000004"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="s79-cx-9A4"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tw7-3j-JEH">
+                                                        <rect key="frame" x="0.0" y="0.0" width="24" height="20"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain"/>
+                                                        <connections>
+                                                            <action selector="eyeButtonAction:" destination="MSD-LR-R4g" eventType="touchUpInside" id="Asb-we-5Dw"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="D1k-0t-4Bc"/>
+                                                    <constraint firstItem="tw7-3j-JEH" firstAttribute="top" secondItem="C2k-tj-vA0" secondAttribute="top" id="IWf-9q-vqe"/>
+                                                    <constraint firstItem="tw7-3j-JEH" firstAttribute="leading" secondItem="C2k-tj-vA0" secondAttribute="leading" id="PK2-VG-TmL"/>
+                                                    <constraint firstAttribute="bottom" secondItem="tw7-3j-JEH" secondAttribute="bottom" id="b9K-a5-Vay"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Pgr-cu-X7g" secondAttribute="bottom" id="cZa-O5-6Ty"/>
+                                                    <constraint firstAttribute="width" constant="20" id="gwJ-8A-kYt"/>
+                                                    <constraint firstItem="Pgr-cu-X7g" firstAttribute="top" secondItem="C2k-tj-vA0" secondAttribute="top" id="jeZ-6B-PMT"/>
+                                                    <constraint firstItem="Pgr-cu-X7g" firstAttribute="leading" secondItem="C2k-tj-vA0" secondAttribute="leading" id="sdN-4H-9KE"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="C2k-tj-vA0" firstAttribute="centerY" secondItem="qoi-pC-fbw" secondAttribute="centerY" id="51T-19-Adb"/>
                                             <constraint firstItem="qoi-pC-fbw" firstAttribute="leading" secondItem="pEj-SC-doM" secondAttribute="leading" id="9fP-fF-efg"/>
                                             <constraint firstItem="TRl-sZ-VG0" firstAttribute="leading" secondItem="8d9-NB-9qf" secondAttribute="leading" constant="16" id="KEy-7e-jJB"/>
                                             <constraint firstItem="TRl-sZ-VG0" firstAttribute="top" secondItem="qoi-pC-fbw" secondAttribute="bottom" constant="29" id="NGs-DK-48G"/>
@@ -208,6 +239,7 @@
                                             <constraint firstAttribute="trailing" secondItem="qoi-pC-fbw" secondAttribute="trailing" constant="16" id="VY0-g3-7vU"/>
                                             <constraint firstAttribute="trailing" secondItem="TRl-sZ-VG0" secondAttribute="trailing" constant="16" id="fnp-wV-e3X"/>
                                             <constraint firstAttribute="height" constant="178" id="oi9-ny-ZXP"/>
+                                            <constraint firstAttribute="trailing" secondItem="C2k-tj-vA0" secondAttribute="trailing" constant="32" id="orw-n5-aIG"/>
                                             <constraint firstItem="pEj-SC-doM" firstAttribute="leading" secondItem="8d9-NB-9qf" secondAttribute="leading" constant="16" id="reG-6Y-kPD"/>
                                             <constraint firstItem="pEj-SC-doM" firstAttribute="top" secondItem="8d9-NB-9qf" secondAttribute="top" id="uAS-s1-npl"/>
                                         </constraints>
@@ -247,6 +279,8 @@
             <connections>
                 <outlet property="countryCodeTextField" destination="of3-aU-QxW" id="Kvx-iH-Y1I"/>
                 <outlet property="emailTextFld" destination="HcJ-Bm-Hyu" id="X70-iN-Ghz"/>
+                <outlet property="eyeImage" destination="Pgr-cu-X7g" id="EKe-gW-DNu"/>
+                <outlet property="eyeView" destination="C2k-tj-vA0" id="o4I-Dg-tKI"/>
                 <outlet property="middleView" destination="CtW-Nj-Kho" id="m8G-Ac-hHM"/>
                 <outlet property="passwordTxtfld" destination="qoi-pC-fbw" id="cPD-fE-a42"/>
                 <outlet property="phoneNumberTextfld" destination="D6N-EX-YXK" id="Noy-3o-aJ6"/>
@@ -257,6 +291,7 @@
     </objects>
     <resources>
         <image name="dropDownArrow" width="24" height="24"/>
+        <image name="eye" catalog="system" width="128" height="79"/>
         <namedColor name="AppBtnColor">
             <color red="0.93333333333333335" green="0.098039215686274508" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

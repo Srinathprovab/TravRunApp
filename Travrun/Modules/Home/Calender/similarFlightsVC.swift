@@ -108,27 +108,28 @@ class similarFlightsVC: BaseTableVC {
     }
     
     
-    
-    
-    
     //MARK: - didTapOnFlightDetailsBtnAction NewFlightSearchResultTVCell
     override func didTapOnFlightDetailsBtnAction(cell: NewFlightSearchResultTVCell) {
         defaults.set(cell.selectedResult, forKey: UserDefaultsKeys.selectedResult)
         defaults.set(cell.bsource, forKey: UserDefaultsKeys.bookingsource)
         defaults.set(cell.bsourcekey, forKey: UserDefaultsKeys.bookingsourcekey)
+        defaults.set(cell.faretypelbl.text, forKey: UserDefaultsKeys.selectedFareType)
+        
+//        guard let vc = FlightDetailsViewController.newInstance.self else {return}
+//        vc.modalPresentationStyle = .overFullScreen
+//        self.present(vc, animated: false)
         gotoBaggageInfoVC()
     }
     
     func gotoBaggageInfoVC() {
         guard let vc = FlightDetailsViewController.newInstance.self else {return}
-        vc.modalPresentationStyle = .overCurrentContext
+        vc.modalPresentationStyle = .fullScreen
         callapibool = true
-        fdbool = false
-        present(vc, animated: true)
+        fdbool = true
+        self.present(vc, animated: true)
     }
     
-    
-    
+
     //MARK: - didTapOnBookNowBtnAction NewFlightSearchResultTVCell
     override func didTapOnBookNowBtnAction(cell: NewFlightSearchResultTVCell) {
         defaults.set(cell.selectedResult, forKey: UserDefaultsKeys.selectedResult)

@@ -59,7 +59,7 @@ class NewFlightSearchResultTVCell: TableViewCell {
     
     override func updateUI() {
         setAttributedString1(str1: "\(cellInfo?.buttonTitle ?? ""):", str2: String(format: "%.2f", Double(cellInfo?.title ?? "") ?? 0.0))
-        setAttributedTextnew(str1: cellInfo?.buttonTitle ?? "",
+        setAttributedTextnew(str1:defaults.string(forKey:UserDefaultsKeys.selectedCurrency) ?? "KWD",
                              str2: String(format: "%.2f", Double(cellInfo?.price ?? "") ?? 0.0),
                              lbl: pricelbl,
                              str1font: UIFont.InterRegular(size: 12),

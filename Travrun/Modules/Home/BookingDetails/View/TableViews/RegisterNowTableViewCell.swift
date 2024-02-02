@@ -14,6 +14,7 @@ protocol RegisterNowTableViewCellDelegate {
 
 class RegisterNowTableViewCell: TableViewCell {
 
+    @IBOutlet weak var eyeImage: UIImageView!
     @IBOutlet weak var phoneNumberTextfld: UITextField!
     @IBOutlet weak var countryCodeTextField: UITextField!
     @IBOutlet weak var registerNowButton: UIButton!
@@ -23,13 +24,15 @@ class RegisterNowTableViewCell: TableViewCell {
     @IBOutlet weak var passwordTxtfld: UITextField!
     var email = String()
     var pass = String()
+    var showPwdBool = true
     
     var delegate: RegisterNowTableViewCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        emailTextFld.placeholder = "Email Address"
+        eyeImage.image = UIImage(named: "eyeslash")
+        passwordTxtfld.isSecureTextEntry = true
+        emailTextFld.placeholder = "Email Id"
         passwordTxtfld.placeholder = "Password"
         registerNowButton.setTitle("Login", for: .normal)
         emailTextFld.layer.borderWidth = 0.7
@@ -107,4 +110,16 @@ class RegisterNowTableViewCell: TableViewCell {
         }
     }
     
+    @IBAction func eyeButtonAction(_ sender: Any) {
+        if showPwdBool == true {
+            eyeImage.image = UIImage(named: "showpass")?.withTintColor(.black)
+            passwordTxtfld.isSecureTextEntry = false
+            showPwdBool = false
+        }else {
+            passwordTxtfld.isSecureTextEntry = true
+            eyeImage.image = UIImage(named: "eyeslash")
+            showPwdBool = true
+        }
+        
+    }
 }

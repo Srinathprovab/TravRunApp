@@ -50,6 +50,7 @@ let KAuserId = "userId"
 var paymobilecountrycode = String()
 var mbSummery = [Summary]()
 var frequent_flyersArray = [Frequent_flyers]()
+var addon_services = [Addon_services]()
 var countrylist = [All_country_code_list]()
 var cityList:[SelectCityModel] = []
 var depatureDatesArray = ["Date","Date"]
@@ -110,6 +111,7 @@ var Infants_Tax_Price = String()
 var TotalPrice_API = String()
 var grandTotal = String()
 var subtotal = String()
+var totalDiscount = String()
 
 var AdultsTotalPrice = String()
 var ChildTotalPrice = String()

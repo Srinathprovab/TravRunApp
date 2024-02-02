@@ -14,6 +14,8 @@ protocol LoginDetailsTableViewCellDelegate {
 
 class LoginDetailsTableViewCell: TableViewCell {
     
+    @IBOutlet weak var eyeImage: UIImageView!
+    @IBOutlet weak var eyeView: UIView!
     @IBOutlet weak var phoneNumberTextfld: UITextField!
     @IBOutlet weak var countryCodeTextField: UITextField!
     @IBOutlet weak var registerNowButton: UIButton!
@@ -25,14 +27,16 @@ class LoginDetailsTableViewCell: TableViewCell {
     var email = String()
     var phone = String()
     var pass = String()
+    var showPwdBool = true
     
     var delegate: LoginDetailsTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
-        emailTextFld.placeholder = "Email Address"
+        passwordTxtfld.isSecureTextEntry = true
+        eyeImage.image = UIImage(named: "eyeslash")
+        emailTextFld.placeholder = "Email Id"
         phoneNumberTextfld.placeholder = "Phone Number"
         passwordTxtfld.placeholder = "Password"
         emailTextFld.layer.borderWidth = 0.7
@@ -92,6 +96,19 @@ class LoginDetailsTableViewCell: TableViewCell {
     }
     
     
+    @IBAction func eyeButtonAction(_ sender: Any) {
+        
+        if showPwdBool == true {
+            eyeImage.image = UIImage(named: "showpass")?.withTintColor(.black)
+            passwordTxtfld.isSecureTextEntry = false
+            showPwdBool = false
+        }else {
+            passwordTxtfld.isSecureTextEntry = true
+            eyeImage.image = UIImage(named: "eyeslash")
+            showPwdBool = true
+        }
+        
+    }
     @IBAction func guestButtonAction(_ sender: Any) {
         
         if (emailTextFld.text != nil) && passwordTxtfld.text != "" && phoneNumberTextfld.text != ""

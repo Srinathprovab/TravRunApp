@@ -35,11 +35,11 @@ class TravellerAdultTVCell: UITableViewCell {
         holderView.layer.borderColor = UIColor.WhiteColor.cgColor
         
         setupLabels(lbl: adultCountlbl, text: "traveller 1( adult)", textcolor: HexColor("#515151"), font: .InterMedium(size: 16))
-        setupLabels(lbl: farelbl, text: "Fare", textcolor: HexColor("#515151"), font: .InterMedium(size: 16))
-        setupLabels(lbl: taxeslbl, text: "Taxes and Fees", textcolor: HexColor("#515151"), font: .InterMedium(size: 16))
-        setupLabels(lbl: adultKWDlbl, text: "kWD :250.00", textcolor: .AppLabelColor, font: .InterRegular(size: 14))
-        setupLabels(lbl: taxesKWDlbl, text: "kWD :80.00", textcolor: .SubTitleColor, font: .InterRegular(size: 14))
-        setupLabels(lbl: fareKWDlbl, text: "kWD :250.00", textcolor: .SubTitleColor, font: .InterRegular(size: 14))
+        setupLabels(lbl: farelbl, text: "Fare", textcolor: HexColor("#515151"), font: .InterMedium(size: 12))
+        setupLabels(lbl: taxeslbl, text: "Taxes and Fees", textcolor: HexColor("#515151"), font: .InterMedium(size: 12))
+//        setupLabels(lbl: adultKWDlbl, text: "kWD :250.00", textcolor: .AppLabelColor, font: .InterRegular(size: 14))
+//        setupLabels(lbl: taxesKWDlbl, text: "kWD :80.00", textcolor: .SubTitleColor, font: .InterRegular(size: 14))
+//        setupLabels(lbl: fareKWDlbl, text: "kWD :250.00", textcolor: .SubTitleColor, font: .InterRegular(size: 14))
 
     }
     

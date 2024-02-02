@@ -77,13 +77,14 @@ extension ItineraryAddTVCell:UITableViewDelegate,UITableViewDataSource {
 //                cell.separatorView.isHidden = false
 //            }
 //            
+            cell.timelbl.text = "Total time \(data.duration ?? "0")"
             cell.toCodeLabel.text = "(\(data.origin?.city ?? "") \(data.origin?.loc ?? ""))"
             cell.destinationCodeLabel.text = "(\(data.destination?.city ?? "") \(data.destination?.loc ?? ""))"
 //            cell.cityTolbl.text = "\(data.origin?.city ?? "") to \(data.destination?.city ?? "")"
             cell.arivalTime.text = "\(data.origin?.time ?? "")"
             cell.airportlbl.text = "\(data.origin?.airport_name ?? "")"
             if data.origin?.terminal == "" {
-                cell.terminal1lbl.text = "Terminal: 0"
+                cell.terminal1lbl.text = "Terminal: "
             }else {
                 cell.terminal1lbl.text = "Terminal: \(data.origin?.terminal ?? "0")"
             }
@@ -94,7 +95,7 @@ extension ItineraryAddTVCell:UITableViewDelegate,UITableViewDataSource {
             cell.destlbl.text = "\(data.destination?.airport_name ?? "")"
             
             if data.destination?.terminal == "" {
-                cell.destTerminal1lbl.text = "Terminal: 0"
+                cell.destTerminal1lbl.text = "Terminal: "
             }else {
                 cell.destTerminal1lbl.text = "Terminal: \(data.destination?.terminal ?? "0")"
             }

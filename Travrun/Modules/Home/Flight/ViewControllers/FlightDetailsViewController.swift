@@ -8,8 +8,9 @@
 import UIKit
 
 class FlightDetailsViewController: BaseTableVC, FDViewModelDelegate, FareRulesModelViewModelDelegate{
-    @IBOutlet weak var tvTraling: NSLayoutConstraint!
     
+    @IBOutlet weak var buttonView: BorderedView!
+    @IBOutlet weak var tvTraling: NSLayoutConstraint!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var holderView: UIView!
@@ -58,6 +59,11 @@ class FlightDetailsViewController: BaseTableVC, FDViewModelDelegate, FareRulesMo
     }
     
     func setUpView() {
+        if isVCFrom == "BookingDetailsVC" {
+            buttonView.isHidden = true
+        } else {
+            buttonView.isHidden = false
+        }
         amountLabel.text = grandTotal
         topView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         topView.layer.cornerRadius = 30

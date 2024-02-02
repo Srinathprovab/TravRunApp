@@ -166,17 +166,23 @@ class FlightViewController: BaseTableVC {
     
     @IBAction func backButtonAction(_ sender: Any) {
         if isfromVc == "NoInternetConnectionVC" {
-            guard let vc = HomeViewController.newInstance.self else {return}
+            callapibool = true
+            guard let vc = DashBoardTabBarViewController.newInstance.self else {return}
+            vc.selectedIndex = 0
             vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true)
+            self.present(vc, animated: false)
         } else if isfromVc == "SearchResultPageViewController" {
-            guard let vc = HomeViewController.newInstance.self else {return}
+            callapibool = true
+            guard let vc = DashBoardTabBarViewController.newInstance.self else {return}
+            vc.selectedIndex = 0
             vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true)
+            self.present(vc, animated: false)
         } else if isfromVc == "SideMenuViewController" {
-            guard let vc = HomeViewController.newInstance.self else {return}
+            callapibool = true
+            guard let vc = DashBoardTabBarViewController.newInstance.self else {return}
+            vc.selectedIndex = 0
             vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true)
+            self.present(vc, animated: false)
         } else   {
             dismiss(animated: true, completion: nil)
         }

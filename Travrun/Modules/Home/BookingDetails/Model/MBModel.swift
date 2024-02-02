@@ -16,6 +16,7 @@ struct MBModel : Codable {
     let insuranceFile : String?
     //  let app_supported_currency : App_supported_currency?
     let travel_date_diff : String?
+    let addon_services: [Addon_services]?
     let pre_booking_params : MBPre_booking_params?
     let session_expiry_details : Session_expiry_details?
     //   let insurancePeriod : [InsurancePeriod]?
@@ -46,6 +47,7 @@ struct MBModel : Codable {
         case insuranceFile = "insuranceFile"
         //    case app_supported_currency = "app_supported_currency"
         case travel_date_diff = "travel_date_diff"
+        case addon_services = "addon_services"
         case pre_booking_params = "pre_booking_params"
         case session_expiry_details = "session_expiry_details"
         //    case insurancePeriod = "insurancePeriod"
@@ -77,6 +79,7 @@ struct MBModel : Codable {
         insuranceFile = try values.decodeIfPresent(String.self, forKey: .insuranceFile)
         //      app_supported_currency = try values.decodeIfPresent(App_supported_currency.self, forKey: .app_supported_currency)
         travel_date_diff = try values.decodeIfPresent(String.self, forKey: .travel_date_diff)
+        addon_services = try values.decodeIfPresent([Addon_services].self, forKey: .addon_services)
         pre_booking_params = try values.decodeIfPresent(MBPre_booking_params.self, forKey: .pre_booking_params)
         session_expiry_details = try values.decodeIfPresent(Session_expiry_details.self, forKey: .session_expiry_details)
         //    insurancePeriod = try values.decodeIfPresent([InsurancePeriod].self, forKey: .insurancePeriod)

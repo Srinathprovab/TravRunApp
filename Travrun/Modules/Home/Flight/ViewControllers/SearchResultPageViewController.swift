@@ -63,7 +63,7 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
         addObserver()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
         if callapibool == true {
-            holderView.isHidden = true
+//            holderView.isHidden = true
             callAPI()
             
         }
@@ -345,14 +345,11 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
         self.present(vc, animated: false)
     }
     
-    
-    
     //    override func didTapOnflightDetailsButton(cell:NewFlightSearchResultTVCell) {
     //
     //    }
     //
     override func didTapOnBookNowBtnAction(cell: NewFlightSearchResultTVCell) {
-        
         defaults.set(cell.bsource, forKey: UserDefaultsKeys.bookingsource)
         defaults.set(cell.bsourcekey, forKey: UserDefaultsKeys.bookingsourcekey)
         defaults.set(cell.faretypelbl.text, forKey: UserDefaultsKeys.selectedFareType)
