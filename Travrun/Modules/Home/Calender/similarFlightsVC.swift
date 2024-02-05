@@ -64,12 +64,14 @@ class similarFlightsVC: BaseTableVC {
                 tablerow.append(TableRow(title:"\(j.price?.api_total_display_fare_withoutmarkup ?? 0.0)",
                                          subTitle: j.fareType ?? "",
                                          price: "\(j.price?.api_total_display_fare ?? 0.0)",
+                                         bookingsource: j.booking_source,
                                          key: "similar",
                                          text: j.selectedResult ?? "",
                                          buttonTitle: j.aPICurrencyType ?? "",
                                          moreData: j.flight_details?.summary ?? [],
                                          cellType:.NewFlightSearchResultTVCell))
                 
+                print(j.booking_source)
                 
             }
         })
@@ -92,6 +94,7 @@ class similarFlightsVC: BaseTableVC {
                 tablerow.append(TableRow(title:"\(j.price?.api_total_display_fare_withoutmarkup ?? 0.0)",
                                          subTitle: j.fareType ?? "",
                                          price: "\(j.price?.api_total_display_fare ?? 0.0)",
+                                         
                                          key: "similar",
                                          text: j.selectedResult ?? "",
                                          buttonTitle: j.aPICurrencyType ?? "",
@@ -114,10 +117,6 @@ class similarFlightsVC: BaseTableVC {
         defaults.set(cell.bsource, forKey: UserDefaultsKeys.bookingsource)
         defaults.set(cell.bsourcekey, forKey: UserDefaultsKeys.bookingsourcekey)
         defaults.set(cell.faretypelbl.text, forKey: UserDefaultsKeys.selectedFareType)
-        
-//        guard let vc = FlightDetailsViewController.newInstance.self else {return}
-//        vc.modalPresentationStyle = .overFullScreen
-//        self.present(vc, animated: false)
         gotoBaggageInfoVC()
     }
     
@@ -132,6 +131,9 @@ class similarFlightsVC: BaseTableVC {
 
     //MARK: - didTapOnBookNowBtnAction NewFlightSearchResultTVCell
     override func didTapOnBookNowBtnAction(cell: NewFlightSearchResultTVCell) {
+        defaults.set(cell.bsource, forKey: UserDefaultsKeys.bookingsource)
+        defaults.set(cell.bsourcekey, forKey: UserDefaultsKeys.bookingsourcekey)
+        defaults.set(cell.faretypelbl.text, forKey: UserDefaultsKeys.selectedFareType)
         defaults.set(cell.selectedResult, forKey: UserDefaultsKeys.selectedResult)
         totalprice = cell.pricelbl.text ?? ""
         gotoBookingDetailsVC()

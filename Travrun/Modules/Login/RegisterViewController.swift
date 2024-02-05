@@ -7,6 +7,7 @@
 
 import UIKit
 import DropDown
+import IQKeyboardManager
 
 struct RegistrationModel {
     var firstName: String?
@@ -71,6 +72,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterVie
         regViewModel = RegisterViewModel(self)
         setiupUI()
         loadCountryNamesAndCode()
+        IQKeyboardManager.shared().keyboardDistanceFromTextField = 100
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -152,7 +154,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterVie
     }
     
     func setupDropDown() {
-        dropDown.direction = .any
+        dropDown.direction = .bottom
         dropDown.backgroundColor = .WhiteColor
         dropDown.anchorView = self.countryCodeView
         dropDown.bottomOffset = CGPoint(x: 0, y: countryCodeView.frame.size.height + 10)

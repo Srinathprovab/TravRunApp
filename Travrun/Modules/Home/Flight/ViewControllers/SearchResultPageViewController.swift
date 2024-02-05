@@ -9,6 +9,8 @@ import UIKit
 
 class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, AppliedFilters {
     
+    @IBOutlet weak var dontClickLabel: UILabel!
+    @IBOutlet weak var secondsLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
@@ -317,9 +319,12 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
                 
             }else {
                 
+                defaults.set(cell.selectedResult, forKey: UserDefaultsKeys.selectedResult)
+                defaults.set(cell.bsource, forKey: UserDefaultsKeys.bookingsource)
+                defaults.set(cell.bsourcekey, forKey: UserDefaultsKeys.bookingsourcekey)
+                defaults.set(cell.faretypelbl.text, forKey: UserDefaultsKeys.selectedFareType)
                 
                 if cell.newsimilarList.count != 0 {
-                    
                     guard let vc = similarFlightsVC.newInstance.self else {return}
                     vc.modalPresentationStyle = .overCurrentContext
                     callapibool = true
@@ -403,7 +408,7 @@ extension SearchResultPageViewController {
                 i.forEach { j in
                     let similarFlights1 = similar(fare: Double(String(format: "%.2f", j.price?.api_total_display_fare ?? "")) ?? 0.0)
                     
-                    
+                   
                     // Append the current flight and its similar flights to tablerow
                     var row: [TableRow] = []
                     row.append(TableRow(title:"\(j.price?.api_total_display_fare_withoutmarkup ?? 0.0)",
@@ -794,6 +799,8 @@ extension SearchResultPageViewController {
         
         if response.status == 1 {
             
+            dontClickLabel.isHidden = true
+            secondsLabel.isHidden = true
             self.holderView.isHidden = false
             loderBool = false
             self.depDate = response.data?.search_params?.depature ?? ""
@@ -804,6 +811,8 @@ extension SearchResultPageViewController {
             FlightList = response.data?.j_flight_list
             defaults.set(response.data?.search_id, forKey: UserDefaultsKeys.searchid)
             defaults.set(response.data?.traceId, forKey: UserDefaultsKeys.traceId)
+            
+            
             
             
             setuplabels(lbl: titleLabel, text: "\(defaults.string(forKey: UserDefaultsKeys.fromcityname) ?? "") - \(defaults.string(forKey: UserDefaultsKeys.tocityname) ?? "")", textcolor: .AppLabelColor, font: UIFont.InterSemiBold(size: 16), align: .center)

@@ -134,97 +134,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "95390CB2-55D2-4070-A440-148C69210629"
+            uuid = "BA2B82CB-CEA9-4FA6-B9A1-E239473EBEC9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Travrun/Modules/Home/Filter/Views/SortbyTVCell.swift"
+            filePath = "Travrun/Modules/Home/Calender/similarFlightsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "lowtoheigh()"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "didTapOnBookNowBtnAction(cell:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "95390CB2-55D2-4070-A440-148C69210629 - 7776b4a98fc57853"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Travrun.SortbyTVCell.lowtoheigh() -&gt; ()"
-                  moduleName = "Travrun"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ma1882/Desktop/TravRunApp/Travrun/Modules/Home/Filter/Views/SortbyTVCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "169"
-                  endingLineNumber = "169"
-                  offsetFromSymbolStart = "237">
-               </Location>
-               <Location
-                  uuid = "95390CB2-55D2-4070-A440-148C69210629 - 7776b4a98fc57853"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Travrun.SortbyTVCell.lowtoheigh() -&gt; ()"
-                  moduleName = "Travrun"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ma1882/Desktop/TravRunApp/Travrun/Modules/Home/Filter/Views/SortbyTVCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "169"
-                  endingLineNumber = "169"
-                  offsetFromSymbolStart = "284">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "8F28B25A-21A3-4CB5-B8B5-F9AE8F382909"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Travrun/Modules/Home/Filter/Views/SortbyTVCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "updateUI()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "8F28B25A-21A3-4CB5-B8B5-F9AE8F382909 - 4a71ef69def72e0f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Travrun.SortbyTVCell.updateUI() -&gt; ()"
-                  moduleName = "Travrun"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ma1882/Desktop/TravRunApp/Travrun/Modules/Home/Filter/Views/SortbyTVCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "5782">
-               </Location>
-               <Location
-                  uuid = "8F28B25A-21A3-4CB5-B8B5-F9AE8F382909 - 4a71ef69def72e0f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Travrun.SortbyTVCell.updateUI() -&gt; ()"
-                  moduleName = "Travrun"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ma1882/Desktop/TravRunApp/Travrun/Modules/Home/Filter/Views/SortbyTVCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "4808">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

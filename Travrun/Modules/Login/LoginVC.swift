@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import IQKeyboardManager
 
 //struct RegistrationModel {
 //    var firstName: String?

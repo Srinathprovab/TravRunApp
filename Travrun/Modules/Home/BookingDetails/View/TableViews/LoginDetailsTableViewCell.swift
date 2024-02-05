@@ -7,6 +7,7 @@
 
 import UIKit
 import Toast_Swift
+import DropDown
 
 protocol LoginDetailsTableViewCellDelegate {
     func RegisterNowButtonAction(cell: LoginDetailsTableViewCell, email: String, pass: String, phone: String)
@@ -14,6 +15,7 @@ protocol LoginDetailsTableViewCellDelegate {
 
 class LoginDetailsTableViewCell: TableViewCell {
     
+    @IBOutlet weak var counryCodeView: UIView!
     @IBOutlet weak var eyeImage: UIImageView!
     @IBOutlet weak var eyeView: UIView!
     @IBOutlet weak var phoneNumberTextfld: UITextField!
@@ -27,7 +29,19 @@ class LoginDetailsTableViewCell: TableViewCell {
     var email = String()
     var phone = String()
     var pass = String()
+    var isSearchBool = Bool()
+    var searchText = String()
+    var filterdcountrylist = [All_country_code_list]()
+    var countryNames = [String]()
+    var countrycodesArray = [String]()
+    var originArray = [String]()
+    var isocountrycodeArray = [String]()
+    var billingCountryName = String()
     var showPwdBool = true
+    var nationalityCode = String()
+    let dropDown = DropDown()
+    var countryNameArray = [String]()
+    var isoCountryCode = String()
     
     var delegate: LoginDetailsTableViewCellDelegate?
     
@@ -53,10 +67,18 @@ class LoginDetailsTableViewCell: TableViewCell {
         passwordTxtfld.layer.borderColor = HexColor("#B8B8B8").cgColor
         passwordTxtfld.layer.cornerRadius = 4
         registerNowButton.layer.cornerRadius = 4
+        setupDropDown()
         registerNowButton.backgroundColor = HexColor("#EE1935").withAlphaComponent(0.3)
         emailTextFld.addTarget(self, action: #selector(textFiledEditingChanged(_:)), for: .editingChanged)
         phoneNumberTextfld.addTarget(self, action: #selector(textFiledEditingChanged(_:)), for: .editingChanged)
         passwordTxtfld.addTarget(self, action: #selector(textFiledEditingChanged(_:)), for: .editingChanged)
+        countryCodeTextField.addTarget(self, action: #selector(searchTextChanged(textField:)), for: .editingChanged)
+        countryCodeTextField.addTarget(self, action: #selector(searchTextBegin(textField:)), for: .editingDidBegin)
+    }
+    
+    override func updateUI() {
+        filterdcountrylist = countrylist
+        loadCountryNamesAndCode()
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -64,6 +86,79 @@ class LoginDetailsTableViewCell: TableViewCell {
         
         // Configure the view for the selected state
     }
+    
+    
+    func setupDropDown() {
+        dropDown.direction = .bottom
+        dropDown.backgroundColor = .WhiteColor
+        dropDown.anchorView = self.counryCodeView
+        dropDown.bottomOffset = CGPoint(x: 0, y: counryCodeView.frame.size.height + 10)
+        dropDown.selectionAction = { [weak self] (index: Int, item: String) in
+            
+//            self?.countryCodeLbl.text = ""
+            self?.countryCodeTextField.text = self?.countrycodesArray[index]
+            self?.isoCountryCode = self?.isocountrycodeArray[index] ?? ""
+            self?.billingCountryName = self?.countryNames[index] ?? ""
+            self?.nationalityCode = self?.originArray[index] ?? ""
+        
+            self?.countryCodeTextField.text = self?.countrycodesArray[index] ?? ""
+            paymobilecountrycode = self?.countrycodesArray[index] ?? ""
+            self?.countryCodeTextField.resignFirstResponder()
+        }
+    }
+    
+    @objc func searchTextBegin(textField: UITextField) {
+        textField.text = ""
+        filterdcountrylist.removeAll()
+        filterdcountrylist = countrylist
+        loadCountryNamesAndCode()
+        dropDown.show()
+    }
+    
+    
+    @objc func searchTextChanged(textField: UITextField) {
+        searchText = textField.text ?? ""
+        if searchText == "" {
+            isSearchBool = false
+            filterContentForSearchText(searchText)
+        }else {
+            isSearchBool = true
+            filterContentForSearchText(searchText)
+        }
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        print("Filterin with:", searchText)
+        
+        filterdcountrylist.removeAll()
+        filterdcountrylist = countrylist.filter { thing in
+            return "\(thing.name?.lowercased() ?? "")".contains(searchText.lowercased())
+        }
+        
+        loadCountryNamesAndCode()
+        dropDown.show()
+        
+    }
+    
+    func loadCountryNamesAndCode(){
+        countryNames.removeAll()
+        countrycodesArray.removeAll()
+        isocountrycodeArray.removeAll()
+        originArray.removeAll()
+        
+        filterdcountrylist.forEach { i in
+            countryNames.append(i.name ?? "")
+            countrycodesArray.append(i.country_code ?? "")
+            isocountrycodeArray.append(i.iso_country_code ?? "")
+            originArray.append(i.origin ?? "")
+        }
+        
+        DispatchQueue.main.async {[self] in
+            dropDown.dataSource = countryNames
+        }
+    }
+    
+    
     
     @objc func textFiledEditingChanged(_ textField:UITextField) {
         self.phone = phoneNumberTextfld.text!

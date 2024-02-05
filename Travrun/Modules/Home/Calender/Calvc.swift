@@ -469,6 +469,37 @@ extension Calvc: JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource {
         return parameter
     }
     
+    
+//    
+//    func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
+//        // Get the current date
+//        let currentDate = Date()
+//        
+//        // Get the current calendar
+//        let calendar = Calendar.current
+//        
+//        // Get the components of the current date
+//        let currentDateComponents = calendar.dateComponents([.year, .month], from: currentDate)
+//        
+//        // Set the start date to the beginning of the current month
+//        let startDate = calendar.date(from: currentDateComponents)!
+//        
+//        // Calculate the end date as one year after the start date
+//        let endDate = calendar.date(byAdding: .year, value: 1, to: startDate)!
+//        
+//        // Configure the calendar parameters
+//        let parameter = ConfigurationParameters(startDate: startDate,
+//                                                 endDate: endDate,
+//                                                 numberOfRows: 6,
+//                                                calendar: Calendar.current, generateInDates: .forAllMonths,
+//                                                generateOutDates: .tillEndOfGrid,
+//                                                firstDayOfWeek: .monday,
+//                                                hasStrictBoundaries: true)
+//        
+//        return parameter
+//    }
+    
+    
     func calendar(_ calendar: JTAppleCalendarView, shouldSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) -> Bool {
         return date >= Date()
     }

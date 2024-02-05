@@ -233,7 +233,7 @@ class FilterVC: BaseTableVC{
     func setupFilterTVCells() {
         commonTableView.isScrollEnabled = true
         tablerow.removeAll()
-        
+       
         tablerow.append(TableRow(title:"Price",cellType:.SliderTVCell))
         tablerow.append(TableRow(title:"No. of stops",data: stopsArray,cellType:.CheckBoxTVCell))
         tablerow.append(TableRow(title:"Cancellation Type",data: faretypeArray,cellType:.CheckBoxTVCell))
@@ -636,7 +636,7 @@ class FilterVC: BaseTableVC{
                 switch cell.filtertitle {
                     
                     
-                case "Departurn Time":
+                case "Departure Time":
                     departureTimeFilter.append(cell.titlelbl.text ?? "")
                     break
                     
@@ -645,7 +645,7 @@ class FilterVC: BaseTableVC{
                     break
                     
                     
-                case "Stops":
+                case "No. of stops":
                     if cell.titlelbl.text == "0 Stop" {
                         noOfStopsFilterArray.append("0")
                     }else if cell.titlelbl.text == "1 Stop" {
@@ -656,7 +656,7 @@ class FilterVC: BaseTableVC{
                     
                     break
                     
-                case "Refundable Type":
+                case "Cancellation Type":
                     
                     flightRefundablerTypeFilteArray.append(cell.titlelbl.text ?? "")
                     
@@ -709,7 +709,7 @@ class FilterVC: BaseTableVC{
                 switch cell.filtertitle {
                     
                     
-                case "Departurn Time":
+                case "Departure Time":
                     if let index = departureTimeFilter.firstIndex(of: cell.titlelbl.text ?? "") {
                         departureTimeFilter.remove(at: index)
                     }
@@ -722,7 +722,7 @@ class FilterVC: BaseTableVC{
                     break
                     
                     
-                case "Stops":
+                case "No. of stops":
                     
                     if cell.titlelbl.text == "0 Stop" {
                         if let index = noOfStopsFilterArray.firstIndex(of: "0") {
@@ -742,8 +742,7 @@ class FilterVC: BaseTableVC{
                     
                     break
                     
-                case "Refundable Type":
-                    
+                case "Cancellation Type":
                     if let index = flightRefundablerTypeFilteArray.firstIndex(of: cell.titlelbl.text ?? "") {
                         flightRefundablerTypeFilteArray.remove(at: index)
                     }

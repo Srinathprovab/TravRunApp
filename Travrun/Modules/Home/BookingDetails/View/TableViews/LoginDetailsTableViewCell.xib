@@ -88,7 +88,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="va1-Kt-EaY">
                                                         <rect key="frame" x="0.0" y="0.0" width="88" height="44"/>
                                                         <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="leading" contentVerticalAlignment="center" text="+965" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="of3-aU-QxW">
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="leading" contentVerticalAlignment="center" placeholder="+91" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="of3-aU-QxW">
                                                                 <rect key="frame" x="0.0" y="0.0" width="58" height="44"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
@@ -277,6 +277,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="dG2-ie-0K4"/>
             <connections>
+                <outlet property="counryCodeView" destination="va1-Kt-EaY" id="6su-mh-695"/>
                 <outlet property="countryCodeTextField" destination="of3-aU-QxW" id="Kvx-iH-Y1I"/>
                 <outlet property="emailTextFld" destination="HcJ-Bm-Hyu" id="X70-iN-Ghz"/>
                 <outlet property="eyeImage" destination="Pgr-cu-X7g" id="EKe-gW-DNu"/>

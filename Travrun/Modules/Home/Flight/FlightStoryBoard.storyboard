@@ -606,8 +606,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="z4J-tN-BZ6" secondAttribute="bottom" id="1xf-L0-ccH"/>
                                     <constraint firstAttribute="trailing" secondItem="z4J-tN-BZ6" secondAttribute="trailing" id="Bpa-we-3vM"/>
-                                    <constraint firstAttribute="bottom" secondItem="z4J-tN-BZ6" secondAttribute="bottom" id="Eca-xn-N3B"/>
                                     <constraint firstItem="z4J-tN-BZ6" firstAttribute="top" secondItem="LC9-rk-vzL" secondAttribute="bottom" id="GNa-7m-5gx"/>
                                     <constraint firstItem="z4J-tN-BZ6" firstAttribute="leading" secondItem="c3c-fu-zC3" secondAttribute="leading" id="PcT-Cx-a1M"/>
                                     <constraint firstAttribute="trailing" secondItem="LC9-rk-vzL" secondAttribute="trailing" id="SQt-rp-0ja"/>
@@ -615,14 +615,36 @@
                                     <constraint firstItem="LC9-rk-vzL" firstAttribute="leading" secondItem="c3c-fu-zC3" secondAttribute="leading" id="qC9-hu-iGy"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="it will take a couple of seconds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8e-P7-CpU">
+                                <rect key="frame" x="95.000000000000014" y="523.33333333333337" width="203.33333333333337" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="2RD-Ti-z2f"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                <color key="textColor" name="AppLabelColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do not click back or close the App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sS8-5h-jQN">
+                                <rect key="frame" x="99.666666666666686" y="556.33333333333337" width="194" height="14.666666666666629"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14.67" id="Jig-FK-N96"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
+                                <color key="textColor" name="AppBtnColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ddS-o7-jbO"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="c3c-fu-zC3" secondAttribute="bottom" id="Hp8-u2-VwU"/>
+                            <constraint firstItem="K8e-P7-CpU" firstAttribute="centerX" secondItem="za4-EO-vjb" secondAttribute="centerX" id="2tm-ry-tZT"/>
+                            <constraint firstItem="sS8-5h-jQN" firstAttribute="top" secondItem="K8e-P7-CpU" secondAttribute="bottom" constant="16" id="Dcn-62-gYf"/>
+                            <constraint firstItem="ddS-o7-jbO" firstAttribute="bottom" secondItem="sS8-5h-jQN" secondAttribute="bottom" constant="247" id="F9l-gF-HyB"/>
+                            <constraint firstItem="sS8-5h-jQN" firstAttribute="centerX" secondItem="K8e-P7-CpU" secondAttribute="centerX" id="MPG-aY-g0i"/>
                             <constraint firstItem="ddS-o7-jbO" firstAttribute="trailing" secondItem="c3c-fu-zC3" secondAttribute="trailing" id="dQi-zi-dPu"/>
                             <constraint firstItem="c3c-fu-zC3" firstAttribute="leading" secondItem="ddS-o7-jbO" secondAttribute="leading" id="dz1-MH-EzB"/>
                             <constraint firstItem="c3c-fu-zC3" firstAttribute="top" secondItem="za4-EO-vjb" secondAttribute="top" id="t70-po-4xA"/>
+                            <constraint firstAttribute="bottom" secondItem="c3c-fu-zC3" secondAttribute="bottom" id="vZt-zR-Uzd"/>
                         </constraints>
                     </view>
                     <connections>
@@ -630,6 +652,7 @@
                         <outlet property="cityLabel" destination="Hor-jK-Anj" id="64u-Xc-Z2T"/>
                         <outlet property="commonTableView" destination="z4J-tN-BZ6" id="Wid-KA-let"/>
                         <outlet property="datelbl" destination="syJ-Id-eBg" id="sQp-T1-zlo"/>
+                        <outlet property="dontClickLabel" destination="sS8-5h-jQN" id="jHL-ao-9eM"/>
                         <outlet property="editButtonView" destination="gSS-D0-Znt" id="JF1-Tx-UKw"/>
                         <outlet property="filterView" destination="txF-QW-cmI" id="TfN-DX-L5Q"/>
                         <outlet property="holderView" destination="c3c-fu-zC3" id="IcQ-6k-Huq"/>
@@ -637,6 +660,7 @@
                         <outlet property="personsCategoryLabel" destination="QZr-uo-wff" id="7YT-YA-Rj7"/>
                         <outlet property="returnDatalbl" destination="6ZC-rL-pPS" id="40L-ik-7PQ"/>
                         <outlet property="rightButtonView" destination="nuu-xQ-BGY" id="utv-u2-7Yg"/>
+                        <outlet property="secondsLabel" destination="K8e-P7-CpU" id="2Gb-Kj-mzC"/>
                         <outlet property="sortView" destination="MK8-Zg-czS" id="8rT-Qi-ctW"/>
                         <outlet property="subTitleLabel" destination="M8k-Ta-Q0i" id="9R8-tA-bX6"/>
                         <outlet property="titleLabel" destination="FJU-04-VXw" id="9eb-gY-vjf"/>
@@ -1807,6 +1831,12 @@
         <image name="sort" width="24" height="24"/>
         <image name="sortIcon" width="24" height="24"/>
         <image name="splashScreen" width="142.66667175292969" height="308.66665649414062"/>
+        <namedColor name="AppBtnColor">
+            <color red="0.93333333333333335" green="0.098039215686274508" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AppLabelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="WhiteColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

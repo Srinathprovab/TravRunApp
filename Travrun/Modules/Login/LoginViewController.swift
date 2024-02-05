@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManager
 
 class LoginViewController: UIViewController, UITextFieldDelegate, RegisterViewModelProtocal {
    
@@ -43,6 +44,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, RegisterViewMo
     override func viewDidLoad() {
         super.viewDidLoad()
         regViewModel = RegisterViewModel(self)
+        IQKeyboardManager.shared().keyboardDistanceFromTextField = 50
         setiupUI()
         // Do any additional setup after loading the view.
     }
