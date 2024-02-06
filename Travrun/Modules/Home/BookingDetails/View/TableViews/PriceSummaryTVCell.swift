@@ -13,6 +13,15 @@ protocol PriceSummaryTVCellDelegate {
 
 class PriceSummaryTVCell: TableViewCell {
     
+    @IBOutlet weak var addonView: UIView!
+    @IBOutlet weak var notificationView: UIView!
+    @IBOutlet weak var flexibleView: UIView!
+    @IBOutlet weak var priceView: UIView!
+    @IBOutlet weak var whatsAppView: UIView!
+    @IBOutlet weak var notificationLabel: UILabel!
+    @IBOutlet weak var priceChangeLabel: UILabel!
+    @IBOutlet weak var flexiblePriceLbl: UILabel!
+    @IBOutlet weak var whatsAppPriceLbl: UILabel!
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var psImg: UIImageView!
     @IBOutlet weak var titlelbl: UILabel!
@@ -34,6 +43,7 @@ class PriceSummaryTVCell: TableViewCell {
         // Initialization code
         setupUI()
         setupTV()
+        addonView.isHidden = false
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -43,6 +53,40 @@ class PriceSummaryTVCell: TableViewCell {
     }
     
     override func updateUI() {
+        
+        
+        if whatsAppCheck == true {
+            whatsAppView.isHidden = false
+        } else {
+            whatsAppView.isHidden = true
+        }
+        
+        if priceCheck == true {
+            priceView.isHidden = false
+        } else {
+            priceView.isHidden = true
+        }
+        
+        if notificationCheck == true {
+            notificationView.isHidden = false
+        } else {
+            notificationView.isHidden = true
+        }
+        
+        if flexibleCheck == true {
+            flexibleView.isHidden = false
+        } else {
+            flexibleView.isHidden = true
+        }
+        
+        
+        if whatsAppCheck == false && priceCheck  == false && notificationCheck  == false && notificationCheck  == false {
+            addonView.isHidden = true
+        } else {
+            addonView.isHidden = false
+        }
+        
+        
         self.key =  cellInfo?.key ?? ""
         
         
@@ -100,6 +144,12 @@ class PriceSummaryTVCell: TableViewCell {
     }
     
     func setupUI(){
+        
+        whatsAppPriceLbl.text =  "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD")  \(whatsAppPrice)"
+        flexiblePriceLbl.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD")  \(flexiblePrie)"
+        notificationLabel.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD")  \(notificationPrice)"
+        priceChangeLabel.text = "\(defaults.string(forKey: UserDefaultsKeys.selectedCurrency) ?? "KWD")  \(priceChange)"
+        
         
         setupViews(v: holderView, radius: 4, color: .WhiteColor)
         setupViews(v: ulView, radius: 0, color: .clear)

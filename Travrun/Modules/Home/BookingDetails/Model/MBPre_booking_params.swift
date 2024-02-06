@@ -19,9 +19,11 @@ struct MBPre_booking_params : Codable {
     let token_key : String?
     let access_key : String?
     let priceDetails : MBPriceDetails?
+    let addon_services : [Addon_services]?
+
 
     enum CodingKeys: String, CodingKey {
-
+        case addon_services = "addon_services"
         case search_access_key = "search_access_key"
         case search_id = "search_id"
         case transaction_id = "transaction_id"
@@ -33,6 +35,7 @@ struct MBPre_booking_params : Codable {
         case token_key = "token_key"
         case access_key = "access_key"
         case priceDetails = "priceDetails"
+        
     }
 
     init(from decoder: Decoder) throws {
@@ -48,6 +51,7 @@ struct MBPre_booking_params : Codable {
         token_key = try values.decodeIfPresent(String.self, forKey: .token_key)
         access_key = try values.decodeIfPresent(String.self, forKey: .access_key)
         priceDetails = try values.decodeIfPresent(MBPriceDetails.self, forKey: .priceDetails)
+        addon_services = try values.decodeIfPresent([Addon_services].self, forKey: .addon_services)
     }
 
 }

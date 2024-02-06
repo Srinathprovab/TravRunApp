@@ -9,6 +9,7 @@ import UIKit
 
 class AddonContentTVCell: UITableViewCell {
 
+    @IBOutlet weak var checkIMAGE: UIImageView!
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet weak var priceImage: UILabel!

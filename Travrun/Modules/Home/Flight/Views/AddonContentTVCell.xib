@@ -105,6 +105,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="checkBoxImage" destination="fFu-Nb-1sF" id="crP-ZE-EQa"/>
+                <outlet property="checkIMAGE" destination="fFu-Nb-1sF" id="ekN-yn-fq3"/>
                 <outlet property="holderView" destination="pjY-gH-8IV" id="dzz-rr-NdR"/>
                 <outlet property="leftICon" destination="vMk-1M-y3R" id="ghy-sC-cPy"/>
                 <outlet property="priceImage" destination="msA-lr-wzm" id="5cx-IL-5dS"/>

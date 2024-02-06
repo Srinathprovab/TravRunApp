@@ -89,14 +89,15 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        whatsAppCheck = true
+        notificationCheck = true
+        priceCheck = true
+        flexibleCheck = true
         addObserver()
         chatBtnView.isHidden = true
         hiddenView.isHidden = true
         travelerArray.removeAll()
         searchTextArray.removeAll()
-        
-        
         
         if let journeyType = defaults.string(forKey: UserDefaultsKeys.journeyType) {
             if journeyType == "oneway" {
@@ -252,9 +253,6 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
     }
     
     
-    
-    
-    
     func gotoPopupScreen() {
 //        guard let vc = PopupVC.newInstance.self else {return}
 //        vc.modalPresentationStyle = .overCurrentContext
@@ -288,8 +286,32 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
         }
     }
     
+    override func didSelectAddon(index: Int) {
+        if index == 0 {
+            whatsAppCheck = false
+        } else if index == 1 {
+            flexibleCheck = false
+        } else if index == 2 {
+            priceCheck = false
+        } else {
+            notificationCheck = false
+        }
+        commonTableView.reloadData()
+    }
     
     
+    override func didDeselectAddon(index: Int) {
+        if index == 0 {
+            whatsAppCheck = true
+        } else if index == 1 {
+            flexibleCheck = true
+        } else if index == 2 {
+            priceCheck = true
+        } else {
+            notificationCheck = true
+        }
+        commonTableView.reloadData()
+    }
     
     
     //MARK: - didTapOnInsureSkipButton TravelInsuranceTVCell
@@ -1024,7 +1046,7 @@ extension BookingDetailsVC {
         totalPrice = Double(String(format: "%.2f", response.total_price ?? "")) ?? 0.0
         appreference = response.pre_booking_params?.transaction_id ?? ""
         frequent_flyersArray = response.frequent_flyers ?? []
-        addon_services = response.addon_services ?? []
+        addon_services =  response.pre_booking_params?.addon_services ?? []
         DispatchQueue.main.async {
             mbSummery = response.flight_data?[0].flightDetails?.summery ?? []
         }

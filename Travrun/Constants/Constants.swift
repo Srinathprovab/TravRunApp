@@ -123,6 +123,18 @@ var totalRooms = 0
 var totalAdults = 0
 var totalChildren = 0
 
+var whatsAppPrice = String()
+var flexiblePrie = String()
+var priceChange = String()
+var notificationPrice = String()
+var whatsAppCheck = true
+var priceCheck = true
+var flexibleCheck = true
+var notificationCheck = true
+var addonCheck = true
+var priceDetailsArry: [MBPriceDetails]?
+var isChecked =  true
+
 //MARK: - Profile details
 var pdetails:ProfileDetails?
 

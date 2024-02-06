@@ -457,7 +457,6 @@ extension SearchHotelTVCell:UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? FromCityTVCell {
             
-          
             locationCitylbl.text = hotelList[indexPath.row].value ?? ""
             locationCitylbl.textColor = .AppLabelColor
             
