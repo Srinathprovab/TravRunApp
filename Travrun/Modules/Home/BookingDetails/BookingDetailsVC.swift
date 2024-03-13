@@ -179,24 +179,25 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
                                          "AddDeatilsOfTravellerTVCell",
                                          "AcceptTermsAndConditionTVCell",
                                          "TotalNoofTravellerTVCell",
-                                         "BookFlightDetailsTVCell", "RegisterNowTableViewCell", "EmptyTVCell", "LoginDetailsTableViewCell", "GuestRegisterTableViewCell", "RegisterSelectionLoginTableViewCell", "AddonTableViewCell"])
+                                         "BookFlightDetailsTVCell", "RegisterNowTableViewCell", "EmptyTVCell", "LoginDetailsTableViewCell", "GuestRegisterTableViewCell", "RegisterSelectionLoginTableViewCell", "AddonTableViewCell", "GuestTVCell"])
     }
   
     func setupTV() {
         sessionTimerView.isHidden = false
         tablerow.removeAll()
-        
+        if mbSummery.count != 0 {
         tablerow.append(TableRow(title:self.mbRefundable,
                                  subTitle: "",
                                  moreData: mbSummery,
                                  cellType:.BookFlightDetailsTVCell))
+        }
         
         if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == false {
             tablerow.append(TableRow(height: 14,bgColor:.AppHolderViewColor, cellType:.EmptyTVCell))
             tablerow.append(TableRow(cellType: .RegisterSelectionLoginTableViewCell))
             tablerow.append(TableRow(height: 12,bgColor:.AppHolderViewColor, cellType:.EmptyTVCell))
             if mbviewmodel?.section == .guestLogin {
-                tablerow.append(TableRow(cellType: .GuestRegisterTableViewCell))
+                tablerow.append(TableRow(cellType: .GuestTVCell))
                 tablerow.append(TableRow(height: 12,bgColor:.AppHolderViewColor, cellType:.EmptyTVCell))
             } else if mbviewmodel?.section == .register {
                 tablerow.append(TableRow(cellType: .LoginDetailsTableViewCell))
@@ -399,8 +400,8 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
         cell.loginRadioImage.image = UIImage(named: "radioUnselect")
         cell.guestRadioImage.image = UIImage(named: "radioSelect")
         mbviewmodel?.section = .guestLogin
-        setupTV()
-//        commonTableView.reloadData()
+//        setupTV()
+        commonTableView.reloadData()
         
     }
     override func registerButton(cell: RegisterSelectionLoginTableViewCell) {
@@ -408,16 +409,16 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
         cell.loginRadioImage.image = UIImage(named: "radioUnselect")
         cell.guestRadioImage.image = UIImage(named: "radioUnselect")
         mbviewmodel?.section = .register
-        setupTV()
-//        commonTableView.reloadData()
+//        setupTV()
+        commonTableView.reloadData()
     }
     override func loginButton(cell: RegisterSelectionLoginTableViewCell) {
         cell.registerRadioImage.image = UIImage(named: "radioUnselect")
         cell.loginRadioImage.image = UIImage(named: "radioSelect")
         cell.guestRadioImage.image = UIImage(named: "radioUnselect")
         mbviewmodel?.section = .login
-        setupTV()
-//        commonTableView.reloadData()
+//        setupTV()
+        commonTableView.reloadData()
     }
     
     override func loginNowButtonAction(cell: RegisterNowTableViewCell, email: String, pass: String) {
@@ -425,13 +426,22 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
         callLoginAPI(email: email, pass: pass)
     }
     
-    override func RegisterNowButtonAction(cell: LoginDetailsTableViewCell, email: String, pass: String, phone: String) {
-        callRegisterAPI(email: email, pass: pass, mobile: phone)
+    override func RegisterNowButtonAction(cell: LoginDetailsTableViewCell, email: String, pass: String, phone: String, countryCode: String) {
+        defaults.set(email, forKey: UserDefaultsKeys.useremail)
+        defaults.set(countryCode, forKey: UserDefaultsKeys.countryCode)
+        defaults.set(phone, forKey: UserDefaultsKeys.usermobile)
+        callRegisterAPI(email: email, pass: pass, mobile: phone, countryCode: countryCode)
     }
     
-    
-    
-    
+    override func GuestRegisterNowButtonAction(cell: GuestTVCell, email: String, pass: String, phone: String, countryCode: String) {
+        defaults.set(true, forKey: UserDefaultsKeys.regStatus)
+        defaults.set(email, forKey: UserDefaultsKeys.useremail)
+        defaults.set(countryCode, forKey: UserDefaultsKeys.countryCode)
+        defaults.set(phone, forKey: UserDefaultsKeys.usermobile)
+        showToast(message: "Sucessfully Registered!..")
+        commonTableView.reloadData()
+    }
+
     //MARK: - gotoAddTravellerOrGuestVC
     func gotoAddTravellerOrGuestVC(str:String,key1:String,passType:String,id1:String) {
 //        defaults.set(str, forKey: UserDefaultsKeys.travellerTitle)
@@ -448,6 +458,9 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
 //    override func didTapOnEditTraveller(cell: AddAdultsOrGuestTVCell){
 //        gotoAddTravellerOrGuestVC(str: "", key1: "edit", passType: "", id1: cell.travellerId)
 //    }
+    
+    
+    
     
     
     //MARK: - did Tap On delete Traveller BtnAction
@@ -1008,7 +1021,7 @@ extension BookingDetailsVC {
         
         
         DispatchQueue.main.async {[self] in
-            callAllAPIS()
+//            callAllAPIS()
         }
     }
     
@@ -1036,6 +1049,16 @@ extension BookingDetailsVC {
     
     
     func mobilepreprocessbookingDetails(response: MBModel) {
+        
+        if response.status == false {
+            let alertController = UIAlertController(title: "Sorry!!..", message: "\(response.msg ?? "seats are full")", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+                self.dismiss(animated: true)
+            }
+            okAction.setValue(UIColor.AppLabelColor, forKey: "titleTextColor")
+            alertController.addAction(okAction)
+            present(alertController, animated: true, completion: nil)
+        }
 
         holderView.isHidden = false
         accesskey = response.pre_booking_params?.access_key ?? ""
@@ -1308,10 +1331,11 @@ extension BookingDetailsVC {
         callProfileDetailsAPI()
     }
     
-    func callRegisterAPI(email: String, pass: String, mobile: String) {
+    func callRegisterAPI(email: String, pass: String, mobile: String, countryCode: String) {
         payload["email"] = email
         payload["password"] = pass
         payload["phone"] = mobile
+        payload["country_code"] = countryCode
         regViewModel?.CallRegisterAPI(dictParam: payload)
         callProfileDetailsAPI()
     }
@@ -1325,18 +1349,11 @@ extension BookingDetailsVC {
             showToast(message: response.msg ?? "")
         } else {
             showToast(message: "Register Sucess")
-            defaults.set(true, forKey: UserDefaultsKeys.loggedInStatus)
+            defaults.set(true, forKey: UserDefaultsKeys.regStatus)
             defaults.set(response.data?.user_id, forKey: UserDefaultsKeys.userid)
             let seconds = 2.0
             DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {[self] in
                 setupTV()
-//                if isVcFrom == "BookingDetailsVC" {
-//                    NotificationCenter.default.post(name: NSNotification.Name("reloadAfterLogin"), object: nil)
-//                    self.dismiss(animated: true)
-//                }else {
-//                    //                    commonTableView.reloadData()
-//                    setupTVCells()
-//                }
             }
         }
     }
@@ -1347,21 +1364,17 @@ extension BookingDetailsVC {
         if response.status == false {
             showToast(message: response.data ?? "")
         }else {
-            
             defaults.set(true, forKey: UserDefaultsKeys.loggedInStatus)
+            defaults.set(response.email, forKey: UserDefaultsKeys.useremail)
             defaults.set(response.user_id, forKey: UserDefaultsKeys.userid)
+            defaults.set(response.contry_code, forKey: UserDefaultsKeys.countryCode)
+            defaults.set(response.contact, forKey: UserDefaultsKeys.usermobile)
             
             showToast(message: response.data ?? "")
             let seconds = 2.0
             DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {[self] in
                 setupTV()
-//                if isVcFrom == "BookingDetailsVC" || isVcFrom == "SideMenuViewController"{
-//                    NotificationCenter.default.post(name: NSNotification.Name("reloadAfterLogin"), object: nil)
-//                    self.dismiss(animated: true)
-//                }else {
-//                    //                        tablerow.removeAll()
-//                    setupTVCells()
-//                }
+                //                reloadAfterLogin()
             }
         }
     }

@@ -134,6 +134,7 @@ var notificationCheck = true
 var addonCheck = true
 var priceDetailsArry: [MBPriceDetails]?
 var isChecked =  true
+var isDirect = true
 
 //MARK: - Profile details
 var pdetails:ProfileDetails?
@@ -234,8 +235,11 @@ struct UserDefaultsKeys {
     static var rchildCount = "rChild_Count"
     static var radultCount = "rAdult_Count"
     static var useremail = "useremail"
+    static var regStatus = "regStatus"
     static var usermobile = "usermobile"
     static var uname = "uname"
+    static var mnumbar = "mnumbar"
+    static var countryCode = "countryCode"
     static var mcountrycode = "mcountrycode"
     static var userid = "userid"
     static var toairport = "toairport"

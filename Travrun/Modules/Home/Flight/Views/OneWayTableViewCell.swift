@@ -384,6 +384,36 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
         updateTotalTravelerCount()
     }
     
+    @IBAction func swapButtonAction(_ sender: Any) {
+//        let a = fromTitleLabel.text
+//        let b = toTitleLabel.text
+//        
+//        fromTitleLabel.text = b
+//        toTitleLabel.text = a
+//        
+//        defaults.set(fromTitleLabel.text, forKey: UserDefaultsKeys.fromcityname)
+//        defaults.set(toTitleLabel.text, forKey: UserDefaultsKeys.tocityname)
+//        
+//        let m = defaults.string(forKey: UserDefaultsKeys.fromCity)
+//        let n = defaults.string(forKey: UserDefaultsKeys.toCity)
+//        
+//        defaults.setValue(m, forKey: UserDefaultsKeys.toCity)
+//        defaults.setValue(n, forKey: UserDefaultsKeys.fromCity)
+//        
+//        let y = defaults.string(forKey: UserDefaultsKeys.fromlocid)
+//        let z = defaults.string(forKey: UserDefaultsKeys.tolocid)
+//        
+//        
+//        defaults.setValue(y, forKey: UserDefaultsKeys.tolocid)
+//        defaults.setValue(z, forKey: UserDefaultsKeys.fromlocid)
+//        
+//        let c = "\(defaults.string(forKey: UserDefaultsKeys.fromcityname) ?? "")"
+//        let d = "\(defaults.string(forKey: UserDefaultsKeys.tocityname) ?? "")"
+        
+        
+    }
+    
+    
     @IBAction func childDecrementButtonAction(_ sender: Any) {
         
         // Ensure adult count doesn't go below 1
@@ -494,13 +524,11 @@ class OneWayTableViewCell: TableViewCell, SelectCityViewModelProtocal {
     }
     
     @IBAction func directFlightCheckBoxAction(_ sender: Any) {
-        
-        if isCheckin == false {
-            isCheckin = true
-            chekBoxImage.image = UIImage(named: "check")
+        isDirect.toggle()
+        if isDirect {
+            chekBoxImage.image = UIImage(named: "uncheck")
         } else {
-            isCheckin = false
-            chekBoxImage.image = UIImage(named: "checkBox")
+            chekBoxImage.image = UIImage(named: "redcheckBox")
         }
     }
     

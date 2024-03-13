@@ -146,10 +146,10 @@ extension LoginViewController {
         if response.status == false {
             showToast(message: response.data ?? "")
         }else {
-            
             defaults.set(true, forKey: UserDefaultsKeys.loggedInStatus)
             defaults.set(response.user_id, forKey: UserDefaultsKeys.userid)
-            
+//            defaults.set(response.contry_code, forKey: UserDefaultsKeys.countryCode)
+//            defaults.set(response.contact, forKey: UserDefaultsKeys.mnumbar)
             
             showToast(message: response.data ?? "")
             let seconds = 2.0

@@ -48,7 +48,7 @@ class SortbyTVCell: TableViewCell {
             setuplabels(lbl: lowtoHighlbl, text: "A-Z", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
             setuplabels(lbl: hightoLowhlbl, text: "Z-A", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
         } else if cellInfo?.key == "departure" {
-            setuplabels(lbl: lowtoHighlbl, text: "Earlist flight", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
+            setuplabels(lbl: lowtoHighlbl, text: "Earliest flight", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
             setuplabels(lbl: hightoLowhlbl, text: "Last flight", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)
         } else if cellInfo?.key == "low" {
             setuplabels(lbl: lowtoHighlbl, text: "Low to high", textcolor: .AppLabelColor, font: .InterRegular(size: 14), align: .center)

@@ -7,8 +7,8 @@
 
 import UIKit
 
-class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate, LabelTVCellDelegate, RegisterUserTVCellDelegate, UnderLineTVCellPrtocal, TextfieldTVCellDelegate, MenuBGTVCellDelegate, SideMenuTitleTVCellDelegate, SelectGenderTVCellDelegate, RegisterNowTableViewCellDelegate, LoginDetailsTableViewCellDelegate, AddAdultTableViewCellDelegate, FareSummaryTableViewCellDelegate, SearchHotelTVCellDelegate, AddRoomsGuestsTVCellDelegate, CommonFromCityTVCellDelegate, HotelsTVCellelegate, SearchLocationTFTVCellDelegate, BookFlightDetailsTVCellDelegate, TDetailsLoginTVCellDelegate, AddDeatilsOfTravellerTVCellDelegate, TravelInsuranceTVCellDelegate, ContactInformationTVCellDelegate, UsePromoCodesTVCellDelegate, PriceSummaryTVCellDelegate, SpecialRequestTVCellDelegate, ViewFlightDetailsBtnTVCellDelegate, AddAdultsOrGuestTVCellDelegate, SearchFlightResultTVCellDelegate, TitleLblTVCellDelegate, RadioButtonTVCellDelegate, QuickLinkTableViewCellDelegate, AddonTableViewCellDelegate {
- 
+class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate, LabelTVCellDelegate, RegisterUserTVCellDelegate, UnderLineTVCellPrtocal, TextfieldTVCellDelegate, MenuBGTVCellDelegate, SideMenuTitleTVCellDelegate, SelectGenderTVCellDelegate, RegisterNowTableViewCellDelegate, LoginDetailsTableViewCellDelegate, AddAdultTableViewCellDelegate, FareSummaryTableViewCellDelegate, SearchHotelTVCellDelegate, AddRoomsGuestsTVCellDelegate, CommonFromCityTVCellDelegate, HotelsTVCellelegate, SearchLocationTFTVCellDelegate, BookFlightDetailsTVCellDelegate, TDetailsLoginTVCellDelegate, AddDeatilsOfTravellerTVCellDelegate, TravelInsuranceTVCellDelegate, ContactInformationTVCellDelegate, UsePromoCodesTVCellDelegate, PriceSummaryTVCellDelegate, SpecialRequestTVCellDelegate, ViewFlightDetailsBtnTVCellDelegate, AddAdultsOrGuestTVCellDelegate, SearchFlightResultTVCellDelegate, TitleLblTVCellDelegate, RadioButtonTVCellDelegate, QuickLinkTableViewCellDelegate, AddonTableViewCellDelegate, PopularFiltersTVCellDelegate, GuestTVCellDelegate, EditProfileTVCellDelegate {
+   
     @IBOutlet weak var commonScrollView: UITableView!
     @IBOutlet weak var commonTableView: UITableView!
     @IBOutlet weak var commonTVTopConstraint: NSLayoutConstraint!
@@ -89,8 +89,18 @@ class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDe
         
     }
     
-    
     //Delegate Methods
+    func didTapOnUpdateProfileBtnAction(cell: EditProfileTVCell) {}
+    func didTapOnMailBtnAction(cell: EditProfileTVCell) {}
+    func didTapOnFeMailBtnAction(cell: EditProfileTVCell) {}
+    func donedatePicker(cell: EditProfileTVCell) {}
+    func cancelDatePicker(cell: EditProfileTVCell) {}
+    func GuestRegisterNowButtonAction(cell: GuestTVCell, email: String, pass: String, phone: String, countryCode: String) {}
+    func didTapOnOneRatingViewBtn(cell: PopularFiltersTVCell) {}
+    func didTapOnTwoRatingViewBtn(cell: PopularFiltersTVCell) {}
+    func didTapOnThreeatingViewBtn(cell: PopularFiltersTVCell) {}
+    func didTapOnFouratingViewBtn(cell: PopularFiltersTVCell) {}
+    func didTapOnFivetingViewBtn(cell: PopularFiltersTVCell) {}
     func didSelectAddon(index: Int) {}
     func didDeselectAddon(index: Int) {}
     func didTaponFlightBtn(cell: QuickLinkTableViewCell) {}
@@ -144,7 +154,7 @@ class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDe
     func didSelectOnOthersBtn(cell: SelectGenderTVCell) {}
     func didTapOnSaveBtn(cell: SelectGenderTVCell) {}
     func loginNowButtonAction(cell: RegisterNowTableViewCell, email: String, pass: String) {}
-    func RegisterNowButtonAction(cell: LoginDetailsTableViewCell, email: String, pass: String, phone: String) {}
+    func RegisterNowButtonAction(cell: LoginDetailsTableViewCell, email: String, pass: String, phone: String, countryCode: String) {}
     func didTaponSwitchButton(cell: AddAdultTableViewCell) {}
     func didTaponPassangerButton(cell: AddAdultTableViewCell) {}
     func didTapOnCheckinBtn(cell: SearchHotelTVCell) {}
@@ -598,6 +608,27 @@ extension BaseTableVC: UITableViewDataSource {
                 cell.delegate = self
                 commonCell = cell
                 
+            case .NewAboutUsTVCell:
+                let cell: NewAboutUsTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                commonCell = cell
+                
+                
+            case .PopularFiltersTVCell:
+                let cell: PopularFiltersTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
+                commonCell = cell
+                
+            case .GuestTVCell:
+                let cell: GuestTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
+                commonCell = cell
+                
+            case .EditProfileTVCell:
+                let cell: EditProfileTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
+                commonCell = cell
+                
+            
                 
             default:
                 print("handle this case in getCurrentCellAt")

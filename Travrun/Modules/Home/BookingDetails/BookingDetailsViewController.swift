@@ -204,9 +204,11 @@ class BookingDetailsViewController: BaseTableVC, RegisterViewModelProtocal, Prof
         callProfileDetailsAPI()
     }
     
-    override func RegisterNowButtonAction(cell: LoginDetailsTableViewCell, email: String, pass: String, phone: String) {
-        callRegisterAPI(email: email, pass: pass, mobile: phone)
-        callProfileDetailsAPI()
+    override func RegisterNowButtonAction(cell: LoginDetailsTableViewCell, email: String, pass: String, phone: String, countryCode: String) {
+        defaults.set(email, forKey: UserDefaultsKeys.useremail)
+        defaults.set(countryCode, forKey: UserDefaultsKeys.countryCode)
+        defaults.set(phone, forKey: UserDefaultsKeys.usermobile)
+        callRegisterAPI(email: email, pass: pass, mobile: phone, countryCode: countryCode)
     }
     
     override func didTaponSwitchButton(cell: AddAdultTableViewCell) {
@@ -238,10 +240,11 @@ extension BookingDetailsViewController {
         callProfileDetailsAPI()
     }
     
-    func callRegisterAPI(email: String, pass: String, mobile: String) {
+    func callRegisterAPI(email: String, pass: String, mobile: String, countryCode: String) {
         payload["email"] = email
         payload["password"] = pass
         payload["phone"] = mobile
+        payload["country_code"] = countryCode
         regViewModel?.CallRegisterAPI(dictParam: payload)
         callProfileDetailsAPI()
     }

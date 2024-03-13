@@ -65,6 +65,7 @@ class similarFlightsVC: BaseTableVC {
                                          subTitle: j.fareType ?? "",
                                          price: "\(j.price?.api_total_display_fare ?? 0.0)",
                                          bookingsource: j.booking_source,
+                                         bookingsourcekey: j.booking_source_key,
                                          key: "similar",
                                          text: j.selectedResult ?? "",
                                          buttonTitle: j.aPICurrencyType ?? "",
@@ -75,8 +76,7 @@ class similarFlightsVC: BaseTableVC {
                 
             }
         })
-        
-        
+    
         commonTVData = tablerow
         commonTableView.reloadData()
     }
@@ -94,7 +94,6 @@ class similarFlightsVC: BaseTableVC {
                 tablerow.append(TableRow(title:"\(j.price?.api_total_display_fare_withoutmarkup ?? 0.0)",
                                          subTitle: j.fareType ?? "",
                                          price: "\(j.price?.api_total_display_fare ?? 0.0)",
-                                         
                                          key: "similar",
                                          text: j.selectedResult ?? "",
                                          buttonTitle: j.aPICurrencyType ?? "",

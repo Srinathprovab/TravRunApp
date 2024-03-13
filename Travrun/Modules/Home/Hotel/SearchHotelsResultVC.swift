@@ -317,6 +317,9 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     }
     
     
+    @IBAction func bakBtnAction(_ sender: Any) {
+        dismiss(animated: true)
+    }
     @IBAction func didTapOnMapViewBtnAction(_ sender: Any) {
         guard let vc = MapViewVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
@@ -383,7 +386,7 @@ extension SearchHotelsResultVC {
         payload["offset"] = "0"
         payload["limit"] = "10"
         payload["booking_source"] = bookingsource
-        payload["search_id"] = "2252"
+        payload["search_id"] = searchid
         
         viewModel?.CallHotelSearchAPI(dictParam: payload)
     }

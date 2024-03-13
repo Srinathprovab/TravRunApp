@@ -65,7 +65,7 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
         addObserver()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZZZ"
         if callapibool == true {
-//            holderView.isHidden = true
+            holderView.isHidden = true
             callAPI()
             
         }

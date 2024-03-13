@@ -10,7 +10,7 @@ import Toast_Swift
 import DropDown
 
 protocol LoginDetailsTableViewCellDelegate {
-    func RegisterNowButtonAction(cell: LoginDetailsTableViewCell, email: String, pass: String, phone: String)
+    func RegisterNowButtonAction(cell: LoginDetailsTableViewCell, email: String, pass: String, phone: String, countryCode: String)
 }
 
 class LoginDetailsTableViewCell: TableViewCell {
@@ -27,6 +27,7 @@ class LoginDetailsTableViewCell: TableViewCell {
     @IBOutlet weak var passwordTxtfld: UITextField!
     
     var email = String()
+    var maxLength = 8
     var phone = String()
     var pass = String()
     var isSearchBool = Bool()
@@ -42,6 +43,7 @@ class LoginDetailsTableViewCell: TableViewCell {
     let dropDown = DropDown()
     var countryNameArray = [String]()
     var isoCountryCode = String()
+    var country_val = String()
     
     var delegate: LoginDetailsTableViewCellDelegate?
     
@@ -74,7 +76,34 @@ class LoginDetailsTableViewCell: TableViewCell {
         passwordTxtfld.addTarget(self, action: #selector(textFiledEditingChanged(_:)), for: .editingChanged)
         countryCodeTextField.addTarget(self, action: #selector(searchTextChanged(textField:)), for: .editingChanged)
         countryCodeTextField.addTarget(self, action: #selector(searchTextBegin(textField:)), for: .editingDidBegin)
+        countryCodeTextField.addTarget(self, action: #selector(textFiledEditingChanged(_:)), for: .editingDidBegin)
+        countryCodeTextField.addTarget(self, action: #selector(editingText(textField:)), for: .editingDidBegin)
+        phoneNumberTextfld.addTarget(self, action: #selector(editingText(textField:)), for: .editingDidBegin)
+        phoneNumberTextfld.delegate = self
     }
+    
+    
+    @objc func editingText(textField:UITextField) {
+        self.country_val = self.countryCodeTextField.text ?? ""
+            if textField == phoneNumberTextfld {
+                if let text = textField.text {
+                    let length = text.count
+                    if length != maxLength {
+                        phoneNumberTextfld.layer.borderColor = UIColor.red.cgColor
+                        mobilenoMaxLengthBool = false
+                    }else{
+                        phoneNumberTextfld.layer.borderColor = UIColor.AppBorderColor.cgColor
+                        mobilenoMaxLengthBool = true
+                    }
+                   
+                } else {
+                    phoneNumberTextfld.layer.borderColor = UIColor.red.cgColor
+                    mobilenoMaxLengthBool = false
+                }
+            }
+//            delegate?.editingTextField(tf: textField)
+    }
+    
     
     override func updateUI() {
         filterdcountrylist = countrylist
@@ -129,7 +158,6 @@ class LoginDetailsTableViewCell: TableViewCell {
     
     func filterContentForSearchText(_ searchText: String) {
         print("Filterin with:", searchText)
-        
         filterdcountrylist.removeAll()
         filterdcountrylist = countrylist.filter { thing in
             return "\(thing.name?.lowercased() ?? "")".contains(searchText.lowercased())
@@ -161,6 +189,7 @@ class LoginDetailsTableViewCell: TableViewCell {
     
     
     @objc func textFiledEditingChanged(_ textField:UITextField) {
+        self.country_val = self.countryCodeTextField.text ?? ""
         self.phone = phoneNumberTextfld.text!
         self.email = emailTextFld.text!
         self.pass = passwordTxtfld.text!
@@ -173,6 +202,8 @@ class LoginDetailsTableViewCell: TableViewCell {
             showToastMsg(message: "Enter Phone Number")
         } else if pass == "" {
             showToastMsg(message: "Enter Password")
+        } else if country_val == "" {
+            showToastMsg(message: "Enter Country Code")
         } else {
             registerNowButton.backgroundColor = HexColor("#EE1935")
         }
@@ -206,9 +237,9 @@ class LoginDetailsTableViewCell: TableViewCell {
     }
     @IBAction func guestButtonAction(_ sender: Any) {
         
-        if (emailTextFld.text != nil) && passwordTxtfld.text != "" && phoneNumberTextfld.text != ""
+        if (emailTextFld.text != nil) && passwordTxtfld.text != "" && phoneNumberTextfld.text != "" &&  countryCodeTextField.text != ""
         {
-            delegate?.RegisterNowButtonAction(cell: self, email: email, pass: pass, phone: phone)
+            delegate?.RegisterNowButtonAction(cell: self, email: email, pass: pass, phone: phone, countryCode: self.country_val)
         } else {
             showToastMsg(message: "Enter the details")
         }

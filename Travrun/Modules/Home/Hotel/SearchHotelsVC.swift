@@ -92,7 +92,7 @@ class SearchHotelsVC: BaseTableVC, TopFlightDetailsViewModelDelegate {
     func setuptv() {
         tablerow.removeAll()
         tablerow.append(TableRow(isEditable: viewModel?.isCehckIn, cellType:. SearchHotelTVCell))
-        tablerow.append(TableRow(height:16, cellType:.EmptyTVCell))
+//        tablerow.append(TableRow(height:16, cellType:.EmptyTVCell))
         commonTVData = tablerow
         commonTableView.reloadData()
     }
@@ -121,12 +121,12 @@ class SearchHotelsVC: BaseTableVC, TopFlightDetailsViewModelDelegate {
     
     
     @IBAction func backButtonAction(_ sender: Any) {
-        if isFromvc == "SideMenuViewController" {
+        if isFromvc != "SideMenuViewController" {
+            dismiss(animated: true)
+        } else {
             guard let vc = HomeViewController.newInstance.self else {return}
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: false)
-        } else {
-            dismiss(animated: true)
         }
     }
     override func didTapOnCheckoutBtn(cell: SearchHotelTVCell) {

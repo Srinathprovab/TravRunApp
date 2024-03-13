@@ -13,7 +13,7 @@
         <array key="Inter-Bold.ttf">
             <string>Inter-Bold</string>
         </array>
-        <array key="Inter-Medium.otf">
+        <array key="Inter-Medium.ttf">
             <string>Inter-Medium</string>
         </array>
         <array key="Inter-Regular.ttf">
@@ -22,7 +22,7 @@
         <array key="Inter-SemiBold.ttf">
             <string>Inter-SemiBold</string>
         </array>
-        <array key="latoregular.ttf">
+        <array key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
         </array>
         <array key="latosemibold.ttf">
@@ -1844,7 +1844,7 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="secondarySystemBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

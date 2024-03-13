@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -34,6 +35,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="city" translatesAutoresizingMaskIntoConstraints="NO" id="NOF-Dc-Pnq">
                                 <rect key="frame" x="6" y="6" width="340" height="180"/>
+                                <color key="backgroundColor" name="AppHolderViewColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="fE1-OK-Jon"/>
                                 </constraints>
@@ -214,8 +216,8 @@ Fahidi Metro </string>
                             <constraint firstItem="gHI-Ar-zNd" firstAttribute="leading" secondItem="lmt-nr-OOh" secondAttribute="leading" constant="10" id="NYU-A6-Twu"/>
                             <constraint firstAttribute="bottom" secondItem="y0J-fh-1sR" secondAttribute="bottom" constant="16" id="Nte-2e-NeE"/>
                             <constraint firstAttribute="trailing" secondItem="XVV-Jc-xdJ" secondAttribute="trailing" constant="10" id="QTb-wC-y6V"/>
-                            <constraint firstItem="vXb-aM-agc" firstAttribute="top" secondItem="uAp-OY-HJ5" secondAttribute="top" id="Qse-s5-K9o"/>
                             <constraint firstItem="uAp-OY-HJ5" firstAttribute="top" secondItem="gHI-Ar-zNd" secondAttribute="bottom" constant="10" id="Trt-st-yvG"/>
+                            <constraint firstItem="vXb-aM-agc" firstAttribute="top" secondItem="gHI-Ar-zNd" secondAttribute="bottom" constant="10" id="WaY-Dg-kFg"/>
                             <constraint firstItem="uAp-OY-HJ5" firstAttribute="leading" secondItem="lmt-nr-OOh" secondAttribute="leading" constant="10" id="Xkn-kc-15I"/>
                             <constraint firstItem="vXb-aM-agc" firstAttribute="leading" secondItem="uAp-OY-HJ5" secondAttribute="trailing" constant="7" id="ZLK-9k-VHe"/>
                             <constraint firstAttribute="trailing" secondItem="NOF-Dc-Pnq" secondAttribute="trailing" constant="6" id="h2b-aE-O9z"/>

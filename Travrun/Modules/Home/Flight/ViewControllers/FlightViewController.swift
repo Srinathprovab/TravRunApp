@@ -270,9 +270,9 @@ class FlightViewController: BaseTableVC {
                 payload["search_flight"] = "Search"
                 payload["user_id"] = defaults.string(forKey:UserDefaultsKeys.userid) ?? "0"
                 payload["currency"] = defaults.string(forKey:UserDefaultsKeys.selectedCurrency) ?? "KWD"
-                
-                
-                if viewModel?.isCehckIn == true {
+                if isDirect == true {
+                    payload["direct_flight"] = ""
+                } else {
                     payload["direct_flight"] = "on"
                 }
                 
@@ -320,7 +320,9 @@ class FlightViewController: BaseTableVC {
                 payload["user_id"] = defaults.string(forKey:UserDefaultsKeys.userid) ?? "0"
                 payload["currency"] = defaults.string(forKey:UserDefaultsKeys.selectedCurrency) ?? "KWD"
                 
-                if viewModel?.isCehckIn == true {
+                if isDirect == true {
+                    payload["direct_flight"] = ""
+                } else {
                     payload["direct_flight"] = "on"
                 }
                 

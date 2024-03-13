@@ -8,6 +8,8 @@
 import Foundation
 
 struct MBModel : Codable {
+    let status: Bool?
+    let msg: String?
     let price_changed : Bool?
     let flight_terms_cancellation_policy : String?
     let total_price : Double?
@@ -37,7 +39,8 @@ struct MBModel : Codable {
     let reward_usable : Int?
     
     enum CodingKeys: String, CodingKey {
-        
+        case status = "status"
+        case msg = "msg"
         case price_changed = "price_changed"
         case flight_terms_cancellation_policy = "flight_terms_cancellation_policy"
         case total_price = "total_price"
@@ -69,6 +72,8 @@ struct MBModel : Codable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        msg = try values.decodeIfPresent(String.self, forKey: .msg)
+        status = try values.decodeIfPresent(Bool.self, forKey: .status)
         price_changed = try values.decodeIfPresent(Bool.self, forKey: .price_changed)
         flight_terms_cancellation_policy = try values.decodeIfPresent(String.self, forKey: .flight_terms_cancellation_policy)
         total_price = try values.decodeIfPresent(Double.self, forKey: .total_price)

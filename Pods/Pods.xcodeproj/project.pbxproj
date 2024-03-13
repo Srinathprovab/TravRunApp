@@ -6462,7 +6462,7 @@
 				DEVELOPMENT_TEAM = Q9XRR2Y9GQ;
 				IBSC_MODULE = MyFatoorah;
 				INFOPLIST_FILE = "Target Support Files/MyFatoorah/ResourceBundle-MyFatoorah-MyFatoorah-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = MyFatoorah;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -6565,7 +6565,7 @@
 				DEVELOPMENT_TEAM = Q9XRR2Y9GQ;
 				IBSC_MODULE = MyFatoorah;
 				INFOPLIST_FILE = "Target Support Files/MyFatoorah/ResourceBundle-MyFatoorah-MyFatoorah-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = MyFatoorah;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;

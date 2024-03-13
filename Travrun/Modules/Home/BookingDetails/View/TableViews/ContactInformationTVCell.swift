@@ -63,10 +63,9 @@ class ContactInformationTVCell: TableViewCell {
     }
     
     override func updateUI() {
+        self.countrycodeTF.text = defaults.string(forKey: UserDefaultsKeys.countryCode) ?? ""
         filterdcountrylist = countrylist
         loadCountryNamesAndCode()
-        
-        
         
         if let userLoggedIn = defaults.object(forKey: UserDefaultsKeys.loggedInStatus) as? Bool ,userLoggedIn == true{
             if let email = defaults.string(forKey: UserDefaultsKeys.useremail) {
@@ -79,12 +78,28 @@ class ContactInformationTVCell: TableViewCell {
                 mobileTF.text = paymobile
             }
             
-            if let code = defaults.string(forKey: UserDefaultsKeys.mcountrycode) {
+            if let code = defaults.string(forKey: UserDefaultsKeys.countryCode) {
                 paymobilecountrycode = code
                 countrycodeTF.text = paymobilecountrycode
-                
             }
             
+            if let usersignIn = defaults.object(forKey: UserDefaultsKeys.regStatus) as? Bool ,usersignIn == true
+            {
+                if let email = defaults.string(forKey: UserDefaultsKeys.useremail) {
+                    payemail = email
+                    emailTF.text = payemail
+                }
+                
+                if let mobile = defaults.string(forKey: UserDefaultsKeys.usermobile) {
+                    paymobile = mobile
+                    mobileTF.text = paymobile
+                }
+                
+                if let code = defaults.string(forKey: UserDefaultsKeys.countryCode) {
+                    paymobilecountrycode = code
+                    countrycodeTF.text = paymobilecountrycode
+                }
+            }
         }
     }
     

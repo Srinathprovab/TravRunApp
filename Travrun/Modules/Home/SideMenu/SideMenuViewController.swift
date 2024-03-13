@@ -28,6 +28,7 @@ class SideMenuViewController: BaseTableVC, ProfileDetailsViewModelDelegate, Logo
         logoutvm = LogoutViewModel(self)
         setupUI()
         setupMenuTVCells()
+        self.callProfileDetailsAPI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -173,9 +174,9 @@ class SideMenuViewController: BaseTableVC, ProfileDetailsViewModelDelegate, Logo
     
     override func didTapOnEditProfileBtn(cell: MenuBGTVCell) {
         if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == true {
-            guard let vc = EditProfileVC.newInstance.self else {return}
-            vc.modalPresentationStyle = .fullScreen
-            vc.showKey = "profiledit"
+            guard let vc = EditProfileViewController.newInstance.self else {return}
+            vc.modalPresentationStyle = .popover
+            vc.isfrom = "SideMenuViewController"
             present(vc, animated: true)
         } else {
             guard let vc = LoginViewController.newInstance.self else {return}
@@ -194,10 +195,8 @@ class SideMenuViewController: BaseTableVC, ProfileDetailsViewModelDelegate, Logo
     func getProfileDetails(response: ProfileDetailsModel) {
         print(" =====   getProfileDetails ====== \(response)")
         pdetails = response.data
-        
         defaults.set(response.data?.email, forKey: UserDefaultsKeys.useremail)
         defaults.set(response.data?.phone, forKey: UserDefaultsKeys.usermobile)
-        
         DispatchQueue.main.async {[self] in
             setupMenuTVCells()
         }

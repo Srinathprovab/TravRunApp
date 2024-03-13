@@ -96,7 +96,11 @@ enum TVCellType {
     case SupportTVCellTableViewCell
     case AddonContentTVCell
     case AddonTableViewCell
-    
+    case NewAboutUsTVCell
+    case PopularFiltersTVCell
+    case GuestTVCell
+    case EditProfileTVCell
+//    case ContactUsTVCell
 }
 
 enum CVCellType {

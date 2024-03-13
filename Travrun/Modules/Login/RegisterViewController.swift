@@ -39,6 +39,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterVie
         return vc
     }
     
+    var countryCode = ""
     var tablerow = [TableRow]()
     var loginKey = "login"
     var fname = ""
@@ -120,6 +121,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterVie
     @objc func editingText(textField:UITextField) {
         uname = emailTextField.text ?? ""
         password = passwodTextField.text ?? ""
+        self.countryCode = self.countryCodeTextField.text ?? ""
     }
     
     @IBAction func eyeBtnAction(_ sender: Any) {
@@ -236,6 +238,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterVie
             showToast(message: "Enter Phone Number")
         } else if mobile.isValidMobileNumber() == false {
             showToast(message: "Enter Valid Phone No")
+        }else if countryCode == "" {
+            showToast(message: "Enter country code")
         } else if pass == "" {
             showToast(message: "Enter Password")
         } else {
@@ -244,6 +248,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterVie
             payload["email"] = email
             payload["password"] = pass
             payload["phone"] = mobile
+            payload["country_code"] = countryCode
             regViewModel?.CallRegisterAPI(dictParam: payload)
         }
     }

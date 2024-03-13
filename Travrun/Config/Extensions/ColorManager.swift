@@ -87,6 +87,19 @@ extension UIColor {
         }
     }
     
+    public static var AppBlueColor: UIColor {
+        get {
+            return HexColor("#CFECFF")
+        }
+    }
+    
+    public static var AppYellowColor: UIColor {
+        get {
+            return HexColor("#CFECFF")
+        }
+    }
+    
+    
     
     public static var AppHeadderBackColor: UIColor {
         get {
@@ -99,4 +112,5 @@ extension UIColor {
             return UIColor(named: "SubTitleColor")!
         }
     }
+
 }
