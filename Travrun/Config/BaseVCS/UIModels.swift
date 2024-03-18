@@ -100,6 +100,13 @@ enum TVCellType {
     case PopularFiltersTVCell
     case GuestTVCell
     case EditProfileTVCell
+    case HotelDesclblTVCell
+    case NewRoomDetailsTVCell
+    case HotelImagesTVCell
+    case RoomsTVcell
+    case NewRoomTVCell
+    case TitleLabelTVCell
+    case AmenitiesTVCell
 //    case ContactUsTVCell
 }
 

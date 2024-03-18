@@ -67,9 +67,12 @@ class HotelsTVCell: TableViewCell {
         ratingslbl.text = cellInfo?.subTitle
         locationlbl.text = cellInfo?.buttonTitle
         kwdlbl.text = cellInfo?.text
+    
+//        setAttributedString1(str1: "\(cellInfo?.text ?? ""):", str2: "\(cellInfo?.price ?? "")")
         
-        
-        setAttributedString1(str1: "\(cellInfo?.text ?? ""):", str2: "\(cellInfo?.price ?? "")")
+        markupPricelbl.text = "Total price for 8 nights"
+        markupPricelbl.textColor = HexColor("#000000")
+        markupPricelbl.font = .InterRegular(size: 10)
     }
     
     
@@ -77,7 +80,8 @@ class HotelsTVCell: TableViewCell {
         
         
         hotelImg.image = UIImage(named: "city")
-        hotelImg.layer.cornerRadius = 8
+        hotelImg.layer.cornerRadius = 10
+        hotelImg.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         hotelImg.clipsToBounds = true
 //        locImg.image = UIImage(named: "loc")?.withRenderingMode(.alwaysOriginal).withTintColor(HexColor("#A3A3A3"))
         
@@ -100,7 +104,6 @@ class HotelsTVCell: TableViewCell {
     
     
     @IBAction func didTapOnTermsAndConditionBtn(_ sender: Any) {
-        
         
         if let meals = hotelDesc?.meals {
             completeDescription += "Meals: \(meals)\n\n"
@@ -144,7 +147,7 @@ class HotelsTVCell: TableViewCell {
         combination.append(atterStr2)
         
         
-        markupPricelbl.attributedText = combination
+//        markupPricelbl.attributedText = combination
         
     }
     

@@ -259,7 +259,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate, RegisterVie
         if response.status == false {
             showToast(message: response.msg ?? "")
         } else {
+            defaults.set(true, forKey: UserDefaultsKeys.regStatus)
+            defaults.set(email, forKey: UserDefaultsKeys.useremail)
+            defaults.set(countryCode, forKey: UserDefaultsKeys.countryCode)
+            defaults.set(mobile, forKey: UserDefaultsKeys.usermobile)
             showToast(message: "Register Sucess")
+            
             defaults.set(response.data?.user_id, forKey: UserDefaultsKeys.userid)
             let seconds = 2.0
             DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {[self] in

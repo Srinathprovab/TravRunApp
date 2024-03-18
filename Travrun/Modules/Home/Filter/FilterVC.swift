@@ -290,9 +290,6 @@ class FilterVC: BaseTableVC{
             tablerow.append(TableRow(title:"Neighbourhood",data: neighbourwoodArray,cellType:.CheckBoxTVCell))
             tablerow.append(TableRow(title:"Near By Location's",data: nearBylocationsArray,cellType:.CheckBoxTVCell))
             tablerow.append(TableRow(title:"Amenities",data: amenitiesArray,cellType:.CheckBoxTVCell))
-    
-    
-    
             tablerow.append(TableRow(height:100,cellType:.EmptyTVCell))
             tablerow.append(TableRow(title:"Apply",key: "btn",cellType:.ButtonTVCell))
             tablerow.append(TableRow(height:50,cellType:.EmptyTVCell))
@@ -710,6 +707,7 @@ class FilterVC: BaseTableVC{
                     
                     
                 case "Near By Location's":
+                    
                     selectednearBylocationsArray.append(cell.titlelbl.text ?? "")
                     break
                     

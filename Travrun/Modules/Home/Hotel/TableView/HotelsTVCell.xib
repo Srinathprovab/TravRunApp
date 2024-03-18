@@ -10,6 +10,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Inter-Medium.otf">
+            <string>Inter-Medium</string>
+        </array>
+        <array key="Inter-Regular.ttf">
+            <string>Inter-Regular</string>
+        </array>
         <array key="Lato-Bold.ttf">
             <string>Lato-Bold</string>
         </array>
@@ -24,30 +30,30 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="247" id="KGk-i7-Jjw" customClass="HotelsTVCell" customModule="Travrun" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="372" height="365"/>
+            <rect key="frame" x="0.0" y="0.0" width="372" height="405"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="372" height="365"/>
+                <rect key="frame" x="0.0" y="0.0" width="372" height="405"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lmt-nr-OOh" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
-                        <rect key="frame" x="10" y="10" width="352" height="350"/>
+                        <rect key="frame" x="10" y="10" width="352" height="390"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="city" translatesAutoresizingMaskIntoConstraints="NO" id="NOF-Dc-Pnq">
-                                <rect key="frame" x="6" y="6" width="340" height="180"/>
+                                <rect key="frame" x="0.0" y="0.0" width="352" height="225"/>
                                 <color key="backgroundColor" name="AppHolderViewColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="180" id="fE1-OK-Jon"/>
+                                    <constraint firstAttribute="height" constant="225" id="fE1-OK-Jon"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHI-Ar-zNd">
-                                <rect key="frame" x="10" y="196" width="298" height="19.5"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="16"/>
+                                <rect key="frame" x="10" y="241" width="298" height="19.5"/>
+                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVV-Jc-xdJ" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
-                                <rect key="frame" x="318" y="196" width="24" height="24"/>
+                                <rect key="frame" x="318" y="241" width="24" height="24"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JTn-SR-thU">
                                         <rect key="frame" x="3.5" y="5" width="17" height="14"/>
@@ -70,27 +76,27 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vXb-aM-agc">
-                                <rect key="frame" x="33" y="225.5" width="178" height="29"/>
+                                <rect key="frame" x="33" y="270.5" width="184" height="44"/>
                                 <string key="text">Bur Dubai, Dubai | 700 m from Al 
 Fahidi Metro </string>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                 <color key="textColor" red="0.0039215686274509803" green="0.65490196078431373" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="KWD150.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0zn-zS-eGV">
-                                <rect key="frame" x="251.5" y="262.5" width="90.5" height="19.5"/>
+                                <rect key="frame" x="251.5" y="288" width="90.5" height="19"/>
                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Price For 2 Night" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjj-nZ-Ba6">
-                                <rect key="frame" x="244" y="287" width="98" height="12"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Price For 2 Night" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjj-nZ-Ba6">
+                                <rect key="frame" x="244" y="328" width="98" height="12"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
                                 <color key="textColor" name="SubTitleColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qnd-gJ-NWc">
-                                <rect key="frame" x="20" y="289.5" width="120" height="20"/>
+                                <rect key="frame" x="20" y="332.5" width="120" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Terms &amp; Conditions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BEv-H4-aWJ">
                                         <rect key="frame" x="8.5" y="3" width="103.5" height="14"/>
@@ -98,8 +104,8 @@ Fahidi Metro </string>
                                         <color key="textColor" red="0.23529411764705882" green="0.38431372549019605" blue="0.47843137254901957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ayU-JI-IDV">
-                                        <rect key="frame" x="96" y="6" width="24" height="14"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ayU-JI-IDV">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="20"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain"/>
                                         <connections>
@@ -116,9 +122,12 @@ Fahidi Metro </string>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="ayU-JI-IDV" firstAttribute="top" secondItem="qnd-gJ-NWc" secondAttribute="top" id="0jA-u6-6DM"/>
+                                    <constraint firstItem="ayU-JI-IDV" firstAttribute="leading" secondItem="qnd-gJ-NWc" secondAttribute="leading" id="5bz-1u-FFf"/>
                                     <constraint firstAttribute="bottom" secondItem="P8g-AJ-Lp0" secondAttribute="bottom" id="COx-NC-9yd"/>
                                     <constraint firstItem="P8g-AJ-Lp0" firstAttribute="trailing" secondItem="BEv-H4-aWJ" secondAttribute="trailing" id="Epz-ek-6fz"/>
                                     <constraint firstItem="P8g-AJ-Lp0" firstAttribute="leading" secondItem="BEv-H4-aWJ" secondAttribute="leading" id="Esp-Ww-tEC"/>
+                                    <constraint firstAttribute="trailing" secondItem="ayU-JI-IDV" secondAttribute="trailing" id="INg-Vb-12t"/>
                                     <constraint firstAttribute="width" constant="120" id="agh-1b-QUH"/>
                                     <constraint firstAttribute="height" constant="20" id="dQ8-bS-0Hu"/>
                                     <constraint firstAttribute="bottom" secondItem="ayU-JI-IDV" secondAttribute="bottom" id="gzg-x3-lrH"/>
@@ -127,10 +136,10 @@ Fahidi Metro </string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vQL-06-Y9S" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
-                                <rect key="frame" x="247" y="309" width="95" height="30"/>
+                                <rect key="frame" x="247" y="340" width="95" height="30"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Now" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YjP-xJ-OQO">
-                                        <rect key="frame" x="14.5" y="6.5" width="66" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Room" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YjP-xJ-OQO">
+                                        <rect key="frame" x="8.5" y="6.5" width="78" height="17"/>
                                         <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -150,9 +159,9 @@ Fahidi Metro </string>
                                     <constraint firstAttribute="height" constant="30" id="K0p-gc-6WP"/>
                                     <constraint firstAttribute="width" constant="95" id="Mg5-vy-gdu"/>
                                     <constraint firstItem="YjP-xJ-OQO" firstAttribute="centerX" secondItem="vQL-06-Y9S" secondAttribute="centerX" id="PBy-Ro-ZYA"/>
-                                    <constraint firstAttribute="bottom" secondItem="ETh-gF-DEf" secondAttribute="bottom" id="Zyk-6p-Ue5"/>
                                     <constraint firstItem="ETh-gF-DEf" firstAttribute="leading" secondItem="vQL-06-Y9S" secondAttribute="leading" id="ghn-J5-bf4"/>
                                     <constraint firstItem="YjP-xJ-OQO" firstAttribute="centerY" secondItem="vQL-06-Y9S" secondAttribute="centerY" id="hsc-jC-56P"/>
+                                    <constraint firstAttribute="bottom" secondItem="ETh-gF-DEf" secondAttribute="bottom" id="wrN-6J-1lG"/>
                                     <constraint firstItem="ETh-gF-DEf" firstAttribute="top" secondItem="vQL-06-Y9S" secondAttribute="top" id="yd2-t6-Jb1"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -161,24 +170,24 @@ Fahidi Metro </string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="KWD150.00" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBY-ho-WHD">
-                                <rect key="frame" x="251.5" y="243" width="90.5" height="14.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Total price for 8 nights" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBY-ho-WHD">
+                                <rect key="frame" x="232" y="270.5" width="110" height="12.5"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90.5" id="0xb-qr-QDy"/>
+                                    <constraint firstAttribute="width" constant="110" id="0xb-qr-QDy"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="uAp-OY-HJ5">
-                                <rect key="frame" x="10" y="225.5" width="16" height="16"/>
+                                <rect key="frame" x="10" y="270.5" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="16" id="3ez-LP-IDk"/>
                                     <constraint firstAttribute="height" constant="16" id="U1U-rs-stS"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0J-fh-1sR" customClass="BorderedView" customModule="Travrun" customModuleProvider="target">
-                                <rect key="frame" x="40" y="314" width="80" height="20"/>
+                                <rect key="frame" x="40" y="357" width="80" height="20"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Refundable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vC-MK-Eue">
                                         <rect key="frame" x="14.5" y="4" width="51" height="12"/>
@@ -205,30 +214,28 @@ Fahidi Metro </string>
                         <constraints>
                             <constraint firstItem="0zn-zS-eGV" firstAttribute="top" secondItem="rBY-ho-WHD" secondAttribute="bottom" constant="5" id="2DJ-Ec-iFT"/>
                             <constraint firstItem="XVV-Jc-xdJ" firstAttribute="top" secondItem="gHI-Ar-zNd" secondAttribute="top" id="3r6-0q-rvB"/>
+                            <constraint firstItem="vXb-aM-agc" firstAttribute="top" secondItem="gHI-Ar-zNd" secondAttribute="bottom" constant="10" id="3rX-n3-MQD"/>
                             <constraint firstAttribute="trailing" secondItem="0zn-zS-eGV" secondAttribute="trailing" constant="10" id="6fk-PC-b2p"/>
-                            <constraint firstItem="NOF-Dc-Pnq" firstAttribute="leading" secondItem="lmt-nr-OOh" secondAttribute="leading" constant="6" id="7Mu-d7-Qna"/>
+                            <constraint firstItem="NOF-Dc-Pnq" firstAttribute="leading" secondItem="lmt-nr-OOh" secondAttribute="leading" id="7Mu-d7-Qna"/>
                             <constraint firstItem="qnd-gJ-NWc" firstAttribute="leading" secondItem="lmt-nr-OOh" secondAttribute="leading" constant="20" id="8tG-OD-j5R"/>
                             <constraint firstAttribute="trailing" secondItem="vQL-06-Y9S" secondAttribute="trailing" constant="10" id="Cmh-O8-7Es"/>
-                            <constraint firstItem="vQL-06-Y9S" firstAttribute="top" secondItem="tjj-nZ-Ba6" secondAttribute="bottom" constant="10" id="Fvw-as-IPN"/>
-                            <constraint firstAttribute="bottom" secondItem="vQL-06-Y9S" secondAttribute="bottom" constant="11" id="GCM-mH-0tR"/>
+                            <constraint firstItem="vQL-06-Y9S" firstAttribute="top" secondItem="tjj-nZ-Ba6" secondAttribute="bottom" id="Fvw-as-IPN"/>
                             <constraint firstAttribute="trailing" secondItem="rBY-ho-WHD" secondAttribute="trailing" constant="10" id="HiV-1m-DeR"/>
                             <constraint firstItem="y0J-fh-1sR" firstAttribute="centerX" secondItem="BEv-H4-aWJ" secondAttribute="centerX" id="IUh-LR-Ool"/>
                             <constraint firstItem="gHI-Ar-zNd" firstAttribute="leading" secondItem="lmt-nr-OOh" secondAttribute="leading" constant="10" id="NYU-A6-Twu"/>
-                            <constraint firstAttribute="bottom" secondItem="y0J-fh-1sR" secondAttribute="bottom" constant="16" id="Nte-2e-NeE"/>
                             <constraint firstAttribute="trailing" secondItem="XVV-Jc-xdJ" secondAttribute="trailing" constant="10" id="QTb-wC-y6V"/>
-                            <constraint firstItem="uAp-OY-HJ5" firstAttribute="top" secondItem="gHI-Ar-zNd" secondAttribute="bottom" constant="10" id="Trt-st-yvG"/>
-                            <constraint firstItem="vXb-aM-agc" firstAttribute="top" secondItem="gHI-Ar-zNd" secondAttribute="bottom" constant="10" id="WaY-Dg-kFg"/>
                             <constraint firstItem="uAp-OY-HJ5" firstAttribute="leading" secondItem="lmt-nr-OOh" secondAttribute="leading" constant="10" id="Xkn-kc-15I"/>
                             <constraint firstItem="vXb-aM-agc" firstAttribute="leading" secondItem="uAp-OY-HJ5" secondAttribute="trailing" constant="7" id="ZLK-9k-VHe"/>
-                            <constraint firstAttribute="trailing" secondItem="NOF-Dc-Pnq" secondAttribute="trailing" constant="6" id="h2b-aE-O9z"/>
-                            <constraint firstItem="y0J-fh-1sR" firstAttribute="centerY" secondItem="vQL-06-Y9S" secondAttribute="centerY" id="l95-uP-QqW"/>
+                            <constraint firstItem="tjj-nZ-Ba6" firstAttribute="top" secondItem="0zn-zS-eGV" secondAttribute="bottom" constant="21" id="bZu-Is-qjZ"/>
+                            <constraint firstItem="rBY-ho-WHD" firstAttribute="top" secondItem="vXb-aM-agc" secondAttribute="top" id="dlf-Hj-Lx1"/>
+                            <constraint firstAttribute="trailing" secondItem="NOF-Dc-Pnq" secondAttribute="trailing" id="h2b-aE-O9z"/>
+                            <constraint firstItem="gHI-Ar-zNd" firstAttribute="top" secondItem="NOF-Dc-Pnq" secondAttribute="bottom" constant="16" id="iW5-iF-zjL"/>
                             <constraint firstItem="XVV-Jc-xdJ" firstAttribute="leading" secondItem="gHI-Ar-zNd" secondAttribute="trailing" constant="10" id="lc7-W1-TwF"/>
-                            <constraint firstItem="qnd-gJ-NWc" firstAttribute="top" secondItem="vXb-aM-agc" secondAttribute="bottom" constant="35" id="lyf-e9-luv"/>
-                            <constraint firstItem="rBY-ho-WHD" firstAttribute="leading" secondItem="vXb-aM-agc" secondAttribute="trailing" constant="40.5" id="lyx-Dq-BvV"/>
-                            <constraint firstItem="gHI-Ar-zNd" firstAttribute="top" secondItem="NOF-Dc-Pnq" secondAttribute="bottom" constant="10" id="mXa-Xr-BSh"/>
-                            <constraint firstItem="tjj-nZ-Ba6" firstAttribute="top" secondItem="0zn-zS-eGV" secondAttribute="bottom" constant="5" id="qjK-ld-M2I"/>
-                            <constraint firstItem="NOF-Dc-Pnq" firstAttribute="top" secondItem="lmt-nr-OOh" secondAttribute="top" constant="6" id="uhX-cj-EUl"/>
-                            <constraint firstItem="rBY-ho-WHD" firstAttribute="top" secondItem="XVV-Jc-xdJ" secondAttribute="bottom" constant="23" id="use-nj-fcU"/>
+                            <constraint firstItem="rBY-ho-WHD" firstAttribute="leading" secondItem="vXb-aM-agc" secondAttribute="trailing" constant="15" id="lyx-Dq-BvV"/>
+                            <constraint firstAttribute="bottom" secondItem="vQL-06-Y9S" secondAttribute="bottom" constant="20" symbolic="YES" id="oPL-sJ-4Uw"/>
+                            <constraint firstItem="uAp-OY-HJ5" firstAttribute="top" secondItem="vXb-aM-agc" secondAttribute="top" id="oyL-Om-xfM"/>
+                            <constraint firstItem="qnd-gJ-NWc" firstAttribute="top" secondItem="uAp-OY-HJ5" secondAttribute="bottom" constant="46" id="qsW-Yj-MPY"/>
+                            <constraint firstItem="NOF-Dc-Pnq" firstAttribute="top" secondItem="lmt-nr-OOh" secondAttribute="top" id="uhX-cj-EUl"/>
                             <constraint firstAttribute="trailing" secondItem="tjj-nZ-Ba6" secondAttribute="trailing" constant="10" id="v6I-4h-hJL"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="350" id="yWL-HB-53r"/>
                             <constraint firstItem="y0J-fh-1sR" firstAttribute="top" secondItem="qnd-gJ-NWc" secondAttribute="bottom" constant="4.5" id="yv8-hd-xMu"/>
@@ -246,7 +253,7 @@ Fahidi Metro </string>
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
-                <color key="backgroundColor" name="AppHolderViewColor"/>
+                <color key="backgroundColor" name="WhiteColor"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="lmt-nr-OOh" secondAttribute="bottom" constant="5" id="8bV-kb-ZQt"/>
                     <constraint firstAttribute="trailing" secondItem="lmt-nr-OOh" secondAttribute="trailing" constant="10" id="RSH-tA-qAF"/>
@@ -289,6 +296,9 @@ Fahidi Metro </string>
         </namedColor>
         <namedColor name="SubTitleColor">
             <color red="0.60000002384185791" green="0.59600001573562622" blue="0.59600001573562622" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="WhiteColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

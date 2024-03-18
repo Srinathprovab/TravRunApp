@@ -13,6 +13,8 @@ protocol BookFlightDetailsTVCellDelegate {
 
 class BookFlightDetailsTVCell: TableViewCell {
     
+    @IBOutlet weak var luggageLabel: UILabel!
+    @IBOutlet weak var baggageLabel: UILabel!
     @IBOutlet weak var holderView: UIView!
     @IBOutlet weak var detailsTV: UITableView!
     @IBOutlet weak var refundlbl: UILabel!
@@ -93,6 +95,8 @@ extension BookFlightDetailsTVCell :UITableViewDataSource,UITableViewDelegate {
             cell.totimelbl.text = data.destination?.time
             cell.toCityShortlbl.text = data.destination?.city
             cell.hourslbl.text = data.duration
+            luggageLabel.text = data.weight_Allowance
+            baggageLabel.text = data.weight_Allowance
             
             if data.no_of_stops ?? 1 > 1 {
                 cell.noStopslbl.text = "\(String(data.no_of_stops ?? 0)) Stops"

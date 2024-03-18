@@ -10,8 +10,10 @@ import DropDown
 
 class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewModelDelegate {
     
+    @IBOutlet weak var dontClickBackLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     
+    @IBOutlet weak var secondsLabel: UILabel!
     @IBOutlet weak var modifyButton: UIButton!
     @IBOutlet weak var modifyView: UIView!
     @IBOutlet weak var roomAdultCountLabel: UILabel!
@@ -43,6 +45,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     var isLoadingData = false
     var bsDataArray = [ABSData]()
     var viewModel:HotelSearchViewModel?
+    var cityName = String()
     
     static var newInstance: SearchHotelsResultVC? {
         let storyboard = UIStoryboard(name: Storyboard.SearchHotel.name,
@@ -86,7 +89,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     func setupUI() {
         backButtonView.layer.cornerRadius = backButtonView.layer.frame.width / 2
         modifyView.layer.cornerRadius = modifyView.layer.frame.width / 2
-        cityNAme.text = defaults.string(forKey: UserDefaultsKeys.locationcity) ?? ""
+        cityNAme.text = defaults.string(forKey: UserDefaultsKeys.locationcityname) ?? ""
         dateLabel.text = "Checkin:\(defaults.string(forKey: UserDefaultsKeys.checkin) ?? "") | Checkout:\(defaults.string(forKey: UserDefaultsKeys.checkout) ?? "")"
         modifyButton.addTarget(self, action: #selector(didTapOnEditBtn(_:)), for: .touchUpInside)
         cvHolderView.isHidden = true
@@ -95,7 +98,7 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
         cvHolderView.backgroundColor = .WhiteColor
         cvHolderView.addBottomBorderWithColor(color: .AppBorderColor, width: 1)
         recommandedbtn.setTitle("", for: .normal)
-        setuplabels(lbl: recommandedlbl, text: "SORT", textcolor: .AppLabelColor, font: .InterBold(size: 16), align: .right)
+        setuplabels(lbl: recommandedlbl, text: "SORT", textcolor: .AppLabelColor, font: .InterRegular(size: 16), align: .right)
         setuplabels(lbl: filterlbl, text: "FILTER", textcolor: .AppLabelColor, font: .InterRegular(size: 16), align: .left)
         
         commonTableView.backgroundColor = .WhiteColor
@@ -148,30 +151,22 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
             vc.modalPresentationStyle = .fullScreen
             vc.selectedIndex = 0
             self.present(vc, animated: false)
-        }else {
-            guard let vc = SearchHotelsVC.newInstance.self else {return}
-            vc.modalPresentationStyle = .fullScreen
-            vc.isFromvc = "hotelvc"
-            self.present(vc, animated: false)
+            dismiss(animated: true)
+        } else {
+//            guard let vc = SearchHotelsVC.newInstance.self else {return}
+//            vc.modalPresentationStyle = .fullScreen
+//            vc.isFromvc = "hotelvc"
+//            self.present(vc, animated: false)
+            dismiss(animated: true)
         }
     }
     
     
     @objc func didTapOnEditBtn(_ sender:UIButton){
-        
-        if let tabSelected = defaults.string(forKey: UserDefaultsKeys.dashboardTapSelected) {
-            if tabSelected == "Flights" {
-                guard let vc = FlightViewController.newInstance.self else {return}
-                vc.modalPresentationStyle = .overCurrentContext
-                present(vc, animated: true)
-            }else {
-//                guard let vc = ModifySearchHotelVC.newInstance.self else {return}
-//                vc.modalPresentationStyle = .overCurrentContext
-//                present(vc, animated: true)
-            }
-        }
-        
-        
+        guard let vc = ModifyHotelViewController.newInstance.self else {return}
+        vc.modalPresentationStyle = .popover
+        callapibool = true
+        present(vc, animated: true)
     }
     
     override func viewBtnAction(cell: CommonFromCityTVCell) {
@@ -223,11 +218,11 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     
     
     func goToTermsPopupVC(titlestr:String,hoteldesc:String) {
-//        guard let vc = TermsPopupVC.newInstance.self else {return}
-//        vc.modalPresentationStyle = .overCurrentContext
-//        vc.titlestr = titlestr
-//        vc.hotel_desc = hoteldesc
-//        present(vc, animated: false)
+        guard let vc = TermsPopupVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overCurrentContext
+        vc.titlestr = titlestr
+        vc.hotel_desc = hoteldesc
+        present(vc, animated: false)
     }
     
     
@@ -239,12 +234,12 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     
     
     func goToHotelDetailsVC(hid:String,bs:String,kwdprice:String) {
-        guard let vc = HotelBookingDetailsViewController.newInstance.self else {return}
+        guard let vc = HotelDetailsVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
-//        vc.hotelid = hid
-//        vc.bookingsource = bs
-//        vc.kwdprice = kwdprice
-//        callapibool = true
+        vc.hotelid = hid
+        vc.bookingsource = bs
+        vc.kwdprice = kwdprice
+        callapibool = true
         present(vc, animated: true)
     }
     
@@ -299,10 +294,10 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     
     func setAttributedText1(str1:String,str2:String,lbl:UILabel)  {
         
-        let atter1 = [NSAttributedString.Key.foregroundColor:UIColor.AppBtnColor,
-                      NSAttributedString.Key.font:UIFont.InterBold(size: 12)] as [NSAttributedString.Key : Any]
-        let atter2 = [NSAttributedString.Key.foregroundColor:UIColor.AppBtnColor,
-                      NSAttributedString.Key.font:UIFont.InterBold(size: 18)] as [NSAttributedString.Key : Any]
+        let atter1 = [NSAttributedString.Key.foregroundColor:UIColor.AppLabelColor,
+                      NSAttributedString.Key.font:UIFont.InterRegular(size: 14)] as [NSAttributedString.Key : Any]
+        let atter2 = [NSAttributedString.Key.foregroundColor: HexColor("#3C627A"),
+                      NSAttributedString.Key.font:UIFont.InterBold(size: 22)] as [NSAttributedString.Key : Any]
         
         let atterStr1 = NSMutableAttributedString(string: str1, attributes: atter1)
         let atterStr2 = NSMutableAttributedString(string: str2, attributes: atter2)
@@ -318,9 +313,26 @@ class SearchHotelsResultVC: BaseTableVC, UITextFieldDelegate, HotelSearchViewMod
     
     
     @IBAction func bakBtnAction(_ sender: Any) {
-        dismiss(animated: true)
+        
+        callapibool = false
+        if isvcfrom == "ModifyHotelViewController" {
+            guard let vc = SearchHotelsVC.newInstance.self else {return}
+            vc.modalPresentationStyle = .fullScreen
+            vc.isFromvc = "SearchHotelsResultVC"
+            present(vc, animated: true)
+        } else if isvcfrom == "BookingDetailsVC" {
+            guard let vc = SearchHotelsVC.newInstance.self else {return}
+            vc.modalPresentationStyle = .fullScreen
+            vc.isFromvc = "SearchHotelsResultVC"
+            present(vc, animated: true)
+        } else {
+            dismiss(animated: false)
+        }
     }
+    
+    
     @IBAction func didTapOnMapViewBtnAction(_ sender: Any) {
+        
         guard let vc = MapViewVC.newInstance.self else {return}
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
@@ -394,6 +406,7 @@ extension SearchHotelsResultVC {
     
     
     func hoteSearchResult(response: HotelSearchModel) {
+        
         latArray.removeAll()
         longArray.removeAll()
         prices.removeAll()
@@ -425,8 +438,10 @@ extension SearchHotelsResultVC {
             mapModelArray.append(mapModel)
         }
         
-        
-        
+        if response.status != 0 {
+            secondsLabel.isHidden = true
+            dontClickBackLabel.isHidden = true
+        }
         //        response.filter_sumry?.loc?.forEach({ i in
         //            nearBylocationsArray.append(i.v ?? "")
         //        })
@@ -468,6 +483,7 @@ extension SearchHotelsResultVC {
                 
                 let dict = filtered[indexPath.row]
                 
+                cityName = dict.location ?? ""
                 cell.hotelNamelbl.text = dict.name
                 cell.hotelImg.sd_setImage(with: URL(string: dict.image ?? ""), placeholderImage:UIImage(contentsOfFile:"placeholder.png"))
                 cell.ratingslbl.text = String(dict.star_rating ?? "0")

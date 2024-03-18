@@ -16,15 +16,16 @@ struct HotelCityListModel : Codable {
     let category : String?
     let type : String?
     let count : Int?
+//    let city_name: String?
 
     enum CodingKeys: String, CodingKey {
-
         case label = "label"
         case value = "value"
         case id = "id"
         case category = "category"
         case type = "type"
         case count = "count"
+//        case city_name = "city_name"
     }
 
     init(from decoder: Decoder) throws {
@@ -35,6 +36,7 @@ struct HotelCityListModel : Codable {
         category = try values.decodeIfPresent(String.self, forKey: .category)
         type = try values.decodeIfPresent(String.self, forKey: .type)
         count = try values.decodeIfPresent(Int.self, forKey: .count)
+//        city_name = try values.decodeIfPresent(String.self, forKey: .type)
     }
 
 }

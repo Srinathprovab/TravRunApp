@@ -85,6 +85,7 @@ class ContactInformationTVCell: TableViewCell {
             
             if let usersignIn = defaults.object(forKey: UserDefaultsKeys.regStatus) as? Bool ,usersignIn == true
             {
+                
                 if let email = defaults.string(forKey: UserDefaultsKeys.useremail) {
                     payemail = email
                     emailTF.text = payemail

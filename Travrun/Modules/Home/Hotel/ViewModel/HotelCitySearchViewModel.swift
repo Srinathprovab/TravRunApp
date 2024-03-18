@@ -31,6 +31,7 @@ class HotelCitySearchViewModel {
            //     self.view?.hideLoader()
                 if sucess {
                     guard let response = result else {return}
+                    print("\(response)")
                     self.view.hotelCitySearchResult(response: response)
                 } else {
                     // Show alert

@@ -1,10 +1,4 @@
 //
-//  ContactUsTVCell.swift
-//  KuwaitWays
-//
-//  Created by FCI on 20/12/23.
-//
-
 //import UIKit
 //import MaterialComponents
 //

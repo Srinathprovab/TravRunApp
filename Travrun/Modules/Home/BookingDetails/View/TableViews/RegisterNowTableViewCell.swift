@@ -22,8 +22,10 @@ class RegisterNowTableViewCell: TableViewCell {
     
     @IBOutlet weak var middleView: UIView!
     @IBOutlet weak var passwordTxtfld: UITextField!
+    
     var email = String()
     var pass = String()
+    var billingCountryName = String()
     var showPwdBool = true
     
     var delegate: RegisterNowTableViewCellDelegate?
@@ -123,3 +125,6 @@ class RegisterNowTableViewCell: TableViewCell {
         
     }
 }
+
+
+

@@ -271,7 +271,7 @@ class SearchHotelTVCell: TableViewCell, HotelCitySearchViewModelDelegate, UIColl
     }
     
     func updateHeight(height:Int) {
-        hotelSearchTVHeight.constant = CGFloat(hotelList.count * height)
+        hotelSearchTVHeight.constant = 400
         DispatchQueue.main.async {[self] in
             hotelSearchTV.reloadData()
         }
@@ -463,11 +463,14 @@ extension SearchHotelTVCell:UITableViewDelegate,UITableViewDataSource {
             defaults.set(hotelList[indexPath.row].value ?? "", forKey: UserDefaultsKeys.locationcity)
             defaults.set(hotelList[indexPath.row].id ?? "", forKey: UserDefaultsKeys.locationcityid)
             defaults.set(hotelList[indexPath.row].label ?? "", forKey: UserDefaultsKeys.locationcityname)
+//            defaults.set(hotelList[indexPath.row].city_name ?? "", forKey: UserDefaultsKeys.newName)
             
           //   cityTF.resignFirstResponder()
              cityTF.text = ""
             
-            updateHeight(height: 0)
+//            updateHeight(height: 0)
+            hotelSearchTVHeight.constant = 0
+            hotelSearchTV.reloadData()
         }
     }
     

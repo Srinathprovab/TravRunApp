@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -9,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="latoregular.ttf">
+        <array key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
         </array>
     </customFonts>
@@ -64,7 +65,7 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="gwm-4z-PTg">
-                                <rect key="frame" x="15" y="83" width="89.333333333333329" height="12"/>
+                                <rect key="frame" x="15" y="83" width="90" height="12"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="colurBag" translatesAutoresizingMaskIntoConstraints="NO" id="mEP-0j-hcr">
                                         <rect key="frame" x="0.0" y="0.0" width="14" height="14"/>
@@ -75,20 +76,20 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 kg" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHV-vB-RQx">
-                                        <rect key="frame" x="18" y="0.0" width="24.666666666666671" height="12"/>
+                                        <rect key="frame" x="18" y="0.0" width="25" height="12"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
                                         <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="colorLugage" translatesAutoresizingMaskIntoConstraints="NO" id="7fP-j3-Gg4">
-                                        <rect key="frame" x="46.666666666666671" y="0.0" width="14" height="14"/>
+                                        <rect key="frame" x="47" y="0.0" width="14" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="14" id="Shr-zG-Ybc"/>
                                             <constraint firstAttribute="height" constant="14" id="gqx-pe-JTM"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="25 kg" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duZ-XY-jD9">
-                                        <rect key="frame" x="64.666666666666671" y="0.0" width="24.666666666666671" height="12"/>
+                                        <rect key="frame" x="65" y="0.0" width="25" height="11.666666666666666"/>
                                         <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="10"/>
                                         <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -143,8 +144,10 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="baggageLabel" destination="gHV-vB-RQx" id="egc-O6-fxr"/>
                 <outlet property="detailsTV" destination="4Of-az-qpe" id="d21-OJ-Vha"/>
                 <outlet property="holderView" destination="rAI-Of-eHw" id="Lg3-yL-mZs"/>
+                <outlet property="luggageLabel" destination="duZ-XY-jD9" id="zxK-Ng-CFY"/>
                 <outlet property="refundlbl" destination="JDv-NM-cKU" id="HsN-13-vKd"/>
                 <outlet property="tvHeight" destination="6Ld-2L-fOI" id="0CO-bl-eXy"/>
                 <outlet property="viewFlifgtDetailsBtn" destination="EIo-R8-DWs" id="uBf-IW-DmS"/>
@@ -164,7 +167,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

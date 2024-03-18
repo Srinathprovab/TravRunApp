@@ -358,6 +358,7 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
         defaults.set(cell.bsource, forKey: UserDefaultsKeys.bookingsource)
         defaults.set(cell.bsourcekey, forKey: UserDefaultsKeys.bookingsourcekey)
         defaults.set(cell.faretypelbl.text, forKey: UserDefaultsKeys.selectedFareType)
+        defaults.set(cell.faretypelbl.text, forKey: UserDefaultsKeys.selectedFareType)
         defaults.set(cell.selectedResult, forKey: UserDefaultsKeys.selectedResult)
         
         guard let vc = BookingDetailsVC.newInstance.self else {return}

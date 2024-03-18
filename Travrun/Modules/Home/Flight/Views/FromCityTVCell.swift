@@ -42,14 +42,8 @@ class FromCityTVCell: TableViewCell {
     
     func setupUI() {
         holderView.backgroundColor = .AppHolderViewColor
-        //        plainImg.image = UIImage(named: "flight")?.withRenderingMode(.alwaysOriginal).withTintColor(HexColor("#A3A3A3"))
-        //        lblHolderView.layer.cornerRadius = 4
-        //        lblHolderView.backgroundColor = HexColor("#E6E8E7")
-        
         setupLabels(lbl: titlelbl, text: cellInfo?.title ?? "", textcolor: .AppLabelColor, font: .InterMedium(size: 16))
         setupLabels(lbl: subTitlelbl, text: cellInfo?.subTitle ?? "", textcolor: HexColor("#A9A9A9"), font: .InterRegular(size: 14))
-        //        setupLabels(lbl: cityShortNamelbl, text: cellInfo?.text ?? "", textcolor: .AppLabelColor, font: .latoRegular(size: 14))
-        
         titlelbl.numberOfLines = 0
         subTitlelbl.numberOfLines = 0
 

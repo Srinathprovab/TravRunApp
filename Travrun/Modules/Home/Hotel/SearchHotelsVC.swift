@@ -121,14 +121,19 @@ class SearchHotelsVC: BaseTableVC, TopFlightDetailsViewModelDelegate {
     
     
     @IBAction func backButtonAction(_ sender: Any) {
-        if isFromvc != "SideMenuViewController" {
+        callapibool = true
+        if isFromvc == "DashBoardTabBarViewController" {
             dismiss(animated: true)
-        } else {
-            guard let vc = HomeViewController.newInstance.self else {return}
-            vc.modalPresentationStyle = .fullScreen
+        }else {
+            guard let vc = DashBoardTabBarViewController.newInstance.self else {return}
+            vc.modalPresentationStyle = .overCurrentContext
+            vc.selectedIndex = 0
             self.present(vc, animated: false)
         }
     }
+    
+    
+    
     override func didTapOnCheckoutBtn(cell: SearchHotelTVCell) {
         gotoCalenderVC()
     }
@@ -208,6 +213,7 @@ class SearchHotelsVC: BaseTableVC, TopFlightDetailsViewModelDelegate {
         callapibool = true
         defaults.set(false, forKey: "hoteltfilteronce")
         guard let vc = SearchHotelsResultVC.newInstance.self else {return}
+        vc.isvcfrom = "SearchHotelsVC"
         vc.modalPresentationStyle = .fullScreen
         vc.countrycode = self.countrycode
         vc.payload = self.payload

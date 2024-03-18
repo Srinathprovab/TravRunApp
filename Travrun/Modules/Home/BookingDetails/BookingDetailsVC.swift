@@ -85,6 +85,7 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
     override func viewWillDisappear(_ animated: Bool) {
         BASE_URL = BASE_URL1
         loderBool = false
+        defaults.set(false, forKey: UserDefaultsKeys.regStatus)
     }
     
     
@@ -185,6 +186,7 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
     func setupTV() {
         sessionTimerView.isHidden = false
         tablerow.removeAll()
+        positionsCount = 0
         if mbSummery.count != 0 {
         tablerow.append(TableRow(title:self.mbRefundable,
                                  subTitle: "",
@@ -192,7 +194,8 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
                                  cellType:.BookFlightDetailsTVCell))
         }
         
-        if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == false {
+        if defaults.bool(forKey: UserDefaultsKeys.loggedInStatus) == false || defaults.bool(forKey: UserDefaultsKeys.regStatus) == false  {
+            
             tablerow.append(TableRow(height: 14,bgColor:.AppHolderViewColor, cellType:.EmptyTVCell))
             tablerow.append(TableRow(cellType: .RegisterSelectionLoginTableViewCell))
             tablerow.append(TableRow(height: 12,bgColor:.AppHolderViewColor, cellType:.EmptyTVCell))
@@ -297,7 +300,7 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
         } else {
             notificationCheck = false
         }
-        commonTableView.reloadData()
+        setupTV()
     }
     
     
@@ -311,7 +314,7 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
         } else {
             notificationCheck = true
         }
-        commonTableView.reloadData()
+        setupTV()
     }
     
     
@@ -400,8 +403,8 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
         cell.loginRadioImage.image = UIImage(named: "radioUnselect")
         cell.guestRadioImage.image = UIImage(named: "radioSelect")
         mbviewmodel?.section = .guestLogin
-//        setupTV()
-        commonTableView.reloadData()
+        setupTV()
+//        commonTableView.reloadData()
         
     }
     override func registerButton(cell: RegisterSelectionLoginTableViewCell) {
@@ -409,16 +412,16 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
         cell.loginRadioImage.image = UIImage(named: "radioUnselect")
         cell.guestRadioImage.image = UIImage(named: "radioUnselect")
         mbviewmodel?.section = .register
-//        setupTV()
-        commonTableView.reloadData()
+        setupTV()
+//        commonTableView.reloadData()
     }
     override func loginButton(cell: RegisterSelectionLoginTableViewCell) {
         cell.registerRadioImage.image = UIImage(named: "radioUnselect")
         cell.loginRadioImage.image = UIImage(named: "radioSelect")
         cell.guestRadioImage.image = UIImage(named: "radioUnselect")
         mbviewmodel?.section = .login
-//        setupTV()
-        commonTableView.reloadData()
+        setupTV()
+//        commonTableView.reloadData()
     }
     
     override func loginNowButtonAction(cell: RegisterNowTableViewCell, email: String, pass: String) {
@@ -427,6 +430,7 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
     }
     
     override func RegisterNowButtonAction(cell: LoginDetailsTableViewCell, email: String, pass: String, phone: String, countryCode: String) {
+        
         defaults.set(email, forKey: UserDefaultsKeys.useremail)
         defaults.set(countryCode, forKey: UserDefaultsKeys.countryCode)
         defaults.set(phone, forKey: UserDefaultsKeys.usermobile)
@@ -434,12 +438,14 @@ class BookingDetailsVC: BaseTableVC, AllCountryCodeListViewModelDelegate, MBView
     }
     
     override func GuestRegisterNowButtonAction(cell: GuestTVCell, email: String, pass: String, phone: String, countryCode: String) {
+        
         defaults.set(true, forKey: UserDefaultsKeys.regStatus)
         defaults.set(email, forKey: UserDefaultsKeys.useremail)
         defaults.set(countryCode, forKey: UserDefaultsKeys.countryCode)
         defaults.set(phone, forKey: UserDefaultsKeys.usermobile)
         showToast(message: "Sucessfully Registered!..")
-        commonTableView.reloadData()
+        defaults.set(true, forKey: UserDefaultsKeys.regStatus)
+        setupTV()
     }
 
     //MARK: - gotoAddTravellerOrGuestVC
@@ -1349,6 +1355,7 @@ extension BookingDetailsVC {
             showToast(message: response.msg ?? "")
         } else {
             showToast(message: "Register Sucess")
+            
             defaults.set(true, forKey: UserDefaultsKeys.regStatus)
             defaults.set(response.data?.user_id, forKey: UserDefaultsKeys.userid)
             let seconds = 2.0

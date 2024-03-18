@@ -188,6 +188,8 @@ class CommonFromCityTVCell: TableViewCell, HotelCitySearchViewModelDelegate {
             self?.cityTF.resignFirstResponder()
             defaults.set(self?.hotelList[index].label ?? "", forKey: UserDefaultsKeys.locationcity)
             defaults.set(self?.hotelList[index].id ?? "", forKey: UserDefaultsKeys.locationcityid)
+//            defaults.set(self?.hotelList[index].city_name ?? "", forKey: UserDefaultsKeys.newName)
+            
             
         }
     }

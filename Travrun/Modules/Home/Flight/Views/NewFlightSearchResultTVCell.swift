@@ -215,6 +215,7 @@ extension NewFlightSearchResultTVCell: UITableViewDelegate,UITableViewDataSource
             }
            
             cell.fromTimelbl.text = data.origin?.time ?? ""
+            
             cell.fromCitylbl.text = "\(data.origin?.city ?? "")(\(data.origin?.loc ?? ""))"
             cell.toTimelbl.text = data.destination?.time ?? ""
             cell.toCitylbl.text = "\(data.destination?.city ?? "")(\(data.destination?.loc ?? ""))"

@@ -47,6 +47,7 @@ let KAeventId = "eventId"
 let KApage = "page"
 let KAuserId = "userId"
 
+var imagesArray = [Images]()
 var paymobilecountrycode = String()
 var mbSummery = [Summary]()
 var frequent_flyersArray = [Frequent_flyers]()
@@ -173,6 +174,7 @@ var filterPrice = String()
 var filterModel = FlightFilterModel()
 var sortBy: SortParameter = .nothing
 var hotelfiltermodel = HotelFilterModel()
+var roomsDetails = [[Rooms]]()
 
 //Flight Paynow Screen
 var payemail = String()
@@ -219,6 +221,9 @@ var bookingId = String()
 var flightSelectedIndex = Int()
 //var prebookingcancellationpolicy : Pre_booking_cancellation_policy?
 var userspecification = [String]()
+var images = [Images]()
+var formatDesc = [Format_desc]()
+var formatAmeArray = [Format_ame]()
 
 
 //MARK: - HOME SCREEN
@@ -301,6 +306,7 @@ struct UserDefaultsKeys {
     static var hotelchildcount = "hotel_child_count"
     static var itinerarySelectedIndex = "ItinerarySelectedIndex"
     static var selectPersons = "selectPersons"
+    static var newName = "newName"
     
 }
 
@@ -310,6 +316,7 @@ struct sessionMgrDefaults {
 }
 
 struct ApiEndpoints {
+    static let hotelmobiledetails = "mobile_details"
     static let general_mobileHotelSearch = "general/mobileHotelSearch"
     static let ajaxHotelSearch_pagination = "ajaxHotelSearch_pagination"
     static let mobileprehotelsearch = "mobile_pre_hotel_search"
