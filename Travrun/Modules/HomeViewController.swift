@@ -115,8 +115,16 @@ class HomeViewController: BaseTableVC, AllCountryCodeListViewModelDelegate, TopF
         visaView.layer.cornerRadius = 6
         fightView.layer.cornerRadius = 6
         hotelView.layer.cornerRadius = 6
+        visaButton.addTarget(self, action: #selector(CallVisaEnduiryVC), for: .touchUpInside)
         setUpTableView()
         setupMenu()
+    }
+    
+    
+    @objc func CallVisaEnduiryVC() {
+        guard let vc = VisaEnduiryVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     

@@ -308,6 +308,13 @@ struct UserDefaultsKeys {
     static var selectPersons = "selectPersons"
     static var newName = "newName"
     
+    
+    //VISA
+    static var visaadultCount = "Visa_Adult_Count"
+    static var visachildCount = "Visa_Child_Count"
+    static var visainfantsCount = "Visa_Infants_Count"
+    static var visatravellerDetails = "Visa_Traveller_Details"
+    
 }
 
 
@@ -316,6 +323,8 @@ struct sessionMgrDefaults {
 }
 
 struct ApiEndpoints {
+    static let visaenquiry = "visa_enquiry"
+    static let contactus = "contactus"
     static let hotelmobiledetails = "mobile_details"
     static let general_mobileHotelSearch = "general/mobileHotelSearch"
     static let ajaxHotelSearch_pagination = "ajaxHotelSearch_pagination"

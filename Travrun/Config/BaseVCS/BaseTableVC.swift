@@ -7,7 +7,8 @@
 
 import UIKit
 
-class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate, LabelTVCellDelegate, RegisterUserTVCellDelegate, UnderLineTVCellPrtocal, TextfieldTVCellDelegate, MenuBGTVCellDelegate, SideMenuTitleTVCellDelegate, SelectGenderTVCellDelegate, RegisterNowTableViewCellDelegate, LoginDetailsTableViewCellDelegate, AddAdultTableViewCellDelegate, FareSummaryTableViewCellDelegate, SearchHotelTVCellDelegate, AddRoomsGuestsTVCellDelegate, CommonFromCityTVCellDelegate, HotelsTVCellelegate, SearchLocationTFTVCellDelegate, BookFlightDetailsTVCellDelegate, TDetailsLoginTVCellDelegate, AddDeatilsOfTravellerTVCellDelegate, TravelInsuranceTVCellDelegate, ContactInformationTVCellDelegate, UsePromoCodesTVCellDelegate, PriceSummaryTVCellDelegate, SpecialRequestTVCellDelegate, ViewFlightDetailsBtnTVCellDelegate, AddAdultsOrGuestTVCellDelegate, SearchFlightResultTVCellDelegate, TitleLblTVCellDelegate, RadioButtonTVCellDelegate, QuickLinkTableViewCellDelegate, AddonTableViewCellDelegate, PopularFiltersTVCellDelegate, GuestTVCellDelegate, EditProfileTVCellDelegate, RoomsTVcellDelegate, NewRoomTVCellDelegate {
+class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDelegate, NewFlightSearchResultTVCellDelegate, FlightSearchButtonTableViewCellDelegate, SortbyTVCellDelegate, CheckBoxTVCellDelegate, SliderTVCellDelegate, RegisterSelectionLoginTableViewCellDelegate, LabelTVCellDelegate, RegisterUserTVCellDelegate, UnderLineTVCellPrtocal, TextfieldTVCellDelegate, MenuBGTVCellDelegate, SideMenuTitleTVCellDelegate, SelectGenderTVCellDelegate, RegisterNowTableViewCellDelegate, LoginDetailsTableViewCellDelegate, AddAdultTableViewCellDelegate, FareSummaryTableViewCellDelegate, SearchHotelTVCellDelegate, AddRoomsGuestsTVCellDelegate, CommonFromCityTVCellDelegate, HotelsTVCellelegate, SearchLocationTFTVCellDelegate, BookFlightDetailsTVCellDelegate, TDetailsLoginTVCellDelegate, AddDeatilsOfTravellerTVCellDelegate, TravelInsuranceTVCellDelegate, ContactInformationTVCellDelegate, UsePromoCodesTVCellDelegate, PriceSummaryTVCellDelegate, SpecialRequestTVCellDelegate, ViewFlightDetailsBtnTVCellDelegate, AddAdultsOrGuestTVCellDelegate, SearchFlightResultTVCellDelegate, TitleLblTVCellDelegate, RadioButtonTVCellDelegate, QuickLinkTableViewCellDelegate, AddonTableViewCellDelegate, PopularFiltersTVCellDelegate, GuestTVCellDelegate, EditProfileTVCellDelegate, RoomsTVcellDelegate, NewRoomTVCellDelegate, VisaEnduiryTVCellDelegate, TravellerEconomyTVCellDelegate {
+  
    
     @IBOutlet weak var commonScrollView: UITableView!
     @IBOutlet weak var commonTableView: UITableView!
@@ -90,6 +91,16 @@ class BaseTableVC: UIViewController, ButtonTVCellDelegate, OneWayTableViewCellDe
     }
     
     //Delegate Methods
+    func didTapOnDecrementButton(cell: TravellerEconomyTVCell) {}
+    func didTapOnIncrementButton(cell: TravellerEconomyTVCell) {}
+    func didTapOnCountryCodeBtn(cell: VisaEnduiryTVCell) {}
+    func didTapOnNationalityBtn(cell: VisaEnduiryTVCell) {}
+    func didTapOnResidencyBtn(cell: VisaEnduiryTVCell) {}
+    func didTapOnDestionationBtn(cell: VisaEnduiryTVCell) {}
+    func didTapOnNoOfPassengersBtn(cell: VisaEnduiryTVCell) {}
+    func didTapOnSubmitEnquireBtn(cell: VisaEnduiryTVCell) {}
+    func donedatePicker(cell: VisaEnduiryTVCell) {}
+    func cancelDatePicker(cell: VisaEnduiryTVCell) {}
     func didTapOnRoomsBtn(cell: RoomsTVcell) {}
     func didTapOnHotelsDetailsBtn(cell: RoomsTVcell) {}
     func didTapOnAmenitiesBtn(cell: RoomsTVcell) {}
@@ -654,7 +665,20 @@ extension BaseTableVC: UITableViewDataSource {
             case .TitleLabelTVCell:
                 let cell: TitleLabelTVCell = commonTV.dequeTVCell(indexPath: indexPath)
                 commonCell = cell
+                
+            case .VisaEnduiryTVCell:
+                let cell: VisaEnduiryTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
+                commonCell = cell
+                
+            case .TravellerEconomyTVCell:
+                let cell: TravellerEconomyTVCell = commonTV.dequeTVCell(indexPath: indexPath)
+                cell.delegate = self
+                commonCell = cell
          
+                
+                
+                
                 
             default:
                 print("handle this case in getCurrentCellAt")

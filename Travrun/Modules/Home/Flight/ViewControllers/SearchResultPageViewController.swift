@@ -95,7 +95,7 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
             subTitleLabel.text = "\(depDate)"
         }
     
-        personsCategoryLabel.text = "\(adult ?? "0") Adults | \(child ?? "0") Children | \(infant ?? "") infant"
+        personsCategoryLabel.text = "\(adult ?? "0") Adult | \(child ?? "0") Child | \(infant ?? "") infant"
         backButtonView.layer.cornerRadius = backButtonView.layer.frame.width / 2
         editButtonView.layer.cornerRadius = editButtonView.layer.frame.width / 2
         leftButtonView.layer.cornerRadius = leftButtonView.layer.frame.width / 2
@@ -189,8 +189,6 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
                 callAPI()
                 
             } else {
-                
-                
                 // Convert the date string to a Date object
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd-MM-yyyy"
@@ -206,8 +204,6 @@ class SearchResultPageViewController: BaseTableVC, FlightListModelProtocal, Appl
                 if returnDatalbl.text == nextDayString {
                     showToast(message: "Journey Dates Should Not Same")
                 }else {
-                    
-                    
                     print("nextDayString ==== > \(nextDayString)")
                     defaults.set(nextDayString, forKey: UserDefaultsKeys.rcalDepDate)
                     payload["depature"] = defaults.string(forKey:UserDefaultsKeys.rcalDepDate)

@@ -106,8 +106,8 @@ extension ItineraryAddTVCell:UITableViewDelegate,UITableViewDataSource {
 //                cell.separationLine.isHidden = false
                 cell.bottomLabel.textColor = HexColor("#000000")
                 cell.bottomLabel.font = .InterRegular(size: 12)
-                cell.bottomLabel.text = "Arrival flight in different day"
-                cell.infoImage.isHidden = false
+                cell.bottomLabel.isHidden = true
+                cell.infoImage.isHidden = true
                 cell.bottomLabel.textAlignment = .left
             }
             

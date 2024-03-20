@@ -346,7 +346,7 @@ class FlightViewController: BaseTableVC {
                 }else if defaults.string(forKey:UserDefaultsKeys.rselectClass) == nil {
                     showToast(message: "Add Class")
                 }else if defaults.string(forKey:UserDefaultsKeys.fromCity) == defaults.string(forKey:UserDefaultsKeys.toCity) {
-                    showToast(message: "Please Select Different Citys")
+                    showToast(message: "Invalid Dates")
                 }else if checkDepartureAndReturnDates(payload, p1: "depature", p2: "return") == false {
                     showToast(message: "Invalid Date")
                 }else{
@@ -503,11 +503,11 @@ extension FlightViewController {
             
             
             
-//            //Hotel default Values
-//            defaults.set("1", forKey: UserDefaultsKeys.roomcount)
-//            defaults.set("2", forKey: UserDefaultsKeys.hoteladultscount)
-//            defaults.set("0", forKey: UserDefaultsKeys.hotelchildcount)
-//            defaults.set("\(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? "") Rooms,\(defaults.string(forKey: UserDefaultsKeys.hoteladultscount) ?? "") Adults,\(defaults.string(forKey: UserDefaultsKeys.hotelchildcount) ?? "") Child", forKey: UserDefaultsKeys.selectPersons)
+            //Hotel default Values
+            defaults.set("1", forKey: UserDefaultsKeys.roomcount)
+            defaults.set("2", forKey: UserDefaultsKeys.hoteladultscount)
+            defaults.set("0", forKey: UserDefaultsKeys.hotelchildcount)
+            defaults.set("\(defaults.string(forKey: UserDefaultsKeys.roomcount) ?? "") Rooms,\(defaults.string(forKey: UserDefaultsKeys.hoteladultscount) ?? "") Adults,\(defaults.string(forKey: UserDefaultsKeys.hotelchildcount) ?? "") Child", forKey: UserDefaultsKeys.selectPersons)
             
             
 //            

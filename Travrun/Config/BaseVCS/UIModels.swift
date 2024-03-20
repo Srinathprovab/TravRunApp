@@ -107,6 +107,8 @@ enum TVCellType {
     case NewRoomTVCell
     case TitleLabelTVCell
     case AmenitiesTVCell
+    case VisaEnduiryTVCell
+    case TravellerEconomyTVCell
 //    case ContactUsTVCell
 }
 
