@@ -153,12 +153,12 @@ class HotelDetailsVC: BaseTableVC, HotelDetailsViewModelDelegate {
     
     
     func gotoAddContactAndGuestDetailsVC(){
-//        guard let vc = AddContactAndGuestDetailsVC.newInstance.self else {return}
-//        vc.modalPresentationStyle = .fullScreen
-//        callapibool = true
-//        vc.b_sorce = bookingsource
-//        vc.kwdprice = kwdprice
-//        self.present(vc, animated: true)
+        guard let vc = AddContactAndGuestDetailsVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        callapibool = true
+        vc.b_sorce = bookingsource
+        vc.kwdprice = kwdprice
+        self.present(vc, animated: true)
     }
     
     

@@ -104,6 +104,15 @@ class SideMenuViewController: BaseTableVC, ProfileDetailsViewModelDelegate, Logo
         present(vc, animated: true)
     }
     
+    override func didTaponvisaButton(cell: QuickLinkTableViewCell) {
+        guard let vc = VisaEnduiryVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: true)
+    }
+    
+    override func didTaponautoPayButton(cell: QuickLinkTableViewCell) {}
+    
+    
     override func didTaponCell(cell: SideMenuTitleTVCell) {
 //        switch cell.menuTitlelbl.text {
 //        case "Flight":

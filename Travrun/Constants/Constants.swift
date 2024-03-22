@@ -21,6 +21,7 @@ let KAuthorization = "Authorization"
 let KDEVICE_ID = "DEVICE_ID"
 var KAccesstoken = "Accesstoken"
 var loderBool = false
+var prebookingcancellationpolicy = ""
 //let tempAccessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.IjQ5MyI.lZlN_1oQldjp7DX7Cah05igwkYhgiYqmru-JNqvAX60"
 var tempAccessToken = "cpk5sre43kpsprytujhjatquwevgtpljkg?e21nfo5k#qaqwe6thnbde"
 //http://dev.irepo.in:8080/        POST API Base url
@@ -113,6 +114,7 @@ var TotalPrice_API = String()
 var grandTotal = String()
 var subtotal = String()
 var totalDiscount = String()
+var billingCountryCode = String()
 
 var AdultsTotalPrice = String()
 var ChildTotalPrice = String()
@@ -136,14 +138,16 @@ var addonCheck = true
 var priceDetailsArry: [MBPriceDetails]?
 var isChecked =  true
 var isDirect = true
+//let context = appDelegate.persistentContainer.viewContext
 
 //MARK: - Profile details
 var pdetails:ProfileDetails?
 
 //MARK: - Travellers Details
-//var adultTravllersArray = [TravellerData]()
-//var childTravllersArray = [TravellerData]()
-//var infantaTravllersArray = [TravellerData]()
+
+var adultTravllersArray = [TravellerData]()
+var childTravllersArray = [TravellerData]()
+var infantaTravllersArray = [TravellerData]()
 var checkOptionCountArray = [String]()
 var passengertypeArray = [String]()
 var genderArray = [String]()
@@ -323,6 +327,8 @@ struct sessionMgrDefaults {
 }
 
 struct ApiEndpoints {
+    static let mobilehotelprebooking = "mobile_hotel_pre_booking"
+    static let hmobilebooking = "mobile_booking"
     static let visaenquiry = "visa_enquiry"
     static let contactus = "contactus"
     static let hotelmobiledetails = "mobile_details"

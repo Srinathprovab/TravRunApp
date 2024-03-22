@@ -27,7 +27,7 @@ class Calvc: UIViewController {
     var selectedfirstDate : Date?
     var selectedlastDate : Date?
     let df = DateFormatter()
-    var startDate = Date().dateByAddingMonths(months: -12).startOfMonth
+    var startDate = Date()
     var endDate = Date().dateByAddingMonths(months: 12).endOfMonth
     var selectedDays: Date?
     let grayView = UIView()

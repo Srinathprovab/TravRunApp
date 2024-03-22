@@ -433,7 +433,8 @@ extension SearchHotelsResultVC {
             let mapModel = MapModel(
                 longitude: i.longitude ?? "",
                 latitude: i.latitude ?? "",
-                hotelname: i.name ?? ""
+                hotelname: i.name ?? "",
+                hotelimg: i.image ?? ""
             )
             mapModelArray.append(mapModel)
         }
@@ -603,7 +604,7 @@ extension SearchHotelsResultVC {
     
     func hoteSearchPagenationResult(response: HotelSearchModel) {
         
-        
+        loderBool = true
         response.data?.hotelSearchResult?.forEach { i in
             prices.append(i.price ?? "")
             let mapModel = MapModel(

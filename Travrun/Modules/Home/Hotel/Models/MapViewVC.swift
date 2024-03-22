@@ -14,14 +14,15 @@ struct MapModel {
     var longitude =  String()
     var latitude =  String()
     var hotelname = String()
+    var hotelimg = String()
 }
 
 
 
 class MapViewVC: UIViewController, CLLocationManagerDelegate {
     
-    
-    @IBOutlet weak var nav: NavBar!
+
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var googleMapView: UIView!
     @IBOutlet weak var navHeight: NSLayoutConstraint!
     
@@ -47,13 +48,12 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate {
     
     func setupUI() {
         self.googleMapView.backgroundColor = .WhiteColor
-        nav.titlelbl.text = "Map View"
-        nav.backBtn.addTarget(self, action: #selector(backbtnAction), for: .touchUpInside)
+//         titlelbl.text = "Map View"
+        cancelButton.addTarget(self, action: #selector(backbtnAction), for: .touchUpInside)
     }
     
     @objc func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if !mapModelArray.isEmpty {
-            
             // Calculate the average latitude and longitude from mapModelArray
             let averageLatitude = mapModelArray.map { Double($0.latitude) ?? 0.0 }.reduce(0.0, +) / Double(mapModelArray.count)
             let averageLongitude = mapModelArray.map { Double($0.longitude) ?? 0.0 }.reduce(0.0, +) / Double(mapModelArray.count)
@@ -70,8 +70,8 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate {
     }
     
     
+    
     func addMarkersToMap(_ mapView: GMSMapView) {
-        
         for mapModel in mapModelArray {
             if let latitude = Double(mapModel.latitude), let longitude = Double(mapModel.longitude) {
                 // Create and configure markers based on the mapModel data
@@ -98,6 +98,7 @@ class MapViewVC: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
+    
     
     
     @objc func backbtnAction() {

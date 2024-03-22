@@ -10,6 +10,8 @@ import UIKit
 protocol QuickLinkTableViewCellDelegate {
     func didTaponFlightBtn(cell: QuickLinkTableViewCell)
     func didTaponHotelBtn(cell: QuickLinkTableViewCell)
+    func didTaponautoPayButton(cell: QuickLinkTableViewCell)
+    func didTaponvisaButton(cell: QuickLinkTableViewCell)
 }
 
 
@@ -39,10 +41,16 @@ class QuickLinkTableViewCell: TableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func visaButtonAction(_ sender: Any) {
+        delegate?.didTaponvisaButton(cell: self)
+    }
     @IBAction func FlightButtonAction(_ sender: Any) {
         delegate?.didTaponFlightBtn(cell: self)
     }
     
+    @IBAction func autoPayButtonAction(_ sender: Any) {
+        delegate?.didTaponautoPayButton(cell: self)
+    }
     @IBAction func hotelButtonAction(_ sender: Any) {
         delegate?.didTaponHotelBtn(cell: self)
     }

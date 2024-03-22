@@ -37,10 +37,12 @@ class HomeViewController: BaseTableVC, AllCountryCodeListViewModelDelegate, TopF
         let vc = storyboard.instantiateViewController(withIdentifier: self.className()) as? HomeViewController
         return vc
     }
+    
 
     var tabNames = ["Flight","Hotel","Visa", "Pay"]
     var tabNamesImages = ["flightIcon","hotelIcon","visaIcon", "payIcon"]
     var tableRow = [TableRow]()
+    var payload1 = [String:Any]()
     
     private var sideMenuViewController: SideMenuViewController!
     private var sideMenuShadowView: UIView!
@@ -411,6 +413,7 @@ extension HomeViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(reload(notification:)), name: Notification.Name("reload"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(topcity(notification:)), name: Notification.Name("topcity"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(tophotel(notification:)), name: Notification.Name("tophotel"), object: nil)
         
       
         if !UserDefaults.standard.bool(forKey: "ExecuteOnce") {
@@ -496,6 +499,48 @@ extension HomeViewController {
         }
         
     }
+    
+    
+    
+    //MARK: - tophotel Search
+    @objc func tophotel(notification: Notification) {
+        
+        self.tabBarController?.tabBar.isHidden = false
+        loderBool = true
+        defaults.set("Hotels", forKey: UserDefaultsKeys.dashboardTapSelected)
+        payload.removeAll()
+        payload1.removeAll()
+        if let userinfo = notification.userInfo {
+            
+            defaults.set((userinfo["city"] as? String) ?? "", forKey: UserDefaultsKeys.locationcity)
+            defaults.set((userinfo["hotel_code"] as? String) ?? "", forKey: UserDefaultsKeys.locationcityid)
+            defaults.set(convertDateFormat(inputDate: userinfo["check_in"] as? String ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy") , forKey: UserDefaultsKeys.checkin)
+            defaults.set(convertDateFormat(inputDate: userinfo["check_out"] as? String ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy") , forKey: UserDefaultsKeys.checkout)
+            payload["city"] = (userinfo["city"] as? String) ?? ""
+            payload["hotel_destination"] = (userinfo["hotel_code"] as? String) ?? ""
+            payload["hotel_checkin"] = convertDateFormat(inputDate: userinfo["check_in"] as? String ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy")
+            payload["hotel_checkout"] = convertDateFormat(inputDate: userinfo["check_out"] as? String ?? "", f1: "yyyy-MM-dd", f2: "dd-MM-yyyy")
+            payload["rooms"] = "1"
+            payload["adult"] = ["1"]
+            payload["child"] = ["0"]
+            payload["childAge_1"] = ["0"]
+            payload["nationality"] = "IN"
+            
+            gotoSearchHotelsResultVC()
+        }
+    }
+    
+    func gotoSearchHotelsResultVC(){
+        guard let vc = SearchHotelsResultVC.newInstance.self else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.countrycode = ""
+        callapibool = true
+        vc.payload = self.payload
+        present(vc, animated: true)
+    }
+    
+    
+    
     
     func gotoSearchFlightResultVC() {
         loderBool = true
